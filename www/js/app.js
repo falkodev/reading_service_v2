@@ -14,19 +14,23 @@
 
   // router.start();
   
-  var slider = new PageSlider($('#tmplContent'));
+  // browser language detection and load corresponding language file 
+  var lang = window.navigator.userLanguage || window.navigator.language
+  lang = lang.substr(0,2)
+  $('body').append('<script src="assets/lang/' + lang + '.js"></script>')
+  
+  var slider = new PageSlider($('#tmplContent'))
   //routes determined by hash
   $(window).on('hashchange', function(){
-    var hash = window.location.hash.substr(1);
-    var activeMenu = hash + 'Active';
-    loadMenu(activeMenu);
-    slider.slidePage($('<div>').html(loadTemplate(hash)));
+    var hash = window.location.hash.substr(1)
+    var activeMenu = hash + 'Active'
+    loadMenu(activeMenu)
+    slider.slidePage($('<div>').html(loadTemplate(hash)))
   });
 
   //default page when no hash
-  // $('#tmplContent').load('js/templates/homeTemplate.html');
-  $('#tmplContent').html(loadTemplate('home'));
-  loadMenu('homeActive');
+  slider.slidePage($('<div>').html(loadTemplate('home')))
+  loadMenu('homeActive')
   
   /**
    * call the menu template and set the active menu (with handlebars.js)
@@ -34,12 +38,15 @@
    */
   function loadMenu(activeMenu)
   {
-    var loaded = loadTemplate('menu');
-    var obj = {};
-    obj[activeMenu] = 'active';
-    var data=[];
-    data.push(obj);
-    $('#menuContent').html(loaded(data[0]));
+    var loaded = loadTemplate('menu')
+    var obj = {}
+    obj[activeMenu] = 'active'
+    obj['homeTitle'] = homeTitle
+    obj['faqTitle'] = faqTitle
+    obj['contactTitle'] = contactTitle
+    var data=[]
+    data.push(obj)
+    $('#menuContent').html(loaded(data[0]))
   }
 
   /**
@@ -48,17 +55,17 @@
    * @return {htmlContent [handlebars compiled function]}
    */
   function loadTemplate(tmpl_name) {
-    var tmpl_url = 'js/templates/' + tmpl_name + 'Template.html';
-    var htmlContent;
+    var tmpl_url = 'js/templates/' + tmpl_name + 'Template.html'
+    var htmlContent
     $.ajax({
         url: tmpl_url,
         method: 'GET',
         dataType: 'html',
         async: false,
         success: function(data) {
-            htmlContent = Handlebars.compile(data);
+            htmlContent = Handlebars.compile(data)
         } 
     });
-    return htmlContent;
+    return htmlContent
   }
 }());
