@@ -1,3 +1,7 @@
 homeTitle = "Home"
 faqTitle = "FAQ"
 contactTitle = "Contact"
+homeSubtitle = "Subscribe or login"
+homeFAQLabel = "Tell me more"
+homeSubscribeLabel = "Create an account"
+homeLoginLabel = "Login"

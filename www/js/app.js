@@ -60,6 +60,7 @@
     $.ajax({
         url: tmpl_url,
         method: 'GET',
+        data : { homeSubtitle : homeSubtitle },
         dataType: 'html',
         async: false,
         success: function(data) {
