@@ -5,22 +5,32 @@
   lang = lang.substr(0,2)
   $('body').append('<script src="assets/lang/' + lang + '.js"></script>')
   
-  //routes determined by hash
+  //app init : first request
+  displayPage() 
+
+  //every new request changes the hash
   $(window).on('hashchange', function(){
+    displayPage() 
+  })
+
+  /**
+   * [displayPage : analyze hash and determine what template to request]
+   */
+  function displayPage() {
     var hash = window.location.hash.substr(1)
-    var activeMenu = hash + 'Active'
+    var activeMenu = hash + '_active'
+    if(!hash) {
+      hash = 'home'
+    }
     loadTemplate('menu', activeMenu)
     loadTemplate(hash)
-  });
-
-  //default page when no hash
-  loadTemplate('menu', 'homeActive') //default menu
-  loadTemplate('home') //homepage
+  }
   
 
   /**
-   * get a template, compile it with handblebars.js and return his html content
-   * @param  {tmpl_name [string]}
+   * [loadTemplate : get a template, compile it with handblebars.js and return his html content]
+   * @param  {tmpl_name  : template name [string]}
+   * @param  {activeMenu : menu name - optional [string]}
    * @return {htmlContent [handlebars compiled function]}
    */
   function loadTemplate(tmpl_name, activeMenu) {
@@ -50,9 +60,23 @@
           // compile template
           var template = Handlebars.compile(data)
           var html = template(context)
+          html = escapeLink(html)
           if(activeMenu != null) { $('#menuContent').html(html) } // case of menu loading
           else { slider.slidePage($('<div>').html(html)) }
         } 
     });
+  }
+
+  /**
+   * [escapeLink : convert 'a href' links in readable content ]
+   * @param  {[string]} str ['a' link to convert]
+   * @return {[string]}     [link converted]
+   */
+  function escapeLink(str) {
+    str = str.replace(new RegExp('{{{&lt;', 'g'), '<')
+    str = str.replace(new RegExp('&gt;}}}', 'g'), '>')
+    str = str.replace(new RegExp('&#x27;', 'g'), '\'')
+
+    return str
   }
 }());
