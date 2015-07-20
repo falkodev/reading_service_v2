@@ -2,7 +2,7 @@
   var slider = new PageSlider($('#tmplContent'))
   // browser language detection and load corresponding language file 
   var lang = window.navigator.userLanguage || window.navigator.language
-  lang = lang.substr(0,2)
+  lang.substr(0,2)
   $('body').append('<script src="assets/lang/' + lang + '.js"></script>')
   
   //app init : first request
@@ -18,13 +18,24 @@
    */
   function displayPage() {
     var hash = window.location.hash.substr(1)
-    var activeMenu = hash + '_active'
     if(!hash) {
       hash = 'home'
     }
+    var activeMenu = hash + '_active'
     loadTemplate('menu', activeMenu)
     loadTemplate(hash)
   }
+
+  /**
+   * [on click on a language in homeTemplate, remove previous language and add new language in the view]
+   */
+  $(".linkLang").click(function()
+  {
+    $('script[src="assets/lang/' + lang + '.js"]').remove() //remove previous language file
+    lang = $(this).text().toLowerCase()
+    $('body').append('<script src="assets/lang/' + lang + '.js"></script>')
+    displayPage() // refreshes view
+  })
   
 
   /**

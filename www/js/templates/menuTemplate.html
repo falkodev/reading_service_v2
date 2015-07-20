@@ -4,8 +4,15 @@
             <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><a href="#home" class="{{home_active}}" >{{menu_home}}</a></li>
+                <li><a href="#subscribe" class="{{subscribe_active}}">{{menu_subscribe}}</a></li>
                 <li><a href="#faq" class="{{faq_active}}">{{menu_faq}}</a></li>
+            </ul>
+            <ul class="dropdown-menu" id="menu2" role="menu" aria-labelledby="dLabel">
                 <li><a href="#contact" class="{{contact_active}}">{{menu_contact}}</a></li>
+                <li><a href="#login" class="menu-orange" id="menuLogin" class="{{login_active}}">{{menu_login}}</a></li> 
+                <ul class="displayNone menu-ul">
+                    <li class="menu-bullet"><a href="#logout" class="menu-orange menu-height" id="logout">{{menu_logout}}</a></li> 
+                </ul>
             </ul>
         </div>
     </div>

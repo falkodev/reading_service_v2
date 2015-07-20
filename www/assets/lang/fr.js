@@ -1,13 +1,20 @@
+language ='fr'
 menu_home = "Accueil"
 menu_faq = "FAQ"
 menu_contact = "Contact"
+menu_subscribe = "Inscription"
+menu_login = "Espace personnel"
+menu_logout = "Déconnexion"
 home_active = ""
 faq_active = ""
 contact_active = ""
-homeSubtitle = "Inscription ou connexion"
-homeFAQLabel = "En savoir plus"
-homeSubscribeLabel = "Inscription"
-homeLoginLabel = "Connexion"
+subscribe_active = ""
+login_active = ""
+logout_active = ""
+home_subtitle = "Inscription ou connexion"
+home_faq_label = "En savoir plus"
+home_subscribe_label = "Inscription"
+home_login_label = "Connexion"
 faq_title = "Questions à propos de ce site"
 faq_question_1_title = 'Pourquoi ce site ?'
 faq_question_1_content = "Pour que tout le monde puisse en profiter. Ce site n'est bien sûr pas lié à jw.org ou à quelque entité associée aux Témoins de Jéhovah. Il ne met à disposition que des portions de la Bible et n'a pas pour but d'enseigner ou de propager des points de vue doctrinaux. {{{<br>}}}{{{<br>}}}Le service délivré à travers ce site est gratuit et n'a aucune vocation commerciale. De ce fait, il est mis à disposition de tous, et ne sera jamais supporté par de la publicité."
@@ -32,252 +39,222 @@ contact_msg = 'Votre message'
 contact_btn_send = 'Envoyer'
 contact_thanks_msg = "Merci pour votre message. Il a bien été envoyé. Vous aurez une réponse d'ici peu."
 btn_back = 'Retour'
+subscribe_title = 'Inscription'
+subscribe_text_1 = "L'inscription nécessite 3 étapes."
+subscribe_text_2 = "Tout d'abord, nous avons besoin de connaître votre adresse email, pour l'envoi des portions de lecture de la Bible."
+subscribe_text_3 = "Et, si vous voulez, votre prénom, pour personnaliser l'email."
+placeholder_email = "Votre adresse email"
+placeholder_name = "Votre prénom"
+btn_next = 'Ok, étape suivante'
+btn_last = 'Dernière étape'
+days = 'Jours'
+subscribe_text_4 = "Ensuite, vous aurez besoin d'activer les jours où vous voulez recevoir la lecture de la Bible en cliquant dessus"
+subscribe_text_5 = 'Parmi ces jours, quel doit être le premier où débute votre "semaine" de lecture ?&nbsp;&nbsp;'
+subscribe_tip_1 = 'Info : pour recevoir la lecture de la semaine suivante, il faut choisir plusieurs jours et un premier jour différent du lundi'
+subscribe_reading_lang = 'Langue lecture Bible'
+subscribe_text_lang = 'Langue texte du jour'
+subscribe_time_choice = "Heure d'envoi de l'email"
+subscribe_tip_2 = "Par défaut, l'heure d'envoi sélectionnée est 6h sur le fuseau horaire UTC+1 (Amsterdam, Berlin, Bern, Bratislava, Brussells, Budapest, Madrid, Malta, Prague, Paris, Rome, Sarajevo, Valletta, Vienna, Warsaw, Zagreb).{{{<br>}}}{{{<br>}}}Cliquez sur la carte pour changer ces paramètres si vous le désirez."
+world_map_africa = 'Afrique (UTC -1 à +3)'
+world_map_asia = 'Asie (UTC +2 à +12)'
+world_map_australia = 'Australie et Pacifique Sud (UTC +8 à +14)'
+world_map_europe = 'Europe (UTC -1 à +4)'
+world_map_north_america = 'Amérique Nord (UTC -12 à -3)'
+world_map_south_america = 'Amérique Sud (UTC -5 à -1)'
+world_map_table = "Dans le tableau ci-dessous, les différents fuseaux horaires de votre région sont listés.{{{<br>}}} Sur la ligne de votre fuseau horaire, choisissez dans la liste déroulante de droite l'horaire qui vous convient pour recevoir l'email quotidien.{{{<br>}}}Veuillez noter qu'il s'agit d'un horaire indicatif, sachant que l'envoi dépend de notre hébergeur web."
+world_map_timezone = 'Fuseau horaire'
+world_map_cities = 'Villes'
+world_map_time = "Heure d'envoi"
+display_map = "Afficher la carte"
+popover_title = 'Suggestion'
+popover_content = 'Vous pourriez choisir comme premier jour le lendemain de la réunion de service. Ainsi, vous terminerez votre lecture de la Bible le jour de votre réunion de service.{{{<br/>}}}{{{<br/>}}} Par exemple, si votre réunion est le mardi, en choisissant mercredi comme "premier" jour de la semaine (et en ayant aussi inclus mardi dans les jours où vous recevrez une portion), vous terminerez la lecture le mardi.'
+daily_comment = 'Voulez-vous aussi recevoir aussi le texte du jour quotidiennement ?'
+btn_previous = 'Précédent'
+btn_validation = 'Validation'
+
 
 
 // 'menu_home = 'Accueil'
 
-//    'menu_info = 'Fonctionnement'
+// menu_info = 'Fonctionnement'
 
-//    'menu_subscribe = 'Inscription'
+// menu_subscribe = 'Inscription'
 
-//    'menu_faq = faq'
+// menu_faq = faq'
 
-//    'menu_contact = 'Contact'
+// menu_contact = 'Contact'
 
-//    'menu_login = 'Espace personnel'
+// menu_login = 'Espace personnel'
 
-//    'menu_logout = 'Déconnexion'
+// menu_logout = 'Déconnexion'
 
-//    'home_text_1 = 'Inscrivez-vous pour recevoir chaque jour'
+// home_text_1 = 'Inscrivez-vous pour recevoir chaque jour'
 
-//    'home_text_2 = ' une portion de la lecture hebdomadaire de la Bible'
+// home_text_2 = ' une portion de la lecture hebdomadaire de la Bible'
 
-//    'home_btn_info = 'Comment ça marche ?'
+// home_btn_info = 'Comment ça marche ?'
 
-//    'home_btn_subscribe = "&nbsp;&nbsp;Ok, je m'inscris&nbsp;&nbsp;"
+// home_btn_subscribe = "&nbsp;&nbsp;Ok, je m'inscris&nbsp;&nbsp;"
 
-//    'home_btn_login = "&nbsp;&nbsp;Connexion à mon compte&nbsp;&nbsp;"
+// home_btn_login = "&nbsp;&nbsp;Connexion à mon compte&nbsp;&nbsp;"
 
-//    'info_title = 'Comment ça fonctionne ?'
+// info_title = 'Comment ça fonctionne ?'
 
-//    'info_content = 'Explications sur le site, son fonctionnement...'
+// info_content = 'Explications sur le site, son fonctionnement...'
 
-//    'subscribe_title = 'Inscription'
 
-//    'subscribe_text_1 = "L'inscription nécessite 3 étapes."
 
-//    'subscribe_text_2 = "Tout d'abord, nous avons besoin de connaître votre adresse email, pour l'envoi des portions de lecture de la Bible."
 
-//    'subscribe_text_3 = "Et, si vous voulez, votre prénom, pour personnaliser l'email."
+// login_title = 'Connexion'
 
-//    "placeholder_email" =>}}} "Votre adresse email"
+// login_placeholder_email" =>}}} 'Adresse email'
 
-//    "placeholder_name" =>}}} "Votre prénom"
+// login_placeholder_pwd" =>}}} 'Mot de passe'
 
-//    'btn_next = 'Ok, étape suivante'
+// login_forgotten_pwd = 'Mot de passe oublié '
 
-//    'btn_last = 'Dernière étape'
+// login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en tant que login. {{{<br>}}}Un email vous sera expédié avec le nouveau mot de passe."
 
-//    'days = 'Jours'
+// account_title = 'Mon compte'
 
-//    'subscribe_text_4 = "Ensuite, vous aurez besoin d'activer les jours où vous voulez recevoir la lecture de la Bible en cliquant dessus"
+// account_text_1 = 'Voici les informations enregistrées dans votre compte'
 
-//    'subscribe_text_5 = 'Parmi ces jours, quel doit être le premier où débute votre "semaine" de lecture ?&nbsp;&nbsp;'
+// account_text_2 = "Adresse email pour l'envoi des portions de lecture la Bible"
 
-//    'subscribe_tip_1 = 'Info : pour recevoir la lecture de la semaine suivante, il faut choisir plusieurs jours et un premier jour différent du lundi'
+// account_text_3 = 'Votre prénom'
 
-//    'subscribe_reading_lang = 'Langue lecture Bible'
+// account_text_4 = 'Votre mot de passe'
 
-//    'subscribe_text_lang = 'Langue texte du jour'
+// account_text_5 = 'Les jours que vous avez inscrits pour recevoir la lecture de la Bible'
 
-//    'subscribe_time_choice = "Heure d'envoi de l'email"
+// account_text_6 = 'Parmi ces jours, le premier où débute votre "semaine" de lecture'
 
-//    'subscribe_tip_2 = "Par défaut, l'heure d'envoi sélectionnée est 6h sur le fuseau horaire UTC+1 (Amsterdam, Berlin, Bern, Bratislava, Brussells, Budapest, Madrid, Malta, Prague, Paris, Rome, Sarajevo, Valletta, Vienna, Warsaw, Zagreb).{{{<br>}}}{{{<br>}}}Cliquez sur la carte pour changer ces paramètres si vous le désirez."
+// placeholder_new_pwd" =>}}} "Votre nouveau mot de passe"
 
-//    'world_map_africa = 'Afrique (UTC -1 à +3)'
+// account_chg_pwd = 'Modifier le mot de passe'
 
-//    'world_map_asia = 'Asie (UTC +2 à +12)'
+// account_confirm_pwd = 'Confirmation du mot de passe'
 
-//    'world_map_australia = 'Australie et Pacifique Sud (UTC +8 à +14)'
+// account_cancel_pwd = 'Annuler la modification'
 
-//    'world_map_europe = 'Europe (UTC -1 à +4)'
+// account_save_pwd = 'Enregistrer la modification'
 
-//    'world_map_north_america = 'Amérique Nord (UTC -12 à -3)'
+// account_delayed_chg_msg = "Les modifications concernant les jours de réception de la lecture ont bien été enregistrées et seront affichées ici à partir de lundi prochain"
 
-//    'world_map_south_america = 'Amérique Sud (UTC -5 à -1)'
+// account_popover_title = 'Modifications ultérieures'
 
-//    'world_map_table = "Dans le tableau ci-dessous, les différents fuseaux horaires de votre région sont listés.{{{<br>}}} Sur la ligne de votre fuseau horaire, choisissez dans la liste déroulante de droite l'horaire qui vous convient pour recevoir l'email quotidien.{{{<br>}}}Veuillez noter qu'il s'agit d'un horaire indicatif, sachant que l'envoi dépend de notre hébergeur web."
+// account_popover_content = "Voici les jours de réception à partir de lundi pour votre compte"
 
-//    'world_map_timezone = 'Fuseau horaire'
+// account_popover_td_1 = 'Jour'
 
-//    'world_map_cities = 'Villes'
+// account_popover_td_2 = 'Réception'
 
-//    'world_map_time = "Heure d'envoi"
+// account_popover_td_3 = " 1er jour de la semaine"
 
-//    'display_map = "Afficher la carte"
+// account_popover_yes = " Oui"
 
-//    'popover_title'  =>}}} 'Suggestion'
+// account_popover_no = " Non"
 
-//    'popover_content'  =>}}} 'Vous pourriez choisir comme premier jour le lendemain de la réunion de service. Ainsi, vous terminerez votre lecture de la Bible le jour de votre réunion de service.{{{<br/>}}}{{{<br/>}}} Par exemple, si votre réunion est le mardi, en choisissant mercredi comme "premier" jour de la semaine (et en ayant aussi inclus mardi dans les jours où vous recevrez une portion), vous terminerez la lecture le mardi.'
+// account_popover_monday = 'Lundi'
 
-//    'daily_comment'  =>}}} 'Voulez-vous aussi recevoir aussi le texte du jour quotidiennement ?'
+// account_popover_tuesday = 'Mardi'
 
-//    'btn_previous'  =>}}} 'Précédent'
+// account_popover_wednesday = 'Mercredi'
 
-//    'btn_validation'  =>}}} 'Validation'
+// account_popover_thursday = 'Jeudi'
 
+// account_popover_friday = 'Vendredi'
 
+// account_popover_saturday = 'Samedi'
 
-//    'login_title = 'Connexion'
+// account_popover_sunday = 'Dimanche'
 
-//    "login_placeholder_email" =>}}} 'Adresse email'
+// account_tip_1 = "Vous avez enregistré comme heure d'envoi "
 
-//    "login_placeholder_pwd" =>}}} 'Mot de passe'
+// account_tip_2 = "h sur le fuseau horaire "
 
-//    'login_forgotten_pwd = 'Mot de passe oublié '
+// account_tip_3 = ""
 
-//    'login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en tant que login. {{{<br>}}}Un email vous sera expédié avec le nouveau mot de passe."
+// account_tip_4 = "Cliquez sur la carte pour changer ces paramètres si vous le désirez."
 
-//    'account_title = 'Mon compte'
+// btn_save = 'Enregistrer'
 
-//    'account_text_1 = 'Voici les informations enregistrées dans votre compte'
+// subscribe_mail_thks = 'Merci'
 
-//    'account_text_2 = "Adresse email pour l'envoi des portions de lecture la Bible"
+// subscribe_mail_content_1 = "pour votre inscription.{{{<br>}}}Vous avez choisi de recevoir la lecture de la Bible chaque"
 
-//    'account_text_3 = 'Votre prénom'
+// subscribe_mail_content_2 = "ainsi que le texte du jour quotidiennement."
 
-//    'account_text_4 = 'Votre mot de passe'
+// subscribe_mail_content_3 = "{{{<br>}}}Vous commencerez à recevoir des mails de JW Reading à partir de demain. Si ce n'est pas le cas, veuillez vérifier le dossier \"Indésirables\" (aussi appelé \"Spams\") de votre boite mail.{{{<br>}}}{{{<br>}}}Votre mot de passe sur le site est" 
 
-//    'account_text_5 = 'Les jours que vous avez inscrits pour recevoir la lecture de la Bible'
+// subscribe_mail_content_4 = "{{{<br>}}}{{{<br>}}}Vous pourrez changer tous les paramètres (adresse mail, mot de passe, jours de réception, premier jour de votre semaine de lecture) dans votre espace personnel.{{{<br>}}}Bonne lecture et à bientôt sur le site.{{{<br>}}}{{{<br>}}}L'administrateur JW Reading"
 
-//    'account_text_6 = 'Parmi ces jours, le premier où débute votre "semaine" de lecture'
+// subscribe_mail_title = "Confirmation d'inscription au service JW Reading"
 
-//    "placeholder_new_pwd" =>}}} "Votre nouveau mot de passe"
+// subscribe_mail_monday'=>}}} 'lundi'
 
-//    'account_chg_pwd = 'Modifier le mot de passe'
+// subscribe_mail_tuesday = 'mardi'
 
-//    'account_confirm_pwd = 'Confirmation du mot de passe'
+// subscribe_mail_wednesday = 'mercredi'
 
-//    'account_cancel_pwd = 'Annuler la modification'
+// subscribe_mail_thursday = 'jeudi'
 
-//    'account_save_pwd = 'Enregistrer la modification'
+// subscribe_mail_friday = 'vendredi'
 
-//    'account_delayed_chg_msg = "Les modifications concernant les jours de réception de la lecture ont bien été enregistrées et seront affichées ici à partir de lundi prochain"
+// subscribe_mail_saturday = 'samedi'
 
-//    'account_popover_title = 'Modifications ultérieures'
+// subscribe_mail_sunday = 'dimanche'
 
-//    'account_popover_content = "Voici les jours de réception à partir de lundi pour votre compte"
+// error_page_title = 'JW Reading - Erreur'
 
-//    'account_popover_td_1 = 'Jour'
+// error_title = 'Oups'
 
-//    'account_popover_td_2 = 'Réception'
+// error_text_1 = 'La page'
 
-//    'account_popover_td_3 = " 1er jour de la semaine"
+// error_text_2 = "n'existe pas ou n'est pas accessible.{{{<br>}}}Le problème a été signalé à l'administrateur du site.{{{<br>}}}{{{<br>}}}Vous pouvez réessayer dans quelques instants ou revenir {{{<a href='/fr'>}}}à la page d'accueil.{{{</a>}}}"
 
-//    'account_popover_yes = " Oui"
+// unsubscribe_page_title = 'JW Reading - D&eacute;sinscription'
 
-//    'account_popover_no = " Non"
+// unsubscribe_title = 'D&eacute;sinscription'
 
-//    'account_popover_monday = 'Lundi'
+// unsubscribe_text = "Je veux supprimer mon compte et donc ne plus recevoir de mail de la part de JW Reading sur l'adresse"
 
-//    'account_popover_tuesday = 'Mardi'
+// unsubscribe_btn = 'Valider'
 
-//    'account_popover_wednesday = 'Mercredi'
+// unsubscribe_mail_title = 'JW Reading - Au revoir'
 
-//    'account_popover_thursday = 'Jeudi'
+// unsubscribe_mail_content = 'Bonjour,{{{<br>}}}{{{<br>}}}Votre compte JW Reading a été supprimé suite à votre demande.{{{<br>}}}Nous espérons vous revoir bientôt tout de même.{{{<br>}}}{{{<br>}}}L\'administrateur JW Reading{{{</p>}}}'
 
-//    'account_popover_friday = 'Vendredi'
+// send_new_pwd_content_1 = "Bonjour,{{{<br>}}}{{{<br>}}}Un changement de mot de passe a été demandé pour votre compte JW Reading. Votre mot de passe est désormais le suivant : "
 
-//    'account_popover_saturday = 'Samedi'
+// send_new_pwd_content_2 = "{{{<br>}}}Si cette demande n'est pas de vous, veuillez nous en informer avec le {{{<a href='index.html#contact'>}}}formulaire de contact sur jwreading.com.{{{</a>}}}{{{<br>}}}{{{<br>}}}Cordialement,{{{<br>}}}L'administrateur JW Reading"
 
-//    'account_popover_sunday = 'Dimanche'
+// send_new_pwd_title = "Nouveau mot de passe"
 
-//    'account_tip_1 = "Vous avez enregistré comme heure d'envoi "
+// send_new_pwd_subject = "JW Reading - Nouveau mot de passe"
 
-//    'account_tip_2 = "h sur le fuseau horaire "
+// mail_footer_1 = 'Vous recevez cet email car vous êtes abonné au site JW Reading.{{{<br>}}}Lien direct à votre espace personnel : '
 
-//    'account_tip_3 = ""
+// mail_footer_2 = 'Lien de désinscription : '
 
-//    'account_tip_4 = "Cliquez sur la carte pour changer ces paramètres si vous le désirez."
+// daily_run_subject_reading = 'JW Reading - Portion du jour'
 
-//    'btn_save = 'Enregistrer'
+// daily_run_title_reading = 'Portion du jour'
 
-//    'subscribe_mail_thks = 'Merci'
+// daily_run_subject_comment = 'JW Reading - Texte du jour'
 
-//    'subscribe_mail_content_1 = "pour votre inscription.{{{<br>}}}Vous avez choisi de recevoir la lecture de la Bible chaque"
+// daily_run_title_comment = 'Texte du jour'
 
-//    'subscribe_mail_content_2 = "ainsi que le texte du jour quotidiennement."
+// daily_run_msg_text_1 = 'Bonjour'
 
-//    'subscribe_mail_content_3 = "{{{<br>}}}Vous commencerez à recevoir des mails de JW Reading à partir de demain. Si ce n'est pas le cas, veuillez vérifier le dossier \"Indésirables\" (aussi appelé \"Spams\") de votre boite mail.{{{<br>}}}{{{<br>}}}Votre mot de passe sur le site est" 
+// daily_run_msg_text_2 = 'et bonne lecture.'
 
-//    'subscribe_mail_content_4 = "{{{<br>}}}{{{<br>}}}Vous pourrez changer tous les paramètres (adresse mail, mot de passe, jours de réception, premier jour de votre semaine de lecture) dans votre espace personnel.{{{<br>}}}Bonne lecture et à bientôt sur le site.{{{<br>}}}{{{<br>}}}L'administrateur JW Reading"
+// daily_run_msg_text_3 = "La portion pour aujourd'hui est visible ci-dessous mais aussi en ligne : "
 
-//    'subscribe_mail_title = "Confirmation d'inscription au service JW Reading"
+// lang_fr = 'Français'
 
-//    'subscribe_mail_monday'=>}}} 'lundi'
+// lang_en = 'Anglais'
 
-//    'subscribe_mail_tuesday = 'mardi'
+// lang_ro = 'Roumain'
 
-//    'subscribe_mail_wednesday = 'mercredi'
-
-//    'subscribe_mail_thursday = 'jeudi'
-
-//    'subscribe_mail_friday = 'vendredi'
-
-//    'subscribe_mail_saturday = 'samedi'
-
-//    'subscribe_mail_sunday = 'dimanche'
-
-//    'error_page_title = 'JW Reading - Erreur'
-
-//    'error_title = 'Oups'
-
-//    'error_text_1 = 'La page'
-
-//    'error_text_2 = "n'existe pas ou n'est pas accessible.{{{<br>}}}Le problème a été signalé à l'administrateur du site.{{{<br>}}}{{{<br>}}}Vous pouvez réessayer dans quelques instants ou revenir {{{<a href='/fr'>}}}à la page d'accueil.{{{</a>}}}"
-
-//    'unsubscribe_page_title = 'JW Reading - D&eacute;sinscription'
-
-//    'unsubscribe_title = 'D&eacute;sinscription'
-
-//    'unsubscribe_text = "Je veux supprimer mon compte et donc ne plus recevoir de mail de la part de JW Reading sur l'adresse"
-
-//    'unsubscribe_btn = 'Valider'
-
-//    'unsubscribe_mail_title = 'JW Reading - Au revoir'
-
-//    'unsubscribe_mail_content = 'Bonjour,{{{<br>}}}{{{<br>}}}Votre compte JW Reading a été supprimé suite à votre demande.{{{<br>}}}Nous espérons vous revoir bientôt tout de même.{{{<br>}}}{{{<br>}}}L\'administrateur JW Reading{{{</p>}}}'
-
-//    'send_new_pwd_content_1 = "Bonjour,{{{<br>}}}{{{<br>}}}Un changement de mot de passe a été demandé pour votre compte JW Reading. Votre mot de passe est désormais le suivant : "
-
-//    'send_new_pwd_content_2 = "{{{<br>}}}Si cette demande n'est pas de vous, veuillez nous en informer avec le {{{<a href='index.html#contact'>}}}formulaire de contact sur jwreading.com.{{{</a>}}}{{{<br>}}}{{{<br>}}}Cordialement,{{{<br>}}}L'administrateur JW Reading"
-
-//    'send_new_pwd_title = "Nouveau mot de passe"
-
-//    'send_new_pwd_subject = "JW Reading - Nouveau mot de passe"
-
-//    'mail_footer_1 = 'Vous recevez cet email car vous êtes abonné au site JW Reading.{{{<br>}}}Lien direct à votre espace personnel : '
-
-//    'mail_footer_2 = 'Lien de désinscription : '
-
-//    'daily_run_subject_reading = 'JW Reading - Portion du jour'
-
-//    'daily_run_title_reading = 'Portion du jour'
-
-//    'daily_run_subject_comment = 'JW Reading - Texte du jour'
-
-//    'daily_run_title_comment = 'Texte du jour'
-
-//    'daily_run_msg_text_1 = 'Bonjour'
-
-//    'daily_run_msg_text_2 = 'et bonne lecture.'
-
-//    'daily_run_msg_text_3 = "La portion pour aujourd'hui est visible ci-dessous mais aussi en ligne : "
-
-//    'lang_fr = 'Français'
-
-//    'lang_en = 'Anglais'
-
-//    'lang_ro = 'Roumain'
-
-//    'loading = 'Enregistrement en cours'
+// loading = 'Enregistrement en cours'
