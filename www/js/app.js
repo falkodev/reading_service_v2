@@ -23,7 +23,14 @@
     }
     var activeMenu = hash + '_active'
     loadTemplate('menu', activeMenu)
-    loadTemplate(hash)
+    if(hash == 'home') { 
+      // HomeView.prototype.template = loadTemplate('home')
+      new HomeView(loadTemplate('home'))
+    }
+    else
+    {
+      loadTemplate(hash)
+    }
   }
 
   /**

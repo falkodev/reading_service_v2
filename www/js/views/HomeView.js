@@ -14,5 +14,7 @@ var HomeView = function () {
 
     // this.initialize();
     // this.render();
-    return $('<div>').html(this.template()); 
+    
+    // return $('<div>').html(this.template()); 
+    alert('yo')
 }
