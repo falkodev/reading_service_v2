@@ -1,34 +1,21 @@
 var HomeView = function () {
-
-    // this.initialize = function () {
-    //     // Define a div wrapper for the view (used to attach events)
-    //     this.$el = $('<div/>');      
-    //     // this.render();
-    // };    
-
-    // this.render = function() {
-    //     // this.$el.html(this.template()); 
-    //     // $('.content', this.$el).html();
-    //     return this;
-    // }
-
-    // this.initialize();
-    // this.render();
-    
-    // return $('<div>').html(this.template()); 
+    var lines
     $.ajax({
-        url: 'assets/lang/',
-        // type:'HEAD',
-        error: function(data)
+        url: 'assets/lang/langs.txt',
+        async: false,
+        complete: function(data)
         {
-            console.log('error ')
+            // console.log('always ')
             $.each(data, function(k,v){
-                console.log(v)
+                if(k == 'responseText') {
+                    // console.log(v)
+                    lines = v.split("\n")
+                    // $.each(lines, function(key, value){
+                    //     console.log(value)
+                    // })
+                }
             })
-        },
-        success: function(data)
-        {
-            console.log('success ' + data)
         }
     })
+    return lines
 }

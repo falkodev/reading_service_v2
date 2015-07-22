@@ -24,8 +24,11 @@
     var activeMenu = hash + '_active'
     loadTemplate('menu', activeMenu)
     if(hash == 'home') { 
-      // HomeView.prototype.template = loadTemplate('home')
-      new HomeView(loadTemplate('home'))
+      var lines = new HomeView() 
+      $.each(lines, function(key, value){
+          console.log("lines:" + value)
+      })
+      loadTemplate('home', null, lines) // charger un 3e parametre ds loadTemplate : tableau qui sera ajouté au contexte pr affichage des langues
     }
     else
     {
@@ -80,7 +83,10 @@
           var html = template(context)
           html = escapeLink(html)
           if(activeMenu != null) { $('#menuContent').html(html) } // case of menu loading
-          else { slider.slidePage($('<div>').html(html)) }
+          else { 
+            slider.slidePage($('<div>').html(html)) 
+            // return html
+          }
         } 
     })
   }
