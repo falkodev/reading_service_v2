@@ -82,7 +82,7 @@
           if(activeMenu != null) { $('#menuContent').html(html) } // case of menu loading
           else { slider.slidePage($('<div>').html(html)) }
         } 
-    });
+    })
   }
 
   /**

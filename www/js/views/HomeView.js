@@ -16,5 +16,19 @@ var HomeView = function () {
     // this.render();
     
     // return $('<div>').html(this.template()); 
-    alert('yo')
+    $.ajax({
+        url: 'assets/lang/',
+        // type:'HEAD',
+        error: function(data)
+        {
+            console.log('error ')
+            $.each(data, function(k,v){
+                console.log(v)
+            })
+        },
+        success: function(data)
+        {
+            console.log('success ' + data)
+        }
+    })
 }
