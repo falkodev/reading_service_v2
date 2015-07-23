@@ -5,18 +5,11 @@
   lang.substr(0,2)
   $('body').append('<script src="assets/lang/' + lang + '.js"></script>')
   
-  //app init : first request
-  displayPage() 
-
-  //every new request changes the hash
-  $(window).on('hashchange', function(){
-    displayPage() 
-  })
-
   /**
    * [displayPage : analyze hash and determine what template to request]
    */
-  function displayPage() {
+  // function displayPage() {
+  window.displayPage = function() {
     var hash = window.location.hash.substr(1)
     if(!hash) {
       hash = 'home'
@@ -24,37 +17,43 @@
     var activeMenu = hash + '_active'
     loadTemplate('menu', activeMenu)
     if(hash == 'home') { 
-      var lines = new HomeView() 
-      $.each(lines, function(key, value){
-          console.log("lines:" + value)
-      })
-      loadTemplate('home', null, lines) // charger un 3e parametre ds loadTemplate : tableau qui sera ajouté au contexte pr affichage des langues
+      displayView(hash)
+      // loadTemplate('home', null)
     }
     else
     {
       loadTemplate(hash)
     }
   }
+  
+  //app init : first request
+  displayPage()
 
-  /**
-   * [on click on a language in homeTemplate, remove previous language and add new language in the view]
-   */
-  $(".linkLang").click(function()
-  {
-    $('script[src="assets/lang/' + lang + '.js"]').remove() //remove previous language file
-    lang = $(this).text().toLowerCase()
-    $('body').append('<script src="assets/lang/' + lang + '.js"></script>')
-    displayPage() // refreshes view
+  //every new request changes the hash
+  $(window).on('hashchange', function(){
+    displayPage() 
   })
+
+  
+  /**
+   * [displayView get the view corresponding to the hash, in order to load the associated template with context added by the view ]
+   * @param  {[string]} hash [hash from the url]
+   */
+  function displayView(hash) {
+    var view = "new " + hash + "View()"
+    var result = eval(view) 
+    loadTemplate('home', null, result)
+  }
   
 
   /**
    * [loadTemplate : get a template, compile it with handblebars.js and return his html content]
    * @param  {tmpl_name  : template name [string]}
    * @param  {activeMenu : menu name - optional [string]}
+   * @param  {result : additional context from the calling view - optional [object]}
    * @return {htmlContent [handlebars compiled function]}
    */
-  function loadTemplate(tmpl_name, activeMenu) {
+  function loadTemplate(tmpl_name, activeMenu, result) {
     var tmpl_url = 'js/templates/' + tmpl_name + 'Template.html'
     var htmlContent
     var context = {}
@@ -77,12 +76,17 @@
             }
             i++
           })
-          if(activeMenu != null) { context[activeMenu] = 'active' } // case of menu loading 
+          if(activeMenu) { context[activeMenu] = 'active' } // case of menu loading 
+          if(result) { 
+            $.each(result, function(key, value){
+                context[key] = value // add additional parameters to context
+            })
+          }
           // compile template
           var template = Handlebars.compile(data)
           var html = template(context)
           html = escapeLink(html)
-          if(activeMenu != null) { $('#menuContent').html(html) } // case of menu loading
+          if(activeMenu) { $('#menuContent').html(html) } // case of menu loading
           else { 
             slider.slidePage($('<div>').html(html)) 
             // return html
@@ -97,10 +101,12 @@
    * @return {[string]}     [link converted]
    */
   function escapeLink(str) {
-    str = str.replace(new RegExp('{{{&lt;', 'g'), '<')
-    str = str.replace(new RegExp('&gt;}}}', 'g'), '>')
+    str = str.replace(new RegExp('&lt;', 'g'), '<')
+    str = str.replace(new RegExp('&gt;', 'g'), '>')
+    str = str.replace(new RegExp('&quot;', 'g'), '"')
     str = str.replace(new RegExp('&#x27;', 'g'), '\'')
-
+    str = str.replace(new RegExp('{{{', 'g'), '')
+    str = str.replace(new RegExp('}}}', 'g'), '')
     return str
   }
 }());

@@ -1,4 +1,5 @@
 language ='fr'
+lang_links = ''
 menu_home = "Accueil"
 menu_faq = "FAQ"
 menu_contact = "Contact"
