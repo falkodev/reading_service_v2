@@ -1,0 +1,1 @@
+var subscribeView = function () {}

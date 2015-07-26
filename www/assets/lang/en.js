@@ -1,4 +1,5 @@
 language ='fr'
+lang_links = ''
 menu_home = "Home"
 menu_faq = "FAQ"
 menu_contact = "Contact"
@@ -15,30 +16,32 @@ home_subtitle = "Subscribe or login"
 home_faq_label = "Tell me more"
 home_subscribe_label = "Subscribe"
 home_login_label = "Login"
-faq_title = "Questions à propos de ce site"
-faq_question_1_title = 'Pourquoi ce site ?'
-faq_question_1_content = "Pour que tout le monde puisse en profiter. Ce site n'est bien sûr pas lié à jw.org ou à quelque entité associée aux Témoins de Jéhovah. Il ne met à disposition que des portions de la Bible et n'a pas pour but d'enseigner ou de propager des points de vue doctrinaux. {{{<br>}}}{{{<br>}}}Le service délivré à travers ce site est gratuit et n'a aucune vocation commerciale. De ce fait, il est mis à disposition de tous, et ne sera jamais supporté par de la publicité."
-faq_question_2_title = 'Qui est l\'auteur du site ?'
-faq_question_2_content = "En plus d'être Témoin de Jéhovah, je suis informaticien et surtout passionné par le développement. J'ai moi-même souvent oublié de terminer ma lecture hebdomadaire, ou de faire les recherches nécessaires. Ou bien, j'ai été obligé de lire de grosses portions d'un coup pour rattraper du retard. J'ai donc conjugué ma passion pour le développement et mes besoins théocratiques pour créer un service web m'envoyant un email chaque matin avec la portion du jour. {{{<br>}}}{{{<br>}}}De ce service sommaire, j'ai voulu mettre à disposition de tous ce que je pensais être utile. N'hésitez pas à m'indiquer ce que vous en pensez, que vous trouviez que ce soit une bonne idée ou pas, ce qu'il faudrait améliorer...Tant que la critique est constructive, elle sera appréciée :)"
-faq_question_3_title = 'Quel est ce site ? Comment ça marche ?'
-faq_question_3_content = "Ce site permet de {{{<a href='index.html#subscribe'>}}}créer un compte{{{</a>}}} pour recevoir des portions de la lecture de la Bible. Vous pouvez choisir les jours de réception, ainsi que le texte du jour si vous le désirez. {{{<br>}}}{{{<br>}}}Le programme hebdomadaire et la traduction de la Bible utilisés sont issus de jw.org."
-faq_question_4_title = 'Que faire en cas de mot de passe perdu ?'
-faq_question_4_content = "{{{<a href='index.html#login'>}}}Dans le menu de connexion{{{</a>}}}, un lien \"Mot de passe oublié\" est présent. Après avoir entré l'adresse mail utilisée pendant votre inscription et cliqué sur le bouton de validation, un nouveau mot de passe sera généré et expédié sur votre adresse email. {{{<br>}}}{{{<br>}}}En cas de problème, vous pouvez toujours envoyer un message à l'administrateur JW Reading {{{<a href='index.html#contact'>}}}avec le formulaire de contact présent sur le site.{{{</a>}}}"
-faq_question_5_title = 'Comment me désinscrire ?'
-faq_question_5_content = "Si vous désirez supprimer votre compte JW Reading, vous pouvez cliquer dans le lien de désinscription présent en bas de chaque email que vous recevez de jwreading.com. {{{<br>}}}{{{<br>}}}Si vous voulez simplement désactiver votre compte sans le supprimer, veuillez envoyer un message à l'administrateur JW Reading {{{<a href='index.html#contact'>}}}avec le formulaire de contact présent sur le site.{{{</a>}}}"
-faq_question_6_title = 'Comment montrer que j\'apprécie le site ?'
-faq_question_6_content = "Si vous pensez que ce site est une bonne idée, vous pouvez toujours en remercier l'auteur {{{<a href='index.html#contact'>}}}avec un petit message d'encouragement ;){{{</a>}}}{{{<br>}}}{{{<br>}}} Vous pouvez aussi parler de ce site autour de vous. Ce sera le moyen de le faire connaître et de me pousser à l'améliorer."
-faq_question_7_title = 'Je vois la portion du jour dans mon email quotidien. Pourquoi un lien vers la version online cette portion est-il inclus ?'
-faq_question_7_content = "Déjà, en cas de problème d'affichage, vous pouvez voir directement la portion sur le site.{{{<br>}}}{{{<br>}}}Mais surtout, les versets qui sont surlignés mènent à des recherches de publications situées en bas de la portion. Ce sont des liens spéciaux appelés \"ancres\". Or, les clients emails actuels bloquent les liens de type ancre pour des raisons de sécurité. Les ancres permettent d'aller à la recherche et de remonter au verset par de simples clics sans avoir à descendre et remonter manuellement. Pour profiter de cette fonctionnalité, il faut passer par la version online."
-faq_legal_title = 'Mentions légales'
-faq_legal_content = 'Hébergeur : {{{<a href="http://www.ovh.com/fr/support/documents_legaux/" target="_blank">}}}OVH{{{</a>}}}{{{<br>}}}Siège social : 2 rue Kellermann 59100 Roubaix - France{{{<br>}}}Tél : 0 820 698 765'
-contact_title = 'Formulaire de contact'
-contact_name = 'Votre nom'
-contact_email = 'Votre adresse email'
-contact_msg = 'Votre message'
-contact_btn_send = 'Envoyer'
-contact_thanks_msg = "Merci pour votre message. Il a bien été envoyé. Vous aurez une réponse d'ici peu."
-btn_back = 'Retour'
+faq_title = "Questions about this site"
+faq_question_1_title = 'What is this site for?'
+faq_question_1_content = "This site is designed to help people stay organized and find more time to do their weekly Bible reading. It is is not linked to jw.org or any other entity associated to Jehovah's Witnesses. It is only about offering Bible portions and is not aimed at teaching or broadcasting doctrines or views. {{{<br>}}}{{{<br>}}}The delivered service through this website is free and has no commercial goal. As a consequence, it is free to access for all, and will never be supported by advertisement."
+faq_question_2_title = 'Who is the author of the site?'
+faq_question_2_content = "I am one of Jehovah's Witnesses and a web developer. I often forgot to read the weekly Bible reading, or lacked the time to look for interesting highlights. Other times, I found myself rushing through reading large portions in order to finish the reading on time for the meeting. So I mixed my passion for development and my theocratic needs to create a web service sending an email every morning with the daily portion. {{{<br>}}}{{{<br>}}}From this simple service, I decided to put it online so everyone could enjoy what I found useful. Feel free to tell me what you think, whether it is a good idea or not, what you would improve...As long as your comment is constructive, it will be appreciated :)"
+faq_question_3_title = 'What is this site? How does it work?'
+faq_question_3_content = "This website allows you to {{{<a href='index.html#subscribe'>}}}create an account{{{</a>}}} in order to receive portions of the weekly Bible reading. You may choose reception days, and if you also wish to receive the daily text.{{{<br>}}}{{{<br>}}}The weekly program and the Bible translation used are from jw.org."
+faq_question_4_title = 'What if I lost my password?'
+faq_question_4_content = "{{{<a href='index.html#login'>}}}In the login menu{{{</a>}}}, there is a link \"Forgotten password\". After having entered the email address used when subscribing, click on the validation button, a new password will be generated and sent to your email address. {{{<br>}}}{{{<br>}}}If you still have a problem, please send a message to the JW Reading administrator {{{<a href='index.html#contact'>}}}through the contact form on the site.{{{</a>}}}"
+faq_question_5_title = 'How can I unsubscribe?'
+faq_question_5_content = "If you wish to delete your JW Reading account, you can click on the unsubscribe link, located at the bottom of each email you receive from jwreading.com. {{{<br>}}}{{{<br>}}}If you want to only disable your account without deleting it, please send a message to the JW Reading administrator {{{<a href='index.html#contact'>}}}through the contact form on the site.{{{</a>}}}"
+faq_question_6_title = 'How can I show my appreciation for this site?'
+faq_question_6_content = "If you think this site is a good idea, you can thank the author {{{<a href='index.html#contact'>}}}with an encouraging message ;){{{</a>}}}{{{<br>}}}{{{<br>}}}You can also talk about this site to those around you. It is a way to make it known to others and to push me to improve it."
+faq_question_7_title = 'I have the reading portion in my daily email. So why is there a link to an online version of this portion in my email?'
+faq_question_7_content = "First, in case of wrong displaying, you can read the portion directly on the site.{{{<br>}}}{{{<br>}}}But above all, the underlined verses lead to publications researches at the bottom of the portion. Those special links are called \"anchors\". However, current email clients disallow anchor links for security reasons. Anchors are useful to go down to the research and back to the verse with simple clicks, instead of scrolling manually. To take advantage of this, you need to read the portion online."
+faq_legal_title = 'Legal mentions'
+faq_legal_content = 'Hosting provider : {{{<a href="http://www.ovh.com/fr/support/documents_legaux/" target="_blank">}}}OVH{{{</a>}}}{{{<br>}}}Address : 2 rue Kellermann 59100 Roubaix - France<br>Tel : 0 820 698 765'
+contact_title = 'Contact form'
+contact_name = 'Your name'
+contact_email = 'Your email address'
+contact_email_validate = 'This email address is not valid'
+contact_msg = 'Your message'
+contact_msg_validate = "Empty message. Can't be sent"
+contact_btn_send = 'Send'
+contact_thanks_msg = "Thank you for your message. It has been sent successfully. You will have an answer soon."
+btn_back = 'Back'
 subscribe_title = 'Inscription'
 subscribe_text_1 = "L'inscription nécessite 3 étapes."
 subscribe_text_2 = "Tout d'abord, nous avons besoin de connaître votre adresse email, pour l'envoi des portions de lecture de la Bible."

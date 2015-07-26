@@ -36,7 +36,9 @@ faq_legal_content = 'Hébergeur : {{{<a href="http://www.ovh.com/fr/support/docu
 contact_title = 'Formulaire de contact'
 contact_name = 'Votre nom'
 contact_email = 'Votre adresse email'
+contact_email_validate = 'Adresse email non valide'
 contact_msg = 'Votre message'
+contact_msg_validate = "Message vide. Impossible d'envoyer"
 contact_btn_send = 'Envoyer'
 contact_thanks_msg = "Merci pour votre message. Il a bien été envoyé. Vous aurez une réponse d'ici peu."
 btn_back = 'Retour'

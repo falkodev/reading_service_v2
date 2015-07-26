@@ -1,48 +1,81 @@
+/**
+ * global variables
+ */
+var lang
+var langList
+
+function validateEmail(sEmail) {
+  var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+  if (filter.test(sEmail)) {
+      return true;
+  }
+  else {
+      return false;
+  }
+}
+
 (function () {
   var slider = new PageSlider($('#tmplContent'))
   // browser language detection and load corresponding language file 
-  var lang = window.navigator.userLanguage || window.navigator.language
+  lang = window.navigator.userLanguage || window.navigator.language
   lang.substr(0,2)
+  lang = $.trim(lang)
+  
+  /**
+   * [get languages file and determine what language to display - english by default if language not found]
+   */
+  $.ajax({
+    url: 'assets/lang/langs.txt',
+    async: false,
+    complete: function(data)
+    {
+      $.each(data, function(k,v){
+          if(k == 'responseText') {
+            langList = v.split("\n")
+            var found = false            
+            $.each(langList, function(key, value){
+              value = $.trim(value)
+              if(lang == value) { found = true }                        
+            }) 
+            if(!found) { lang = 'en' }             
+          }
+      })
+    }
+  })
+
   $('body').append('<script src="assets/lang/' + lang + '.js"></script>')
   
   /**
-   * [displayPage : analyze hash and determine what template to request]
+   * [analyzeHash : analyze hash and determine what view or template to request]
    */
-  // function displayPage() {
-  window.displayPage = function() {
+  window.analyzeHash = function() {
     var hash = window.location.hash.substr(1)
+    var viewParams = {}
     if(!hash) {
       hash = 'home'
     }
     var activeMenu = hash + '_active'
     loadTemplate('menu', activeMenu)
-    if(hash == 'home') { 
-      displayView(hash)
-      // loadTemplate('home', null)
-    }
-    else
-    {
-      loadTemplate(hash)
-    }
+    displayView(hash, viewParams)
   }
   
   //app init : first request
-  displayPage()
+  analyzeHash()
 
   //every new request changes the hash
   $(window).on('hashchange', function(){
-    displayPage() 
+    analyzeHash() 
   })
 
   
   /**
-   * [displayView get the view corresponding to the hash, in order to load the associated template with context added by the view ]
+   * [displayView : get the view corresponding to the hash, in order to load the associated template with context added by the view ]
    * @param  {[string]} hash [hash from the url]
    */
-  function displayView(hash) {
-    var view = "new " + hash + "View()"
+  function displayView(hash, viewParams) {
+    var view   = "new " + hash + "View(viewParams)"
     var result = eval(view) 
-    loadTemplate('home', null, result)
+    loadTemplate(hash, null, result)
   }
   
 
@@ -84,13 +117,10 @@
           }
           // compile template
           var template = Handlebars.compile(data)
-          var html = template(context)
-          html = escapeLink(html)
+          var html     = template(context)
+          html         = escapeLink(html)
           if(activeMenu) { $('#menuContent').html(html) } // case of menu loading
-          else { 
-            slider.slidePage($('<div>').html(html)) 
-            // return html
-          }
+          else { slider.slidePage($('<div>').html(html)) }
         } 
     })
   }
