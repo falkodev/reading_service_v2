@@ -74,6 +74,14 @@ popover_content = 'Vous pourriez choisir comme premier jour le lendemain de la r
 daily_comment = 'Voulez-vous aussi recevoir aussi le texte du jour quotidiennement ?'
 btn_previous = 'Précédent'
 btn_validation = 'Validation'
+login_title = 'Connexion'
+login_placeholder_email ='Adresse email'
+login_placeholder_pwd = 'Mot de passe'
+login_forgotten_pwd = 'Mot de passe oublié '
+login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en tant que login. {{{<br>}}}Un email vous sera expédié avec le nouveau mot de passe."
+login_forgotten_validate = "Adresse email non valide"
+login_forgotten_success = "Un nouveau mot de passe a été envoyé à votre adresse mail"
+login_forgotten_fail = "Malheureusement, la génération du mot de passe a échoué. Veuillez réessayer ultérieurement"
 
 
 

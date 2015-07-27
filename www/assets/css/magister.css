@@ -288,7 +288,7 @@ ul {
 .validate {
     text-align: left;
     background-color: #FB7900;
-    border-radius: 3px;
+    border-radius: 0px;
     margin-top: 3px;
     display:none;
 	  padding: 5px;
