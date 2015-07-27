@@ -25,13 +25,11 @@
                 <div id="forgottenDiv" style="display:none">
                     <h2 class="text-center title">{{login_forgotten_pwd}}</h2> 
                     {{login_forgotten_pwd_text}}<br><br>
-                    <form action="http://www.jwreading.com/ajax/sendNewPassword.php" method="post" id="forgottenForm">
-                        <div class='input-group loginForm col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2'>
-                            <span class='input-group-addon loginAddon'><i class='fa fa-user fa-2' style="width:12px;"></i></span>
-                            <input id="forgottenInput" name="forgottenInput" class="loginForm form-control" type='text' placeholder='{{login_placeholder_email}}' required>
-                            <span class='input-group-addon loginAddon connexionBtn' id="forgottenBtn"><i class='fa fa-sign-in' style="width:12px;"></i></span>
-                        </div>
-                    </form>    
+                    <div class='input-group loginForm col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2'>
+                        <span class='input-group-addon loginAddon'><i class='fa fa-user fa-2' style="width:12px;"></i></span>
+                        <input id="forgottenInput" name="forgottenInput" class="loginForm form-control" type='text' placeholder='{{login_placeholder_email}}' required>
+                        <span class='input-group-addon loginAddon connexionBtn' id="forgottenBtn"><i class='fa fa-sign-in' style="width:12px;"></i></span>
+                    </div> 
                     <div id="forgottenValidate" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{login_forgotten_validate}}</div>
                     <div id="forgottenSuccess" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{login_forgotten_success}}</div>
                     <div id="forgottenFail" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{login_forgotten_fail}}</div>

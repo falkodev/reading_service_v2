@@ -3,6 +3,7 @@
  */
 var lang
 var langList
+var hash
 
 function validateEmail(sEmail) {
   var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -49,7 +50,7 @@ function validateEmail(sEmail) {
    * [analyzeHash : analyze hash and determine what view or template to request]
    */
   window.analyzeHash = function() {
-    var hash = window.location.hash.substr(1)
+    hash = window.location.hash.substr(1)
     var viewParams = {}
     if(!hash) {
       hash = 'home'

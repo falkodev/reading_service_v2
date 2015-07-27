@@ -19,6 +19,9 @@ var loginView = function () {
 		$('#loginDiv').show()
 	})
 
+	/**
+	 * [submit "forgotten password" form : test if email address is valid and ask for a new password]
+	 */
 	$('body').on('click', '#forgottenBtn', function(e){
 		e.preventDefault()
 		$(".validate").hide()
@@ -27,9 +30,9 @@ var loginView = function () {
 			$("#forgottenValidate").slideDown(400)
 		}
 		else {
-			$.post($(this).attr("action"), { 'email': email, 'lang': lang }, function(data) {}).complete(function(result) {
-				// alert("result")
-				result = result.trim()
+			$.post("http://www.jwreading.com/ajax/sendNewPassword.php", 
+				   { 'email': email, 'lang': lang }, function(data) {}).complete(function(data) {
+				result = data['responseText'].trim()
 				if(result == "OK"){
 					$("#forgottenSuccess").slideDown(400)
 				}
