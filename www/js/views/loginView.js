@@ -49,16 +49,19 @@ var loginView = function () {
         $.ajax({
             type: "POST",
             url: "http://www.jwreading.com/ajax/login.php",
-   //          beforeSend: function (xhr) {
-			//     xhr.setRequestHeader('X-Sent-From','yes')
-			// },
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
             success: function(msg) {
-                if (msg == '1')
+                if (msg[0] == '1')
                 {
-                	console.log("msg: " + msg)
 					// $('#msg').val(msg);
-                    // $('#loginForm').submit();
+                    // $('#loginForm').submit();                
+                    var userData = JSON.parse(msg.substr(1))
+                    // $.each(userData, function(key, value){
+                    // 	console.log("userData[" + key + "]: " + value)
+                    // })
+                    
+                    // var result = new accountView(userData)
+
                 }
                 else if (msg == '0')
                 {
@@ -79,7 +82,7 @@ var loginView = function () {
 					$("#loginValidate").slideDown(400);
                 }
             }
-        });
+        }) 
     });	
 
 	$('body').on('keyup', '.loginForm', function(e){
