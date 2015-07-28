@@ -51,13 +51,12 @@ function validateEmail(sEmail) {
    */
   window.analyzeHash = function() {
     hash = window.location.hash.substr(1)
-    var viewParams = {}
     if(!hash) {
       hash = 'home'
     }
     var activeMenu = hash + '_active'
     loadTemplate('menu', activeMenu)
-    displayView(hash, viewParams)
+    displayView()
   }
   
   //app init : first request
@@ -71,10 +70,9 @@ function validateEmail(sEmail) {
   
   /**
    * [displayView : get the view corresponding to the hash, in order to load the associated template with context added by the view ]
-   * @param  {[string]} hash [hash from the url]
    */
-  function displayView(hash, viewParams) {
-    var view   = "new " + hash + "View(viewParams)"
+  function displayView() {
+    var view   = "new " + hash + "View()"
     var result = eval(view) 
     loadTemplate(hash, null, result)
   }
@@ -91,31 +89,47 @@ function validateEmail(sEmail) {
     var tmpl_url = 'js/templates/' + tmpl_name + 'Template.html'
     var htmlContent
     var context = {}
+    var displaySubscribe = false
+
+    if(activeMenu) { context[activeMenu] = 'active' } // case of menu loading 
+    if(result) { 
+      $.each(result, function(key, value){
+          context[key] = value // add additional parameters to context
+          if(key == 'account' && value == '') { displaySubscribe = true }
+      })
+    }
 
     $.ajax({
         url: tmpl_url,
         method: 'GET',
         dataType: 'html',
         async: false,
-        success: function(data) {
-          // find Handlebars expressions in nude template (before compilation)
-          var i=0          
+        success: function(data) {          
+          var i=0      
+
+          //if subscribe view is calling, all "account_" occurrences will be replaced by "subscribe_" occurrences in order to use the account template for the subscribing process
+          if(displaySubscribe) { data = data.replace(new RegExp('{{account_', 'g'), '{{subscribe_') }
+
+          // find Handlebars expressions in nude template (before compilation)  
           var tab = data.split("{{")
           $.each(tab, function(key, value){
             if(i > 0) {
-              var tab2 = value.split("}}")
-              var expr = tab2[0]
-              // build context for future Handlebars compilation
-              context[expr] = eval(expr)
+              var cond = value.substr(0,4)
+              //avoid built-in helpers (if, else, each, ...), partials ({{> xxx}}) and raw blocks ({{{xxx}}})
+              if(value[0] != "#" && value[0] != "/" && value[0] != ">" && value[0] != "{" && cond != "else") { 
+                var tab2 = value.split("}}")
+                var expr = tab2[0]
+                // build context for future Handlebars compilation
+                context[expr] = eval(expr)
+              }
             }
             i++
           })
-          if(activeMenu) { context[activeMenu] = 'active' } // case of menu loading 
-          if(result) { 
-            $.each(result, function(key, value){
-                context[key] = value // add additional parameters to context
-            })
-          }
+          
+          // $.each(context, function(key, value){
+          //     console.log("context[" + key + "]: " + value)
+          // })
+          // console.log("-------------fin context------------")
           // compile template
           var template = Handlebars.compile(data)
           var html     = template(context)

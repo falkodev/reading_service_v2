@@ -16,12 +16,12 @@ var contactView = function () {
 		}
 		else {
 			$.post($(this).attr("action"), { data : $(this).serializeArray() }, function(data) {}).complete(function() {
-					$(':input','#contactForm')
+					$(':input','#contactForm') // empty inputs
 					  .removeAttr('checked')
 					  .removeAttr('selected')
 					  .not(':button, :submit, :reset, :hidden, :radio, :checkbox')
 					  .val('')
-					$("#msgContactSent").slideDown(400)
+					$("#msgContactSent").slideDown(400) //display success message
 				})
 		}
 	})

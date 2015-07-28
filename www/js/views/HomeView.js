@@ -1,4 +1,4 @@
-var homeView = function (viewParams) {
+var homeView = function () {
     var result = {}
     var link = ''
     var k = 0
@@ -29,6 +29,6 @@ var homeView = function (viewParams) {
         i++
     })  
 
-    result.lang_links = link
+    result.lang_links = link // will be added in the context for handlebars compilation
     return result
 }

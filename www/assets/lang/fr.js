@@ -41,6 +41,43 @@ contact_msg = 'Votre message'
 contact_msg_validate = "Message vide. Impossible d'envoyer"
 contact_btn_send = 'Envoyer'
 contact_thanks_msg = "Merci pour votre message. Il a bien été envoyé. Vous aurez une réponse d'ici peu."
+login_title = 'Connexion'
+login_placeholder_email ='Adresse email'
+login_placeholder_pwd = 'Mot de passe'
+login_forgotten_pwd = 'Mot de passe oublié '
+login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en tant que login. {{{<br>}}}Un email vous sera expédié avec le nouveau mot de passe."
+login_forgotten_validate = "Adresse email non valide"
+login_forgotten_success = "Un nouveau mot de passe a été envoyé à votre adresse mail"
+login_forgotten_fail = "Malheureusement, la génération du mot de passe a échoué. Veuillez réessayer ultérieurement"
+account=""
+account_title = 'Mon compte'
+account_text_1 = 'Voici les informations enregistrées dans votre compte'
+account_text_2 = "Adresse email pour l'envoi des portions de lecture la Bible"
+account_text_3 = 'Votre prénom'
+account_text_4 = 'Les jours que vous avez inscrits pour recevoir la lecture de la Bible'
+account_text_5 = 'Parmi ces jours, le premier où débute votre "semaine" de lecture'
+placeholder_new_pwd = "Votre nouveau mot de passe"
+pwd_text = 'Votre mot de passe'
+pwd_chg = 'Modifier le mot de passe'
+pwd_confirm = 'Confirmation du mot de passe'
+pwd_cancel = 'Annuler la modification'
+pwd_save = 'Enregistrer la modification'
+monday = 'Lundi'
+tuesday = 'Mardi'
+wednesday = 'Mercredi'
+thursday = 'Jeudi'
+friday = 'Vendredi'
+saturday = 'Samedi'
+sunday = 'Dimanche'
+tip_1 = "Vous avez enregistré comme heure d'envoi "
+tip_2 = "h sur le fuseau horaire "
+tip_3 = ""
+tip_4 = "Cliquez sur la carte pour changer ces paramètres si vous le désirez."
+btn_save = 'Enregistrer'
+btn_next = 'Ok, étape suivante'
+btn_last = 'Dernière étape'
+btn_previous = 'Précédent'
+btn_validation = 'Validation'
 btn_back = 'Retour'
 subscribe_title = 'Inscription'
 subscribe_text_1 = "L'inscription nécessite 3 étapes."
@@ -48,16 +85,14 @@ subscribe_text_2 = "Tout d'abord, nous avons besoin de connaître votre adresse 
 subscribe_text_3 = "Et, si vous voulez, votre prénom, pour personnaliser l'email."
 placeholder_email = "Votre adresse email"
 placeholder_name = "Votre prénom"
-btn_next = 'Ok, étape suivante'
-btn_last = 'Dernière étape'
 days = 'Jours'
 subscribe_text_4 = "Ensuite, vous aurez besoin d'activer les jours où vous voulez recevoir la lecture de la Bible en cliquant dessus"
 subscribe_text_5 = 'Parmi ces jours, quel doit être le premier où débute votre "semaine" de lecture ?&nbsp;&nbsp;'
 subscribe_tip_1 = 'Info : pour recevoir la lecture de la semaine suivante, il faut choisir plusieurs jours et un premier jour différent du lundi'
-subscribe_reading_lang = 'Langue lecture Bible'
-subscribe_text_lang = 'Langue texte du jour'
-subscribe_time_choice = "Heure d'envoi de l'email"
 subscribe_tip_2 = "Par défaut, l'heure d'envoi sélectionnée est 6h sur le fuseau horaire UTC+1 (Amsterdam, Berlin, Bern, Bratislava, Brussells, Budapest, Madrid, Malta, Prague, Paris, Rome, Sarajevo, Valletta, Vienna, Warsaw, Zagreb).{{{<br>}}}{{{<br>}}}Cliquez sur la carte pour changer ces paramètres si vous le désirez."
+reading_lang = 'Langue lecture Bible'
+text_lang = 'Langue texte du jour'
+time_choice = "Heure d'envoi de l'email"
 world_map_africa = 'Afrique (UTC -1 à +3)'
 world_map_asia = 'Asie (UTC +2 à +12)'
 world_map_australia = 'Australie et Pacifique Sud (UTC +8 à +14)'
@@ -72,17 +107,10 @@ display_map = "Afficher la carte"
 popover_title = 'Suggestion'
 popover_content = 'Vous pourriez choisir comme premier jour le lendemain de la réunion de service. Ainsi, vous terminerez votre lecture de la Bible le jour de votre réunion de service.{{{<br/>}}}{{{<br/>}}} Par exemple, si votre réunion est le mardi, en choisissant mercredi comme "premier" jour de la semaine (et en ayant aussi inclus mardi dans les jours où vous recevrez une portion), vous terminerez la lecture le mardi.'
 daily_comment = 'Voulez-vous aussi recevoir aussi le texte du jour quotidiennement ?'
-btn_previous = 'Précédent'
-btn_validation = 'Validation'
-login_title = 'Connexion'
-login_placeholder_email ='Adresse email'
-login_placeholder_pwd = 'Mot de passe'
-login_forgotten_pwd = 'Mot de passe oublié '
-login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en tant que login. {{{<br>}}}Un email vous sera expédié avec le nouveau mot de passe."
-login_forgotten_validate = "Adresse email non valide"
-login_forgotten_success = "Un nouveau mot de passe a été envoyé à votre adresse mail"
-login_forgotten_fail = "Malheureusement, la génération du mot de passe a échoué. Veuillez réessayer ultérieurement"
-
+loading = 'Enregistrement en cours'
+lang_fr = 'Français'
+lang_en = 'Anglais'
+lang_ro = 'Roumain'
 
 
 // 'menu_home = 'Accueil'
@@ -126,69 +154,7 @@ login_forgotten_fail = "Malheureusement, la génération du mot de passe a écho
 
 // login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en tant que login. {{{<br>}}}Un email vous sera expédié avec le nouveau mot de passe."
 
-// account_title = 'Mon compte'
 
-// account_text_1 = 'Voici les informations enregistrées dans votre compte'
-
-// account_text_2 = "Adresse email pour l'envoi des portions de lecture la Bible"
-
-// account_text_3 = 'Votre prénom'
-
-// account_text_4 = 'Votre mot de passe'
-
-// account_text_5 = 'Les jours que vous avez inscrits pour recevoir la lecture de la Bible'
-
-// account_text_6 = 'Parmi ces jours, le premier où débute votre "semaine" de lecture'
-
-// placeholder_new_pwd" =>}}} "Votre nouveau mot de passe"
-
-// account_chg_pwd = 'Modifier le mot de passe'
-
-// account_confirm_pwd = 'Confirmation du mot de passe'
-
-// account_cancel_pwd = 'Annuler la modification'
-
-// account_save_pwd = 'Enregistrer la modification'
-
-// account_delayed_chg_msg = "Les modifications concernant les jours de réception de la lecture ont bien été enregistrées et seront affichées ici à partir de lundi prochain"
-
-// account_popover_title = 'Modifications ultérieures'
-
-// account_popover_content = "Voici les jours de réception à partir de lundi pour votre compte"
-
-// account_popover_td_1 = 'Jour'
-
-// account_popover_td_2 = 'Réception'
-
-// account_popover_td_3 = " 1er jour de la semaine"
-
-// account_popover_yes = " Oui"
-
-// account_popover_no = " Non"
-
-// account_popover_monday = 'Lundi'
-
-// account_popover_tuesday = 'Mardi'
-
-// account_popover_wednesday = 'Mercredi'
-
-// account_popover_thursday = 'Jeudi'
-
-// account_popover_friday = 'Vendredi'
-
-// account_popover_saturday = 'Samedi'
-
-// account_popover_sunday = 'Dimanche'
-
-// account_tip_1 = "Vous avez enregistré comme heure d'envoi "
-
-// account_tip_2 = "h sur le fuseau horaire "
-
-// account_tip_3 = ""
-
-// account_tip_4 = "Cliquez sur la carte pour changer ces paramètres si vous le désirez."
-
-// btn_save = 'Enregistrer'
 
 // subscribe_mail_thks = 'Merci'
 
@@ -262,10 +228,4 @@ login_forgotten_fail = "Malheureusement, la génération du mot de passe a écho
 
 // daily_run_msg_text_3 = "La portion pour aujourd'hui est visible ci-dessous mais aussi en ligne : "
 
-// lang_fr = 'Français'
 
-// lang_en = 'Anglais'
-
-// lang_ro = 'Roumain'
-
-// loading = 'Enregistrement en cours'
