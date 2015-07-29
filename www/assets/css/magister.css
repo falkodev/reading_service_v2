@@ -626,7 +626,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 .onoffswitch-switch {
     display: block; width: 4px; margin: 13.5px;
     background: #FFFFFF;
-    border: 2px solid #FFFFF; border-radius: 0px;
+    border: 2px solid #FFFFF; border-radius: 4px;
     position: absolute; top: 0; bottom: 0; right: 100px;
     background-color: rgb(226,0,0);  /*diode rouge*/
     box-shadow: inset 0px 1px 0px 0px rgba(250,250,250,0.5),  

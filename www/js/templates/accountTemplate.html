@@ -32,15 +32,15 @@
             
             <!-- 2e ecran du formulaire -->
             <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountSecond">
-                <input type="hidden" id="hiddenAccount1" value="">
-                <input type="hidden" id="hiddenAccount2" value="">
-                <input type="hidden" id="hiddenAccount3" value="">
-                <input type="hidden" id="hiddenAccount4" value="">
-                <input type="hidden" id="hiddenAccount5" value="">
-                <input type="hidden" id="hiddenAccount6" value="">
-                <input type="hidden" id="hiddenAccount7" value="">
-                <input type="hidden" id="hiddenAccountFirstDay" value="">
-                <input type="hidden" id="hiddenAccountDailyComment" value="">
+                <!-- <input type="hidden" id="hiddenAccount1" value="{{userData.day1}}">
+                <input type="hidden" id="hiddenAccount2" value="{{userData.day2}}">
+                <input type="hidden" id="hiddenAccount3" value="{{userData.day3}}">
+                <input type="hidden" id="hiddenAccount4" value="{{userData.day4}}">
+                <input type="hidden" id="hiddenAccount5" value="{{userData.day5}}">
+                <input type="hidden" id="hiddenAccount6" value="{{userData.day6}}">
+                <input type="hidden" id="hiddenAccount7" value="{{userData.day7}}">
+                <input type="hidden" id="hiddenAccountFirstDay" value="{{userData.firstDay}}">
+                <input type="hidden" id="hiddenAccountDailyComment" value="{{userData.dailyComment}}"> -->
                 
                 <table class="table">
                     <tbody>
@@ -57,7 +57,7 @@
                         <span class="onoffswitch-inner choix" id="day1"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
-                </div></td><td><input type="radio" id="radioAccount1" name="firstDayRadio" value="1" class="accountSwitch"></td></tr>
+                </div></td><td><input type="radio" id="radioAccount1" name="firstDayRadio" value="1" class="accountSwitch displayNone"></td></tr>
                 <tr><td class="tdDays">{{tuesday}}</td>
                      <td>     
                 <!-- mardi --> 
@@ -67,7 +67,7 @@
                         <span class="onoffswitch-inner choix" id="day2"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
-                </div></td><td><input type="radio" id="radioAccount2" name="firstDayRadio" value="2" class="accountSwitch"></td></tr>
+                </div></td><td><input type="radio" id="radioAccount2" name="firstDayRadio" value="2" class="accountSwitch displayNone"></td></tr>
                  <tr><td class="tdDays">{{wednesday}}</td>
                      <td>
                 <!-- mercredi -->           
@@ -77,7 +77,7 @@
                         <span class="onoffswitch-inner choix" id="day3"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
-                </div></td><td><input type="radio" id="radioAccount3" name="firstDayRadio" value="3" class="accountSwitch"></td></tr>
+                </div></td><td><input type="radio" id="radioAccount3" name="firstDayRadio" value="3" class="accountSwitch displayNone"></td></tr>
                 <tr><td class="tdDays">{{thursday}}</td>
                      <td>
                 <!-- jeudi -->           
@@ -87,7 +87,7 @@
                         <span class="onoffswitch-inner choix" id="day4"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
-                </div></td><td><input type="radio" id="radioAccount4" name="firstDayRadio" value="4" class="accountSwitch"></td></tr>
+                </div></td><td><input type="radio" id="radioAccount4" name="firstDayRadio" value="4" class="accountSwitch displayNone"></td></tr>
                 <tr><td class="tdDays">{{friday}}</td>
                      <td>
                 <!-- vendredi --> 
@@ -97,7 +97,7 @@
                         <span class="onoffswitch-inner choix" id="day5"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
-                </div></td><td><input type="radio" id="radioAccount5" name="firstDayRadio" value="5" class="accountSwitch"></td></tr>
+                </div></td><td><input type="radio" id="radioAccount5" name="firstDayRadio" value="5" class="accountSwitch displayNone"></td></tr>
                 <tr><td class="tdDays">{{saturday}}</td>
                      <td>
                 <!-- samedi -->           
@@ -107,7 +107,7 @@
                         <span class="onoffswitch-inner choix" id="day6"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
-                </div></td><td><input type="radio" id="radioAccount6" name="firstDayRadio" value="6" class="accountSwitch"></td></tr>
+                </div></td><td><input type="radio" id="radioAccount6" name="firstDayRadio" value="6" class="accountSwitch displayNone"></td></tr>
                 <tr><td class="tdDays">{{sunday}}</td>
                      <td>
                 <!-- dimanche --> 
@@ -117,14 +117,14 @@
                         <span class="onoffswitch-inner choix" id="day7"></span>
                         <span class="onoffswitch-switch"></span>
                     </label>
-                </div></td><td><input type="radio" id="radioAccount7" name="firstDayRadio" value="7" class="accountSwitch"></td></tr>
+                </div></td><td><input type="radio" id="radioAccount7" name="firstDayRadio" value="7" class="accountSwitch displayNone"></td></tr>
                 </tbody>
                </table>
                 <br><br>   
                 <p align="left">{{daily_comment}}</p>
                 <div class="onoffswitch">
-                <input type="checkbox" id="toggleAccountDailyText" name="toggleAccountDailyText" class="onoffswitch-checkbox accountSwitch">
-                <label class="onoffswitch-label" for="toggleAccountDailyText">
+                <input type="checkbox" id="toggleAccountDailyComment" name="toggleAccountDailyComment" class="onoffswitch-checkbox accountSwitch">
+                <label class="onoffswitch-label" for="toggleAccountDailyComment">
                     <span class="onoffswitch-inner choix" id="dailyText"></span>
                     <span class="onoffswitch-switch"></span>
                 </label>

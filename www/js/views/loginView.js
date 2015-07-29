@@ -56,7 +56,9 @@ var loginView = function () {
             success: function(msg) {
                 if (msg[0] == '1') //correct credentials : login done
                 {                
-                    userData = $.parseJSON(msg.substr(1))
+                    // userData = $.parseJSON(msg.substr(1))
+                    userData = JSON.parse(msg.substr(1))
+                    sessionStorage.setItem("sessionUserData", JSON.stringify(userData))
                     window.location.hash = '#account'
                 }
                 else if (msg == '0') //wrong password
