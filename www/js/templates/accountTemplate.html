@@ -1,7 +1,7 @@
 <section class="section" id="account">
     <div class="container">
         <h2 class="text-center title">{{account_title}}</h2>
-        <div class="loader" id="loaderAccount">
+        <div class="loader displayNone" id="loaderAccount">
             <p>{{loading}}</p>
             <img src='assets/images/ajax-loader.gif'/>
         </div>
@@ -12,24 +12,26 @@
                 <p>{{account_text_1}}</p>
                 <br>
                 <p>{{account_text_2}}</p>
-                <div class='input-group'><span class='input-group-addon'><i class='fa fa-envelope'></i></span><input id="emailAccount" name="emailAccount" type='text' class='form-control accountInput' placeholder='{{placeholder_email}}' value=''></div><div id="emailAccountValidate" class="validate"></div><br><br>
+                <div class='input-group'><span class='input-group-addon'><i class='fa fa-envelope'></i></span><input id="emailAccount" name="emailAccount" type='text' class='form-control accountInput' placeholder='{{placeholder_email}}' value="{{userData.email}}"></div><div id="emailAccountValidate" class="validate"></div><br><br>
                 <p>{{account_text_3}}</p>
-                <div class='input-group'><span class='input-group-addon'><i class='fa fa-user'></i></span><input type='text' id="nameAccount" name="nameAccount" class='form-control accountInput' placeholder='{{placeholder_name}}' value=''></div><br><br>
-                <p>{{account_text_4}}</p>
+                <div class='input-group'><span class='input-group-addon'><i class='fa fa-user'></i></span><input type='text' id="nameAccount" name="nameAccount" class='form-control accountInput' placeholder='{{placeholder_name}}' value='{{userData.name}}'></div><br><br>
+                <p>{{pwd_text}}</p>
                 {{#if account}}
-                <div class='input-group' id='divPassAccount'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccount" name="passAccount" class='form-control accountInput' readonly placeholder='{{placeholder_new_pwd}}' value=''><span class="input-group-addon chgPassword" id="changePassword">{{pwd_chg}}</span></div>
-                
-                <p class="passConfirm" id="passConfirmTitle"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pwd_confirm}}
-                <button id="cancelChangePassword" class="btn btn-sm pull-right chgPassword">{{pwd_cancel}}</button></p>
-                <div class='input-group passConfirm' id='divPassAccountConfirm'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccountConfirm" name="passAccountConfirm" class='form-control accountInput' readonly placeholder='{{pwd_confirm}}' value=''><span class="input-group-addon btn-orange chgPassword" id="recordChangePassword">{{pwd_save}}</span></div>                
-                <div id="changePasswordValidate" class="validate"></div>   
+                <div class='input-group' id='divPassAccount'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccount" name="passAccount" class='form-control accountInput' readonly placeholder='{{placeholder_new_pwd}}' value='{{userData.password}}'><span class="input-group-addon chgPassword" id="changePassword">{{pwd_chg}}</span></div>
+                <div class="passConfirm displayNone">
+                    <p class="passConfirm" id="passConfirmTitle"><br><br><!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->{{pwd_confirm}}
+                    <button id="cancelChangePassword" class="btn btn-sm pull-right chgPassword">{{pwd_cancel}}</button></p>
+                    <br>
+                    <div class='input-group passConfirm' id='divPassAccountConfirm'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccountConfirm" name="passAccountConfirm" class='form-control accountInput' readonly placeholder='{{pwd_confirm}}' value='{{userData.password}}'><span class="input-group-addon btn-orange chgPassword" id="recordChangePassword">{{pwd_save}}</span></div>                
+                    <div id="changePasswordValidate" class="validate"></div>  
+                </div> 
                 {{/if}}             
                 <br> 
                 <button id="accountFirstBtn" class="btn btn-lg btn-default">{{btn_next}}</button>
             </div>
             
             <!-- 2e ecran du formulaire -->
-            <div class="col-sm-8 col-sm-offset-2 text-center" id="accountSecond">
+            <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountSecond">
                 <input type="hidden" id="hiddenAccount1" value="">
                 <input type="hidden" id="hiddenAccount2" value="">
                 <input type="hidden" id="hiddenAccount3" value="">
@@ -136,7 +138,7 @@
             </div>
 
             <!-- 3e ecran du formulaire -->
-            <div class="col-sm-8 col-sm-offset-2 text-center" id="accountThird">
+            <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountThird">
                 <input type="hidden" id="hiddenReadingLang" name="hiddenReadingLang" value="">
                 <input type="hidden" id="hiddenCommentLang" name="hiddenCommentLang" value="">
                 <input type="hidden" id="hiddenTimeDisplayed" value="" name="accountTimeDisplayed">

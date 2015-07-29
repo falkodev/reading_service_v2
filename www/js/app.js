@@ -1,26 +1,18 @@
-/**
- * global variables
- */
-var lang
-var langList
-var hash
-
-function validateEmail(sEmail) {
-  var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-  if (filter.test(sEmail)) {
-      return true;
-  }
-  else {
-      return false;
-  }
-}
-
 (function () {
+  /**
+   * global variables
+   */
+  window.lang
+  window.langList
+  window.hash
+  window.userData = ''
+
   var slider = new PageSlider($('#tmplContent'))
   // browser language detection and load corresponding language file 
   lang = window.navigator.userLanguage || window.navigator.language
   lang.substr(0,2)
   lang = $.trim(lang)
+
   
   /**
    * [get languages file and determine what language to display - english by default if language not found]
@@ -55,7 +47,7 @@ function validateEmail(sEmail) {
       hash = 'home'
     }
     var activeMenu = hash + '_active'
-    loadTemplate('menu', activeMenu)
+    loadTemplate('menu', activeMenu, null, false)
     displayView()
   }
   
@@ -74,7 +66,16 @@ function validateEmail(sEmail) {
   function displayView() {
     var view   = "new " + hash + "View()"
     var result = eval(view) 
-    loadTemplate(hash, null, result)
+    var displaySubscribe = false
+
+    //determine if subscribe view is calling    
+    if(hash == 'account' && result) { 
+      $.each(result, function(key, value){
+          if(key == 'account' && value == '') { displaySubscribe = true }
+      })
+    }
+
+    loadTemplate(hash, null, result, displaySubscribe)
   }
   
 
@@ -83,21 +84,13 @@ function validateEmail(sEmail) {
    * @param  {tmpl_name  : template name [string]}
    * @param  {activeMenu : menu name - optional [string]}
    * @param  {result : additional context from the calling view - optional [object]}
+   * @param  {displaySubscribe : if subscribe view is calling, display account template with subscribe labels - optional [boolean]}
    * @return {htmlContent [handlebars compiled function]}
    */
-  function loadTemplate(tmpl_name, activeMenu, result) {
+  function loadTemplate(tmpl_name, activeMenu, result, displaySubscribe) {
     var tmpl_url = 'js/templates/' + tmpl_name + 'Template.html'
     var htmlContent
     var context = {}
-    var displaySubscribe = false
-
-    if(activeMenu) { context[activeMenu] = 'active' } // case of menu loading 
-    if(result) { 
-      $.each(result, function(key, value){
-          context[key] = value // add additional parameters to context
-          if(key == 'account' && value == '') { displaySubscribe = true }
-      })
-    }
 
     $.ajax({
         url: tmpl_url,
@@ -125,7 +118,13 @@ function validateEmail(sEmail) {
             }
             i++
           })
-          
+
+          if(activeMenu) { context[activeMenu] = 'active' } // case of menu loading 
+          if(result) { 
+            $.each(result, function(key, value){
+                context[key] = value // add additional parameters to context
+            })
+          }          
           // $.each(context, function(key, value){
           //     console.log("context[" + key + "]: " + value)
           // })
@@ -153,5 +152,20 @@ function validateEmail(sEmail) {
     str = str.replace(new RegExp('{{{', 'g'), '')
     str = str.replace(new RegExp('}}}', 'g'), '')
     return str
+  }
+
+  /**
+   * [validateEmail : test if email address is valid]
+   * @param  {[string]} sEmail [email address to validate]
+   * @return {[boolean]} [response if is valid or not]
+   */
+  window.validateEmail = function(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
   }
 }());

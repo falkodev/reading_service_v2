@@ -43,48 +43,35 @@ var loginView = function () {
 		}
 	})
 
+	/**
+	 * [submit "login" form]
+	 */
 	$('body').on('click', '#loginBtn', function(e){
-        $("#loginValidate").slideUp(400);
-        e.preventDefault();
+        $(".validate").hide()
+        e.preventDefault()
         $.ajax({
             type: "POST",
             url: "http://www.jwreading.com/ajax/login.php",
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
             success: function(msg) {
-                if (msg[0] == '1')
-                {
-					// $('#msg').val(msg);
-                    // $('#loginForm').submit();                
-                    var userData = JSON.parse(msg.substr(1))
-                    // $.each(userData, function(key, value){
-                    // 	console.log("userData[" + key + "]: " + value)
-                    // })
-                    
-                    // var result = new accountView(userData)
-
+                if (msg[0] == '1') //correct credentials : login done
+                {                
+                    userData = $.parseJSON(msg.substr(1))
+                    window.location.hash = '#account'
                 }
-                else if (msg == '0')
-                {
-                    if(lang == 'fr') $("#loginValidate").html("Le mot de passe est incorrect");
-					else $("#loginValidate").html("The password is wrong");
-                    $("#loginValidate").slideDown(400);
-                }
-                else if (msg == '-1')
-                {
-                    if(lang == 'fr') $("#loginValidate").html("Cette adresse email n'est pas enregistrée. Vous pouvez vous créer un compte avec le menu \"Inscription\"");
-                    else $("#loginValidate").html("This email address is not registered as an account. You can create one with the \"Subscribe\" menu");
-					$("#loginValidate").slideDown(400);
-                }
-                else
-                {
-                    if(lang == 'fr') $("#loginValidate").html("Adresse email ou mot de passe incorrect");
-                    else $("#loginValidate").html("The email address or the password is wrong");
-					$("#loginValidate").slideDown(400);
-                }
+                else if (msg == '0') //wrong password
+                { $("#pwdValidate").slideDown(400) }
+                else if (msg == '-1') // email address does not exist in DB
+                { $("#emailValidate").slideDown(400) }
+                else //every other login problem
+                { $("#loginValidate").slideDown(400) }
             }
         }) 
     });	
 
+	/**
+	 * [call "login" form submitting hitting Enter key on login input or password input]
+	 */
 	$('body').on('keyup', '.loginForm', function(e){
 		if(e.keyCode == 13){
 			$("#loginBtn").click();
