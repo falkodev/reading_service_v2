@@ -19,7 +19,7 @@
                 {{#if account}}
                 <div class='input-group' id='divPassAccount'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccount" name="passAccount" class='form-control accountInput' readonly placeholder='{{placeholder_new_pwd}}' value='{{userData.password}}'><span class="input-group-addon chgPassword" id="changePassword">{{pwd_chg}}</span></div>
                 <div class="passConfirm displayNone">
-                    <p class="passConfirm" id="passConfirmTitle"><br><br><!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->{{pwd_confirm}}
+                    <p class="passConfirm" id="passConfirmTitle"><br><br>{{pwd_confirm}}
                     <button id="cancelChangePassword" class="btn btn-sm pull-right chgPassword">{{pwd_cancel}}</button></p>
                     <br>
                     <div class='input-group passConfirm' id='divPassAccountConfirm'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccountConfirm" name="passAccountConfirm" class='form-control accountInput' readonly placeholder='{{pwd_confirm}}' value='{{userData.password}}'><span class="input-group-addon btn-orange chgPassword" id="recordChangePassword">{{pwd_save}}</span></div>                
@@ -27,26 +27,16 @@
                 </div> 
                 {{/if}}             
                 <br> 
-                <button id="accountFirstBtn" class="btn btn-lg btn-default">{{btn_next}}</button>
+                <button id="accountFirstBtn" class="btn btn-lg btn-default" data-next="accountSecond">{{btn_next}}</button>
             </div>
             
             <!-- 2e ecran du formulaire -->
             <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountSecond">
-                <!-- <input type="hidden" id="hiddenAccount1" value="{{userData.day1}}">
-                <input type="hidden" id="hiddenAccount2" value="{{userData.day2}}">
-                <input type="hidden" id="hiddenAccount3" value="{{userData.day3}}">
-                <input type="hidden" id="hiddenAccount4" value="{{userData.day4}}">
-                <input type="hidden" id="hiddenAccount5" value="{{userData.day5}}">
-                <input type="hidden" id="hiddenAccount6" value="{{userData.day6}}">
-                <input type="hidden" id="hiddenAccount7" value="{{userData.day7}}">
-                <input type="hidden" id="hiddenAccountFirstDay" value="{{userData.firstDay}}">
-                <input type="hidden" id="hiddenAccountDailyComment" value="{{userData.dailyComment}}"> -->
-                
                 <table class="table">
                     <tbody>
                       <tr><th style="border:0;"><div>{{days}}</div></th>
                           <th style="border:0;"><div>{{account_text_4}}</div></th>
-                          <th style="border:0;"><div>{{account_text_5}}&nbsp;&nbsp;<i class="fa fa-question-circle" id="helpAccount" data-toggle="popover" data-title="{{popover_title}} <button type='button' class='close' onclick='$(&quot;#helpAccount&quot;).popover(&quot;hide&quot;);'>&times;</button>" data-placement="right auto" data-content='{{popover_content}}' data-html="true"></i></div></th>
+                          <th style="border:0;"><div>{{account_text_5}}&nbsp;&nbsp;<i class="fa fa-question-circle" id="helpAccount" data-toggle="popover" data-title='{{popover_title}}' data-placement="right auto" data-content='{{popover_content}}' data-html="true"></i></div></th>
                       </tr>
                  <tr><td class="tdDays">{{monday}}</td>
                      <td>         
@@ -132,8 +122,8 @@
 
                 <br><div id="formAccountValidate" class="validate"></div><br>
                 
-                <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse">{{btn_previous}}</button>
-                <button id="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default">{{btn_last}}</button>
+                <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse" data-previous="accountFirst">{{btn_previous}}</button>
+                <button id="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default" data-next="accountThird">{{btn_last}}</button>
                 <!-- <input type="submit" id="accountSecondBtn" name="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}" disabled/> -->
             </div>
 
@@ -224,9 +214,9 @@
                         <div id="account-select-phrase"></div>
                     </div>
                     <br><div id="timezoneAccountValidate" class="validate"></div><br>
-                    <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse">{{btn_previous}}</button>
-                    <input type="button" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}"/>
                 </div>
+                <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse" data-previous="accountSecond">{{btn_previous}}</button>
+                <input type="button" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}"/>
             </div>
             <input type="hidden" name="accountFormButton" id="accountFormButton">
             <!-- <input type="hidden" name="accountImmediateChange" id="accountImmediateChange">

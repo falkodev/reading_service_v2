@@ -103,7 +103,7 @@ world_map_table = "You will find in this table the different timezones of your r
 world_map_timezone = 'Timezone'
 world_map_cities = 'Cities'
 world_map_time = "Sending time"
-popover_title = 'Suggestion'
+popover_title = 'Suggestion <button type="button" class="close" onclick="$(&quot;#helpAccount&quot;).popover(&quot;hide&quot;);">&times;</button>'
 display_map = "Display map"
 popover_content = 'For the first day, you may want to choose the day after your service meeting. That way, you would be done with your weekly reading the day of your service meeting.{{{<br/>}}}{{{<br/>}}} For instance, if your meeting is on Tuesday, by choosing Wednesday as your "first" day (and if you included tuesday in the days you receive the Bible reading portions), you would be done with your reading on Tuesday.'
 daily_comment = 'Also, would you like to receive the daily text everyday?'
