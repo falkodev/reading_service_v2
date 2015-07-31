@@ -697,8 +697,8 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 
 .labelList:before {
   display: inline-block;
-  margin: -2px;
-  padding: 3px 12px;
+  margin: -3px -13px;
+  padding: 3px 13px;
   margin-bottom: 0;
   border-radius: 3px;
   font-size: 18px;
@@ -707,7 +707,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   vertical-align: middle;
   cursor: pointer;
   background-color: #EEEEEE; 
-  color: #505D6E;
+  /*color: #505D6E;*/
   background-repeat: repeat-x;
   width: 135px;
   height: 33px;
@@ -748,7 +748,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
-  text-shadow: -1px 1px 1px rgba(0,0,0, 0.3)
+  /*text-shadow: -1px 1px 1px rgba(0,0,0, 0.3)*/
   /*transition: background-color 1s ease-in;
   transition: color 1s ease-in;*/
 }

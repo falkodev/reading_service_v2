@@ -69,14 +69,14 @@ var loginView = function () {
                 { $("#loginValidate").slideDown(400) }
             }
         }) 
-    });	
+    })
 
 	/**
 	 * [call "login" form submitting hitting Enter key on login input or password input]
 	 */
 	$('body').on('keyup', '.loginForm', function(e){
 		if(e.keyCode == 13){
-			$("#loginBtn").click();
+			$("#loginBtn").click()
 		}
-	});
+	})
 }

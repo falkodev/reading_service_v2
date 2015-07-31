@@ -159,8 +159,8 @@
                 </div>   
                 <div class="col-sm-12 text-center">
                     <br>{{time_choice}}
-                    <div id="tipAccount" class="validate tip" style="margin: 5px -12px;"><span class="closeTip"><i class="fa fa-times"></i></span>{{tip_1}} {{tip_2}}UTC {{tip_3}} ()<br><br>{{tip_4}}</div>
-                    <br><input type="button" id="displayAccountMap" class="btn btn-lg btn-orange" value="Afficher la carte"/><br>
+                    <div id="tipAccount" class="validate tip" style="margin: 5px -12px;"><span class="closeTip"><i class="fa fa-times"></i></span>{{tip_1}}{{userData.time_displayed}}{{tip_2}}UTC {{userData.time_utc}}{{tip_3}} ({{userData.time_cities}})<br><br>{{tip_4}}</div>
+                    <br><input type="button" id="displayAccountMap" class="btn btn-lg btn-orange displayNone" value="Afficher la carte"/><br>
                     <div class="worldmap" id="account-map-continents"> 
                      <ul class="continents">
                       <li class="c1"><a id="africa-li" href="#africa">{{world_map_africa}}</a></li>
@@ -171,48 +171,8 @@
                       <li class="c6"><a id="south-america-li" href="#south-america">{{world_map_south_america}}</a></li>
                      </ul>
                     </div>
-                    <div id="account-addresses"> 
-                       <!--  <?php 
-                        $query = 'select time_id, time_zone, time_utc, time_cities, sending_id, sending_displayed from timezone join sending_time on time_id = timezone_id order by time_id, sending_id';
-                        //echo "<br>query : ".$query;
-                        $result = mysqli_query($mysqli, $query);
-                        //echo "<br>result : "; print_r($result);
-                        $previous_utc = "";
-                        $previous_zone = "";
-                        $arrClassement = array();
-                        while ($row = mysqli_fetch_array($result)) {
-                            if($row['time_utc'] != $previous_utc) {
-                                if($previous_utc != "")  { //on va fermer un select, donc afficher les horaires dispo classés par ordre
-                                    asort($arrClassement);
-                                    foreach ($arrClassement as $key=>$value) {                                      
-                                        echo "<option value='".$key."'>".$value."</option>";
-                                    }
-                                    $arrClassement = array();
-                                    echo "</select></div></div></li>"; //pour premier passage, pas besoin de fermer le select et le li
-                                }                               
-                                if($previous_zone != $row['time_zone']) 
-                                    {
-                                        echo "</ul><ul class='list-group'><li id='".$row['time_zone']."' class='list-expl'>".__('world_map_table')."<br><br></li>".
-                                        "<li id='".$row['time_zone']."' class='list-group-item list-header'><div class='row'><div class='col-lg-2'>".__('world_map_timezone')."</div>".
-                                        "<div class='col-lg-8'>".__('world_map_cities')."</div><div class='col-lg-2'>".__('world_map_time');
-                                    }
-                                echo "<li id='".$row['time_zone']."' class='list-group-item list-utc'>".
-                                "<div class='row'><div class='col-lg-2'>UTC : ".$row['time_utc']."</div>".
-                                "<div class='col-lg-8'>".$row['time_cities']."</div>".
-                                "<div class='col-lg-2'><select class='form-control account-select-utc' data-utc=".$row['time_utc']." data-cities='".$row['time_cities']."' data-zone='".$row['time_zone']."'><option></option>";
-                            }
-                            $arrClassement[$row['sending_id']] = $row['sending_displayed'];
-                            $previous_utc = $row['time_utc'];
-                            $previous_zone = $row['time_zone'];      
-                        }
-                        asort($arrClassement);
-                        foreach ($arrClassement as $key=>$value) {
-                            echo "<option value='".$key."'>".$value."</option>"; //dernier passage pour le fuseau UTC +14
-                        }
-                        echo "</select></div></div></li></ul>";
-                        ?> -->
-                        <div id="account-select-phrase"></div>
-                    </div>
+                    <div id="account-addresses"></div>
+                    <div id="account-select-phrase" class="displayNone">{{selected_utc_phrase_1}}<span id="account-selected-time"></span>{{selected_utc_phrase_2}}<span id="account-selected-utc"></span></div>
                     <br><div id="timezoneAccountValidate" class="validate"></div><br>
                 </div>
                 <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse" data-previous="accountSecond">{{btn_previous}}</button>

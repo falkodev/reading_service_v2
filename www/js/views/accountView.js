@@ -3,7 +3,7 @@ var accountView = function () {
 
 	// retrieve user data
 	var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData"))
- 	// $.each(sessionUserData, function(k,v){
+ // 	$.each(sessionUserData, function(k,v){
 	// 	console.log("sessionUserData." + k + ": " + v)
 	// })
 	// add it to the template for handlebars compilation
@@ -95,7 +95,68 @@ var accountView = function () {
      * 
      * [end popover mgmt]
      */    
+    
+    
+	/**
+	 * [world map mgmt]
+	 */
+    $(function($){
+    	if ($(window).width() < 768) { size = 540; }
+    	else { size = 960; }
 
+	    $('#account-map-continents').cssMap({
+	        'size' : size, 
+	        'onClick' : function(e){ // click on the map hides the map and shows the button "Display map" and the UTC table corresponding to the clicked zone
+	            $(".account-select-utc").find('option').removeAttr("selected") //utc selection removed
+	            $('#account-map-continents').hide('slow')
+	            $('#displayAccountMap').show()
+	            $('#account-addresses').show()	             		   		
+	        },
+	        agentsListId : '#account-addresses',
+	        loadingText : '', 
+	    })
+
+	    // when view is loaded, get timezones data and store it hidden
+	    $.ajax({
+            type: "POST",
+            url: "http://www.jwreading.com/ajax/getTimezones.php",
+            data: {lang: lang}, 
+            success: function(data) {
+            	$('#account-addresses').hide()
+                $('#account-addresses').html(data)
+            }
+        })
+
+	    // click on "Display map" button hides the button and shows the map again
+	    $('#displayAccountMap').click(function(){
+	    	$('#displayAccountMap').hide(function(){
+	    		$('#account-map-continents').show('slow')
+	    	})
+	        	        
+	    })	     
+
+	    // when time is selected, hides the UTC table and displays the map again
+        $('body').on('change', '.account-select-utc',  function() {
+	        $('.list-header').hide()
+	        $('.list-utc').hide()
+	        $('.list-expl').hide()
+	        $('#displayAccountMap').trigger('click')
+	        $("#timezoneAccountValidate").hide()
+	        $('#tipAccount').hide()
+	        $('#account-selected-time').html($('select').children(':selected').text())
+	        $('#account-selected-utc').html($(this).data('utc'))
+	        $('#account-select-phrase').slideDown(400)
+	        // if(lang == 'fr') $('#account-select-phrase').text('Vous avez choisi de recevoir votre email à ' + $('select').children(':selected').text() + "h chaque jour pour le fuseau horaire UTC " + $(this).data('utc'))
+	        // else  $('#account-select-phrase').text('You have chosen to receive your email everyday at ' + $('select').children(':selected').text() + ".00 according to your timezone")
+	    })
+
+	    $(".closeTip").click(function() {      
+	        $(".tip").slideUp(400);
+	    })
+	})
+	/**
+	 * [end world map mgmt]
+	 */
 
     /**
 	 * [toggleRadioButton : show or hide the radio button corresponding to the chosen day]
@@ -130,7 +191,15 @@ var accountView = function () {
      * [accountThirdDisplay : display second account screen and fill recorded days according to the user's parameters]
      */
     function accountThirdDisplay() {
-    	// $('#' + timezone + '-li').parent().addClass('active-region'); 
+    	var element
+    	element = sessionUserData.readingLang
+    	element = element.charAt(0).toUpperCase() + element.slice(1) //uppercase the first letter to match the element name on the next line
+    	$("#radioAccountLangReading" + element).prop('checked', true)
+
+    	element = sessionUserData.commentLang
+    	element = element.charAt(0).toUpperCase() + element.slice(1)
+    	$("#radioAccountLangText" + element).prop('checked', true)
+    	// $('#' + timezone + '-li').parent().addClass('active-region');     	
     }
     
 	return result

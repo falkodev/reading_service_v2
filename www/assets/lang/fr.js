@@ -73,6 +73,8 @@ tip_1 = "Vous avez enregistré comme heure d'envoi "
 tip_2 = "h sur le fuseau horaire "
 tip_3 = ""
 tip_4 = "Cliquez sur la carte pour changer ces paramètres si vous le désirez."
+selected_utc_phrase_1 = 'Vous avez choisi de recevoir votre email à '
+selected_utc_phrase_2 = 'h chaque jour pour le fuseau horaire UTC '
 btn_save = 'Enregistrer'
 btn_next = 'Ok, étape suivante'
 btn_last = 'Dernière étape'
@@ -135,6 +137,7 @@ userData.time_utc = ''
 userData.time_zone = ''
 userData.time_id = ''
 userData.email = ''
+
 
 // 'menu_home = 'Accueil'
 
