@@ -1,74 +1,73 @@
 var accountView = function () {
-	var result = {}
+	var result = {};
 
 	// retrieve user data
-	var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData"))
+	var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData"));
  // 	$.each(sessionUserData, function(k,v){
 	// 	console.log("sessionUserData." + k + ": " + v)
 	// })
 	// add it to the template for handlebars compilation
-	result.userData = sessionUserData
+	result.userData = sessionUserData;
 	result.account="account" //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
 
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]
 	 */
 	$('body').on('click', '.btn-default', function(e){
-    	e.preventDefault()
+    	e.preventDefault();
 
-    	var currentScreen = $(this).parent().closest('div').attr('id')
-    	var nextScreen = $(this).attr('data-next')
-		var fct = nextScreen + "Display()" // function to load to display correctly the next screen
-		
-    	// alert('currentScreen: ' + currentScreen)
-    	$('#' + currentScreen).hide()
-    	$('#' + nextScreen).show()
-    	eval(fct)
-    })
+    	var currentScreen = $(this).parent().closest('div').attr('id');
+    	var nextScreen = $(this).attr('data-next');
+		var fct = nextScreen + "Display()"; // function to load to display correctly the next screen
+
+    	$('#' + currentScreen).hide();
+    	$('#' + nextScreen).show();
+    	eval(fct);
+    });
 
     /**
 	 * [click on "Back" button : hide current screen and show previous one]
 	 */
 	$('body').on('click', '.btn-inverse', function(e){
-    	e.preventDefault()
+    	e.preventDefault();
 
-    	var currentScreen = $(this).parent().closest('div').attr('id')
-    	var previousScreen = $(this).attr('data-previous')
+    	var currentScreen = $(this).parent().closest('div').attr('id');
+    	var previousScreen = $(this).attr('data-previous');
 
-    	$('#' + currentScreen).hide()
-    	$('#' + previousScreen).show()
-    })
+    	$('#' + currentScreen).hide();
+    	$('#' + previousScreen).show();
+    });
 
 	/**
 	 * [click on "Change password" button : display hidden confirmation field]
 	 */
 	$('body').on('click', '#changePassword', function(e){
-        $('.passConfirm').slideDown(400)
-        password = $('#passAccount').val()
-        $('#passAccountConfirm').val('')
-        $('#passAccount').val('')
-        $('#passAccountConfirm').removeAttr('readonly')
-        $('#passAccount').removeAttr('readonly')
-    })
+        $('.passConfirm').slideDown(400);
+        password = $('#passAccount').val();
+        $('#passAccountConfirm').val('');
+        $('#passAccount').val('');
+        $('#passAccountConfirm').removeAttr('readonly');
+        $('#passAccount').removeAttr('readonly');
+    });
 
 	/**
 	 * [click on "Cancel change password" button : hide confirmation field]
 	 */
     $('body').on('click', '#cancelChangePassword', function(e){
-    	e.preventDefault()
-    	$('.passConfirm').slideUp(400)
-    	$('#passAccountConfirm').val(password)
-        $('#passAccount').val(password)
-        $('#passAccountConfirm').prop("readonly", true)
-        $('#passAccount').prop("readonly", true)
-    })
+    	e.preventDefault();
+    	$('.passConfirm').slideUp(400);
+    	$('#passAccountConfirm').val(password);
+        $('#passAccount').val(password);
+        $('#passAccountConfirm').prop("readonly", true);
+        $('#passAccount').prop("readonly", true);
+    });
 
 	/**
 	 * [click on a switch button representing a day : show or hide the corresponding radio button]
 	 */
 	$('body').on('click', '.onoffswitch-checkbox', function(e){	
-		toggleRadioButton(this.id)
-	})
+		toggleRadioButton(this.id);
+	});
 
     /**
      * [popover mgmt]
@@ -76,21 +75,21 @@ var accountView = function () {
      */
     $(document).on({
 	    mouseenter: function () { //hover
-	        $(this).popover('show')
+	        $(this).popover('show');
 	    },
 	    click: function () {
-	        $(this).popover('show')
+	        $(this).popover('show');
 	    },
-	}, "#helpAccount")
+	}, "#helpAccount");
 
     // click everywhere else than the "helpAccount" icon hides the popover
     $('body').on('click', function(e) {
         $('[data-toggle=popover]').each(function() {
             if (!$(this).is(e.target)) {            	
-                $(this).popover('hide')
+                $(this).popover('hide');
             }            
-        })
-    })
+        });
+    });
     /**
      * 
      * [end popover mgmt]
@@ -107,11 +106,11 @@ var accountView = function () {
 	    $('#account-map-continents').cssMap({
 	        'size' : size, 
 	        'onClick' : function(e){ // click on the map hides the map and shows the button "Display map" and the UTC table corresponding to the clicked zone
-	            $(".account-select-utc").find('option').removeAttr("selected") //utc selection removed
-	            $('#account-map-continents').hide('slow')
-	            $('#displayAccountMap').show()
-	            $('#account-addresses').show()	             		   		
-	        },
+	            $(".account-select-utc").find('option').removeAttr("selected"); //utc selection removed
+	            $('#account-map-continents').hide('slow');
+	            $('#displayAccountMap').show();
+	            $('#account-addresses').show();	             		   		
+	        },   
 	        agentsListId : '#account-addresses',
 	        loadingText : '', 
 	    })
@@ -122,32 +121,31 @@ var accountView = function () {
             url: "http://www.jwreading.com/ajax/getTimezones.php",
             data: {lang: lang}, 
             success: function(data) {
-            	$('#account-addresses').hide()
-                $('#account-addresses').html(data)
+            	$('#account-addresses').hide();
+                $('#account-addresses').html(data);
+                $('#' + sessionUserData.time_zone + '-li').parent().addClass('active-region'); //highlight the world region saved in user parameters
             }
         })
 
 	    // click on "Display map" button hides the button and shows the map again
 	    $('#displayAccountMap').click(function(){
 	    	$('#displayAccountMap').hide(function(){
-	    		$('#account-map-continents').show('slow')
+	    		$('#account-map-continents').show('slow');
 	    	})
 	        	        
 	    })	     
 
 	    // when time is selected, hides the UTC table and displays the map again
         $('body').on('change', '.account-select-utc',  function() {
-	        $('.list-header').hide()
-	        $('.list-utc').hide()
-	        $('.list-expl').hide()
-	        $('#displayAccountMap').trigger('click')
-	        $("#timezoneAccountValidate").hide()
-	        $('#tipAccount').hide()
-	        $('#account-selected-time').html($('select').children(':selected').text())
-	        $('#account-selected-utc').html($(this).data('utc'))
-	        $('#account-select-phrase').slideDown(400)
-	        // if(lang == 'fr') $('#account-select-phrase').text('Vous avez choisi de recevoir votre email à ' + $('select').children(':selected').text() + "h chaque jour pour le fuseau horaire UTC " + $(this).data('utc'))
-	        // else  $('#account-select-phrase').text('You have chosen to receive your email everyday at ' + $('select').children(':selected').text() + ".00 according to your timezone")
+	        $('.list-header').hide();
+	        $('.list-utc').hide();
+	        $('.list-expl').hide();
+	        $('#displayAccountMap').trigger('click');
+	        $("#timezoneAccountValidate").hide();
+	        $('#tipAccount').hide();
+	        $('#account-selected-time').html($('select').children(':selected').text());
+	        $('#account-selected-utc').html($(this).data('utc'));
+	        $('#account-select-phrase').slideDown(400);	     
 	    })
 
 	    $(".closeTip").click(function() {      
@@ -157,32 +155,58 @@ var accountView = function () {
 	/**
 	 * [end world map mgmt]
 	 */
+	
+    $('body').on('click', '#recordChangePassword', function() {
+    	$(".validate").hide();
+        if ($('#passAccount').val() == '') { $("#changePasswordEmptyValidate").slideDown(400); }
+        else if ($('#passAccount').val().length < 4) { $("#changePasswordLengthValidate").slideDown(400); }
+        else if ($('#passAccount').val() != $('#passAccountConfirm').val()) { $("#changePasswordMatchValidate").slideDown(400); }
+        else {
+            var id = sessionUserData.id;
+            var pass = $('#passAccount').val();
+            $.post('http://www.jwreading.com/ajax/changePassword.php', {'pass': pass, 'id': id}, function(data) {
+            }).done(function(result) {
+                result = result.trim();
+                if (result == '0' || result == 'fail') {
+					$("#changePasswordFailValidate").slideDown(400);
+                }
+                else {
+                    var res = result.split('OK.');
+                    $('.passConfirm').slideUp(400);
+                    password = res[1];
+                    $('#passAccount').val(password);
+                    $('#passAccountConfirm').prop("readonly", true);
+                    $('#passAccount').prop("readonly", true);
+                    $("#changePasswordSuccessValidate").slideDown(400);
+                }
+            });
+        }
+    });
 
     /**
 	 * [toggleRadioButton : show or hide the radio button corresponding to the chosen day]
 	 * @param  {[string]} id [id of the switch button, that is to say the day]
 	 */
 	function toggleRadioButton(id){
-		var lastChar = id.substr(id.length - 1)
-		$("#radioAccount" + lastChar).toggle().prop('checked', false)
+		var lastChar = id.substr(id.length - 1);
+		$("#radioAccount" + lastChar).toggle().prop('checked', false);
 	}
 	
     /**
      * [accountSecondDisplay : display second account screen and fill recorded days according to the user's parameters]
      */
     function accountSecondDisplay() {
+    	$('#changePasswordSuccessValidate').hide(); // in case "Modified password" msg is displayed, hide it
     	$("input[type=checkbox].accountSwitch").each(function() {
-     		var id = this.id
-     		var element = id.substr(13) //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
-     		element = element.charAt(0).toLowerCase() + element.slice(1) //lowercase only the first letter to match variable from sessionUserData
-     		var toggleAccount = 'sessionUserData.' + element
-     		// console.log(toggleAccount + ': ' + eval(toggleAccount))
+     		var id = this.id;
+     		var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
+     		element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
+     		var toggleAccount = 'sessionUserData.' + element;
      		if(eval(toggleAccount) == 1) {
-     			$(this).prop('checked', true) //checkbox displayed to "Yes"
-     			toggleRadioButton(id)
-     			var day = element.substr(element.length - 1)
-     			// console.log("sessionUserData.firstDay: " + sessionUserData.firstDay + " day: " + day)
-     			if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true) }
+     			$(this).prop('checked', true); //checkbox displayed to "Yes"
+     			toggleRadioButton(id);
+     			var day = element.substr(element.length - 1);
+     			if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true); }
      		}
      	})     
     }
@@ -191,16 +215,15 @@ var accountView = function () {
      * [accountThirdDisplay : display second account screen and fill recorded days according to the user's parameters]
      */
     function accountThirdDisplay() {
-    	var element
-    	element = sessionUserData.readingLang
-    	element = element.charAt(0).toUpperCase() + element.slice(1) //uppercase the first letter to match the element name on the next line
-    	$("#radioAccountLangReading" + element).prop('checked', true)
+    	var element;
+    	element = sessionUserData.readingLang;
+    	element = element.charAt(0).toUpperCase() + element.slice(1); //uppercase the first letter to match the element name on the next line
+    	$("#radioAccountLangReading" + element).prop('checked', true);
 
-    	element = sessionUserData.commentLang
-    	element = element.charAt(0).toUpperCase() + element.slice(1)
-    	$("#radioAccountLangText" + element).prop('checked', true)
-    	// $('#' + timezone + '-li').parent().addClass('active-region');     	
+    	element = sessionUserData.commentLang;
+    	element = element.charAt(0).toUpperCase() + element.slice(1);
+    	$("#radioAccountLangText" + element).prop('checked', true);	
     }
     
-	return result
+	return result;
 }

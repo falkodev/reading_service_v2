@@ -23,8 +23,12 @@
                     <button id="cancelChangePassword" class="btn btn-sm pull-right chgPassword">{{pwd_cancel}}</button></p>
                     <br>
                     <div class='input-group passConfirm' id='divPassAccountConfirm'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccountConfirm" name="passAccountConfirm" class='form-control accountInput' readonly placeholder='{{pwd_confirm}}' value='{{userData.password}}'><span class="input-group-addon btn-orange chgPassword" id="recordChangePassword">{{pwd_save}}</span></div>                
-                    <div id="changePasswordValidate" class="validate"></div>  
+                    <div id="changePasswordEmptyValidate" class="validate displayNone">{{change_password_empty_validate}}</div>  
+                    <div id="changePasswordLengthValidate" class="validate displayNone">{{change_password_length_validate}}</div>
+                    <div id="changePasswordMatchValidate" class="validate displayNone">{{change_password_match_validate}}</div>
+                    <div id="changePasswordFailValidate" class="validate displayNone">{{change_password_fail_validate}}</div>                   
                 </div> 
+                    <div id="changePasswordSuccessValidate" class="validate displayNone">{{change_password_success_validate}}</div>
                 {{/if}}             
                 <br> 
                 <button id="accountFirstBtn" class="btn btn-lg btn-default" data-next="accountSecond">{{btn_next}}</button>
@@ -128,15 +132,7 @@
             </div>
 
             <!-- 3e ecran du formulaire -->
-            <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountThird">
-                <input type="hidden" id="hiddenReadingLang" name="hiddenReadingLang" value="">
-                <input type="hidden" id="hiddenCommentLang" name="hiddenCommentLang" value="">
-                <input type="hidden" id="hiddenTimeDisplayed" value="" name="accountTimeDisplayed">
-                <input type="hidden" id="hiddenTimeCities" value="" name="accountTimeCities"> <!-- value remplie en js car pbl de virgules avec les villes -->
-                <input type="hidden" id="hiddenTimeUTC" value="" name="accountTimeUTC">
-                <input type="hidden" id="hiddenTimeZone" value="" name="accountTimeZone">
-                <input type="hidden" id="hiddenTimeId" value="" name="accountTimeId">
-
+            <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountThird">                
                 <div class="row" style="padding-bottom: 5px;">
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="left">{{reading_lang}}</div>
                     <div class="col-xs-offset-4 col-xs-4 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4" align="right" style="padding-right: 18px;">{{text_lang}}</div>
