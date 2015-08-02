@@ -10,7 +10,8 @@
             <ul class="dropdown-menu" id="menu2" role="menu" aria-labelledby="dLabel">
                 <li><a href="#contact" class="{{contact_active}}">{{menu_contact}}</a></li>
                 <li><a href="#login" class="menu-orange {{login_active}}" id="menuLogin">{{menu_login}}</a></li> 
-                <ul class="displayNone menu-ul">
+                <ul class="{{#unless connectedUser}}displayNone {{/unless}}menu-ul">
+                    <li class="menu-bullet"><a href="#dashboard" class="menu-orange menu-height" id="menu_dashboard">{{menu_dashboard}}</a></li> 
                     <li class="menu-bullet"><a href="#logout" class="menu-orange menu-height" id="logout">{{menu_logout}}</a></li> 
                 </ul>
             </ul>

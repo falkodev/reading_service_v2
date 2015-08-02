@@ -1,4 +1,6 @@
 var loginView = function () {
+	var result = {};
+	
 	/**
 	 * [click on "forgotten password" link displays form to regenerate password]
 	 */
@@ -58,7 +60,9 @@ var loginView = function () {
                 {                
                     userData = JSON.parse(msg.substr(1));
                     sessionStorage.setItem("sessionUserData", JSON.stringify(userData));
-                    window.location.hash = '#account';
+                    window.location.hash = '#dashboard';
+                    connectedUser = true;
+                    loggedOut = false;
                 }
                 else if (msg == '0') //wrong password
                 { $("#pwdValidate").slideDown(400); }
@@ -78,4 +82,11 @@ var loginView = function () {
 			$("#loginBtn").click();
 		}
 	});
+
+	$(function($){
+		// alert("loggedOut: " + loggedOut);
+		if(loggedOut) {  $("#logoutValidate").slideDown(400); }	
+	});
+
+	return result;
 }

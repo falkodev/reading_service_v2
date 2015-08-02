@@ -8,7 +8,7 @@ var accountView = function () {
 	// })
 	// add it to the template for handlebars compilation
 	result.userData = sessionUserData;
-	result.account="account" //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
+	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
 
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]
@@ -113,7 +113,7 @@ var accountView = function () {
 	        },   
 	        agentsListId : '#account-addresses',
 	        loadingText : '', 
-	    })
+	    });
 
 	    // when view is loaded, get timezones data and store it hidden
 	    $.ajax({
@@ -125,7 +125,7 @@ var accountView = function () {
                 $('#account-addresses').html(data);
                 $('#' + sessionUserData.time_zone + '-li').parent().addClass('active-region'); //highlight the world region saved in user parameters
             }
-        })
+        });
 
 	    // click on "Display map" button hides the button and shows the map again
 	    $('#displayAccountMap').click(function(){
@@ -133,7 +133,7 @@ var accountView = function () {
 	    		$('#account-map-continents').show('slow');
 	    	})
 	        	        
-	    })	     
+	    });	     
 
 	    // when time is selected, hides the UTC table and displays the map again
         $('body').on('change', '.account-select-utc',  function() {
@@ -146,12 +146,12 @@ var accountView = function () {
 	        $('#account-selected-time').html($('select').children(':selected').text());
 	        $('#account-selected-utc').html($(this).data('utc'));
 	        $('#account-select-phrase').slideDown(400);	     
-	    })
+	    });
 
 	    $(".closeTip").click(function() {      
 	        $(".tip").slideUp(400);
-	    })
-	})
+	    });
+	});
 	/**
 	 * [end world map mgmt]
 	 */

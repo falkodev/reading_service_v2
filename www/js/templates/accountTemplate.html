@@ -157,7 +157,7 @@
                     <br>{{time_choice}}
                     <div id="tipAccount" class="validate tip" style="margin: 5px -12px;"><span class="closeTip"><i class="fa fa-times"></i></span>{{tip_1}}{{userData.time_displayed}}{{tip_2}}UTC {{userData.time_utc}}{{tip_3}} ({{userData.time_cities}})<br><br>{{tip_4}}</div>
                     <br><input type="button" id="displayAccountMap" class="btn btn-lg btn-orange displayNone" value="Afficher la carte"/><br>
-                    <div class="worldmap" id="account-map-continents"> 
+                    <div class="worldmap" id="account-map-continents"> <!-- ici, si class="worldmap" au lieu de class="worldmap css-map-container m960" => problème chargement de la mappemonde, chargement à refaire -->
                      <ul class="continents">
                       <li class="c1"><a id="africa-li" href="#africa">{{world_map_africa}}</a></li>
                       <li class="c2"><a id="asia-li" href="#asia">{{world_map_asia}}</a></li>

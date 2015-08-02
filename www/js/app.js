@@ -6,6 +6,8 @@
   window.langList;
   window.hash;
   window.userData = '';
+  window.connectedUser = false;
+  window.loggedOut = false;
 
   var slider = new PageSlider($('#tmplContent'));
   // browser language detection and load corresponding language file 
@@ -13,6 +15,8 @@
   lang.substr(0,2);
   lang = $.trim(lang);
 
+  //detect if previously loaded account
+  if(sessionStorage.getItem("sessionUserData")) { connectedUser = true; }
   
   /**
    * [get languages file and determine what language to display - english by default if language not found]
@@ -47,8 +51,8 @@
       hash = 'home';
     }
     var activeMenu = hash + '_active';
-    loadTemplate('menu', activeMenu, null, false);
-    displayView();
+    displayView('menu', activeMenu); //load menu
+    displayView(hash, null); //load view corresponding to the hash
   }
   
   //app init : first request
@@ -61,21 +65,21 @@
 
   
   /**
-   * [displayView : get the view corresponding to the hash, in order to load the associated template with context added by the view ]
+   * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
-  function displayView() {
-    var view   = "new " + hash + "View()";
+  function displayView(element, activeMenu) {
+    var view   = "new " + element + "View()";
     var result = eval(view);
     var displaySubscribe = false;
 
     //determine if subscribe view is calling    
-    if(hash == 'account' && result) { 
+    if(element == 'account' && result) { 
       $.each(result, function(key, value){
           if(key == 'account' && value == '') { displaySubscribe = true; }
-      })
+      });
     }
 
-    loadTemplate(hash, null, result, displaySubscribe);
+    loadTemplate(element, activeMenu, result, displaySubscribe);
   }
   
 
