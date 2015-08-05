@@ -110,7 +110,7 @@ display_map = "Afficher la carte"
 popover_title = 'Suggestion <button type="button" class="close" onclick="$(&quot;#helpAccount&quot;).popover(&quot;hide&quot;);">&times;</button>'
 popover_content = 'Vous pourriez choisir comme premier jour le lendemain de la réunion de service. Ainsi, vous terminerez votre lecture de la Bible le jour de votre réunion de service.{{{<br/>}}}{{{<br/>}}} Par exemple, si votre réunion est le mardi, en choisissant mercredi comme "premier" jour de la semaine (et en ayant aussi inclus mardi dans les jours où vous recevrez une portion), vous terminerez la lecture le mardi.'
 daily_comment = 'Voulez-vous aussi recevoir aussi le texte du jour quotidiennement ?'
-loading = 'Enregistrement en cours'
+loading = 'Chargement'
 lang_fr = 'Français'
 lang_en = 'Anglais'
 lang_ro = 'Roumain'

@@ -110,7 +110,7 @@ popover_title = 'Suggestion <button type="button" class="close" onclick="$(&quot
 display_map = "Display map"
 popover_content = 'For the first day, you may want to choose the day after your service meeting. That way, you would be done with your weekly reading the day of your service meeting.{{{<br/>}}}{{{<br/>}}} For instance, if your meeting is on Tuesday, by choosing Wednesday as your "first" day (and if you included tuesday in the days you receive the Bible reading portions), you would be done with your reading on Tuesday.'
 daily_comment = 'Also, would you like to receive the daily text everyday?'
-loading = 'Saving data'
+loading = 'Loading'
 lang_fr = 'French'
 lang_en = 'English'
 lang_ro = 'Romanian'

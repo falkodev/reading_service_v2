@@ -54,6 +54,11 @@ var loginView = function () {
         $.ajax({
             type: "POST",
             url: "http://www.jwreading.com/ajax/login.php",
+            beforeSend: function() { 
+            	$('.row').fadeOut();
+            	$('#wait').css({top: $(window).height()/12, left: $(window).width()/2 - 50});
+            	$('#wait').fadeIn(); 
+            },
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
             success: function(msg) {
                 if (msg[0] == '1') //correct credentials : login done
@@ -70,6 +75,10 @@ var loginView = function () {
                 { $("#emailValidate").slideDown(400); }
                 else //every other login problem
                 { $("#loginValidate").slideDown(400); }
+            },
+            complete: function() { 
+            	$('.row').fadeIn();
+            	$('#wait').fadeOut(); 
             }
         }); 
     });

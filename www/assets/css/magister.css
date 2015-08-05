@@ -842,3 +842,9 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   text-decoration: none;
   cursor: default;
 }
+
+#wait {
+  display: none;
+  z-index: 1000;
+  position: fixed;
+}
