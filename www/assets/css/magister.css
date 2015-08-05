@@ -109,6 +109,7 @@ ul {
 	background-image: none;
 	border: 0 none;
 	top:0px; 
+	left:0px;
 	-webkit-border-radius: 3px;
 	   -moz-border-radius: 3px;
 	        border-radius: 3px;
@@ -129,12 +130,14 @@ ul {
 	margin-top: 4px;
 }
 .open .navbar-toggle { 
-	top:-70px; 
+	/*top:-70px; */
+	left: -70px;
 	opacity: 0;  
 }
 .mainmenu .dropdown-menu {
-	top: -23em;
-	left: 0px;
+	/*top: -23em;
+	left: 0px;*/
+	left: -23em;
 	font-size: 13px;
 	padding:0;
 	background:none;
@@ -154,12 +157,13 @@ ul {
 
 .mainmenu .dropdown-menu .active { 
 	font-weight:bold;
-  background:rgba(255,255,255,.1);
+  	background:rgba(255,255,255,.1);
 	color:white;
 	padding:10px 8px 10px 12px;
 }
 .mainmenu .open .dropdown-menu { 
-	top:2px;
+	/*top:2px;*/
+	left:2px;
 	opacity:1;
 }
 .mainmenu .dropdown-menu a { 
@@ -199,22 +203,22 @@ ul {
 	z-index: 1;
 	min-height:420px;
 	width: 100%; 
-  height:100%;
+  	height:100%;
 	overflow:auto;
 	padding-top:50px;
 	padding-bottom:50px; 
 	display:none;
 	top:0;
-  bottom:0;
-  display: block;
-  background-color: #505D6E;
+  	bottom:0;
+  	display: block;
+  	background-color: #505D6E;
 } 
 @media (min-width: 767px) {
 	.section { padding-top:80px;}
 }
 
 .background{
-    background-image: url(../images/bible_reading.jpg);
+    background-image: url(../img/bible_reading.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

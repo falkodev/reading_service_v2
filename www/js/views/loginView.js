@@ -51,13 +51,18 @@ var loginView = function () {
 	$('body').on('click', '#loginBtn', function(e){
         $(".validate").hide();
         e.preventDefault();
+        var timer;
         $.ajax({
             type: "POST",
             url: "http://www.jwreading.com/ajax/login.php",
             beforeSend: function() { 
-            	$('.row').fadeOut();
-            	$('#wait').css({top: $(window).height()/12, left: $(window).width()/2 - 50});
-            	$('#wait').fadeIn(); 
+            	if(timer) { clearTimeout(timer); }
+            	timer = setTimeout(function()
+		        {
+		            $('#loginDiv').hide();
+            		$('#waitDiv').show(); 
+		        },
+		        200); // if ajax request takes more than 200ms, display loading animation         	
             },
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
             success: function(msg) {
@@ -77,8 +82,9 @@ var loginView = function () {
                 { $("#loginValidate").slideDown(400); }
             },
             complete: function() { 
-            	$('.row').fadeIn();
-            	$('#wait').fadeOut(); 
+            	clearTimeout(timer);
+            	$('#waitDiv').hide();  
+            	$('#loginDiv').show();
             }
         }); 
     });
