@@ -56,7 +56,7 @@ var loginView = function () {
             type: "POST",
             url: "http://www.jwreading.com/ajax/login.php",
             beforeSend: function() { 
-            	if(timer) { clearTimeout(timer); }
+            	// if(timer) { clearTimeout(timer); }
             	timer = setTimeout(function()
 		        {
 		            $('#loginDiv').hide();
@@ -64,6 +64,7 @@ var loginView = function () {
 		        },
 		        200); // if ajax request takes more than 200ms, display loading animation         	
             },
+            timeout: 2000, 
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
             success: function(msg) {
                 if (msg[0] == '1') //correct credentials : login done
@@ -80,6 +81,9 @@ var loginView = function () {
                 { $("#emailValidate").slideDown(400); }
                 else //every other login problem
                 { $("#loginValidate").slideDown(400); }
+            },
+            error: function() {
+            	$("#connectionValidate").slideDown(400);
             },
             complete: function() { 
             	clearTimeout(timer);

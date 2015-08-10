@@ -5,6 +5,13 @@
       -webkit-box-sizing: border-box;
       box-sizing: border-box; }
 
+@font-face {
+  font-family: 'Wire One';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../font/wire-one.woff2') format('woff2'), url('../font/wire-one.woff') format('woff');
+}
+
 html {
 	background:#505D6E; 
 	min-height:100%;
