@@ -64,7 +64,7 @@ var loginView = function () {
 		        },
 		        200); // if ajax request takes more than 200ms, display loading animation         	
             },
-            timeout: 2000, 
+            timeout: 10000, 
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
             success: function(msg) {
                 if (msg[0] == '1') //correct credentials : login done
@@ -83,7 +83,7 @@ var loginView = function () {
                 { $("#loginValidate").slideDown(400); }
             },
             error: function() {
-            	$("#connectionValidate").slideDown(400);
+            	$("#connectionValidate").slideDown(400); // no internet connection
             },
             complete: function() { 
             	clearTimeout(timer);

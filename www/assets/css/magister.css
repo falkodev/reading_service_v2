@@ -102,7 +102,12 @@ ul {
 /********************************************************/
 /*                    Navigation bar                    */
 /********************************************************/
-.mainmenu { z-index: 999; width: 100%; padding: 30px 0 0 0; position:relative;}
+.mainmenu { 
+  z-index: 999; 
+  width: 100%; 
+  padding: 30px 0 0 0; 
+  position:relative;
+}
 @media (min-width: 767px) {
 	.mainmenu { position: fixed; }
 }
@@ -122,9 +127,9 @@ ul {
 	        border-radius: 3px;
 	outline: 0;
 	opacity: 1;
-	-webkit-transition: all .45s;
-	   -moz-transition: all .45s;
-	        transition: all .45s;
+	-webkit-transition: left .45s;
+	   -moz-transition: left .45s;
+	        transition: left .45s;
 	        float: left;
 }
 .navbar-toggle .icon-bar {
@@ -141,6 +146,7 @@ ul {
 	left: -70px;
 	opacity: 0;  
 }
+
 .mainmenu .dropdown-menu {
 	/*top: -23em;
 	left: 0px;*/
@@ -153,10 +159,11 @@ ul {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	display:block;
-	opacity:0;
-	-webkit-transition: all .45s;
-	   -moz-transition: all .45s;
-	        transition: all .45s;
+	opacity:1;
+	-webkit-transition: left .45s;
+	   -moz-transition: left .45s;
+	        transition: left .45s;
+  /*transition: opacity 1s;*/
   /*ajout de ces 2 lignes pr afficher tt le temps le menu*/
   /*top:2px;*/
 	/*opacity:1;*/
@@ -164,15 +171,21 @@ ul {
 
 .mainmenu .dropdown-menu .active { 
 	font-weight:bold;
-  	background:rgba(255,255,255,.1);
+  background:rgba(255,255,255,.1);
 	color:white;
 	padding:10px 8px 10px 12px;
 }
 .mainmenu .open .dropdown-menu { 
 	/*top:2px;*/
-	left:2px;
-	opacity:1;
+	left:-1.2em;
+	opacity:1;  
 }
+@media (min-width: 767px) {
+  .mainmenu .open .dropdown-menu { 
+    left:-18em;
+  }
+}
+
 .mainmenu .dropdown-menu a { 
 	padding:10px 10px;
 	margin:0;
