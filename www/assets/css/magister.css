@@ -103,16 +103,17 @@ ul {
 /*                    Navigation bar                    */
 /********************************************************/
 .mainmenu { 
-  z-index: 999; 
+  z-index: 997; 
   width: 100%; 
   padding: 30px 0 0 0; 
   position:relative;
 }
-@media (min-width: 767px) {
+/*@media (min-width: 767px) {
 	.mainmenu { position: fixed; }
-}
+}*/
 
 .navbar-toggle {
+	z-index: 999;
 	position:relative;
 	float:left;
 	display:block;
@@ -143,8 +144,16 @@ ul {
 }
 .open .navbar-toggle { 
 	/*top:-70px; */
-	left: -70px;
-	opacity: 0;  
+	/*left: -70px;
+	opacity: 0; */ 
+	left: 120px;
+	margin-top: 3em;
+}
+
+.dropdown-menu {
+	z-index: 998;
+	border-right: 1px solid white; 
+	height: 100vh;
 }
 
 .mainmenu .dropdown-menu {
@@ -163,6 +172,7 @@ ul {
 	-webkit-transition: left .45s;
 	   -moz-transition: left .45s;
 	        transition: left .45s;
+	border-right: 1px solid white; 
   /*transition: opacity 1s;*/
   /*ajout de ces 2 lignes pr afficher tt le temps le menu*/
   /*top:2px;*/
@@ -171,7 +181,7 @@ ul {
 
 .mainmenu .dropdown-menu .active { 
 	font-weight:bold;
-  background:rgba(255,255,255,.1);
+  	background:rgba(255,255,255,.1);
 	color:white;
 	padding:10px 8px 10px 12px;
 }
@@ -182,7 +192,7 @@ ul {
 }
 @media (min-width: 767px) {
   .mainmenu .open .dropdown-menu { 
-    left:-18em;
+    left:-110px;
   }
 }
 
