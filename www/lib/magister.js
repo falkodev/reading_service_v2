@@ -9,8 +9,8 @@ var password;
 var lang;
 var size;
 
-// jQuery stuff
 jQuery(document).ready(function($) {
+	// FAQ : show/hide answers when clicking on questions
     $(document).on( "click", ".questionTitle", function(){
         var str = $(this).attr('id');
         var pattern = /[0-9]+/;
@@ -18,6 +18,7 @@ jQuery(document).ready(function($) {
         $("#answer"+id).toggle("slow");
     });
 
+    /***** menu *****/
     $(document).on( "click", ".navbar-toggle", function(){
     	var w = $(window).width();
     	if(w < 768) {    		    		
@@ -28,9 +29,6 @@ jQuery(document).ready(function($) {
 	    		$('#tmplContent').removeClass("menu-open");
 	    	}
     	}
-  //   	else {
-		// 	$('#tmplContent').css({"position":"static", "left":"auto", "top":"auto"});
-		// }
     });
 
     $(document).on( "click", function(){
@@ -38,8 +36,6 @@ jQuery(document).ready(function($) {
     	if(w < 768) { 
     		$('#tmplContent').removeClass("menu-open");
 		}
-		// else {
-		// 	$('#tmplContent').css({"position":"static", "left":"auto", "top":"auto"});
-		// }
     });
+    /***** end menu *****/
 });

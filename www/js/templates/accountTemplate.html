@@ -13,11 +13,16 @@
                     <p>{{account_text_1}}</p>
                     <br>
                     <p>{{account_text_2}}</p>
-                    <div class='input-group'><span class='input-group-addon'><i class='fa fa-envelope'></i></span><input id="emailAccount" name="emailAccount" type='text' class='form-control accountInput' placeholder='{{placeholder_email}}' value="{{userData.email}}"></div><div id="emailAccountValidate" class="validate"></div><br><br>
+                    <div class='input-group'><span class='input-group-addon'><i class='fa fa-envelope'></i></span><input id="emailAccount" name="emailAccount" type='text' class='form-control accountInput' placeholder='{{placeholder_email}}' value="{{userData.email}}"/></div>
+                    <div id="emailExistingValidate" class="validate">{{email_existing_validate}}</div>
+                    <div id="emailEmptyValidate" class="validate">{{email_empty_validate}}</div>
+                    <div id="emailIncorrectValidate" class="validate">{{email_incorrect_validate}}</div>
+                    <br><br>
                     <p>{{account_text_3}}</p>
-                    <div class='input-group'><span class='input-group-addon'><i class='fa fa-user'></i></span><input type='text' id="nameAccount" name="nameAccount" class='form-control accountInput' placeholder='{{placeholder_name}}' value='{{userData.name}}'></div><br><br>
-                    <p>{{pwd_text}}</p>
+                    <div class='input-group'><span class='input-group-addon'><i class='fa fa-user'></i></span><input type='text' id="nameAccount" name="nameAccount" class='form-control accountInput' placeholder='{{placeholder_name}}' value='{{userData.name}}'/></div><br><br>
+                    
                     {{#if account}}
+                    <p>{{pwd_text}}</p>
                     <div class='input-group' id='divPassAccount'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccount" name="passAccount" class='form-control accountInput' readonly placeholder='{{placeholder_new_pwd}}' value='{{userData.password}}'><span class="input-group-addon chgPassword" id="changePassword">{{pwd_chg}}</span></div>
                     <div class="passConfirm displayNone">
                         <p class="passConfirm" id="passConfirmTitle"><br><br>{{pwd_confirm}}
@@ -45,7 +50,7 @@
                           </tr>
                      <tr><td class="tdDays">{{monday}}</td>
                          <td>         
-                    <!-- lundi -->                
+                    <!-- lundi -->   
                     <div class="onoffswitch">
                         <input type="checkbox" name="toggleAccountDay1" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay1" value="1">
                         <label class="onoffswitch-label" for="toggleAccountDay1">
@@ -125,7 +130,7 @@
                     </label>
                     </div> 
 
-                    <br><div id="formAccountValidate" class="validate"></div><br>
+                    <br><div id="dayValidate" class="validate">{{day_validate}}</div><br>
                     
                     <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse" data-previous="accountFirst">{{btn_previous}}</button>
                     <button id="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default" data-next="accountThird">{{btn_last}}</button>

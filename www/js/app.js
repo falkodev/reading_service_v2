@@ -72,13 +72,13 @@
     var result = eval(view);
     var displaySubscribe = false;
 
-    //determine if subscribe view is calling    
-    if(element == 'account' && result) { 
-      $.each(result, function(key, value){
-          if(key == 'account' && value == '') { displaySubscribe = true; }
-      });
+    //determine if subscribe view is calling 
+    if(element == 'subscribe') { 
+      displaySubscribe = true;
+      element = 'account'; 
+      // attach account behaviour to subscribe view
+      var attach = new accountView();
     }
-
     loadTemplate(element, activeMenu, result, displaySubscribe);
   }
   

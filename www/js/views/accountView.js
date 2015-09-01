@@ -6,7 +6,8 @@ var accountView = function () {
  // 	$.each(sessionUserData, function(k,v){
 	// 	console.log("sessionUserData." + k + ": " + v)
 	// })
-	// add it to the template for handlebars compilation
+    
+    // add it to the template for handlebars compilation
 	result.userData = sessionUserData;
 	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
 
@@ -16,13 +17,16 @@ var accountView = function () {
 	$('body').on('click', '.btn-default', function(e){
     	e.preventDefault();
 
+        $('.validate').slideUp(200);
     	var currentScreen = $(this).parent().closest('div').attr('id');
     	var nextScreen = $(this).attr('data-next');
 		var fct = nextScreen + "Display()"; // function to load to display correctly the next screen
+        var returnValue = eval(fct);
 
-    	$('#' + currentScreen).hide();
-    	$('#' + nextScreen).show();
-    	eval(fct);
+        // if(returnValue) {
+        	$('#' + currentScreen).hide();
+        	$('#' + nextScreen).show();
+        // }
     });
 
     /**
@@ -196,33 +200,66 @@ var accountView = function () {
      * [accountSecondDisplay : display second account screen and fill recorded days according to the user's parameters]
      */
     function accountSecondDisplay() {
-    	$('#changePasswordSuccessValidate').hide(); // in case "Modified password" msg is displayed, hide it
-    	$("input[type=checkbox].accountSwitch").each(function() {
-     		var id = this.id;
-     		var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
-     		element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
-     		var toggleAccount = 'sessionUserData.' + element;
-     		if(eval(toggleAccount) == 1) {
-     			$(this).prop('checked', true); //checkbox displayed to "Yes"
-     			toggleRadioButton(id);
-     			var day = element.substr(element.length - 1);
-     			if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true); }
-     		}
-     	})     
+        var email = $('#emailAccount').val();
+        var accountId;        
+        var returnValue = false;
+        var params;
+        
+        if(hash == "account") { accountId = $('#accountId').val() }  
+        //ajax function call ($.post) with callback (result) to check if the email address already exists
+        $.post('ajax/checkEmail.php', {'email': email, 'account': accountId}, function(data) {
+        }).done(function(result) {
+            result = result.trim();
+            if (result == '1') {
+                $("#emailExistingValidate").slideDown(400);
+            }
+            else if ($.trim(email).length == 0) {
+                $("#emailEmptyValidate").slideDown(400);
+            }
+            else if (validateEmail(email) == false) {
+                $("#emailIncorrectValidate").slideDown(400);
+            }
+            else {                 
+            	$("input[type=checkbox].accountSwitch").each(function() {
+             		var id = this.id;
+             		var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
+             		element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
+             		var toggleAccount = 'sessionUserData.' + element;
+             		if(eval(toggleAccount) == 1) {
+             			$(this).prop('checked', true); //checkbox displayed to "Yes"
+             			toggleRadioButton(id);
+             			var day = element.substr(element.length - 1);
+             			if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true); }
+             		}
+                });
+                returnValue = true;
+         	}   
+        }); 
+        return returnValue;
     }
 
     /**
      * [accountThirdDisplay : display second account screen and fill recorded days according to the user's parameters]
      */
     function accountThirdDisplay() {
-    	var element;
-    	element = sessionUserData.readingLang;
-    	element = element.charAt(0).toUpperCase() + element.slice(1); //uppercase the first letter to match the element name on the next line
-    	$("#radioAccountLangReading" + element).prop('checked', true);
+        var returnValue = false;
+        var count = $("input[type=radio].accountSwitch:checked").length;
+        // console.log('count : ' + count);
+        
+        if (count != 1) {
+            $("#dayValidate").slideDown(400);
+        } else {
+            returnValue = true;
+        	var element;
+        	element = sessionUserData.readingLang;
+        	element = element.charAt(0).toUpperCase() + element.slice(1); //uppercase the first letter to match the element name on the next line
+        	$("#radioAccountLangReading" + element).prop('checked', true);
 
-    	element = sessionUserData.commentLang;
-    	element = element.charAt(0).toUpperCase() + element.slice(1);
-    	$("#radioAccountLangText" + element).prop('checked', true);	
+        	element = sessionUserData.commentLang;
+        	element = element.charAt(0).toUpperCase() + element.slice(1);
+        	$("#radioAccountLangText" + element).prop('checked', true);	
+        }
+        return returnValue;
     }
     
 	return result;
