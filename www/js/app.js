@@ -138,7 +138,13 @@
           var html     = template(context);
           html         = escapeLink(html);
           if(activeMenu) { $('#menuContent').html(html); } // case of menu loading
-          else { slider.slidePage($('<div>').html(html)); }
+          else { 
+            slider.slidePage($('<div>').html(html)); 
+            if(loggedOut) { 
+              $("#logoutValidate").show();
+              loggedOut = false;
+            }
+          }
         } 
     });
   }

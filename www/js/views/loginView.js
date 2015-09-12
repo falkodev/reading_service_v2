@@ -102,10 +102,5 @@ var loginView = function () {
 		}
 	});
 
-	$(function($){
-		// alert("loggedOut: " + loggedOut);
-		if(loggedOut) {  $("#logoutValidate").slideDown(400); }	
-	});
-
 	return result;
 }
