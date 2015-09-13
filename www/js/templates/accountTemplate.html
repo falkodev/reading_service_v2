@@ -23,7 +23,7 @@
                     
                     {{#if account}}
                     <p>{{pwd_text}}</p>
-                    <div class='input-group' id='divPassAccount'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccount" name="passAccount" class='form-control accountInput' readonly placeholder='{{placeholder_new_pwd}}' value='{{userData.password}}'><span class="input-group-addon chgPassword" id="changePassword">{{pwd_chg}}</span></div>
+                    <div class='input-group' id='divPassAccount'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccount" name="passAccount" class='form-control accountInput' readonly placeholder='{{placeholder_new_pwd}}' value='{{userData.password}}'/><span class="input-group-addon chgPassword" id="changePassword">{{pwd_chg}}</span></div>
                     <div class="passConfirm displayNone">
                         <p class="passConfirm" id="passConfirmTitle"><br><br>{{pwd_confirm}}
                         <button id="cancelChangePassword" class="btn btn-sm pull-right chgPassword">{{pwd_cancel}}</button></p>
@@ -37,7 +37,7 @@
                         <div id="changePasswordSuccessValidate" class="validate displayNone">{{change_password_success_validate}}</div>
                     {{/if}}             
                     <br> 
-                    <button id="accountFirstBtn" class="btn btn-lg btn-default" data-next="accountSecond">{{btn_next}}</button>
+                    <button id="accountFirstBtn" class="btn btn-lg btn-default account-next" data-next="accountSecond">{{btn_next}}</button>
                 </div>
                 
                 <!-- 2e ecran du formulaire -->
@@ -132,8 +132,8 @@
 
                     <br><div id="dayValidate" class="validate">{{day_validate}}</div><br>
                     
-                    <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse" data-previous="accountFirst">{{btn_previous}}</button>
-                    <button id="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default" data-next="accountThird">{{btn_last}}</button>
+                    <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountFirst">{{btn_previous}}</button>
+                    <button id="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default account-next" data-next="accountThird">{{btn_last}}</button>
                     <!-- <input type="submit" id="accountSecondBtn" name="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}" disabled/> -->
                 </div>
 
@@ -177,8 +177,8 @@
                         <div id="account-select-phrase" class="displayNone">{{selected_utc_phrase_1}}<span id="account-selected-time"></span>{{selected_utc_phrase_2}}<span id="account-selected-utc"></span></div>
                         <br><div id="timezoneAccountValidate" class="validate"></div><br>
                     </div>
-                    <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse" data-previous="accountSecond">{{btn_previous}}</button>
-                    <input type="button" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}"/>
+                    <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountSecond">{{btn_previous}}</button>
+                    <input type="button" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default é" value="{{btn_save}}"/>
                 </div>
                 <input type="hidden" name="accountFormButton" id="accountFormButton">
                 <!-- <input type="hidden" name="accountImmediateChange" id="accountImmediateChange">

@@ -1,38 +1,40 @@
 var accountView = function () {
 	var result = {};
-
-	// retrieve user data
-	var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData"));
- // 	$.each(sessionUserData, function(k,v){
-	// 	console.log("sessionUserData." + k + ": " + v)
-	// })
-    
-    // add it to the template for handlebars compilation
-	result.userData = sessionUserData;
-	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
+    if(connectedUser) {
+    	// retrieve user data
+    	var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData"));
+        // 	$.each(sessionUserData, function(k,v){
+    	// 	console.log("sessionUserData." + k + ": " + v)
+    	// })
+        
+        // add it to the template for handlebars compilation
+    	result.userData = sessionUserData;
+    	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
+    }
 
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]
 	 */
-	$('body').on('click', '.btn-default', function(e){
+	$('body').on('click', '.account-next', function(e){
     	e.preventDefault();
 
         $('.validate').slideUp(200);
     	var currentScreen = $(this).parent().closest('div').attr('id');
     	var nextScreen = $(this).attr('data-next');
 		var fct = nextScreen + "Display()"; // function to load to display correctly the next screen
-        var returnValue = eval(fct);
-
-        // if(returnValue) {
-        	$('#' + currentScreen).hide();
-        	$('#' + nextScreen).show();
-        // }
+        if (typeof fct != "undefined") { 
+            var returnValue = eval(fct);
+            if(returnValue) {
+                $('#' + currentScreen).hide();
+                $('#' + nextScreen).show();
+            }
+        }
     });
 
     /**
 	 * [click on "Back" button : hide current screen and show previous one]
 	 */
-	$('body').on('click', '.btn-inverse', function(e){
+	$('body').on('click', '.account-previous', function(e){
     	e.preventDefault();
 
     	var currentScreen = $(this).parent().closest('div').attr('id');
@@ -127,7 +129,7 @@ var accountView = function () {
             success: function(data) {
             	$('#account-addresses').hide();
                 $('#account-addresses').html(data);
-                $('#' + sessionUserData.time_zone + '-li').parent().addClass('active-region'); //highlight the world region saved in user parameters
+                if(connectedUser) { $('#' + sessionUserData.time_zone + '-li').parent().addClass('active-region'); }//highlight the world region saved in user parameters
             }
         });
 
@@ -204,37 +206,49 @@ var accountView = function () {
         var accountId;        
         var returnValue = false;
         var params;
-        
-        if(hash == "account") { accountId = $('#accountId').val() }  
-        //ajax function call ($.post) with callback (result) to check if the email address already exists
-        $.post('ajax/checkEmail.php', {'email': email, 'account': accountId}, function(data) {
-        }).done(function(result) {
-            result = result.trim();
-            if (result == '1') {
-                $("#emailExistingValidate").slideDown(400);
-            }
-            else if ($.trim(email).length == 0) {
-                $("#emailEmptyValidate").slideDown(400);
-            }
-            else if (validateEmail(email) == false) {
-                $("#emailIncorrectValidate").slideDown(400);
-            }
-            else {                 
-            	$("input[type=checkbox].accountSwitch").each(function() {
-             		var id = this.id;
-             		var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
-             		element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
-             		var toggleAccount = 'sessionUserData.' + element;
-             		if(eval(toggleAccount) == 1) {
-             			$(this).prop('checked', true); //checkbox displayed to "Yes"
-             			toggleRadioButton(id);
-             			var day = element.substr(element.length - 1);
-             			if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true); }
-             		}
-                });
-                returnValue = true;
-         	}   
-        }); 
+        var k=0;
+
+        if(hash == "account") { accountId = sessionUserData.id; }  
+
+        if(k == 0) { //only call at a time admitted
+            //ajax function call with callback (result) to check if the email address already exists
+            $.ajax({
+                type: 'POST',
+                url: 'http://www.jwreading.com/ajax/checkEmail.php',
+                data: {'email': email, 'account': accountId},
+                async:false,
+                success: function(result) {
+                    result = result.trim();
+                    if (result == '1') {
+                        $("#emailExistingValidate").slideDown(400);
+                    }
+                    else if ($.trim(email).length == 0) {
+                        $("#emailEmptyValidate").slideDown(400);
+                    }
+                    else if (validateEmail(email) == false) {
+                        $("#emailIncorrectValidate").slideDown(400);
+                    }
+                    else {  
+                        if(hash == "account") {               
+                            $("input[type=checkbox].accountSwitch").each(function() {
+                                var id = this.id;
+                                var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
+                                element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
+                                var toggleAccount = 'sessionUserData.' + element;
+                                if(eval(toggleAccount) == 1) {
+                                    $(this).prop('checked', true); //checkbox displayed to "Yes"
+                                    toggleRadioButton(id);
+                                    var day = element.substr(element.length - 1);
+                                    if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true); }
+                                }
+                            });
+                        }
+                        returnValue = true;
+                    }
+                }
+            });
+            k++;
+        }
         return returnValue;
     }
 
