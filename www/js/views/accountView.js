@@ -11,13 +11,13 @@ var accountView = function () {
     	result.userData = sessionUserData;
     	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
     }
+    
 
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]
 	 */
-	$('body').on('click', '.account-next', function(e){
+	$('body').off('click').on('click', '.account-next', function(e){
     	e.preventDefault();
-
         $('.validate').slideUp(200);
     	var currentScreen = $(this).parent().closest('div').attr('id');
     	var nextScreen = $(this).attr('data-next');
@@ -34,7 +34,7 @@ var accountView = function () {
     /**
 	 * [click on "Back" button : hide current screen and show previous one]
 	 */
-	$('body').on('click', '.account-previous', function(e){
+	$('body').off('click').on('click', '.account-previous', function(e){
     	e.preventDefault();
 
     	var currentScreen = $(this).parent().closest('div').attr('id');
@@ -47,7 +47,7 @@ var accountView = function () {
 	/**
 	 * [click on "Change password" button : display hidden confirmation field]
 	 */
-	$('body').on('click', '#changePassword', function(e){
+	$('body').off('click').on('click', '#changePassword', function(e){
         $('.passConfirm').slideDown(400);
         password = $('#passAccount').val();
         $('#passAccountConfirm').val('');
@@ -59,7 +59,7 @@ var accountView = function () {
 	/**
 	 * [click on "Cancel change password" button : hide confirmation field]
 	 */
-    $('body').on('click', '#cancelChangePassword', function(e){
+    $('body').off('click').on('click', '#cancelChangePassword', function(e){
     	e.preventDefault();
     	$('.passConfirm').slideUp(400);
     	$('#passAccountConfirm').val(password);
@@ -71,7 +71,7 @@ var accountView = function () {
 	/**
 	 * [click on a switch button representing a day : show or hide the corresponding radio button]
 	 */
-	$('body').on('click', '.onoffswitch-checkbox', function(e){	
+	$('body').off('click').on('click', '.onoffswitch-checkbox', function(e){	
 		toggleRadioButton(this.id);
 	});
 
@@ -89,7 +89,7 @@ var accountView = function () {
 	}, "#helpAccount");
 
     // click everywhere else than the "helpAccount" icon hides the popover
-    $('body').on('click', function(e) {
+    $('body').off('click').on('click', function(e) {
         $('[data-toggle=popover]').each(function() {
             if (!$(this).is(e.target)) {            	
                 $(this).popover('hide');
@@ -162,7 +162,7 @@ var accountView = function () {
 	 * [end world map mgmt]
 	 */
 	
-    $('body').on('click', '#recordChangePassword', function() {
+    $('body').off('click').on('click', '#recordChangePassword', function() {
     	$(".validate").hide();
         if ($('#passAccount').val() == '') { $("#changePasswordEmptyValidate").slideDown(400); }
         else if ($('#passAccount').val().length < 4) { $("#changePasswordLengthValidate").slideDown(400); }
@@ -206,11 +206,16 @@ var accountView = function () {
         var accountId;        
         var returnValue = false;
         var params;
-        var k=0;
 
         if(hash == "account") { accountId = sessionUserData.id; }  
 
-        if(k == 0) { //only call at a time admitted
+    	if ($.trim(email).length == 0) {
+            $("#emailEmptyValidate").slideDown(400);
+        }
+        else if (validateEmail(email) == false) {
+            $("#emailIncorrectValidate").slideDown(400);
+        }
+        else {
             //ajax function call with callback (result) to check if the email address already exists
             $.ajax({
                 type: 'POST',
@@ -222,14 +227,8 @@ var accountView = function () {
                     if (result == '1') {
                         $("#emailExistingValidate").slideDown(400);
                     }
-                    else if ($.trim(email).length == 0) {
-                        $("#emailEmptyValidate").slideDown(400);
-                    }
-                    else if (validateEmail(email) == false) {
-                        $("#emailIncorrectValidate").slideDown(400);
-                    }
                     else {  
-                        if(hash == "account") {               
+                        if(hash == "account") {  	                        	        
                             $("input[type=checkbox].accountSwitch").each(function() {
                                 var id = this.id;
                                 var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
@@ -247,7 +246,6 @@ var accountView = function () {
                     }
                 }
             });
-            k++;
         }
         return returnValue;
     }
@@ -258,21 +256,25 @@ var accountView = function () {
     function accountThirdDisplay() {
         var returnValue = false;
         var count = $("input[type=radio].accountSwitch:checked").length;
+        var k=0;
         // console.log('count : ' + count);
         
-        if (count != 1) {
-            $("#dayValidate").slideDown(400);
-        } else {
-            returnValue = true;
-        	var element;
-        	element = sessionUserData.readingLang;
-        	element = element.charAt(0).toUpperCase() + element.slice(1); //uppercase the first letter to match the element name on the next line
-        	$("#radioAccountLangReading" + element).prop('checked', true);
+        if(k == 0) {
+	        if (count != 1) {
+	            $("#dayValidate").slideDown(400);
+	        } else {
+	            returnValue = true;
+	        	var element;
+	        	element = sessionUserData.readingLang;
+	        	element = element.charAt(0).toUpperCase() + element.slice(1); //uppercase the first letter to match the element name on the next line
+	        	$("#radioAccountLangReading" + element).prop('checked', true);
 
-        	element = sessionUserData.commentLang;
-        	element = element.charAt(0).toUpperCase() + element.slice(1);
-        	$("#radioAccountLangText" + element).prop('checked', true);	
-        }
+	        	element = sessionUserData.commentLang;
+	        	element = element.charAt(0).toUpperCase() + element.slice(1);
+	        	$("#radioAccountLangText" + element).prop('checked', true);	
+	        }
+	        k++;
+	    }
         return returnValue;
     }
     

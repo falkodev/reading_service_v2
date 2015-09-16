@@ -4,7 +4,7 @@ var loginView = function () {
 	/**
 	 * [click on "forgotten password" link displays form to regenerate password]
 	 */
-	$('body').on('click', '#forgottenPass', function(e){
+	$('body').off('click').on('click', '#forgottenPass', function(e){
         e.preventDefault();
 		$("#forgottenValidate").hide();
 		$('#forgottenInput').val($('#loginInput').val());
@@ -15,7 +15,7 @@ var loginView = function () {
 	/**
 	 * [click on "back" link displays again the login form]                                                                              
 	 */
-	$('body').on('click', '#backToLogin', function(e){
+	$('body').off('click').on('click', '#backToLogin', function(e){
 		e.preventDefault();
 		$('#forgottenDiv').hide();
 		$('#loginDiv').show();
@@ -24,7 +24,7 @@ var loginView = function () {
 	/**
 	 * [submit "forgotten password" form : test if email address is valid and ask for a new password]
 	 */
-	$('body').on('click', '#forgottenBtn', function(e){
+	$('body').off('click').on('click', '#forgottenBtn', function(e){
 		e.preventDefault();
 		$(".validate").hide();
 		var email = $('#forgottenInput').val();
@@ -48,7 +48,7 @@ var loginView = function () {
 	/**
 	 * [submit "login" form]
 	 */
-	$('body').on('click', '#loginBtn', function(e){
+	$('body').off('click').on('click', '#loginBtn', function(e){
         $(".validate").hide();
         e.preventDefault();
         var timer;

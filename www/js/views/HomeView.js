@@ -1,20 +1,17 @@
 var homeView = function () {
     var result = {};
     var link = '';
-    var k = 0;
+
 
     /**
      * [on click on a language in homeTemplate, remove previous language and add new language in the view]
      */
-    $('body').on('click', '.linkLang', function(e){
-        if(k == 0) { //to prevent multiple calls at once, only one call is admitted
-            $('script[src="assets/lang/' + lang + '.js"]').remove(); //remove previous language file
-            lang = $(this).text().toLowerCase();
-            lang = $.trim(lang);
-            $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
-            analyzeHash(); // refreshes view
-        }
-        k++;
+    $('body').off('click').on('click', '.linkLang', function(e){
+        $('script[src="assets/lang/' + lang + '.js"]').remove(); //remove previous language file
+        lang = $(this).text().toLowerCase();
+        lang = $.trim(lang);
+        $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
+        analyzeHash(); // refreshes view
       })
 
     /**
