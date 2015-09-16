@@ -12,11 +12,10 @@ var accountView = function () {
     	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
     }
     
-
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]
 	 */
-	$('body').off('click').on('click', '.account-next', function(e){
+	$('body').off().on('click', '.account-next', function(e){
     	e.preventDefault();
         $('.validate').slideUp(200);
     	var currentScreen = $(this).parent().closest('div').attr('id');
@@ -34,7 +33,7 @@ var accountView = function () {
     /**
 	 * [click on "Back" button : hide current screen and show previous one]
 	 */
-	$('body').off('click').on('click', '.account-previous', function(e){
+	$('body').on('click', '.account-previous', function(e){
     	e.preventDefault();
 
     	var currentScreen = $(this).parent().closest('div').attr('id');
@@ -47,7 +46,7 @@ var accountView = function () {
 	/**
 	 * [click on "Change password" button : display hidden confirmation field]
 	 */
-	$('body').off('click').on('click', '#changePassword', function(e){
+	$('body').on('click', '#changePassword', function(e){
         $('.passConfirm').slideDown(400);
         password = $('#passAccount').val();
         $('#passAccountConfirm').val('');
@@ -59,7 +58,7 @@ var accountView = function () {
 	/**
 	 * [click on "Cancel change password" button : hide confirmation field]
 	 */
-    $('body').off('click').on('click', '#cancelChangePassword', function(e){
+    $('body').on('click', '#cancelChangePassword', function(e){
     	e.preventDefault();
     	$('.passConfirm').slideUp(400);
     	$('#passAccountConfirm').val(password);
@@ -68,10 +67,40 @@ var accountView = function () {
         $('#passAccount').prop("readonly", true);
     });
 
+    /**
+     * [click on "Save modification" button : save new password]
+     */
+    $('body').on('click', '#recordChangePassword', function() {
+        $(".validate").hide();
+        if ($('#passAccount').val() == '') { $("#changePasswordEmptyValidate").slideDown(400); }
+        else if ($('#passAccount').val().length < 4) { $("#changePasswordLengthValidate").slideDown(400); }
+        else if ($('#passAccount').val() != $('#passAccountConfirm').val()) { $("#changePasswordMatchValidate").slideDown(400); }
+        else {
+            var id = sessionUserData.id;
+            var pass = $('#passAccount').val();
+            $.post('http://www.jwreading.com/ajax/changePassword.php', {'pass': pass, 'id': id}, function(data) {
+            }).done(function(result) {
+                result = result.trim();
+                if (result == '0' || result == 'fail') {
+                    $("#changePasswordFailValidate").slideDown(400);
+                }
+                else {
+                    var res = result.split('OK.');
+                    $('.passConfirm').slideUp(400);
+                    password = res[1];
+                    $('#passAccount').val(password);
+                    $('#passAccountConfirm').prop("readonly", true);
+                    $('#passAccount').prop("readonly", true);
+                    $("#changePasswordSuccessValidate").slideDown(400);
+                }
+            });
+        }
+    });
+
 	/**
 	 * [click on a switch button representing a day : show or hide the corresponding radio button]
 	 */
-	$('body').off('click').on('click', '.onoffswitch-checkbox', function(e){	
+	$('body').on('click', '.onoffswitch-checkbox', function(e){	
 		toggleRadioButton(this.id);
 	});
 
@@ -89,7 +118,7 @@ var accountView = function () {
 	}, "#helpAccount");
 
     // click everywhere else than the "helpAccount" icon hides the popover
-    $('body').off('click').on('click', function(e) {
+    $('body').on('click', function(e) {
         $('[data-toggle=popover]').each(function() {
             if (!$(this).is(e.target)) {            	
                 $(this).popover('hide');
@@ -112,8 +141,9 @@ var accountView = function () {
 	    $('#account-map-continents').cssMap({
 	        'size' : size, 
 	        'onClick' : function(e){ // click on the map hides the map and shows the button "Display map" and the UTC table corresponding to the clicked zone
-	            $(".account-select-utc").find('option').removeAttr("selected"); //utc selection removed
+                $(".account-select-utc").find('option').removeAttr("selected"); //utc selection removed
 	            $('#account-map-continents').hide('slow');
+                $('#subscribeTip').hide();
 	            $('#displayAccountMap').show();
 	            $('#account-addresses').show();	             		   		
 	        },   
@@ -161,33 +191,6 @@ var accountView = function () {
 	/**
 	 * [end world map mgmt]
 	 */
-	
-    $('body').off('click').on('click', '#recordChangePassword', function() {
-    	$(".validate").hide();
-        if ($('#passAccount').val() == '') { $("#changePasswordEmptyValidate").slideDown(400); }
-        else if ($('#passAccount').val().length < 4) { $("#changePasswordLengthValidate").slideDown(400); }
-        else if ($('#passAccount').val() != $('#passAccountConfirm').val()) { $("#changePasswordMatchValidate").slideDown(400); }
-        else {
-            var id = sessionUserData.id;
-            var pass = $('#passAccount').val();
-            $.post('http://www.jwreading.com/ajax/changePassword.php', {'pass': pass, 'id': id}, function(data) {
-            }).done(function(result) {
-                result = result.trim();
-                if (result == '0' || result == 'fail') {
-					$("#changePasswordFailValidate").slideDown(400);
-                }
-                else {
-                    var res = result.split('OK.');
-                    $('.passConfirm').slideUp(400);
-                    password = res[1];
-                    $('#passAccount').val(password);
-                    $('#passAccountConfirm').prop("readonly", true);
-                    $('#passAccount').prop("readonly", true);
-                    $("#changePasswordSuccessValidate").slideDown(400);
-                }
-            });
-        }
-    });
 
     /**
 	 * [toggleRadioButton : show or hide the radio button corresponding to the chosen day]
@@ -256,25 +259,24 @@ var accountView = function () {
     function accountThirdDisplay() {
         var returnValue = false;
         var count = $("input[type=radio].accountSwitch:checked").length;
-        var k=0;
         // console.log('count : ' + count);
         
-        if(k == 0) {
-	        if (count != 1) {
-	            $("#dayValidate").slideDown(400);
-	        } else {
-	            returnValue = true;
-	        	var element;
-	        	element = sessionUserData.readingLang;
-	        	element = element.charAt(0).toUpperCase() + element.slice(1); //uppercase the first letter to match the element name on the next line
-	        	$("#radioAccountLangReading" + element).prop('checked', true);
-
-	        	element = sessionUserData.commentLang;
-	        	element = element.charAt(0).toUpperCase() + element.slice(1);
-	        	$("#radioAccountLangText" + element).prop('checked', true);	
-	        }
-	        k++;
-	    }
+        if (count != 1) {
+            $("#dayValidate").slideDown(400);
+        } else {
+            returnValue = true;
+            var elementReading = 'Fr';
+            var elementComment = 'Fr';
+        	if(hash == "account") {
+            	elementReading = sessionUserData.readingLang;
+            	elementReading = elementReading.charAt(0).toUpperCase() + elementReading.slice(1); //uppercase the first letter to match the element name on the next line
+            	
+            	elementComment = sessionUserData.commentLang;
+            	elementComment = elementComment.charAt(0).toUpperCase() + elementComment.slice(1);
+            } 
+            $("#radioAccountLangReading" + elementReading).prop('checked', true);
+            $("#radioAccountLangText" + elementComment).prop('checked', true); 
+        }
         return returnValue;
     }
     

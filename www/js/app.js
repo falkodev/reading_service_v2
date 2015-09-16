@@ -8,8 +8,6 @@
   window.userData = '';
   window.connectedUser = false;
   window.loggedOut = false;
-  window.k=0;
-  click = 0;
 
   var slider = new PageSlider($('#tmplContent'));
   // browser language detection and load corresponding language file 
