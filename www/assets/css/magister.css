@@ -411,7 +411,8 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 }
 
 .title,
-.subtitle { 
+.subtitle,
+.intertitle { 
 	font-family: 'Wire One', Helvetica, Arial, sans-serif;
 	font-weight:normal;
 	font-size:7em;
@@ -424,6 +425,11 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	font-size:5.5em;
 	margin-top:0;
 	margin-bottom:40px; 
+}
+.intertitle { 
+	font-size:2em;
+	text-align:center;
+	margin-top:3em;
 }
 .tagline { 
 	font-size:1.4em;
