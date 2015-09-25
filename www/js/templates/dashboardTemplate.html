@@ -5,9 +5,9 @@
             <div class="row">       
                 <div class="col-sm-4 col-sm-offset-2 text-left">
                 <p><a href="#account"><button class="btn btn-lg btn-default" style="width: 182px">{{account_title}}</button></a></p>
-                <p><button class="btn btn-lg btn-default" style="width: 182px">Lecture du jour</button></p>
+                <p><a href="#todayReading"><button class="btn btn-lg btn-default" style="width: 182px">Lecture du jour</button></a></p>
                 <p><button class="btn btn-lg btn-default" style="width: 182px">Anciennes lectures</button></p>
-                <p><button class="btn btn-lg btn-default" style="width: 182px">Nouvelle lecture</button></p>
+                <p><button class="btn btn-lg btn-default" style="width: 182px">Prochaine lecture</button></p>
                 <p><button class="btn btn-lg btn-default" style="width: 182px">Thèmes</button></p>                
                 </div>  
                 <div id="dailyText" class="col-sm-6 text-left" style="border-left: 1px solid white; height: 100%">
@@ -21,7 +21,7 @@
             <p style="position:relative; top: 6em; text-align: center;"><a href="#news"><button class="btn btn-md btn-default">Voir toutes les actualités</button></a></p>
             <div id="waitDiv" class="intertitle">
                 <img src="assets/img/ring-white.svg"/>
-                <h1 class="">Chargement des actualités depuis jw.org</h1>
+                <h1 class="">{{loading}}</h1>
             </div>
         </div>      
     </div>
