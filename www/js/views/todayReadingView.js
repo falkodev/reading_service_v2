@@ -1,10 +1,10 @@
 var todayReadingView = function () {
-	var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData")); // retrieve user data
-	var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
-	today++; //otherwise Sunday = 0
-	var day = 'sessionUserData.day' + today;
-	var dayConfig = eval(day); // today in the user config
-	if(dayConfig) {
+	$(function($){
+		var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData")); // retrieve user data
+		var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
+		today++; //otherwise Sunday = 0
+		var day = 'sessionUserData.day' + today;
+		var dayConfig = eval(day); // today in the user config
 		//déterminer ici quel "jour" on est par rapport au 1er jour de lecture (reprendre logique PHP) puis déterminer quelle semaine prendre (l'actuelle ou la suivante) + gérer derniere semaine de l'année
 		//lire dans la portion du jour (fichier html sur serveur) : déterminer que la portion va de "xx:xx à yy:yy"
 		var nbJours = 0; 
@@ -55,16 +55,34 @@ var todayReadingView = function () {
 	        	'week' : currentWeek,
 	        	'file' : file },        
 	        success: function(html){ 
-	        	console.log(html);  
+	        	// console.log(html);  
 	        	data = JSON.parse(html); 
-	        	$('#lecture').html(data['content']);
-	        	var idFrom = $('input[value="' + data['from'] + '"]').parent().css("color", "red").attr('id'); 
-	        	var idTo = $('input[value="' + data['to'] + '"]').parent().css("color", "red").attr('id'); 
-	        	$('#' + idFrom).nextUntil('#' + idTo).css("color", "red");  
-	        	location.hash = '#' + idFrom;
+	        	$('#weekReading').html(data['content']);
+	        	if(dayConfig == 1) {
+	        		var len = $('span').length;
+	        		console.log(len);  
+	        		len = len - 3;
+					var idFrom = $('input[value="' + data['from'] + '"]').parent().css("color", "#FB7900").attr('id'); 
+		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css("color", "#FB7900").attr('id'); 
+		        	$('#' + idFrom).nextUntil('#' + idTo).css("color", "#FB7900"); 
+		        	if(idFrom != 1) { $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special'); }  
+		        	$('#' + idTo).nextUntil('#' + len).addClass('blur special');
+		        	location.hash = '#' + idFrom;
+		        	$(document).ready(function(){
+					    $('.special').hover(function(){
+					        $('.special').removeClass('blur');
+					    }).mouseout(function(){
+					        $('.special').addClass('add blur');
+					    });
+					});
+				}
+				else {
+					$('#notTodayValidate').slideDown(400);
+				}
 	        }
 	    });	
-	}
+
+	});
 
  	function getWeek(day) {
 		var onejan = new Date(day.getFullYear(),0,1);

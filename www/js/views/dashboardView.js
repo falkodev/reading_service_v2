@@ -54,24 +54,4 @@ var dashboardView = function () {
 			}, 5000); // display every news during 5 seconds		
         }
     });	
-
-	$(function($){
-		//determine if user has a portion today, what portion it is and enable button to access the portion of the day if necessary
-		var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData")); // retrieve user data
-		var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
-		if(today == 0) { today = 7; } //otherwise Sunday = 0 
-		var day = 'sessionUserData.day' + today;
-		var dayConfig = eval(day); // today in the user config
-		if(dayConfig == 1) { //enable "today reading" button
-			console.log('today:'+today);
-			console.log('dayConfig:'+dayConfig);
-			$('#todayReadingBtn').removeClass('disabled').parent('a').attr('href','#todayReading');
-		}
-		else {
-			$('#todayReadingBtn').addClass('disabled');
-			$('body').on('click', '#todayReadingBtn',  function() {
-				$("#noReadingTodayValidate").slideDown(400).delay(3000).fadeOut();
-			});
-		}
-	});
 }
