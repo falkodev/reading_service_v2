@@ -2,9 +2,10 @@ var todayReadingView = function () {
 	$(function($){
 		var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData")); // retrieve user data
 		var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
-		today++; //otherwise Sunday = 0
-		var day = 'sessionUserData.day' + today;
-		var dayConfig = eval(day); // today in the user config
+		// console.log('today: ' + today);
+		if(today == 0) today = 7; //otherwise Sunday = 0
+		var day;
+		var dayConfig;
 		//déterminer ici quel "jour" on est par rapport au 1er jour de lecture (reprendre logique PHP) puis déterminer quelle semaine prendre (l'actuelle ou la suivante) + gérer derniere semaine de l'année
 		//lire dans la portion du jour (fichier html sur serveur) : déterminer que la portion va de "xx:xx à yy:yy"
 		var nbJours = 0; 
@@ -16,6 +17,7 @@ var todayReadingView = function () {
 			{
 				day = 'sessionUserData.day' + i;
 				dayConfig = eval(day); 
+
 				if(dayConfig == 1) 
 				{
 					nbJours++;
@@ -29,12 +31,11 @@ var todayReadingView = function () {
 				}
 			}
 		}
-		// console.log('numeroPortion:' + numeroPortion);
 		var semaineProchaine = 0;
 		if(today >= sessionUserData.firstDay && beforeFirstCycleDay == 1) { semaineProchaine = 1; }
-		
+
 		var todayDate = new Date();
-		var currentWeek = getWeek(todayDate);
+		var currentWeek = getWeekNumber(todayDate);
 
 		if(semaineProchaine == 1) { 
 			if(currentWeek == 53) { currentWeek = "01"; }
@@ -58,21 +59,24 @@ var todayReadingView = function () {
 	        	// console.log(html);  
 	        	data = JSON.parse(html); 
 	        	$('#weekReading').html(data['content']);
+    			day = 'sessionUserData.day' + today;
+				dayConfig = eval(day); // today in the user config
 	        	if(dayConfig == 1) {
 	        		var len = $('span').length;
-	        		console.log(len);  
+	        		// console.log(len);  
 	        		len = len - 3;
 					var idFrom = $('input[value="' + data['from'] + '"]').parent().css("color", "#FB7900").attr('id'); 
 		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css("color", "#FB7900").attr('id'); 
 		        	$('#' + idFrom).nextUntil('#' + idTo).css("color", "#FB7900"); 
 		        	if(idFrom != 1) { $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special'); }  
 		        	$('#' + idTo).nextUntil('#' + len).addClass('blur special');
-		        	location.hash = '#' + idFrom;
-		        	$(document).ready(function(){
+		        	window.location.hash = '#' + idFrom;
+		        	// window.location.replace = '#todayReading';
+	        		$(document).ready(function(){
 					    $('.special').hover(function(){
 					        $('.special').removeClass('blur');
 					    }).mouseout(function(){
-					        $('.special').addClass('add blur');
+					        $('.special').addClass('blur');
 					    });
 					});
 				}
@@ -81,13 +85,21 @@ var todayReadingView = function () {
 				}
 	        }
 	    });	
-
 	});
-
- 	function getWeek(day) {
-		var onejan = new Date(day.getFullYear(),0,1);
-        var today = new Date(day.getFullYear(),day.getMonth(),day.getDate());
-        var dayOfYear = ((today - onejan +1)/86400000);
-        return Math.ceil(dayOfYear/7);
+	
+	//  For a given date, get the ISO week number
+    function getWeekNumber(d) {
+	    // Copy date so don't modify original
+	    d = new Date(+d);
+	    d.setHours(0,0,0);
+	    // Set to nearest Thursday: current date + 4 - current day number
+	    // Make Sunday's day number 7
+	    d.setDate(d.getDate() + 4 - (d.getDay()||7));
+	    // Get first day of year
+	    var yearStart = new Date(d.getFullYear(),0,1);
+	    // Calculate full weeks to nearest Thursday
+	    var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+	    // Return week number
+	    return weekNo;
 	}
 }

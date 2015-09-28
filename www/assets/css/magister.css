@@ -524,12 +524,6 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
     color: #fff;
 }
 
-.blur {
-   color: transparent;
-   text-shadow: 0 0 .5px rgba(255, 255, 255, 0.8);
-}
-
-
 
 /********************************************************/
 /*                 UI - Thumbnails                      */
@@ -943,4 +937,9 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   display: none;
   z-index: 1000;
   position: fixed;
+}
+
+.blur{
+   color: transparent;
+   text-shadow: 0 0 .5px rgba(255, 255, 255, 0.8);
 }

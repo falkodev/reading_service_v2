@@ -50,9 +50,17 @@
     if(!hash) {
       hash = 'home';
     }
+    else if(isInt(hash)){
+      hash = 'todayReading';
+    }
     var activeMenu = hash + '_active';
     displayView('menu', activeMenu); //load menu
     displayView(hash, null); //load view corresponding to the hash
+  }
+
+  function isInt(value) {
+    var x;
+    return isNaN(value) ? !1 : (x = parseFloat(value), (0 | x) === x);
   }
   
   //app init : first request
