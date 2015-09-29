@@ -31,6 +31,7 @@ var todayReadingView = function () {
 				}
 			}
 		}
+		// console.log('numeroPortion:' + numeroPortion + ' nbJours:' + nbJours);
 		var semaineProchaine = 0;
 		if(today >= sessionUserData.firstDay && beforeFirstCycleDay == 1) { semaineProchaine = 1; }
 
@@ -67,21 +68,29 @@ var todayReadingView = function () {
 	        		var len = $('span').length;
 	        		// console.log(len);  
 	        		len = len - 3;
-					var idFrom = $('input[value="' + data['from'] + '"]').parent().css("color", "#FB7900").attr('id'); 
-		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css("color", "#FB7900").attr('id'); 
-		        	$('#' + idFrom).nextUntil('#' + idTo).css("color", "#FB7900"); 
+					var idFrom = $('input[value="' + data['from'] + '"]').parent().css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).attr('id'); 
+		        	$('input[value="' + data['from'] + '"]').prev('a').css({"color":"#505D6E","background-color":"#fff","font-weight":"600" }); 
+		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).attr('id'); 
+		        	$('input[value="' + data['to'] + '"]').prev('a').css({"color":"#505D6E","background-color":"#fff","font-weight":"600" }); 
+		        	$('#' + idFrom).nextUntil('#' + idTo).css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).find('a').css({"color":"#505D6E","background-color":"#fff","font-weight":"600" }); 
+		        	
 		        	if(idFrom != 1) { $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special'); }  
 		        	var topIdFrom = $('#' + idFrom).offset().top;
 		        	var margin = 100;
-		        	if($(window).width() > 767) { margin = 200; }
+		        	$('#resize').hide();
+		        	if($(window).width() > 767) { margin = 200; $('#resize').show();}
 		        	$('#todayPortionValidate').css({'top':topIdFrom - margin}); 
 		        	$('#todayPortionValidate').slideDown(400);
 		        	$('#' + idTo).nextUntil('#' + len).addClass('blur special');
 		        	window.location.replace('#' + idFrom);
+		        	$('.anchor').css({'padding-top':'initial'}); 
 	        		$(document).ready(function(){
 	        			$(".closeTip").click(function() {      
 			  	 	        $(".tip").slideUp(400);
 			   	    	});
+			   	    	var interval = window.setInterval(function() {
+							$(".tip").slideUp(400);
+						}, 8000);
 					    $('.special').hover(function(){
 					        $('.special').removeClass('blur');
 					    }).mouseout(function(){
@@ -95,6 +104,16 @@ var todayReadingView = function () {
 	        }
 	    });	
 	});		
+
+	$('body').on('click', '#zoom', function(){
+		var size = parseInt($('#weekReading').css('font-size')) + 1;
+		$('#weekReading').css({'font-size': size + 'px'});
+	});
+
+	$('body').on('click', '#dezoom', function(){
+		var size = parseInt($('#weekReading').css('font-size')) - 1;
+		$('#weekReading').css({'font-size': size + 'px'});
+	});
 
 	//  For a given date, get the ISO week number
     function getWeekNumber(d) {

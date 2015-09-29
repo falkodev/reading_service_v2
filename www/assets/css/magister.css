@@ -438,7 +438,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 .intertitle { 
 	font-size:2em;
 	text-align:center;
-	margin-top:3em;
+	margin-bottom:-110px;
 }
 .tagline { 
 	font-size:1.4em;
@@ -946,6 +946,11 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   display: none;
   z-index: 1000;
   position: fixed;
+}
+
+.feed-rotator{
+	margin-bottom: 6em;
+	margin-top: 2em;
 }
 
 .blur{
