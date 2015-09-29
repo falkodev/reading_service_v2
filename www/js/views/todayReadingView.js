@@ -58,6 +58,8 @@ var todayReadingView = function () {
 	        success: function(html){ 
 	        	// console.log(html);  
 	        	data = JSON.parse(html); 
+	        	$('#todayPortionFrom').html(data['from']);
+	        	$('#todayPortionTo').html(data['to']);
 	        	$('#weekReading').html(data['content']);
     			day = 'sessionUserData.day' + today;
 				dayConfig = eval(day); // today in the user config
@@ -69,10 +71,17 @@ var todayReadingView = function () {
 		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css("color", "#FB7900").attr('id'); 
 		        	$('#' + idFrom).nextUntil('#' + idTo).css("color", "#FB7900"); 
 		        	if(idFrom != 1) { $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special'); }  
+		        	var topIdFrom = $('#' + idFrom).offset().top;
+		        	var margin = 100;
+		        	if($(window).width() > 767) { margin = 200; }
+		        	$('#todayPortionValidate').css({'top':topIdFrom - margin}); 
+		        	$('#todayPortionValidate').slideDown(400);
 		        	$('#' + idTo).nextUntil('#' + len).addClass('blur special');
-		        	window.location.hash = '#' + idFrom;
-		        	// window.location.replace = '#todayReading';
+		        	window.location.replace('#' + idFrom);
 	        		$(document).ready(function(){
+	        			$(".closeTip").click(function() {      
+			  	 	        $(".tip").slideUp(400);
+			   	    	});
 					    $('.special').hover(function(){
 					        $('.special').removeClass('blur');
 					    }).mouseout(function(){
@@ -85,8 +94,8 @@ var todayReadingView = function () {
 				}
 	        }
 	    });	
-	});
-	
+	});		
+
 	//  For a given date, get the ISO week number
     function getWeekNumber(d) {
 	    // Copy date so don't modify original

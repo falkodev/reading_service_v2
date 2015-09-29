@@ -8,6 +8,7 @@
   window.userData = '';
   window.connectedUser = false;
   window.loggedOut = false;
+  window.referrer = '';
 
   var slider = new PageSlider($('#tmplContent'));
   // browser language detection and load corresponding language file 
@@ -50,17 +51,10 @@
     if(!hash) {
       hash = 'home';
     }
-    else if(isInt(hash)){
-      hash = 'todayReading';
-    }
+    else {hash = checkNeedLogin(hash);}
     var activeMenu = hash + '_active';
     displayView('menu', activeMenu); //load menu
     displayView(hash, null); //load view corresponding to the hash
-  }
-
-  function isInt(value) {
-    var x;
-    return isNaN(value) ? !1 : (x = parseFloat(value), (0 | x) === x);
   }
   
   //app init : first request
@@ -170,6 +164,21 @@
     str = str.replace(new RegExp('{{{', 'g'), '');
     str = str.replace(new RegExp('}}}', 'g'), '');
     return str;
+  }
+
+  /**
+   * [checkNeedLogin : check if the page to display needs the user to be connected]
+   * @param  {[string]} page [hash of the page called]
+   * @return {[string]}      [redirect to login page if necessary]
+   */
+  function checkNeedLogin(page)
+  {
+    var arrayNeedLogin = ['dashboard', 'todayReading', 'account'];
+    referrer = page; // referrer updated in order to know after login where to redirect the user
+    if(arrayNeedLogin.indexOf(page) > -1 && !window.connectedUser) { //if the page called is in the array of pages needing a connected user and if the user is not connected
+      page = 'login'; // redirect the user to the login page
+    }
+    return page;
   }
 
   /**

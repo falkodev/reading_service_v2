@@ -1,6 +1,6 @@
 var loginView = function () {
 	var result = {};
-	
+
 	/**
 	 * [click on "forgotten password" link displays form to regenerate password]
 	 */
@@ -71,9 +71,14 @@ var loginView = function () {
                 {                
                     userData = JSON.parse(msg.substr(1));
                     sessionStorage.setItem("sessionUserData", JSON.stringify(userData));
-                    window.location.hash = '#dashboard';
                     connectedUser = true;
                     loggedOut = false;
+                    if(referrer != '' && referrer != 'login') {	
+						window.location.reload(); //for a page needing a connected user, the displayed page is the login page, but the real hash (in the browser) is the previously called page. so a refresh is enough to hide the login page and display the previously called page				
+                    }
+                    else { 
+                    	window.location.hash = '#dashboard'; //default page to display after login
+                    }                      
                 }
                 else if (msg == '0') //wrong password
                 { $("#pwdValidate").slideDown(400); }

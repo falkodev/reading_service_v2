@@ -10,7 +10,7 @@ var accountView = function () {
         // add it to the template for handlebars compilation
     	result.userData = sessionUserData;
     	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
-    }
+    } 
     
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]

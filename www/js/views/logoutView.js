@@ -7,5 +7,6 @@ var logoutView = function () {
     sessionStorage.setItem("sessionUserData","");
     $('input').val('');
     $('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+    window.referrer = '';
     window.location.hash = '#login';
 }
