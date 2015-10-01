@@ -11,26 +11,25 @@ var todayReadingView = function () {
 		var nbJours = 0; 
 		var beforeFirstCycleDay = 0;
 		var numeroPortion=0;
-		if(today == sessionUserData.firstDay) { numeroPortion = 1; }
-		else {
-			for(var i=1;i<8;i++)
-			{
-				day = 'sessionUserData.day' + i;
-				dayConfig = eval(day); 
+		
+		for(var i=1;i<8;i++)
+		{
+			day = 'sessionUserData.day' + i;
+			dayConfig = eval(day); 
 
-				if(dayConfig == 1) 
-				{
-					nbJours++;
-					if(i < sessionUserData.firstDay) { beforeFirstCycleDay = 1; }
-					
-					//2 cas de figure : 
-					//1er cas :  si le jour actuel est plus grand que le "premier" jour du cycle, il faut prendre en compte le jour actuel + les jours à la fois plus grands que le "premier" jour et plus petits que le jour actuel
-					if(today > sessionUserData.firstDay && i <= today && i >= sessionUserData.firstDay) { numeroPortion++; }
-					//2e cas : si le jour actuel est plus petit que le "premier" jour du cycle, il faut prendre en compte le jour actuel + les jours plus petits que le jour actuel + les jours plus grands que le "premier" jour + le "premier" jour
-					else if(today < sessionUserData.firstDay && ( (i <= today) || (i >= sessionUserData.firstDay)) ) { numeroPortion++; }
-				}
+			if(dayConfig == 1) 
+			{
+				nbJours++;
+				if(i < sessionUserData.firstDay) { beforeFirstCycleDay = 1; }
+				
+				//2 cas de figure : 
+				//1er cas :  si le jour actuel est plus grand que le "premier" jour du cycle, il faut prendre en compte le jour actuel + les jours à la fois plus grands que le "premier" jour et plus petits que le jour actuel
+				if(today > sessionUserData.firstDay && i <= today && i >= sessionUserData.firstDay) { numeroPortion++; }
+				//2e cas : si le jour actuel est plus petit que le "premier" jour du cycle, il faut prendre en compte le jour actuel + les jours plus petits que le jour actuel + les jours plus grands que le "premier" jour + le "premier" jour
+				else if(today < sessionUserData.firstDay && ( (i <= today) || (i >= sessionUserData.firstDay)) ) { numeroPortion++; }
 			}
 		}
+		if(today == sessionUserData.firstDay) { numeroPortion = 1; }
 		// console.log('numeroPortion:' + numeroPortion + ' nbJours:' + nbJours);
 		var semaineProchaine = 0;
 		if(today >= sessionUserData.firstDay && beforeFirstCycleDay == 1) { semaineProchaine = 1; }
@@ -65,9 +64,9 @@ var todayReadingView = function () {
     			day = 'sessionUserData.day' + today;
 				dayConfig = eval(day); // today in the user config
 	        	if(dayConfig == 1) {
-	        		var len = $('span').length;
-	        		// console.log(len);  
-	        		len = len - 3;
+	        		var len = $('span.anchor').length;	 
+	        		// console.log('len:' + len);       		
+	        		// len = len - 3;
 					var idFrom = $('input[value="' + data['from'] + '"]').parent().css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).attr('id'); 
 		        	$('input[value="' + data['from'] + '"]').prev('a').css({"color":"#505D6E","background-color":"#fff","font-weight":"600" }); 
 		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).attr('id'); 
@@ -81,7 +80,8 @@ var todayReadingView = function () {
 		        	if($(window).width() > 767) { margin = 200; $('#resize').show();}
 		        	$('#todayPortionValidate').css({'top':topIdFrom - margin}); 
 		        	$('#todayPortionValidate').slideDown(400);
-		        	$('#' + idTo).nextUntil('#' + len).addClass('blur special');
+		        	// console.log('len:' + len + ' idTo:' + idTo);  
+		        	if(idTo != len) { $('#' + idTo).nextUntil('#' + len).addClass('blur special'); }
 		        	window.location.replace('#' + idFrom);
 		        	$('.anchor').css({'padding-top':'initial'}); 
 	        		$(document).ready(function(){

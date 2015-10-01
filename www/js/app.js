@@ -69,11 +69,10 @@
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
-  function displayView(element, activeMenu) {
+  function displayView(element, activeMenu) {   
     var view   = "new " + element + "View()";
     var result = eval(view);
     var displaySubscribe = false;
-
     //determine if subscribe view is calling 
     if(element == 'subscribe') { 
       displaySubscribe = true;
