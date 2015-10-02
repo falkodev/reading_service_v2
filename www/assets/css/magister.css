@@ -953,7 +953,20 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	margin-top: 2em;
 }
 
-.blur{
+/*.blur {
    color: transparent;
    text-shadow: 0 0 .5px rgba(255, 255, 255, 0.8);
+}*/
+
+.blur{
+    position:relative;
+}
+.blur:after {
+    content:"";
+    position:absolute;
+    top:0.1em;
+    left:0;
+    height:100%;
+    width:100%;
+    background: linear-gradient(rgba(0,0,0,0), #505D6E);
 }

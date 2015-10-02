@@ -1,23 +1,4 @@
 var dashboardView = function () {
-	// $('body').off().on('tap', '.navLink', function(e){
-	//     //Prevents Default Behavior 
-	//     e.preventDefault();
-	//     // Calls Your Function with the URL from the custom data attribute 
-	//     openUrl($(this).data('url'), '_system');
-	// });
-
-	// $('body').off().on('click', '.navLink', function(e){
-	//     //Prevents Default Behavior 
-	//     e.preventDefault();
-	//     // Calls Your Function with the URL from the custom data attribute 
-	//     openUrl($(this).data('url'));
-	// });
-
-	// function openUrl(url) {
- //      // alert("open url: " + url);
- //      window.open(url, '_blank', '_system');
- //    }
-
 	//get daily text
 	$.post("http://www.jwreading.com/ajax/getDailyText.php", 
 	   { 'lang': lang }, function(data) {}).complete(function(data) {
