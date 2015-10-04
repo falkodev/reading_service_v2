@@ -67,11 +67,11 @@ var todayReadingView = function () {
 	        		var len = $('span.anchor').length;	 
 	        		// console.log('len:' + len);       		
 	        		// len = len - 3;
-					var idFrom = $('input[value="' + data['from'] + '"]').parent().css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).attr('id'); 
-		        	$('input[value="' + data['from'] + '"]').prev('a').css({"color":"#505D6E","background-color":"#fff","font-weight":"600" }); 
-		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).attr('id'); 
-		        	$('input[value="' + data['to'] + '"]').prev('a').css({"color":"#505D6E","background-color":"#fff","font-weight":"600" }); 
-		        	$('#' + idFrom).nextUntil('#' + idTo).css({"color":"#505D6E","background-color":"#fff","font-weight":"500" }).find('a').css({"color":"#505D6E","background-color":"#fff","font-weight":"600" }); 
+					var idFrom = $('input[value="' + data['from'] + '"]').parent().css({"color":"#fff","font-weight":"500" }).attr('id'); 
+		        	$('input[value="' + data['from'] + '"]').prev('a').css({"color":"#fff","font-weight":"600" }); 
+		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css({"color":"#fff","font-weight":"500" }).attr('id'); 
+		        	$('input[value="' + data['to'] + '"]').prev('a').css({"color":"#fff","font-weight":"600" }); 
+		        	$('#' + idFrom).nextUntil('#' + idTo).css({"color":"#fff","font-weight":"500" }).find('a').css({"color":"#fff","font-weight":"600" }); 
 		        	
 		        	if(idFrom != 1) { $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special'); }  
 		        	var topIdFrom = $('#' + idFrom).offset().top;
