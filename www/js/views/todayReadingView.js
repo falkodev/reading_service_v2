@@ -73,15 +73,29 @@ var todayReadingView = function () {
 		        	$('input[value="' + data['to'] + '"]').prev('a').css({"color":"#fff","font-weight":"600" }); 
 		        	$('#' + idFrom).nextUntil('#' + idTo).css({"color":"#fff","font-weight":"500" }).find('a').css({"color":"#fff","font-weight":"600" }); 
 		        	
-		        	if(idFrom != 1) { $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special'); }  
+		        	if(idFrom != 1) { 
+		        		// $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special');
+		        		var beforeFrom = parseInt(idFrom) - 1;
+		        		$('#1').nextUntil('#' + beforeFrom).andSelf().hide(); 
+		        		$('#'  + beforeFrom).addClass('blurBefore special'); 
+		        		$('#' + beforeFrom).after($('#btnDisplayBefore').show()).after('<br><br>');
+	        			// $('#btnDisplayBefore').after('<br><br>');
+		        	}  
+		        	if(idTo != len) { 
+		        		// $('#' + idTo).nextUntil('#' + len).addClass('blur special'); 
+		        		var afterTo = parseInt(idTo) + 1;
+		        		$('#' + afterTo).addClass('blurAfter special'); 		        				   
+		        		$('#' + afterTo).nextUntil('#' + len).hide();      
+	        			$('#' + afterTo).after($('#btnDisplayAfter').show());
+	        			$('#btnDisplayAfter').after('<br><br>');
+		        	}
 		        	var topIdFrom = $('#' + idFrom).offset().top;
 		        	var margin = 100;
 		        	$('#resize').hide();
 		        	if($(window).width() > 767) { margin = 200; $('#resize').show();}
 		        	$('#todayPortionValidate').css({'top':topIdFrom - margin}); 
 		        	$('#todayPortionValidate').slideDown(400);
-		        	// console.log('len:' + len + ' idTo:' + idTo);  
-		        	if(idTo != len) { $('#' + idTo).nextUntil('#' + len).addClass('blur special'); }
+		        	
 		        	window.location.replace('#' + idFrom);
 		        	$('.anchor').css({'padding-top':'initial'}); 
 	        		$(document).ready(function(){
@@ -91,10 +105,22 @@ var todayReadingView = function () {
 			   	    	var interval = window.setInterval(function() {
 							$(".tip").slideUp(400);
 						}, 8000);
-					    $('.special').hover(function(){
-					        $('.special').removeClass('blur');
-					    }).mouseout(function(){
-					        $('.special').addClass('blur');
+					    // $('.special').hover(function(){
+					    //     $('.special').removeClass('blur');
+					    // }).mouseout(function(){
+					    //     $('.special').addClass('blur');
+					    // });
+					    $('body').on('click', '#btnDisplayBefore', function(e){
+					    	$('#' + beforeFrom).removeClass('blurBefore special'); 	
+					    	$('#1').nextUntil('#' + beforeFrom).andSelf().show();      
+					    	$('#btnDisplayBefore').hide();
+					    	//ici afficher un bouton "Cacher versets précédents" + enlever sauts de ligne en trop + remettre focus sur idFrom
+					    });
+					    $('body').on('click', '#btnDisplayAfter', function(e){
+					    	$('#' + afterTo).removeClass('blurAfter special'); 	
+					    	$('#' + afterTo).nextUntil('#' + len).show();      
+					    	$('#btnDisplayAfter').hide();
+					    	//ici afficher un bouton "Cacher versets suivants"
 					    });
 					});
 				}

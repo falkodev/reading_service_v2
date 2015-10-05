@@ -957,16 +957,26 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
    color: transparent;
    text-shadow: 0 0 .5px rgba(255, 255, 255, 0.8);
 }*/
-
-.blur{
-    position:relative;
+.special {
+    display: inline-block;
+    overflow: hidden;
+  	text-overflow: ellipsis;
 }
-.blur:after {
+.blurBefore, .blurAfter{
+    position:relative;
+ 
+}
+.blurBefore:after, .blurAfter:after {
     content:"";
     position:absolute;
     top:0.2em;
     left:0;
     height:100%;
-    width:100%;
-    background: linear-gradient(rgba(0,0,0,0), #505D6E);
+    width:100%; 
+}
+.blurBefore:after {
+	background: linear-gradient(#505D6E, rgba(0,0,0,0));
+}
+.blurAfter:after {
+	background: linear-gradient(rgba(0,0,0,0), #505D6E);
 }
