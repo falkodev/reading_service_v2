@@ -74,53 +74,61 @@ var todayReadingView = function () {
 		        	$('#' + idFrom).nextUntil('#' + idTo).css({"color":"#fff","font-weight":"500" }).find('a').css({"color":"#fff","font-weight":"600" }); 
 		        	
 		        	if(idFrom != 1) { 
-		        		// $('#1').nextUntil('#' + idFrom).andSelf().addClass('blur special');
 		        		var beforeFrom = parseInt(idFrom) - 1;
 		        		$('#1').nextUntil('#' + beforeFrom).andSelf().hide(); 
 		        		$('#'  + beforeFrom).addClass('blurBefore special'); 
-		        		$('#' + beforeFrom).after($('#btnDisplayBefore').show()).after('<br><br>');
-	        			// $('#btnDisplayBefore').after('<br><br>');
+		        		$('#' + beforeFrom).after($('#btnDisplayBefore').show());
+	        			$('#' + beforeFrom).after($('#btnHideBefore'));
+	        			$('#btnHideBefore').before('<br><br>');
 		        	}  
 		        	if(idTo != len) { 
-		        		// $('#' + idTo).nextUntil('#' + len).addClass('blur special'); 
 		        		var afterTo = parseInt(idTo) + 1;
 		        		$('#' + afterTo).addClass('blurAfter special'); 		        				   
 		        		$('#' + afterTo).nextUntil('#' + len).hide();      
 	        			$('#' + afterTo).after($('#btnDisplayAfter').show());
-	        			$('#btnDisplayAfter').after('<br><br>');
+	        			// $('#btnDisplayAfter').after('<br><br>').before('<br><br>');
+	        			$('#' + afterTo).after($('#btnHideAfter'));
+	        			$('#btnHideAfter').before('<br><br>');
+	        			$('#btnDisplayAfter').after('<br><br>')
 		        	}
 		        	var topIdFrom = $('#' + idFrom).offset().top;
 		        	var margin = 100;
 		        	$('#resize').hide();
 		        	if($(window).width() > 767) { margin = 200; $('#resize').show();}
-		        	$('#todayPortionValidate').css({'top':topIdFrom - margin}); 
+		        	// $('#todayPortionValidate').css({'top':topIdFrom - margin}); 
 		        	$('#todayPortionValidate').slideDown(400);
 		        	
-		        	window.location.replace('#' + idFrom);
-		        	$('.anchor').css({'padding-top':'initial'}); 
 	        		$(document).ready(function(){
 	        			$(".closeTip").click(function() {      
 			  	 	        $(".tip").slideUp(400);
 			   	    	});
-			   	    	var interval = window.setInterval(function() {
-							$(".tip").slideUp(400);
-						}, 8000);
-					    // $('.special').hover(function(){
-					    //     $('.special').removeClass('blur');
-					    // }).mouseout(function(){
-					    //     $('.special').addClass('blur');
-					    // });
+
 					    $('body').on('click', '#btnDisplayBefore', function(e){
 					    	$('#' + beforeFrom).removeClass('blurBefore special'); 	
 					    	$('#1').nextUntil('#' + beforeFrom).andSelf().show();      
 					    	$('#btnDisplayBefore').hide();
-					    	//ici afficher un bouton "Cacher versets précédents" + enlever sauts de ligne en trop + remettre focus sur idFrom
+					    	$('#btnHideBefore').show();	 
+					    	window.location.replace('#' + beforeFrom); 		
 					    });
 					    $('body').on('click', '#btnDisplayAfter', function(e){
 					    	$('#' + afterTo).removeClass('blurAfter special'); 	
 					    	$('#' + afterTo).nextUntil('#' + len).show();      
 					    	$('#btnDisplayAfter').hide();
-					    	//ici afficher un bouton "Cacher versets suivants"
+					    	$('#btnHideAfter').show();	
+					    });
+					    $('body').on('click', '#btnHideBefore', function(e){
+					    	$('#' + beforeFrom).addClass('blurBefore special'); 	
+					    	$('#1').nextUntil('#' + beforeFrom).andSelf().hide();      
+					    	$('#btnDisplayBefore').show();
+					    	$('#btnHideBefore').hide();	
+					    	window.location.replace('#' + beforeFrom); 	
+					    });
+					    $('body').on('click', '#btnHideAfter', function(e){
+					    	$('#' + afterTo).addClass('blurAfter special'); 	
+					    	$('#' + afterTo).nextUntil('#' + len).hide();      
+					    	$('#btnDisplayAfter').show();
+					    	$('#btnHideAfter').hide();	
+					    	// voir pbl de disparition des <br> + placer bouton "Afficher/Cacher versets suivants" entre le dernier verset de la lecture et celui de la prochaine version + taille des boutons
 					    });
 					});
 				}
