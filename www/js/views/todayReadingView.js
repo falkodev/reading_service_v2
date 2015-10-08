@@ -68,10 +68,10 @@ var todayReadingView = function () {
 	        		// console.log('len:' + len);       		
 	        		// len = len - 3;
 					var idFrom = $('input[value="' + data['from'] + '"]').parent().css({"color":"#fff","font-weight":"500" }).attr('id'); 
-		        	$('input[value="' + data['from'] + '"]').prev('a').css({"color":"#fff","font-weight":"600" }); 
+		        	$('input[value="' + data['from'] + '"]').prev('a').css({"color":"#FB7900","font-weight":"500" }); 
 		        	var idTo = $('input[value="' + data['to'] + '"]').parent().css({"color":"#fff","font-weight":"500" }).attr('id'); 
-		        	$('input[value="' + data['to'] + '"]').prev('a').css({"color":"#fff","font-weight":"600" }); 
-		        	$('#' + idFrom).nextUntil('#' + idTo).css({"color":"#fff","font-weight":"500" }).find('a').css({"color":"#fff","font-weight":"600" }); 
+		        	$('input[value="' + data['to'] + '"]').prev('a').css({"color":"#FB7900","font-weight":"500" }); 
+		        	$('#' + idFrom).nextUntil('#' + idTo).css({"color":"#fff","font-weight":"500" }).find('a').css({"color":"#FB7900","font-weight":"500" }); 
 		        	
 		        	if(idFrom != 1) { 
 		        		var beforeFrom = parseInt(idFrom) - 1;
