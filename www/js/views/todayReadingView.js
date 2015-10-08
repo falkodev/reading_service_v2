@@ -76,20 +76,21 @@ var todayReadingView = function () {
 		        	if(idFrom != 1) { 
 		        		var beforeFrom = parseInt(idFrom) - 1;
 		        		$('#1').nextUntil('#' + beforeFrom).andSelf().hide(); 
-		        		$('#'  + beforeFrom).addClass('blurBefore special'); 
+		        		$('#'  + beforeFrom).addClass('blurBefore'); 
 		        		$('#' + beforeFrom).after($('#btnDisplayBefore').show());
 	        			$('#' + beforeFrom).after($('#btnHideBefore'));
 	        			$('#btnHideBefore').before('<br><br>');
+	        			$('#btnDisplayBefore').after('<br><br>');
 		        	}  
 		        	if(idTo != len) { 
 		        		var afterTo = parseInt(idTo) + 1;
-		        		$('#' + afterTo).addClass('blurAfter special'); 		        				   
+		        		$('#' + afterTo).addClass('blurAfter'); 		        				   
 		        		$('#' + afterTo).nextUntil('#' + len).hide();      
-	        			$('#' + afterTo).after($('#btnDisplayAfter').show());
-	        			// $('#btnDisplayAfter').after('<br><br>').before('<br><br>');
-	        			$('#' + afterTo).after($('#btnHideAfter'));
-	        			$('#btnHideAfter').before('<br><br>');
-	        			$('#btnDisplayAfter').after('<br><br>')
+		        		$('#' + idTo).after('<br><br>');
+		        		$('#' + len).before('<br><br>');
+	        			$('#' + afterTo).before($('#btnDisplayAfter').show());
+	        			$('#' + afterTo).before($('#btnHideAfter'));
+	        			$('#btnHideAfter').after('<br><br>');
 		        	}
 		        	var topIdFrom = $('#' + idFrom).offset().top;
 		        	var margin = 100;
@@ -103,32 +104,34 @@ var todayReadingView = function () {
 			  	 	        $(".tip").slideUp(400);
 			   	    	});
 
-					    $('body').on('click', '#btnDisplayBefore', function(e){
-					    	$('#' + beforeFrom).removeClass('blurBefore special'); 	
+					    $('body').on('click', '#btnDisplayBefore', function(){
+					    	$('#' + beforeFrom).removeClass('blurBefore'); 	
 					    	$('#1').nextUntil('#' + beforeFrom).andSelf().show();      
 					    	$('#btnDisplayBefore').hide();
 					    	$('#btnHideBefore').show();	 
 					    	window.location.replace('#' + beforeFrom); 		
 					    });
-					    $('body').on('click', '#btnDisplayAfter', function(e){
-					    	$('#' + afterTo).removeClass('blurAfter special'); 	
-					    	$('#' + afterTo).nextUntil('#' + len).show();      
-					    	$('#btnDisplayAfter').hide();
-					    	$('#btnHideAfter').show();	
+					    $('body').on('click', '#btnDisplayAfter', function(){
+					    	$('#' + afterTo).removeClass('blurAfter'); 	
+					    	$('#' + afterTo).nextUntil('#' + len).show();      	
+					    	$('#btnDisplayAfter').fadeOut(function(){
+					    		$('#btnHideAfter').fadeIn();
+					    	});	
 					    });
-					    $('body').on('click', '#btnHideBefore', function(e){
-					    	$('#' + beforeFrom).addClass('blurBefore special'); 	
+					    $('body').on('click', '#btnHideBefore', function(){
+					    	$('#' + beforeFrom).addClass('blurBefore'); 	
 					    	$('#1').nextUntil('#' + beforeFrom).andSelf().hide();      
 					    	$('#btnDisplayBefore').show();
 					    	$('#btnHideBefore').hide();	
 					    	window.location.replace('#' + beforeFrom); 	
 					    });
-					    $('body').on('click', '#btnHideAfter', function(e){
-					    	$('#' + afterTo).addClass('blurAfter special'); 	
+					    $('body').on('click', '#btnHideAfter', function(){
+					    	$('#' + afterTo).addClass('blurAfter'); 	
 					    	$('#' + afterTo).nextUntil('#' + len).hide();      
-					    	$('#btnDisplayAfter').show();
-					    	$('#btnHideAfter').hide();	
-					    	// voir pbl de disparition des <br> + placer bouton "Afficher/Cacher versets suivants" entre le dernier verset de la lecture et celui de la prochaine version + taille des boutons
+					    	$('#btnHideAfter').fadeOut(function(){
+					    		$('#btnDisplayAfter').fadeIn();
+					    	});	
+					    	$('#' + len).before('<br><br>');					    	
 					    });
 					});
 				}

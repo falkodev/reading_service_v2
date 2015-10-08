@@ -953,18 +953,11 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	margin-top: 2em;
 }
 
-/*.blur {
-   color: transparent;
-   text-shadow: 0 0 .5px rgba(255, 255, 255, 0.8);
-}*/
-.special {
+.blurBefore, .blurAfter{
+    position:relative;
     display: inline-block;
     overflow: hidden;
   	text-overflow: ellipsis;
-}
-.blurBefore, .blurAfter{
-    position:relative;
- 
 }
 .blurBefore:after, .blurAfter:after {
     content:"";
@@ -979,4 +972,9 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 }
 .blurAfter:after {
 	background: linear-gradient(rgba(0,0,0,0), #505D6E);
+}
+
+.btn-portion{
+	margin-bottom: 1em;
+	min-width: 100%;
 }
