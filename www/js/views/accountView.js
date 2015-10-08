@@ -151,7 +151,7 @@ var accountView = function () {
 	        loadingText : '', 
 	    });
 
-	    // when view is loaded, get timezones data and store it hidden
+        // when view is loaded, get timezones data and store it hidden
 	    $.ajax({
             type: "POST",
             url: "http://www.jwreading.com/ajax/getTimezones.php",
@@ -260,7 +260,16 @@ var accountView = function () {
         var returnValue = false;
         var count = $("input[type=radio].accountSwitch:checked").length;
         // console.log('count : ' + count);
-        
+        var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
+        // console.log('class chargée accountThirdDisplay:' + mapLoaded);
+        var countLoop = 0;
+        while(!mapLoaded) {
+            window.location.reload(true);
+            mapLoaded = $('#account-map-continents').hasClass('css-map-container');
+            // console.log('class chargée ' + countLoop + ':' + mapLoaded);
+            countLoop++;
+            if(countLoop > 20) { break; }
+        }
         if (count != 1) {
             $("#dayValidate").slideDown(400);
         } else {

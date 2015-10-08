@@ -4,14 +4,16 @@
             <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><a href="#home" class="{{home_active}}" >{{menu_home}}</a></li>
-                <li><a href="#subscribe" class="{{subscribe_active}}">{{menu_subscribe}}</a></li>
+                {{#unless connectedUser}}<li><a href="#subscribe" class="{{subscribe_active}}">{{menu_subscribe}}</a></li>{{/unless}}
                 <li><a href="#faq" class="{{faq_active}}">{{menu_faq}}</a></li>
                 <li><a href="#contact" class="{{contact_active}}">{{menu_contact}}</a></li>
                 <li><a href="#login" class="menu-orange {{login_active}}" id="menuLogin">{{menu_login}}</a></li> 
-                <ul class="{{#unless connectedUser}}displayNone {{/unless}}menu-ul">
+                {{#if connectedUser}}
+                <ul class="menu-ul">
                     <li class="menu-bullet"><a href="#dashboard" class="menu-orange menu-height" id="menu_dashboard">{{menu_dashboard}}</a></li> 
                     <li class="menu-bullet"><a href="#logout" class="menu-orange menu-height" id="logout">{{menu_logout}}</a></li> 
                 </ul>
+                {{/if}}
             </ul>
         </div>
     </div>
