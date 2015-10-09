@@ -517,6 +517,10 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
     color: #fff;
 }
 
+.btn-width {
+	width: 200px;
+}
+
 #cancelChangePassword{
     font-size: 14px;
     font-weight: 400;

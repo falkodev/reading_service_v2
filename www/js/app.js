@@ -39,7 +39,7 @@
           }
       })
     }
-  })
+  });
 
   $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
   
@@ -63,6 +63,18 @@
   //every new request changes the hash
   $(window).on('hashchange', function(){
     analyzeHash();
+  });
+
+  // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
+  // a tester : $(window).on('scroll') si ca ne fct pas sur mobile
+  $('body').on( 'DOMMouseScroll mousewheel', function () {
+    if(window.innerWidth < 768) {
+      if(isElementInViewport($('.title'))) {
+        $('.navbar-toggle').fadeIn();
+      } else {
+        $('.navbar-toggle').fadeOut();
+      }
+    }
   });
 
   
@@ -178,6 +190,24 @@
       page = 'login'; // redirect the user to the login page
     }
     return page;
+  }
+
+  /**
+   * [isElementInViewport : check if element is visible in view port]
+   * @param  {[DOM element]}  el ['title' element]
+   * @return {Boolean}    
+   */
+  function isElementInViewport(el)
+  {
+    el = el[0];
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
   }
 
   /**

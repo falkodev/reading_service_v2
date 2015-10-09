@@ -51,6 +51,15 @@ var todayReadingView = function () {
 	        type: "GET",
 	        url: "http://www.jwreading.com/ajax/getContents.php",
 	        dataType: 'html',
+	        beforeSend: function() { 
+            	// if(timer) { clearTimeout(timer); }
+            	timer = setTimeout(function()
+		        {
+		            $('#weekReading').hide();
+            		$('#waitDiv').show(); 
+		        },
+		        200); // if ajax request takes more than 200ms, display loading animation         	
+            },
 	        data: {
 	        	'lang' : sessionUserData.readingLang,
 	        	'week' : currentWeek,
@@ -107,8 +116,9 @@ var todayReadingView = function () {
 					    $('body').on('click', '#btnDisplayBefore', function(){
 					    	$('#' + beforeFrom).removeClass('blurBefore'); 	
 					    	$('#1').nextUntil('#' + beforeFrom).andSelf().show();      
-					    	$('#btnDisplayBefore').hide();
-					    	$('#btnHideBefore').show();	 
+					    	$('#btnDisplayBefore').fadeOut(function(){
+					    		$('#btnHideBefore').fadeIn();
+					    	});	
 					    	window.location.replace('#' + beforeFrom); 		
 					    });
 					    $('body').on('click', '#btnDisplayAfter', function(){
@@ -121,8 +131,9 @@ var todayReadingView = function () {
 					    $('body').on('click', '#btnHideBefore', function(){
 					    	$('#' + beforeFrom).addClass('blurBefore'); 	
 					    	$('#1').nextUntil('#' + beforeFrom).andSelf().hide();      
-					    	$('#btnDisplayBefore').show();
-					    	$('#btnHideBefore').hide();	
+					    	$('#btnHideBefore').fadeOut(function(){
+					    		$('#btnDisplayBefore').fadeIn();
+					    	});	
 					    	window.location.replace('#' + beforeFrom); 	
 					    });
 					    $('body').on('click', '#btnHideAfter', function(){
@@ -138,7 +149,12 @@ var todayReadingView = function () {
 				else {
 					$('#notTodayValidate').slideDown(400);
 				}
-	        }
+	        },
+            complete: function() { 
+            	clearTimeout(timer);
+            	$('#waitDiv').hide();  
+            	$('#weekReading').show();
+            }
 	    });	
 	});		
 

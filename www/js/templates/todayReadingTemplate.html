@@ -14,10 +14,14 @@
                  	<div id="notTodayValidate" class="validate">Selon votre configuration, vous n'avez pas de portion pour aujourd'hui</div>                    
              	</div>
                 <div class="col-sm-10 col-sm-offset-2 text-left" id="weekReading"></div>   
-                <input id="btnDisplayBefore" class="btn btn-default btn-md displayNone btn-portion" value="Afficher les versets précédents"/>
-                <input id="btnDisplayAfter" class="btn btn-default btn-md displayNone btn-portion" value="Afficher les versets suivants"/>
-                <input id="btnHideBefore" class="btn btn-default btn-md displayNone btn-portion" value="Masquer les versets précédents"/>
-                <input id="btnHideAfter" class="btn btn-default btn-md displayNone btn-portion" value="Masquer les versets suivants"/>
+                <button id="btnDisplayBefore" class="btn btn-default btn-md displayNone btn-portion">Afficher les versets précédents</button>
+                <button id="btnDisplayAfter" class="btn btn-default btn-md displayNone btn-portion">Afficher les versets suivants</button>
+                <button id="btnHideBefore" class="btn btn-default btn-md displayNone btn-portion">Masquer les versets précédents</button>
+                <button id="btnHideAfter" class="btn btn-default btn-md displayNone btn-portion">Masquer les versets suivants</button>
+            </div>
+            <div id="waitDiv" class="displayNone text-center">
+                <img src="assets/img/ring-white.svg"/><br>
+                <h2 class="title">{{loading}}</h2>
             </div>
         </div>
     </div>
