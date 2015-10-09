@@ -146,7 +146,7 @@ ul {
 	/*top:-70px; */
 	/*left: -70px;
 	opacity: 0; */ 
-	left: 13em;
+	left: 16em;
 	/*margin-top: 3em;*/
 }
 
@@ -159,7 +159,7 @@ ul {
 }
 
 #tmplContent.menu-open .contentView {
-	left: 180px;
+	left: 16em;
 }
 
 .dropdown-menu {
@@ -173,7 +173,7 @@ ul {
 	/*top: -23em;
 	left: 0px;*/
 	left: -23em;
-	font-size: 13px;
+	font-size: 18px;
 	/*padding:0;*/
 	padding-top: 1em;
 	background:none;
@@ -188,6 +188,7 @@ ul {
 	   -moz-transition: left .45s;
 	        transition: left .45s;
 	border-right: 2px solid white; 
+	margin-left: .3em;
   /*transition: opacity 1s;*/
   /*ajout de ces 2 lignes pr afficher tt le temps le menu*/
   /*top:2px;*/
@@ -245,6 +246,7 @@ ul {
 	}
 
 	.mainmenu .dropdown-menu {
+		font-size: 13px;
 		top: -23em;
 		left: 0px;
 		opacity: 0;
@@ -977,4 +979,13 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 .btn-portion{
 	margin-bottom: 1em;
 	min-width: 100%;
+}
+
+.white-border {
+	border-left: 1px solid white; 
+	height: 100%;
+}
+
+@media (max-width: 766px) {
+  .white-border { border-left: 0px; }
 }

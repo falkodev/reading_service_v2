@@ -95,7 +95,7 @@ var todayReadingView = function () {
 		        	var topIdFrom = $('#' + idFrom).offset().top;
 		        	var margin = 100;
 		        	$('#resize').hide();
-		        	if($(window).width() > 767) { margin = 200; $('#resize').show();}
+		        	if($(window).width() > 767) { margin = 200; $('#resize').show(); }
 		        	// $('#todayPortionValidate').css({'top':topIdFrom - margin}); 
 		        	$('#todayPortionValidate').slideDown(400);
 		        	
@@ -152,7 +152,7 @@ var todayReadingView = function () {
 		$('#weekReading').css({'font-size': size + 'px'});
 	});
 
-	//  For a given date, get the ISO week number
+	// For a given date, get the ISO week number
     function getWeekNumber(d) {
 	    // Copy date so don't modify original
 	    d = new Date(+d);
