@@ -1,6 +1,6 @@
 var todayReadingView = function () {
 	$(function($){
-		var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData")); // retrieve user data
+		var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
 		var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
 		// console.log('today: ' + today);
 		if(today == 0) today = 7; //otherwise Sunday = 0
@@ -106,6 +106,7 @@ var todayReadingView = function () {
 		        	$('#resize').hide();
 		        	if($(window).width() > 767) { margin = 200; $('#resize').show(); }
 		        	// $('#todayPortionValidate').css({'top':topIdFrom - margin}); 
+		        	$('#notTodayValidate').hide();
 		        	$('#todayPortionValidate').slideDown(400);
 		        	
 	        		$(document).ready(function(){
@@ -147,6 +148,7 @@ var todayReadingView = function () {
 					});
 				}
 				else {
+					$('#todayPortionValidate').hide();
 					$('#notTodayValidate').slideDown(400);
 				}
 	        },

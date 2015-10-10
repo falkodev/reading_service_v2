@@ -120,15 +120,36 @@
                     </div></td><td><input type="radio" id="radioAccount7" name="firstDayRadio" value="7" class="accountSwitch displayNone"></td></tr>
                     </tbody>
                    </table>
-                    <br><br>   
-                    <p align="left">{{daily_comment}}</p>
-                    <div class="onoffswitch">
-                    <input type="checkbox" id="toggleAccountDailyComment" name="toggleAccountDailyComment" class="onoffswitch-checkbox accountSwitch">
-                    <label class="onoffswitch-label" for="toggleAccountDailyComment">
-                        <span class="onoffswitch-inner choix" id="dailyText"></span>
-                        <span class="onoffswitch-switch"></span>
-                    </label>
-                    </div> 
+                    <br><br> 
+                    <div class="row">  
+                        <div class="col-sm-6"> 
+                            <p align="left">{{daily_comment}}</p>
+                            <div class="onoffswitch">
+                            <input type="checkbox" id="toggleAccountDailyComment" name="toggleAccountDailyComment" class="onoffswitch-checkbox accountSwitch">
+                            <label class="onoffswitch-label" for="toggleAccountDailyComment">
+                                <span class="onoffswitch-inner choix" id="dailyText"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6"> 
+                            <p align="left">Quel mode de réception ?</p><br/>
+                            Mail: <div class="onoffswitch">
+                            <input type="checkbox" id="toggleAccountEmail" name="toggleAccountEmail" class="onoffswitch-checkbox accountSwitch">
+                            <label class="onoffswitch-label" for="toggleAccountEmail">
+                                <span class="onoffswitch-inner choix" id="modeEmail"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                            Appli mobile: <div class="onoffswitch">
+                            <input type="checkbox" id="toggleAccountMobile" name="toggleAccountMobile" class="onoffswitch-checkbox accountSwitch">
+                            <label class="onoffswitch-label" for="toggleAccountMobile">
+                                <span class="onoffswitch-inner choix" id="modeMobile"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                        </div>
+                    </div>
 
                     <br><div id="dayValidate" class="validate">{{day_validate}}</div><br>
                     

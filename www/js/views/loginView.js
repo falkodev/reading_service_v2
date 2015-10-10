@@ -70,7 +70,7 @@ var loginView = function () {
                 if (msg[0] == '1') //correct credentials : login done
                 {                
                     userData = JSON.parse(msg.substr(1));
-                    sessionStorage.setItem("sessionUserData", JSON.stringify(userData));
+                    localStorage.setItem("sessionUserData", JSON.stringify(userData));
                     connectedUser = true;
                     loggedOut = false;
                     if(referrer != '' && referrer != 'login') {	

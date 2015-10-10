@@ -2,7 +2,7 @@ var accountView = function () {
 	var result = {};
     if(connectedUser) {
     	// retrieve user data
-    	var sessionUserData = JSON.parse(sessionStorage.getItem("sessionUserData"));
+    	var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
         // 	$.each(sessionUserData, function(k,v){
     	// 	console.log("sessionUserData." + k + ": " + v)
     	// })

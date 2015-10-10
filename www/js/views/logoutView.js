@@ -4,7 +4,7 @@ var logoutView = function () {
     loggedOut = true;
     //clean every input
     userData = {};
-    sessionStorage.setItem("sessionUserData","");
+    localStorage.setItem("sessionUserData","");
     $('input').val('');
     $('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
     window.referrer = '';

@@ -17,7 +17,7 @@
   lang = $.trim(lang);
 
   //detect if previously loaded account
-  if(sessionStorage.getItem("sessionUserData")) { connectedUser = true; }
+  if(localStorage.getItem("sessionUserData")) { connectedUser = true; }
   
   /**
    * [get languages file and determine what language to display - english by default if language not found]
