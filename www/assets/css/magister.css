@@ -993,3 +993,8 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 @media (max-width: 766px) {
   .white-border { border-left: 0px; }
 }
+
+.table-custom {
+	border: 0 !important;
+	text-align: left;
+}

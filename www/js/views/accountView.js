@@ -237,6 +237,7 @@ var accountView = function () {
                                 var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
                                 element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
                                 var toggleAccount = 'sessionUserData.' + element;
+                                console.log("toggleAccount:" + toggleAccount + " value:" + eval(toggleAccount));
                                 if(eval(toggleAccount) == 1) {
                                     $(this).prop('checked', true); //checkbox displayed to "Yes"
                                     toggleRadioButton(id);
@@ -244,6 +245,9 @@ var accountView = function () {
                                     if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true); }
                                 }
                             });
+                        }
+                        else {
+                            $("#toggleAccountEmail").prop('checked', true); 
                         }
                         returnValue = true;
                     }
