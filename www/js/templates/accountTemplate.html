@@ -139,20 +139,21 @@
                                 <tbody>
                                     <tr>
                                         <td class="table-custom">Mail</td>
-                                        <td class="table-custom"><div class="onoffswitch">
-                                            <input type="checkbox" id="toggleAccountModeEmail" name="toggleAccountEmail" class="onoffswitch-checkbox accountSwitch">
-                                            <label class="onoffswitch-label" for="toggleAccountEmail">
-                                                <span class="onoffswitch-inner choix" id="modeEmail"></span>
-                                                <span class="onoffswitch-switch"></span>
-                                            </label>
+                                        <td class="table-custom">
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" id="toggleAccountModeEmail" name="toggleAccountModeEmail" class="onoffswitch-checkbox accountSwitch accountMode">
+                                                <label class="onoffswitch-label" for="toggleAccountModeEmail">
+                                                    <span class="onoffswitch-inner choix" id="modeEmail"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="table-custom">Appli mobile</td>
                                         <td class="table-custom"><div class="onoffswitch">
-                                            <input type="checkbox" id="toggleAccountModeMobile" name="toggleAccountMobile" class="onoffswitch-checkbox accountSwitch">
-                                            <label class="onoffswitch-label" for="toggleAccountMobile">
+                                            <input type="checkbox" id="toggleAccountModeMobile" name="toggleAccountModeMobile" class="onoffswitch-checkbox accountSwitch accountMode">
+                                            <label class="onoffswitch-label" for="toggleAccountModeMobile">
                                                 <span class="onoffswitch-inner choix" id="modeMobile"></span>
                                                 <span class="onoffswitch-switch"></span>
                                             </label>
@@ -164,7 +165,10 @@
                         </div>
                     </div>
 
-                    <br><div id="dayValidate" class="validate">{{day_validate}}</div><br>
+                    <br>
+                    <div id="dayValidate" class="validate">{{day_validate}}</div>
+                    <div id="modeValidate" class="validate">Vous devez choisir au moins un mode de réception</div>
+                    <br>
                     
                     <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountFirst">{{btn_previous}}</button>
                     <button id="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default account-next" data-next="accountThird">{{btn_last}}</button>
@@ -213,7 +217,7 @@
                         <br><div id="timezoneAccountValidate" class="validate"></div><br>
                     </div>
                     <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountSecond">{{btn_previous}}</button>
-                    <input type="button" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default é" value="{{btn_save}}"/>
+                    <input type="button" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}"/>
                 </div>
                 <input type="hidden" name="accountFormButton" id="accountFormButton">
                 <!-- <input type="hidden" name="accountImmediateChange" id="accountImmediateChange">

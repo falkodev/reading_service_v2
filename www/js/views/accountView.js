@@ -97,6 +97,10 @@ var accountView = function () {
         }
     });
 
+    $('body').on('click', '#accountThirdBtn', function() {
+        //sauvegarde données à faire
+    });
+
 	/**
 	 * [click on a switch button representing a day : show or hide the corresponding radio button]
 	 */
@@ -237,7 +241,6 @@ var accountView = function () {
                                 var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
                                 element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
                                 var toggleAccount = 'sessionUserData.' + element;
-                                console.log("toggleAccount:" + toggleAccount + " value:" + eval(toggleAccount));
                                 if(eval(toggleAccount) == 1) {
                                     $(this).prop('checked', true); //checkbox displayed to "Yes"
                                     toggleRadioButton(id);
@@ -263,6 +266,7 @@ var accountView = function () {
     function accountThirdDisplay() {
         var returnValue = false;
         var count = $("input[type=radio].accountSwitch:checked").length;
+        var countMode = $("input[type=checkbox].accountMode:checked").length;
         // console.log('count : ' + count);
         var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
         // console.log('class chargée accountThirdDisplay:' + mapLoaded);
@@ -276,6 +280,8 @@ var accountView = function () {
         }
         if (count != 1) {
             $("#dayValidate").slideDown(400);
+        } else if (countMode < 1){
+            $("#modeValidate").slideDown(400);
         } else {
             returnValue = true;
             var elementReading = 'Fr';
