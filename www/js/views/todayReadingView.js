@@ -1,5 +1,6 @@
 var todayReadingView = function () {
 	$(function($){
+		$('#todayPortionValidate').hide();
 		var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
 		var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
 		// console.log('today: ' + today);
@@ -52,7 +53,6 @@ var todayReadingView = function () {
 	        url: "http://www.jwreading.com/ajax/getContents.php",
 	        dataType: 'html',
 	        beforeSend: function() { 
-            	// if(timer) { clearTimeout(timer); }
             	timer = setTimeout(function()
 		        {
 		            $('#weekReading').hide();
@@ -60,6 +60,7 @@ var todayReadingView = function () {
 		        },
 		        200); // if ajax request takes more than 200ms, display loading animation         	
             },
+            timeout: 10000,
 	        data: {
 	        	'lang' : sessionUserData.readingLang,
 	        	'week' : currentWeek,
@@ -152,6 +153,9 @@ var todayReadingView = function () {
 					$('#notTodayValidate').slideDown(400);
 				}
 	        },
+	        error: function() {
+            	window.location.reload(true);
+            },
             complete: function() { 
             	clearTimeout(timer);
             	$('#waitDiv').hide();  

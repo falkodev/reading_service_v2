@@ -56,7 +56,6 @@ var loginView = function () {
             type: "POST",
             url: "http://www.jwreading.com/ajax/login.php",
             beforeSend: function() { 
-            	// if(timer) { clearTimeout(timer); }
             	timer = setTimeout(function()
 		        {
 		            $('#loginDiv').hide();

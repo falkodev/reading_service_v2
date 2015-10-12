@@ -10,7 +10,7 @@ var accountView = function () {
         // add it to the template for handlebars compilation
     	result.userData = sessionUserData;
     	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
-    } 
+    }     
     
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]
@@ -97,8 +97,45 @@ var accountView = function () {
         }
     });
 
-    $('body').on('click', '#accountThirdBtn', function() {
-        //sauvegarde données à faire
+    $('body').on('submit', '#accountForm', function(e) {
+        e.preventDefault();
+        $('#accountId').val(sessionUserData.id);
+        $('#accountTimeId').val(sessionUserData.time_id);        
+        var formData = $("input[name!=passAccount]input[name!=passAccountConfirm]", this).serialize(); //every input except password fields
+        $.ajax(
+        {
+            type:'post',
+            url: 'http://www.jwreading.com/ajax/saveData.php',
+            data:formData,
+            beforeSend:function()
+            {
+                timer = setTimeout(function()
+                {
+                    $('#waitDiv').show(); 
+                },
+                200); // if ajax request takes more than 200ms, display loading animation   
+            },            
+            timeout: 10000,
+            success:function(result)
+            {
+                if(result.substr(0,2) == 'OK') { //ici vérifier que les 2 premiers caractères de la réponse sont "OK"
+                    userData = JSON.parse(result.substr(2)); // puis passer les parametres recus en tant que nouvelles données de session + vérifier si mdp ok
+                    localStorage.setItem("sessionUserData", JSON.stringify(userData));
+                    $('#successAccountValidate').slideDown(400);
+                } else {
+                    $('#errorAccountValidate').slideDown(400);
+                }
+            },
+            error:function()
+            {
+                $('#errorAccountValidate').slideDown(400);
+            },
+            complete:function(html)
+            {
+                clearTimeout(timer);
+                $('#waitDiv').hide();  
+            }
+        });
     });
 
 	/**
@@ -190,11 +227,19 @@ var accountView = function () {
 
 	    $(".closeTip").click(function() {      
 	        $(".tip").slideUp(400);
-	    });
+	    });        
 	});
 	/**
 	 * [end world map mgmt]
 	 */
+    
+    $(document).ready(function(){
+        var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
+        // console.log('class chargée:' + mapLoaded);
+        if(!mapLoaded) {
+            window.location.reload(true);
+        }
+    });
 
     /**
 	 * [toggleRadioButton : show or hide the radio button corresponding to the chosen day]
@@ -267,17 +312,7 @@ var accountView = function () {
         var returnValue = false;
         var count = $("input[type=radio].accountSwitch:checked").length;
         var countMode = $("input[type=checkbox].accountMode:checked").length;
-        // console.log('count : ' + count);
-        var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
-        // console.log('class chargée accountThirdDisplay:' + mapLoaded);
-        var countLoop = 0;
-        while(!mapLoaded) {
-            window.location.reload(true);
-            mapLoaded = $('#account-map-continents').hasClass('css-map-container');
-            // console.log('class chargée ' + countLoop + ':' + mapLoaded);
-            countLoop++;
-            if(countLoop > 20) { break; }
-        }
+        // console.log('count : ' + count);        
         if (count != 1) {
             $("#dayValidate").slideDown(400);
         } else if (countMode < 1){
@@ -295,6 +330,7 @@ var accountView = function () {
             } 
             $("#radioAccountLangReading" + elementReading).prop('checked', true);
             $("#radioAccountLangText" + elementComment).prop('checked', true); 
+            $("#tipAccount").show();
         }
         return returnValue;
     }

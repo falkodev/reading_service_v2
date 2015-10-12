@@ -152,9 +152,9 @@
                                     <tr>
                                         <td class="table-custom">Appli mobile</td>
                                         <td class="table-custom"><div class="onoffswitch">
-                                            <input type="checkbox" id="toggleAccountModeMobile" name="toggleAccountModeMobile" class="onoffswitch-checkbox accountSwitch accountMode">
-                                            <label class="onoffswitch-label" for="toggleAccountModeMobile">
-                                                <span class="onoffswitch-inner choix" id="modeMobile"></span>
+                                            <input type="checkbox" id="toggleAccountModeApp" name="toggleAccountModeApp" class="onoffswitch-checkbox accountSwitch accountMode">
+                                            <label class="onoffswitch-label" for="toggleAccountModeApp">
+                                                <span class="onoffswitch-inner choix" id="modeApp"></span>
                                                 <span class="onoffswitch-switch"></span>
                                             </label>
                                             </div>
@@ -202,7 +202,7 @@
                         <br><div class="displayNone" id="subscribeTip">{{subscribe_tip_2}}</div>
                         <div id="tipAccount" class="validate tip" style="margin: 5px -12px;"><span class="closeTip"><i class="fa fa-times"></i></span>{{tip_1}}{{userData.time_displayed}}{{tip_2}}UTC {{userData.time_utc}}{{tip_3}} ({{userData.time_cities}})<br><br>{{tip_4}}</div>
                         <br><input type="button" id="displayAccountMap" class="btn btn-lg btn-orange displayNone" value="Afficher la carte"/><br>
-                        <div class="worldmap" id="account-map-continents"> <!-- ici, si class="worldmap" au lieu de class="worldmap css-map-container m960" => problème chargement de la mappemonde, chargement à refaire -->
+                        <div class="worldmap" id="account-map-continents">
                          <ul class="continents">
                           <li class="c1"><a id="africa-li" href="#africa">{{world_map_africa}}</a></li>
                           <li class="c2"><a id="asia-li" href="#asia">{{world_map_asia}}</a></li>
@@ -214,14 +214,21 @@
                         </div>
                         <div id="account-addresses"></div>
                         <div id="account-select-phrase" class="displayNone">{{selected_utc_phrase_1}}<span id="account-selected-time"></span>{{selected_utc_phrase_2}}<span id="account-selected-utc"></span></div>
-                        <br><div id="timezoneAccountValidate" class="validate"></div><br>
+                        <br>
+                        <div id="timezoneAccountValidate" class="validate"></div>
+                        <div id="successAccountValidate" class="validate">Vos modifications ont bien été enregistrées</div>
+                        <div id="errorAccountValidate" class="validate">Problème d'enregistrement des données</div>
+                        <br>
+                        <div id="waitDiv" class="displayNone text-center">
+                            <img src="assets/img/ring-white.svg"/><br>
+                            <h2 class="title">{{loading}}</h2>
+                        </div>
                     </div>
                     <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountSecond">{{btn_previous}}</button>
-                    <input type="button" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}"/>
+                    <input type="submit" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}"/>
                 </div>
-                <input type="hidden" name="accountFormButton" id="accountFormButton">
-                <!-- <input type="hidden" name="accountImmediateChange" id="accountImmediateChange">
-                <input type="hidden" name="accountDelayedChange" id="accountDelayedChange"> -->
+                <!-- <input type="hidden" name="accountFormButton" id="accountFormButton"> -->
+                <input type="hidden" value="" id="accountTimeId" name="accountTimeId">
                 <input type="hidden" value="" id="accountId" name="accountId">
                 </form>
                 
