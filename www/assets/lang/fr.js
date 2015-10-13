@@ -116,6 +116,11 @@ lang_en = 'Anglais'
 lang_ro = 'Roumain'
 yes = 'Oui'
 no = 'Non'
+subscribe_create_1 = 'Merci'
+subscribe_create_2 = 'pour votre inscription. Vous allez recevoir un email de confirmation dans quelques instants à l\'adresse <b>'
+subscribe_create_3 = '</b>. Si ce n\'est pas le cas, veuillez vérifier le dossier "Indésirables" (aussi appelé "Spams") de votre boite mail.<br><br>Vous avez choisi de recevoir la lecture de la Bible chaque '
+subscribe_create_4 = '. Le mot de passe pour accéder à votre espace personnel sur le site est <b>'
+subscribe_create_5 = '</b><br><br>Vous pourrez changer tous les paramètres (adresse mail, mot de passe, jours de réception, premier jour de votre semaine de lecture) dans cet espace personnel. En cas de question, n\'hésitez pas utiliser le formulaire de contact.<br><br>Bonne lecture et à bientôt.<br><br>L\'administrateur JW Reading</p>'
 login_validate = 'Adresse email ou mot de passe incorrect'
 pwd_validate = 'Le mot de passe est incorrect'
 email_validate = 'Cette adresse email n\'est pas enregistrée. Vous pouvez vous créer un compte avec le menu "Inscription"'
@@ -150,6 +155,7 @@ userData.time_utc = ''
 userData.time_zone = ''
 userData.time_id = ''
 userData.email = ''
+
 
 
 

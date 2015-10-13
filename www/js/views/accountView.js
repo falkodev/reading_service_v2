@@ -118,15 +118,36 @@ var accountView = function () {
             timeout: 10000,
             success:function(result)
             {
-                if(result.substr(0,2) == 'OK') { //ici vérifier que les 2 premiers caractères de la réponse sont "OK"
-                    userData = JSON.parse(result.substr(2)); // puis passer les parametres recus en tant que nouvelles données de session
-                    localStorage.setItem("sessionUserData", JSON.stringify(userData));
-                    sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
-                    $('#successAccountValidate').slideDown(400);
-                    $('#errorAccountValidate').hide();
+                if(hash == "account") {
+                    if(result.substr(0,2) == 'OK') { //ici vérifier que les 2 premiers caractères de la réponse sont "OK"
+                        userData = JSON.parse(result.substr(2)); // puis passer les parametr}es recus en tant que nouvelles données de session
+                        localStorage.setItem("sessionUserData", JSON.stringify(userData));
+                        sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
+                        $('#successAccountValidate').slideDown(400);                       
+                        $('#errorAccountValidate').hide();
+                        $('#successCreateValidate').hide();
+                    } else {
+                        $('#errorAccountValidate').slideDown(400);
+                        $('#successAccountValidate').hide();
+                        $('#successCreateValidate').hide();
+                    }
                 } else {
-                    $('#errorAccountValidate').slideDown(400);
-                    $('#successAccountValidate').hide();
+                    console.log('result:' + result);
+                    if(result[0] == 'OK') {
+                        $('#subscribeName').html(result[1]);
+                        $('#subscribeMail').html(result[2]);
+                        $('#subscribeJours').html(result[3]);
+                        // $('#subscribeComment').html(result[4]);
+                        $('#subscribePass').html(result[5]);
+
+                        $('#successCreateValidate').slideDown(400);
+                        $('#successAccountValidate').hide();
+                        $('#errorAccountValidate').hide();
+                    } else {
+                        $('#errorAccountValidate').slideDown(400);
+                        $('#successAccountValidate').hide();
+                        $('#successCreateValidate').hide();
+                    }
                 }
             },
             error:function()
