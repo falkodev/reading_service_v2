@@ -2,7 +2,6 @@ var homeView = function () {
     var result = {};
     var link = '';
 
-
     /**
      * [on click on a language in homeTemplate, remove previous language and add new language in the view]
      */
@@ -10,6 +9,7 @@ var homeView = function () {
         $('script[src="assets/lang/' + lang + '.js"]').remove(); //remove previous language file
         lang = $(this).text().toLowerCase();
         lang = $.trim(lang);
+        localStorage.setItem("lang", lang);       
         $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
         analyzeHash(); // refreshes view
       })
@@ -21,7 +21,7 @@ var homeView = function () {
     $.each(langList, function(key, value){
         value = $.trim(value);
         if(i != 0) { link += ' | '; }  
-        if(lang == value) { link += value.toUpperCase(); }        
+        if(localStorage.getItem("lang") == value) { link += value.toUpperCase(); }        
         else { link += '<a class="linkLang">'+ value.toUpperCase() + '</a>'; }
         i++;
     })  

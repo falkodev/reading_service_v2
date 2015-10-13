@@ -2,7 +2,6 @@
   /**
    * global variables
    */
-  window.lang;
   window.langList;
   window.hash;
   window.userData = '';
@@ -15,10 +14,11 @@
   lang = window.navigator.userLanguage || window.navigator.language;
   lang.substr(0,2);
   lang = $.trim(lang);
+  if(localStorage.getItem("lang")) { lang = localStorage.getItem("lang"); }
 
   //detect if previously loaded account
   if(localStorage.getItem("sessionUserData")) { connectedUser = true; }
-  
+
   /**
    * [get languages file and determine what language to display - english by default if language not found]
    */

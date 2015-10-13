@@ -33,7 +33,7 @@ var loginView = function () {
 		}
 		else {
 			$.post("http://www.jwreading.com/ajax/sendNewPassword.php", 
-				   { 'email': email, 'lang': lang }, function(data) {}).complete(function(data) {
+				   { 'email': email, 'lang': localStorage.getItem("lang") }, function(data) {}).complete(function(data) {
 				result = data['responseText'].trim();
 				if(result == "OK"){
 					$("#forgottenSuccess").slideDown(400);

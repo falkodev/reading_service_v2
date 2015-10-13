@@ -1,7 +1,7 @@
 var dashboardView = function () {
 	//get daily text
 	$.post("http://www.jwreading.com/ajax/getDailyText.php", 
-	   { 'lang': lang }, function(data) {}).complete(function(data) {
+	   { 'lang': localStorage.getItem("lang") }, function(data) {}).complete(function(data) {
 		result = data['responseText'].trim();
 		$('#dailyText').html(result);
 	});
@@ -11,7 +11,7 @@ var dashboardView = function () {
         type: "GET",
         url: "http://www.jwreading.com/ajax/rss.php",
         dataType: 'html',
-        data: {'lang' : lang },        
+        data: {'lang' : localStorage.getItem("lang") },        
         success: function(html){            	
         	var newsLength = $('.news', html).length;	  
         	var x = 1;

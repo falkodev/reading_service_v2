@@ -756,6 +756,17 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   text-align: left;
 }
 
+.receptionMode {
+	left: 0;
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .receptionMode { left: 2.5em; }
+}
+@media (min-width: 1200px) {
+  .receptionMode { left: 5em; }
+}
+
 /*#day1:before{content: "Lundi";}
 #day2:before{content: "Mardi";}
 #day3:before{content: "Mercredi";}

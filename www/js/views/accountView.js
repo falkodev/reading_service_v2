@@ -3,14 +3,14 @@ var accountView = function () {
     if(connectedUser) {
     	// retrieve user data
     	var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
-        // 	$.each(sessionUserData, function(k,v){
+        // $.each(sessionUserData, function(k,v){
     	// 	console.log("sessionUserData." + k + ": " + v)
     	// })
         
         // add it to the template for handlebars compilation
     	result.userData = sessionUserData;
     	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
-    }     
+    }   
     
 	/**
 	 * [click on "Next step" button : hide current screen and show next one]
@@ -99,9 +99,9 @@ var accountView = function () {
 
     $('body').on('submit', '#accountForm', function(e) {
         e.preventDefault();
-        $('#accountId').val(sessionUserData.id);
-        $('#accountTimeId').val(sessionUserData.time_id);        
-        var formData = $("input[name!=passAccount]input[name!=passAccountConfirm]", this).serialize(); //every input except password fields
+        if(hash == "account") { $('#accountTimeId').val(sessionUserData.time_id); } 
+        var formData = $("input[name!=passAccount]input[name!=passAccountConfirm]", this).serialize() + "&lang=" + localStorage.getItem("lang"); //every input except password fields
+        if(hash == "account") { formData += "&accountId=" + sessionUserData.id; } 
         $.ajax(
         {
             type:'post',
@@ -119,16 +119,20 @@ var accountView = function () {
             success:function(result)
             {
                 if(result.substr(0,2) == 'OK') { //ici vérifier que les 2 premiers caractères de la réponse sont "OK"
-                    userData = JSON.parse(result.substr(2)); // puis passer les parametres recus en tant que nouvelles données de session + vérifier si mdp ok
+                    userData = JSON.parse(result.substr(2)); // puis passer les parametres recus en tant que nouvelles données de session
                     localStorage.setItem("sessionUserData", JSON.stringify(userData));
+                    sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
                     $('#successAccountValidate').slideDown(400);
+                    $('#errorAccountValidate').hide();
                 } else {
                     $('#errorAccountValidate').slideDown(400);
+                    $('#successAccountValidate').hide();
                 }
             },
             error:function()
             {
                 $('#errorAccountValidate').slideDown(400);
+                $('#successAccountValidate').hide();
             },
             complete:function(html)
             {
@@ -196,11 +200,15 @@ var accountView = function () {
 	    $.ajax({
             type: "POST",
             url: "http://www.jwreading.com/ajax/getTimezones.php",
-            data: {lang: lang}, 
+            data: {lang: localStorage.getItem("lang")}, 
             success: function(data) {
             	$('#account-addresses').hide();
                 $('#account-addresses').html(data);
                 if(connectedUser) { $('#' + sessionUserData.time_zone + '-li').parent().addClass('active-region'); }//highlight the world region saved in user parameters
+                else { 
+                    $('#europe-li').parent().addClass('active-region'); //by default, highlight europe zone
+                    $('#accountTimeId').val(66);
+                } 
             }
         });
 
@@ -222,7 +230,8 @@ var accountView = function () {
 	        $('#tipAccount').hide();
 	        $('#account-selected-time').html($('select').children(':selected').text());
 	        $('#account-selected-utc').html($(this).data('utc'));
-	        $('#account-select-phrase').slideDown(400);	     
+	        $('#account-select-phrase').slideDown(400);	  
+            $('#accountTimeId').val($(this).val());
 	    });
 
 	    $(".closeTip").click(function() {      
@@ -235,10 +244,11 @@ var accountView = function () {
     
     $(document).ready(function(){
         var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
-        // console.log('class chargée:' + mapLoaded);
+        console.log('class chargée:' + mapLoaded);
         if(!mapLoaded) {
             window.location.reload(true);
-        }
+        } 
+        $('.choix').attr('lang', localStorage.getItem("lang"));
     });
 
     /**
@@ -327,10 +337,12 @@ var accountView = function () {
             	
             	elementComment = sessionUserData.commentLang;
             	elementComment = elementComment.charAt(0).toUpperCase() + elementComment.slice(1);
+
+                $("#tipAccount").show();
             } 
+            else if(hash == "subscribe") { $("#subscribeTip").show(); }
             $("#radioAccountLangReading" + elementReading).prop('checked', true);
             $("#radioAccountLangText" + elementComment).prop('checked', true); 
-            $("#tipAccount").show();
         }
         return returnValue;
     }
