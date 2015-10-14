@@ -132,17 +132,20 @@ var accountView = function () {
                         $('#successCreateValidate').hide();
                     }
                 } else {
-                    console.log('result:' + result);
-                    if(result[0] == 'OK') {
-                        $('#subscribeName').html(result[1]);
-                        $('#subscribeMail').html(result[2]);
-                        $('#subscribeJours').html(result[3]);
-                        // $('#subscribeComment').html(result[4]);
-                        $('#subscribePass').html(result[5]);
+                    if(result.substr(0,2) == 'OK') {
+                        msg = JSON.parse(result.substr(2));
+                        $('#subscribeName').html(msg[1]);
+                        $('#subscribeMail').html(msg[2]);
+                        $('#subscribeDays').html(msg[3]);
+                        $('#subscribePass').html(msg[5]);
 
+                        $('#successCreateValidate').siblings().hide();
+                        $('#successCreateValidate').parents().siblings().hide();
+                        $('#menuContent').show();
+                        $('.title').show();
                         $('#successCreateValidate').slideDown(400);
-                        $('#successAccountValidate').hide();
-                        $('#errorAccountValidate').hide();
+                        // $('#successAccountValidate').hide();
+                        // $('#errorAccountValidate').hide();
                     } else {
                         $('#errorAccountValidate').slideDown(400);
                         $('#successAccountValidate').hide();
@@ -163,6 +166,11 @@ var accountView = function () {
         });
     });
 
+    $('body').on('click', '#goToLogin', function(e){
+        e.preventDefault();
+        window.location.hash = '#login';
+    }); 
+    
 	/**
 	 * [click on a switch button representing a day : show or hide the corresponding radio button]
 	 */
@@ -265,7 +273,7 @@ var accountView = function () {
     
     $(document).ready(function(){
         var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
-        console.log('class chargée:' + mapLoaded);
+        // console.log('class chargée:' + mapLoaded);
         if(!mapLoaded) {
             window.location.reload(true);
         } 

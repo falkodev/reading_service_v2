@@ -198,7 +198,7 @@
                         </div>
                     </div>   
                     <div class="col-sm-12 text-center">
-                        <br>{{time_choice}}
+                        <br><div>{{time_choice}}</div>
                         <br><div class="validate" id="subscribeTip">{{subscribe_tip_2}}</div>
                         <div id="tipAccount" class="validate tip" style="margin: 5px -12px;"><span class="closeTip"><i class="fa fa-times"></i></span>{{tip_1}}{{userData.time_displayed}}{{tip_2}}UTC {{userData.time_utc}}{{tip_3}} ({{userData.time_cities}})<br><br>{{tip_4}}</div>
                         <br><input type="button" id="displayAccountMap" class="btn btn-lg btn-orange displayNone" value="Afficher la carte"/><br>
@@ -217,7 +217,15 @@
                         <br>
                         <div id="timezoneAccountValidate" class="validate"></div>
                         <div id="successAccountValidate" class="validate">Vos modifications ont bien été enregistrées</div>
-                         <div id="successCreateValidate" class="validate">{{subscribe_create_1}} <div id="subscribeName"></div> {{subscribe_create_2}} <div id="subscribeMail"></div> {{subscribe_create_3}} <div id="subscribeJours"></div> {{subscribe_create_4}} <div id="subscribePass"></div> {{subscribe_create_5}}</div>
+                        <div id="successCreateValidate" class="validate">
+                            {{subscribe_create_1}} <span id="subscribeName"></span> {{subscribe_create_2}} <span id="subscribeMail"></span>{{subscribe_create_3}} <span id="subscribeDays"></span>{{subscribe_create_4}} <span id="subscribePass"></span> {{subscribe_create_5}}
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2 text-center">    
+                                    <a href="#login"><button id="goToLogin" class="btn btn-lg btn-default btn-width text-center">{{menu_login}}</button></a>   
+                                </div>                         
+                            </div>
+                        </div>
                         <div id="errorAccountValidate" class="validate">Problème d'enregistrement des données</div>
                         <br>
                         <div id="waitDiv" class="displayNone text-center">
