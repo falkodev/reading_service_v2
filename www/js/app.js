@@ -66,7 +66,6 @@
   });
 
   // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
-  // a tester : $(window).on('scroll') si ca ne fct pas sur mobile
   $('body').on( 'DOMMouseScroll mousewheel', function () {
     if(window.innerWidth < 768) {
       if(isElementInViewport($('.title'))) {
@@ -77,6 +76,9 @@
     }
   });
 
+  // $(window).on('scroll', function(){
+  //     console.log('Event Fired');
+  // });
   
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
