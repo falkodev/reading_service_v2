@@ -66,18 +66,14 @@
   });
 
   // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
-  $('body').on( 'DOMMouseScroll mousewheel', function () {
-    if(window.innerWidth < 768) {
-      if(isElementInViewport($('.title'))) {
-        $('.navbar-toggle').fadeIn();
-      } else {
-        $('.navbar-toggle').fadeOut();
-      }
-    }
-  });
-
-  // $(window).on('scroll', function(){
-  //     console.log('Event Fired');
+  // $('body').on( 'DOMMouseScroll mousewheel', function () {
+  //   if(window.innerWidth < 768) {
+  //     if(isElementInViewport($('.title'))) {
+  //       $('.navbar-toggle').fadeIn();
+  //     } else {
+  //       $('.navbar-toggle').fadeOut();
+  //     }
+  //   }
   // });
   
   /**
@@ -153,7 +149,7 @@
           var html     = template(context);
           html         = escapeLink(html);
           if(activeMenu) { $('#menuContent').html(html); } // case of menu loading
-          else { 
+          else {             
             slider.slidePage($('<div>').html(html)); 
             if(loggedOut) { 
               $("#logoutValidate").show();
