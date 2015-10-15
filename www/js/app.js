@@ -66,16 +66,15 @@
   });
 
   // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
-  // a tester : $(window).on('scroll') si ca ne fct pas sur mobile
-  $('body').on( 'DOMMouseScroll mousewheel', function () {
+  setInterval(function(){
     if(window.innerWidth < 768) {
       if(isElementInViewport($('.title'))) {
         $('.navbar-toggle').fadeIn();
       } else {
         $('.navbar-toggle').fadeOut();
       }
-    }
-  });
+    } else { $('.navbar-toggle').fadeIn(); } // for large screens, always show the menu
+  }, 1000 );
 
   
   /**
