@@ -32,7 +32,7 @@ function PageSlider(container) {
 
     // Use this function directly if you want to control the sliding direction outside PageSlider
     this.slidePageFrom = function(page, from) {
-
+        
         container.html(page);
 
         if (!currentPage || !from) {

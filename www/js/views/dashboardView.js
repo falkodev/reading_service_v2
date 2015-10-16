@@ -1,4 +1,32 @@
 var dashboardView = function () {
+    var result = {};
+ 	var link = '';
+    // setInterval(function(){
+    //     console.log('width:' + window.innerWidth);
+    // },500);
+    /**
+     * [on click on a language in homeTemplate, remove previous language and add new language in the view]
+     */
+    $('body').off('click').on('click', '.linkLang', function(e){
+        $('script[src="assets/lang/' + lang + '.js"]').remove(); //remove previous language file
+        lang = $(this).text().toLowerCase();
+        lang = $.trim(lang);
+        localStorage.setItem("lang", lang);       
+        $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
+        analyzeHash(); // refreshes view
+    });
+
+    /**
+     * [create an html line of buttons to display languages in dashboard]
+     */
+    var i = 0;                    
+    $.each(langList, function(key, value){
+        value = $.trim(value);
+        if(localStorage.getItem("lang") == value) { link += '<button class="btn btn-sm btn-default btn-orange">' + value.toUpperCase() + '</button>'; }        
+        else { link += '<a class="linkLang"><button class="btn btn-sm btn-default">'+ value.toUpperCase() + '</button></a>'; }
+        i++;
+    });  
+
 	//get daily text
 	$.post("http://www.jwreading.com/ajax/getDailyText.php", 
 	   { 'lang': localStorage.getItem("lang") }, function(data) {}).complete(function(data) {
@@ -53,5 +81,8 @@ var dashboardView = function () {
 				}					
 			}, 5000); // display every news during 5 seconds		
         }
-    });	
+    });
+
+    result.lang_links = link; // will be added in the context for handlebars compilation
+    return result;	
 }

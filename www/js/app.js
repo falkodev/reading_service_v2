@@ -2,19 +2,24 @@
   /**
    * global variables
    */
+  window.lang;
   window.langList;
   window.hash;
-  window.userData = '';
   window.connectedUser = false;
   window.loggedOut = false;
   window.referrer = '';
 
   var slider = new PageSlider($('#tmplContent'));
+
   // browser language detection and load corresponding language file 
-  lang = window.navigator.userLanguage || window.navigator.language;
-  lang.substr(0,2);
-  lang = $.trim(lang);
   if(localStorage.getItem("lang")) { lang = localStorage.getItem("lang"); }
+  else {
+    lang = window.navigator.userLanguage || window.navigator.language;
+    lang = lang.substr(0,2);
+    lang = $.trim(lang);
+    localStorage.setItem("lang", lang);
+  }
+  
 
   //detect if previously loaded account
   if(localStorage.getItem("sessionUserData")) { connectedUser = true; }
@@ -42,45 +47,12 @@
   });
 
   $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
-  
-  /**
-   * [analyzeHash : analyze hash and determine what view or template to request]
-   */
-  window.analyzeHash = function() {
-    hash = window.location.hash.substr(1);
-    if(!hash) {
-      hash = 'home';
-    }
-    else {hash = checkNeedLogin(hash);}
-    var activeMenu = hash + '_active';
-    displayView('menu', activeMenu); //load menu
-    displayView(hash, null); //load view corresponding to the hash
-  }
-  
-  //app init : first request
-  analyzeHash();
 
-  //every new request changes the hash
-  $(window).on('hashchange', function(){
-    analyzeHash();
-  });
-
-  // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
-  setInterval(function(){
-    if(window.innerWidth < 768) {
-      if(isElementInViewport($('.title'))) {
-        $('.navbar-toggle').fadeIn();
-      } else {
-        $('.navbar-toggle').fadeOut();
-      }
-    } else { $('.navbar-toggle').fadeIn(); } // for large screens, always show the menu
-  }, 1000 );
-
-  
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
-  function displayView(element, activeMenu) {   
+  window.displayView = function(element, activeMenu) {
+  // function displayView(element, activeMenu) {   
     var view   = "new " + element + "View()";
     var result = eval(view);
     var displaySubscribe = false;
@@ -93,6 +65,64 @@
     }
     loadTemplate(element, activeMenu, result, displaySubscribe);
   }
+  
+  /**
+   * [analyzeHash : analyze hash and determine what view or template to request]
+   */
+  window.analyzeHash = function() {
+    hash = window.location.hash.substr(1);
+    if(!hash) { hash = 'dashboard'; }
+    hash = checkNeedLogin(hash);
+    var activeMenu = hash + '_active';
+    displayView('menu', activeMenu); //load menu
+    displayView(hash, null); //load view corresponding to the hash
+  }
+
+  if (window.location.protocol == 'file:') { 
+    console.log('mobile app'); 
+    if(!localStorage.firstTimeOver) { // first time ever
+      console.log('first time');
+      displayView('firstTime', null);
+    }
+    else {
+      console.log('not the first time'); 
+      analyzeHash();
+    }
+  } else {
+    //app init : first request
+    analyzeHash();
+  }
+
+  //every new request changes the hash
+  $(window).on('hashchange', function(){
+    analyzeHash();
+  });
+
+  // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
+ setInterval(function(){
+    if($('#resize').length) { //only on todayReading page (zoomIn, zoomOut)
+      if(window.innerWidth < 1036) {
+        if(isElementInViewport($('.title'))) {
+          $('#resize').fadeIn();
+        } else {
+          $('#resize').fadeOut();
+        }
+      } else {
+        $('#resize').show();
+      }
+    }
+    if(window.innerWidth < 768) {
+      if(isElementInViewport($('.title'))) {
+        $('.navbar-toggle').fadeIn();
+      } else {
+        $('.navbar-toggle').fadeOut();
+      }
+    } else { 
+      $('.navbar-toggle').show(); // for large screens, always show the menu
+    } 
+  }, 1000 );
+  
+
   
 
   /**
@@ -150,8 +180,9 @@
           var html     = template(context);
           html         = escapeLink(html);
           if(activeMenu) { $('#menuContent').html(html); } // case of menu loading
-          else { 
-            slider.slidePage($('<div>').html(html)); 
+          else {  
+            if(tmpl_name == 'firstTime') { $('#tmplContent').html(html); }         
+            else { slider.slidePage($('<div>').html(html)); }
             if(loggedOut) { 
               $("#logoutValidate").show();
               loggedOut = false;

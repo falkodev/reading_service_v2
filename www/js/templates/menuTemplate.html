@@ -3,15 +3,18 @@
 		<div class="dropdown">
             <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><a href="#home" class="{{home_active}}" >{{menu_home}}</a></li>
+                <!-- <li><a href="#home" class="{{home_active}}" >{{menu_home}}</a></li> -->
                 {{#unless connectedUser}}<li><a href="#subscribe" class="{{subscribe_active}}">{{menu_subscribe}}</a></li>{{/unless}}
                 <li><a href="#faq" class="{{faq_active}}">{{menu_faq}}</a></li>
                 <li><a href="#contact" class="{{contact_active}}">{{menu_contact}}</a></li>
-                <li><a href="#login" class="menu-orange {{login_active}}" id="menuLogin">{{menu_login}}</a></li> 
+                {{#unless connectedUser}}<li><a href="#login" class="menu-orange {{login_active}}" id="menuLogin">{{menu_login}}</a></li>{{/unless}}
                 {{#if connectedUser}}
+                <li><a href="#dashboard" class="menu-height" id="menu_dashboard">{{menu_dashboard}}</a></li>
                 <ul class="menu-ul">
-                    <li class="menu-bullet"><a href="#dashboard" class="menu-orange menu-height" id="menu_dashboard">{{menu_dashboard}}</a></li> 
-                    <li class="menu-bullet"><a href="#logout" class="menu-orange menu-height" id="logout">{{menu_logout}}</a></li> 
+                    <li class="menu-bullet-white"><a href="#account" class="menu-height">{{account_title}}</a></li> 
+                    <li class="menu-bullet-white"><a href="#todayReading" class="menu-height">{{daily_portion}}</a></li> 
+                    <li class="menu-bullet-white"><a href="#news" class="menu-height">{{news}}</a></li> 
+                    <li class="menu-bullet-orange"><a href="#logout" class="menu-orange menu-height" id="logout">{{menu_logout}}</a></li> 
                 </ul>
                 {{/if}}
             </ul>
