@@ -97,6 +97,9 @@ var accountView = function () {
         }
     });
 
+    /**
+     * [submit form : save data]
+     */
     $('body').on('submit', '#accountForm', function(e) {
         e.preventDefault();
         if(hash == "account") { $('#accountTimeId').val(sessionUserData.time_id); } 
@@ -118,35 +121,33 @@ var accountView = function () {
             timeout: 10000,
             success:function(result)
             {
-                if(hash == "account") {
-                    if(result.substr(0,2) == 'OK') { //ici vérifier que les 2 premiers caractères de la réponse sont "OK"
-                        userData = JSON.parse(result.substr(2)); // puis passer les parametr}es recus en tant que nouvelles données de session
+                if(hash == "account") { // existing account
+                    if(result.substr(0,2) == 'OK') { 
+                        userData = JSON.parse(result.substr(2)); //new parameters received from PHP script become user data
                         localStorage.setItem("sessionUserData", JSON.stringify(userData));
                         sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
                         $('#successAccountValidate').slideDown(400);                       
                         $('#errorAccountValidate').hide();
                         $('#successCreateValidate').hide();
-                    } else {
+                    } else { //error while saving
                         $('#errorAccountValidate').slideDown(400);
                         $('#successAccountValidate').hide();
                         $('#successCreateValidate').hide();
                     }
-                } else {
+                } else { // new account
                     if(result.substr(0,2) == 'OK') {
-                        msg = JSON.parse(result.substr(2));
+                        msg = JSON.parse(result.substr(2)); //display some info to the user like the generated password for ex
                         $('#subscribeName').html(msg[1]);
                         $('#subscribeMail').html(msg[2]);
                         $('#subscribeDays').html(msg[3]);
                         $('#subscribePass').html(msg[5]);
 
-                        $('#successCreateValidate').siblings().hide();
+                        $('#successCreateValidate').siblings().hide(); // hide every element but the displayed message
                         $('#successCreateValidate').parents().siblings().hide();
-                        $('#menuContent').show();
-                        $('.title').show();
-                        $('#successCreateValidate').slideDown(400);
-                        // $('#successAccountValidate').hide();
-                        // $('#errorAccountValidate').hide();
-                    } else {
+                        $('#menuContent').show(); //show menu
+                        $('.title').show(); // show title 
+                        $('#successCreateValidate').slideDown(400); // show message
+                    } else { //error while saving
                         $('#errorAccountValidate').slideDown(400);
                         $('#successAccountValidate').hide();
                         $('#successCreateValidate').hide();
@@ -166,6 +167,9 @@ var accountView = function () {
         });
     });
 
+    /**
+     * ["Login" button displayed in message after saving data]
+     */
     $('body').on('click', '#goToLogin', function(e){
         e.preventDefault();
         window.location.hash = '#login';

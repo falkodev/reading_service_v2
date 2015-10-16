@@ -163,9 +163,14 @@ userData.time_id = ''
 userData.email = ''
 daily_portion = 'Lecture du jour'
 read_all_news = 'Voir toutes les actualités'
-
-
-
+weekly_reading = 'Lecture de la semaine'
+today_reading_from = 'La lecture pour aujourd\'hui va de'
+today_reading_to = 'à'
+not_today_validate = 'Selon votre configuration, vous n\'avez pas de portion pour aujourd\'hui'
+display_previous_verses = 'Afficher les versets précédents'
+display_next_verses = 'Afficher les versets suivants'
+hide_previous_verses = 'Masquer les versets précédents'
+hide_next_verses = 'Masquer les versets suivants'
 
 
 // 'menu_home = 'Accueil'

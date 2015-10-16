@@ -1009,3 +1009,13 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	border: 0 !important;
 	text-align: left;
 }
+
+#resize {
+	position:fixed; 
+	bottom: 0em; 
+	right: 0em; 
+	z-index: 999;
+}
+@media (max-width: 766px) {
+  #resize { top: 0em; }
+}

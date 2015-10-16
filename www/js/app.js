@@ -68,10 +68,15 @@
     if(window.innerWidth < 768) {
       if(isElementInViewport($('.title'))) {
         $('.navbar-toggle').fadeIn();
+        if($('#resize').length) { $('#resize').fadeIn(); } //only on todayReading page (zoomIn, zoomOut)
       } else {
         $('.navbar-toggle').fadeOut();
+        if($('#resize').length) { $('#resize').fadeOut(); } //only on todayReading page (zoomIn, zoomOut)
       }
-    } else { $('.navbar-toggle').show(); } // for large screens, always show the menu
+    } else { 
+      $('.navbar-toggle').show(); // for large screens, always show the menu
+      if($('#resize').length) { $('#resize').show(); } //only on todayReading page (zoomIn, zoomOut)
+    } 
   }, 1000 );
   
   /**
