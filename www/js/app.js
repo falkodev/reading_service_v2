@@ -66,15 +66,15 @@
   });
 
   // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
-  // $('body').on( 'DOMMouseScroll mousewheel', function () {
-  //   if(window.innerWidth < 768) {
-  //     if(isElementInViewport($('.title'))) {
-  //       $('.navbar-toggle').fadeIn();
-  //     } else {
-  //       $('.navbar-toggle').fadeOut();
-  //     }
-  //   }
-  // });
+  setInterval(function(){
+    if(window.innerWidth < 768) {
+      if(isElementInViewport($('.title'))) {
+        $('.navbar-toggle').fadeIn();
+      } else {
+        $('.navbar-toggle').fadeOut();
+      }
+    } else { $('.navbar-toggle').show(); } // for large screens, always show the menu
+  }, 1000 );
   
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
