@@ -764,7 +764,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   .receptionMode { left: 2.5em; }
 }
 @media (min-width: 1200px) {
-  .receptionMode { left: 5em; }
+  .receptionMode { left: 3.5em; }
 }
 
 /*#day1:before{content: "Lundi";}

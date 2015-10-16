@@ -134,11 +134,11 @@
                             <br/>
                         </div>
                         <div class="col-sm-6"> 
-                            <p align="left">Quel mode de réception ?</p>
+                            <p align="left">{{reception_mode}}</p>
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td class="table-custom">Mail</td>
+                                        <td class="table-custom">{{reception_email}}</td>
                                         <td class="table-custom">
                                             <div class="onoffswitch receptionMode">
                                                 <input type="checkbox" id="toggleAccountModeEmail" name="toggleAccountModeEmail" class="onoffswitch-checkbox accountSwitch accountMode">
@@ -150,7 +150,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="table-custom">Appli mobile</td>
+                                        <td class="table-custom">{{reception_app}}</td>
                                         <td class="table-custom"><div class="onoffswitch receptionMode">
                                             <input type="checkbox" id="toggleAccountModeApp" name="toggleAccountModeApp" class="onoffswitch-checkbox accountSwitch accountMode">
                                             <label class="onoffswitch-label" for="toggleAccountModeApp">
@@ -167,7 +167,7 @@
 
                     <br>
                     <div id="dayValidate" class="validate">{{day_validate}}</div>
-                    <div id="modeValidate" class="validate">Vous devez choisir au moins un mode de réception</div>
+                    <div id="modeValidate" class="validate">{{reception_validate}}</div>
                     <br>
                     
                     <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountFirst">{{btn_previous}}</button>
@@ -216,7 +216,7 @@
                         <div id="account-select-phrase" class="displayNone">{{selected_utc_phrase_1}}<span id="account-selected-time"></span>{{selected_utc_phrase_2}}<span id="account-selected-utc"></span></div>
                         <br>
                         <div id="timezoneAccountValidate" class="validate"></div>
-                        <div id="successAccountValidate" class="validate">Vos modifications ont bien été enregistrées</div>
+                        <div id="successAccountValidate" class="validate">{{success_account_validate}}</div>
                         <div id="successCreateValidate" class="validate">
                             {{subscribe_create_1}} <span id="subscribeName"></span> {{subscribe_create_2}} <span id="subscribeMail"></span>{{subscribe_create_3}} <span id="subscribeDays"></span>{{subscribe_create_4}} <span id="subscribePass"></span> {{subscribe_create_5}}
                             <br>
@@ -226,7 +226,7 @@
                                 </div>                         
                             </div>
                         </div>
-                        <div id="errorAccountValidate" class="validate">Problème d'enregistrement des données</div>
+                        <div id="errorAccountValidate" class="validate">{{error_account_validate}}</div>
                         <br>
                         <div id="waitDiv" class="displayNone text-center">
                             <img src="assets/img/ring-white.svg"/><br>

@@ -48,10 +48,8 @@
    */
   window.analyzeHash = function() {
     hash = window.location.hash.substr(1);
-    if(!hash) {
-      hash = 'home';
-    }
-    else {hash = checkNeedLogin(hash);}
+    if(!hash) { hash = 'dashboard'; }
+    hash = checkNeedLogin(hash);
     var activeMenu = hash + '_active';
     displayView('menu', activeMenu); //load menu
     displayView(hash, null); //load view corresponding to the hash

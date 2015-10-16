@@ -134,7 +134,13 @@ change_password_length_validate = 'Le mot de passe doit avoir au moins 4 caract�
 change_password_match_validate = 'Les mots de passe ne correspondent pas'
 change_password_fail_validate = 'Malheureusement, la modification du mot de passe a échoué. Veuillez réessayer ultérieurement'
 change_password_success_validate = 'Le mot de passe a bien été modifié'
+success_account_validate = 'Vos modifications ont bien été enregistrées'
+error_account_validate = 'Problème d\'enregistrement des données'
 day_validate = 'Merci de choisir au moins un jour et de le valider en tant que premier jour'
+reception_validate = 'Vous devez choisir au moins un mode de réception'
+reception_mode = 'Quel mode de réception ?'
+reception_email = 'Mail'
+reception_app = 'Application mobile'
 userData.id = ''
 userData.password = ''
 userData.firstDay = ''
@@ -155,6 +161,9 @@ userData.time_utc = ''
 userData.time_zone = ''
 userData.time_id = ''
 userData.email = ''
+daily_portion = 'Lecture du jour'
+read_all_news = 'Voir toutes les actualités'
+
 
 
 
