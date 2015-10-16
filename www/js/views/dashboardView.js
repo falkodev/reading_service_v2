@@ -1,7 +1,9 @@
 var dashboardView = function () {
     var result = {};
  	var link = '';
-
+    // setInterval(function(){
+    //     console.log('width:' + window.innerWidth);
+    // },500);
     /**
      * [on click on a language in homeTemplate, remove previous language and add new language in the view]
      */

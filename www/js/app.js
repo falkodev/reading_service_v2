@@ -2,19 +2,23 @@
   /**
    * global variables
    */
+  window.lang;
   window.langList;
   window.hash;
-  window.userData = '';
   window.connectedUser = false;
   window.loggedOut = false;
   window.referrer = '';
 
   var slider = new PageSlider($('#tmplContent'));
   // browser language detection and load corresponding language file 
-  lang = window.navigator.userLanguage || window.navigator.language;
-  lang.substr(0,2);
-  lang = $.trim(lang);
   if(localStorage.getItem("lang")) { lang = localStorage.getItem("lang"); }
+  else {
+    lang = window.navigator.userLanguage || window.navigator.language;
+    lang = lang.substr(0,2);
+    lang = $.trim(lang);
+    localStorage.setItem("lang", lang);
+  }
+  
 
   //detect if previously loaded account
   if(localStorage.getItem("sessionUserData")) { connectedUser = true; }
@@ -65,17 +69,25 @@
 
   // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
   setInterval(function(){
+    if($('#resize').length) { //only on todayReading page (zoomIn, zoomOut)
+      if(window.innerWidth < 1036) {
+        if(isElementInViewport($('.title'))) {
+          $('#resize').fadeIn();
+        } else {
+          $('#resize').fadeOut();
+        }
+      } else {
+        $('#resize').show();
+      }
+    }
     if(window.innerWidth < 768) {
       if(isElementInViewport($('.title'))) {
         $('.navbar-toggle').fadeIn();
-        if($('#resize').length) { $('#resize').fadeIn(); } //only on todayReading page (zoomIn, zoomOut)
       } else {
         $('.navbar-toggle').fadeOut();
-        if($('#resize').length) { $('#resize').fadeOut(); } //only on todayReading page (zoomIn, zoomOut)
       }
     } else { 
       $('.navbar-toggle').show(); // for large screens, always show the menu
-      if($('#resize').length) { $('#resize').show(); } //only on todayReading page (zoomIn, zoomOut)
     } 
   }, 1000 );
   

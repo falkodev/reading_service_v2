@@ -1,28 +1,30 @@
 <section class="section" id="dashboard">
     <div class="container">
-        <div class="row col-sm-12 contentView">
+        <div class="row col-md-12 contentView">
             <h2 class="text-center title">{{menu_dashboard}}</h2>
             <div class="row">       
-                <div class="col-sm-4 col-sm-offset-2 text-left">
+                <div class="col-md-4 col-md-offset-2 text-left">
                     <p>{{lang_links}}</p>
-                    <p><a href="#account"><button class="btn btn-lg btn-default btn-width">{{account_title}}</button></a></p>
-                    <p><a href="#todayReading"><button class="btn btn-lg btn-default btn-width">{{daily_portion}}</button></a></p>
-                    <p><a href="#news"><button class="btn btn-lg btn-default btn-width">{{read_all_news}}</button></a></p>
+                    <p style="padding-bottom:3em;">
+                        <a href="#account"><button class="btn btn-lg btn-default btn-width">{{account_title}}</button></a>
+                        <a href="#todayReading"><button class="btn btn-lg btn-default btn-width">{{daily_portion}}</button></a>
+                        <a href="#news"><button class="btn btn-lg btn-default btn-width">{{read_all_news}}</button></a>
+                    </p>
                     <!-- <p><button class="btn btn-lg btn-default btn-width">Anciennes lectures</button></p>
                     <p><button class="btn btn-lg btn-default btn-width">Prochaine lecture</button></p>
                     <p><button class="btn btn-lg btn-default btn-width">Thèmes</button></p>    -->             
                 </div>  
-                <div id="dailyText" class="col-sm-6 text-left white-border"></div>  
+                <div id="dailyText" class="col-md-6 text-left white-border"></div>
             </div> 
             
             <!-- <div class="row" style="position: absolute; bottom: -100px; padding-top: 10px;"> -->
-            <div class="row col-sm-12">
+            <div class="row col-md-12">
                 <div id="waitDiv" class="intertitle">
                     <img src="assets/img/ring-white.svg"/>
                     <h1 class="">{{loading}}</h1>
                 </div>
-                <div id="feed-rotator1" class="col-sm-4 col-sm-offset-2 text-left feed-rotator"></div>
-                <div id="feed-rotator2" class="col-sm-4 text-left feed-rotator"></div>                  
+                <div id="feed-rotator1" class="col-md-4 col-md-offset-2 text-left feed-rotator"></div>
+                <div id="feed-rotator2" class="col-md-4 text-left feed-rotator"></div>                  
             </div>
             <!-- <p style="position:relative; text-align: center;"><a href="#news"><button class="btn btn-md btn-default">{{read_all_news}}</button></a></p> -->
         </div>      

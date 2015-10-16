@@ -87,7 +87,20 @@ ul {
     list-style: none;
 }
 
-.menu-bullet:before { 
+.menu-bullet-white:before { 
+    content: "";
+    border-color: transparent #FFFFFF;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -0.3em;
+    top: 1.3em;
+    position: relative;
+}
+
+.menu-bullet-orange:before { 
     content: "";
     border-color: transparent #FB7900;
     border-style: solid;
@@ -433,7 +446,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 }
 .subtitle { 
 	line-height:.9em;
-	font-size:5.5em;
+	font-size:5em;
 	margin-top:0;
 	margin-bottom:40px; 
 }
@@ -760,11 +773,8 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	left: 0;
 }
 
-@media (min-width: 1000px) and (max-width: 1199px) {
+@media (min-width: 1000px) {
   .receptionMode { left: 2.5em; }
-}
-@media (min-width: 1200px) {
-  .receptionMode { left: 3.5em; }
 }
 
 /*#day1:before{content: "Lundi";}
@@ -1001,7 +1011,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	height: 100%;
 }
 
-@media (max-width: 766px) {
+@media (max-width: 991px) {
   .white-border { border-left: 0px; }
 }
 
@@ -1014,8 +1024,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	position:fixed; 
 	bottom: 0em; 
 	right: 0em; 
-	z-index: 999;
 }
-@media (max-width: 766px) {
-  #resize { top: 0em; }
+@media (max-width: 1036px) {
+  #resize { top: 1em; right: 1em; height: 5em; }
 }

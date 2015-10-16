@@ -4,7 +4,7 @@ var loginView = function () {
 	/**
 	 * [click on "forgotten password" link displays form to regenerate password]
 	 */
-	$('body').off('click').on('click', '#forgottenPass', function(e){
+	$('body').on('click', '#forgottenPass', function(e){
         e.preventDefault();
 		$("#forgottenValidate").hide();
 		$('#forgottenInput').val($('#loginInput').val());
@@ -15,7 +15,7 @@ var loginView = function () {
 	/**
 	 * [click on "back" link displays again the login form]                                                                              
 	 */
-	$('body').off('click').on('click', '#backToLogin', function(e){
+	$('body').on('click', '#backToLogin', function(e){
 		e.preventDefault();
 		$('#forgottenDiv').hide();
 		$('#loginDiv').show();
@@ -24,7 +24,7 @@ var loginView = function () {
 	/**
 	 * [submit "forgotten password" form : test if email address is valid and ask for a new password]
 	 */
-	$('body').off('click').on('click', '#forgottenBtn', function(e){
+	$('body').on('click', '#forgottenBtn', function(e){
 		e.preventDefault();
 		$(".validate").hide();
 		var email = $('#forgottenInput').val();
@@ -48,9 +48,10 @@ var loginView = function () {
 	/**
 	 * [submit "login" form]
 	 */
-	$('body').off('click').on('click', '#loginBtn', function(e){
-        $(".validate").hide();
+	$('body').on('click', '#loginBtn', function(e){
         e.preventDefault();
+        $(".validate").hide();
+        
         var timer;
         $.ajax({
             type: "POST",
@@ -68,8 +69,8 @@ var loginView = function () {
             success: function(msg) {
                 if (msg[0] == '1') //correct credentials : login done
                 {                
-                    userData = JSON.parse(msg.substr(1));
-                    localStorage.setItem("sessionUserData", JSON.stringify(userData));
+                    var data = JSON.parse(msg.substr(1));
+                    localStorage.setItem("sessionUserData", JSON.stringify(data));
                     connectedUser = true;
                     loggedOut = false;
                     if(referrer != '' && referrer != 'login') {	
