@@ -79,9 +79,9 @@
   }
 
   if (window.location.protocol == 'file:') { 
-    console.log('mobile app'); 
+    // console.log('mobile app');     
     if(!localStorage.firstTimeOver) { // first time ever
-      console.log('first time');
+      // console.log('first time');
       displayView('firstTime', null);
     }
     else {

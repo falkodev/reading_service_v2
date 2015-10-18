@@ -337,7 +337,7 @@ ul {
   padding: 20px;    
   margin-left: 40px;
   margin-right: 20px;
-  margin-top: 40px;
+  /*margin-top: 40px;*/
   background: rgb(34,34,34);
   background: rgba(34,34,34,0.75);
   border: 2px solid #ffffff;
@@ -360,17 +360,15 @@ ul {
 }
 
 @media (max-width: 767px)  {
-	.background { padding-top: 150px; }
-    .contentBox { margin-left: 20px; }
+    #contentLogin { margin-left: 20px; }
 }
 
 @media (min-width: 768px) {
-	.background { padding-top: 100px; }
-    .contentBox { margin-left: 200px; }
+    #contentLogin { margin-left: 200px; }
 
 }
 
- #topbar, #rightbar, #bottombar, #leftbar {   
+#topbar, #rightbar, #bottombar, #leftbar {   
     position:absolute; top: 0px; right: 0px; bottom: 0px; width: 0px; height: 0px; border: 1px solid #ffffff; z-index:3;
   }
 

@@ -4,15 +4,15 @@ var firstTimeView = function () {
 
     // $(document).ready(function(){
     //     var speed = 1000;
-    //     var offsetContent = $("#content").offset(); //position de la boite "content"
-    //     var offsetWidth = $("#content").outerWidth();
+    //     var offsetContent = $("#content1").offset(); //position de la boite "content"
+    //     var offsetWidth = $("#content1").outerWidth();
     //     var offsetRight = offsetContent.left + offsetWidth;
-    //     $("#content").hide();
+    //     $("#content1").hide();
     //     $("#topbar").offset({left: offsetContent.left, top: offsetContent.top});
     //     $("#topbar").animate({width: offsetWidth}, speed,
     //             function() {
     //                 $("#rightbar").offset({top: offsetContent.top, left: offsetRight - 1});
-    //                 var offsetHeight = $("#content").outerHeight();
+    //                 var offsetHeight = $("#content1").outerHeight();
     //                 $("#rightbar").animate({height: offsetHeight + 1}, speed,
     //                         function() {
     //                             offsetRight = $(window).width() - offsetRight;
@@ -24,7 +24,7 @@ var firstTimeView = function () {
     //                                         $("#leftbar").css({top: "auto", bottom: offsetBottom, left: offsetContent.left});
     //                                         $("#leftbar").animate({height: offsetHeight}, speed,
     //                                                 function() {
-    //                                                     $("#content").fadeIn(speed);
+    //                                                     $("#content1").fadeIn(speed);
     //                                                     $("#topbar").fadeOut(speed);
     //                                                     $("#leftbar").fadeOut(speed);
     //                                                     $("#bottombar").fadeOut(speed);
@@ -62,5 +62,35 @@ var firstTimeView = function () {
     });  
     link += '</div>';
     result.lang_links = link; // will be added in the context for handlebars compilation
+
+    $('body').on('click', '#firstTimeNextBtn', function(e){
+        var heightContent1 = $("#content1").height(); 
+        var topContent1 = $("#content1").offset().top; 
+        var marginTopContent1 = $("#content1").css('margin-top');
+        var windowHeight = $(window).height();
+        var marginTopContent2 = marginTopContent1.substr(0, marginTopContent1.length - 2);
+        marginTopContent2 = parseInt(marginTopContent2) + 100;
+        var newPosition = heightContent1 + topContent1 + 45;
+        // console.log('marginTopContent1:' + marginTopContent1 + ' marginTopContent2:' + marginTopContent2 + ' newPosition:' + newPosition);
+        $('#content2').css({'margin-top': windowHeight}).css('visibility','visible');
+        $(function () {
+            $("#content1").animate({'margin-top': -newPosition}, 1200);
+            $("#content2").animate({'margin-top': marginTopContent2}, 1500, function(){
+                $("#content1").css('visibility','hidden');
+            });
+        });
+        localStorage.setItem("firstTimeOver", true);
+    });
+
+    $('body').on('click', '#firstTimePreviousBtn', function(e){
+        $('#content1').css('visibility','visible');
+        $(function () {
+            $("#content1").animate({'margin-top': 0}, 1500, function(){
+                $("#content2").css('visibility','hidden');
+            });
+        });
+        localStorage.removeItem("firstTimeOver");
+    });
+
     return result;
 }
