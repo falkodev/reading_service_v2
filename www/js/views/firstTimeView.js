@@ -3,59 +3,38 @@ var firstTimeView = function () {
     var link = '<div style="margin-bottom: 50px">';
 
     $(document).ready(function(){
-        if ($("#content").height() <= $(window).height())
-        {
-            var speed = 1000;
-            var offsetContent = $("#content1").offset(); //position de la boite "content"
-            var offsetWidth = $("#content1").outerWidth();
-            var offsetRight = offsetContent.left + offsetWidth;
-            $("#content1").hide();
-            $("#topbar").offset({left: offsetContent.left, top: offsetContent.top});
-            $("#topbar").animate({width: offsetWidth}, speed,
-                    function() {
-                        $("#rightbar").offset({top: offsetContent.top, left: offsetRight - 1});
-                        var offsetHeight = $("#content1").outerHeight();
-                        $("#rightbar").animate({height: offsetHeight + 1}, speed,
-                                function() {
-                                    offsetRight = $(window).width() - offsetRight;
-                                    $("#bottombar").css({top: offsetHeight + offsetContent.top - 1, right: offsetRight});
-                                    $("#bottombar").animate({width: offsetWidth}, speed,
-                                            function() {
-                                                var offsetBottom = $(window).height() - offsetHeight - offsetContent.top - 1;
-                                                //console.log("total height : " + $(window).height() + " offsetContent top : " + offsetContent.top + " offsetBottom : " + offsetBottom);
-                                                $("#leftbar").css({top: "auto", bottom: offsetBottom, left: offsetContent.left});
-                                                $("#leftbar").animate({height: offsetHeight}, speed,
-                                                        function() {
+        var speed = 800;
+        var offsetContent = $("#content1").offset(); //position de la boite "content"
+        var offsetWidth = $("#content1").outerWidth();
+        var offsetRight = offsetContent.left + offsetWidth;
+        $("#content1").hide();
+        $("#topbar").offset({left: offsetContent.left, top: offsetContent.top});
+        $("#topbar").animate({width: offsetWidth}, speed,
+                function() {
+                    $("#rightbar").offset({top: offsetContent.top, left: offsetRight - 1});
+                    var offsetHeight = $("#content1").outerHeight();
+                    $("#rightbar").animate({height: offsetHeight + 1}, speed,
+                            function() {
+                                offsetRight = $(window).width() - offsetRight - 16;
+                                $("#bottombar").css({top: offsetHeight - 1, right: offsetRight});
+                                $("#bottombar").animate({width: offsetWidth - 1}, speed,
+                                        function() {
+                                            var offsetBottom = $(window).height() - offsetHeight - offsetContent.top - 1;
+                                            offsetBottom = 0;
+                                            console.log("total height : " + $(window).height() + " offsetContent top : " + offsetContent.top + " offsetBottom : " + offsetBottom);
+                                            $("#leftbar").css({left: offsetContent.left, top: "auto", bottom: offsetBottom });
+                                            $("#leftbar").animate({height: offsetHeight }, speed, 
+                                                function() {
+                                                        $("#topbar").fadeOut(speed);
+                                                        $("#leftbar").fadeOut(speed);
+                                                        $("#bottombar").fadeOut(speed);
+                                                        $("#rightbar").fadeOut(speed, function() {
                                                             $("#content1").fadeIn(speed);
-                                                            $("#topbar").fadeOut(speed);
-                                                            $("#leftbar").fadeOut(speed);
-                                                            $("#bottombar").fadeOut(speed);
-                                                            $("#rightbar").fadeOut(speed);
-                                                        });
+                                                        });                                                                                                                   
                                             });
                                 });
                     });
-        } else {
-            var speed = 1500;
-            var offsetContent = $("#content1").offset(); //position de la boite "content"
-            var offsetWidth = $("#content1").outerWidth();
-            var offsetRight = offsetContent.left + offsetWidth;
-            var offsetHeight = $("#content1").outerHeight();
-            $("#content1").hide();
-            $("#topbar").offset({left: offsetContent.left, top: offsetContent.top});
-            $("#topbar").animate({width: offsetWidth}, speed);
-
-            var offsetBottom = $(window).height() - offsetHeight - offsetContent.top;
-            //console.log("total height : " + $(window).height() + " offsetContent top : " + offsetContent.top + " offsetBottom : " + offsetBottom);
-            $("#leftbar").css({top: "auto", bottom: offsetBottom, left: offsetContent.left});
-            $("#leftbar").animate({height: offsetHeight}, speed,
-                    function() {
-                        $("#content1").fadeIn(speed);
-                        $("#topbar").fadeOut(speed);
-                        $("#leftbar").fadeOut(speed);
-                    });
-
-        }
+        });
     });
 
     
