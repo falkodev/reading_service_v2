@@ -14,7 +14,7 @@
                     <li class="menu-bullet-white"><a href="#account" class="menu-height">{{account_title}}</a></li> 
                     <li class="menu-bullet-white"><a href="#todayReading" class="menu-height">{{daily_portion}}</a></li> 
                     <li class="menu-bullet-white"><a href="#news" class="menu-height">{{news}}</a></li> 
-                    <li class="menu-bullet-orange"><a href="#logout" class="menu-orange menu-height" id="logout">{{menu_logout}}</a></li> 
+                    {{#unless mobileApp}}<li class="menu-bullet-orange"><a href="#logout" class="menu-orange menu-height" id="logout">{{menu_logout}}</a></li>{{/unless}} 
                 </ul>
                 {{/if}}
             </ul>

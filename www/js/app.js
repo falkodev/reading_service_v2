@@ -8,6 +8,7 @@
   window.connectedUser = false;
   window.loggedOut = false;
   window.referrer = '';
+  window.mobileApp = false;
 
   var slider = new PageSlider($('#tmplContent'));
 
@@ -79,13 +80,11 @@
   }
 
   if (window.location.protocol == 'file:') { 
-    // console.log('mobile app');     
-    if(!localStorage.firstTimeOver) { // first time ever
-      // console.log('first time');
+    mobileApp = true;    
+    if(!localStorage.firstTimeOver) { // first time
       displayView('firstTime', null);
     }
-    else {
-      console.log('not the first time'); 
+    else { 
       analyzeHash();
     }
   } else {

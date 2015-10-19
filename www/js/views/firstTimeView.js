@@ -3,37 +3,28 @@ var firstTimeView = function () {
     var link = '<div style="margin-bottom: 50px">';
 
     $(document).ready(function(){
-        var speed = 800;
+        var speed = 1500;
         var offsetContent = $("#content1").offset(); //position de la boite "content"
         var offsetWidth = $("#content1").outerWidth();
         var offsetRight = offsetContent.left + offsetWidth;
+        var offsetHeight = $("#content1").outerHeight();
+
         $("#content1").hide();
         $("#topbar").offset({left: offsetContent.left, top: offsetContent.top});
-        $("#topbar").animate({width: offsetWidth}, speed,
-                function() {
-                    $("#rightbar").offset({top: offsetContent.top, left: offsetRight - 1});
-                    var offsetHeight = $("#content1").outerHeight();
-                    $("#rightbar").animate({height: offsetHeight + 1}, speed,
-                            function() {
-                                offsetRight = $(window).width() - offsetRight - 16;
-                                $("#bottombar").css({top: offsetHeight - 1, right: offsetRight});
-                                $("#bottombar").animate({width: offsetWidth - 1}, speed,
-                                        function() {
-                                            var offsetBottom = $(window).height() - offsetHeight - offsetContent.top - 1;
-                                            offsetBottom = 0;
-                                            console.log("total height : " + $(window).height() + " offsetContent top : " + offsetContent.top + " offsetBottom : " + offsetBottom);
-                                            $("#leftbar").css({left: offsetContent.left, top: "auto", bottom: offsetBottom });
-                                            $("#leftbar").animate({height: offsetHeight }, speed, 
-                                                function() {
-                                                        $("#topbar").fadeOut(speed);
-                                                        $("#leftbar").fadeOut(speed);
-                                                        $("#bottombar").fadeOut(speed);
-                                                        $("#rightbar").fadeOut(speed, function() {
-                                                            $("#content1").fadeIn(speed);
-                                                        });                                                                                                                   
-                                            });
-                                });
-                    });
+        $("#topbar").animate({width: offsetWidth}, speed);
+        $("#leftbar").css({top: 0, left: offsetContent.left});
+        $("#rightbar").offset({top: offsetContent.top, left: offsetRight - 1});
+        $("#rightbar").animate({height: offsetHeight + 1}, speed);
+
+        offsetRight = $(window).width() - offsetRight - 16;
+        $("#bottombar").css({top: offsetHeight - 1, right: offsetRight});
+        $("#bottombar").animate({width: offsetWidth - 1}, speed);
+        $("#leftbar").animate({height: offsetHeight}, speed, function() {
+            $("#content1").fadeIn(speed);
+            $("#topbar").fadeOut(speed);
+            $("#leftbar").fadeOut(speed);
+            $("#bottombar").fadeOut(speed);
+            $("#rightbar").fadeOut(speed);
         });
     });
 

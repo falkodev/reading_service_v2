@@ -155,6 +155,7 @@ hide_previous_verses = 'Masquer les versets précédents'
 hide_next_verses = 'Masquer les versets suivants'
 
 
+
 // 'menu_home = 'Accueil'
 
 // menu_info = 'Fonctionnement'

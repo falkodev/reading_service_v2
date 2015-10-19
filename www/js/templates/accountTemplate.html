@@ -48,6 +48,7 @@
                               <th class="table-custom"><div>{{account_text_4}}</div></th>
                               <th class="table-custom"><div>{{account_text_5}}&nbsp;&nbsp;<i class="fa fa-question-circle" id="helpAccount" data-toggle="popover" data-title='{{popover_title}}' data-placement="right auto" data-content='{{popover_content}}' data-html="true"></i></div></th>
                           </tr>
+                          <tr><th style="border:0;" colspan="3"><div id="subscribeTip1" class="validate"><span class="closeTip"><i class="fa fa-times"></i></span>{{subscribe_tip_1}}</div></th></tr>
                      <tr><td class="tdDays">{{monday}}</td>
                          <td>         
                     <!-- lundi -->   
@@ -199,7 +200,7 @@
                     </div>   
                     <div class="col-sm-12 text-center">
                         <br><div>{{time_choice}}</div>
-                        <br><div class="validate" id="subscribeTip">{{subscribe_tip_2}}</div>
+                        <br><div class="validate" id="subscribeTip2">{{subscribe_tip_2}}</div>
                         <div id="tipAccount" class="validate tip" style="margin: 5px -12px;"><span class="closeTip"><i class="fa fa-times"></i></span>{{tip_1}}{{userData.time_displayed}}{{tip_2}}UTC {{userData.time_utc}}{{tip_3}} ({{userData.time_cities}})<br><br>{{tip_4}}</div>
                         <br><input type="button" id="displayAccountMap" class="btn btn-lg btn-orange displayNone" value="Afficher la carte"/><br>
                         <div class="worldmap" id="account-map-continents">

@@ -1,7 +1,7 @@
 var accountView = function () {
 	var result = {};
-    if(connectedUser) {
-        userData = '';
+    userData = '';
+    if(connectedUser) {        
     	// retrieve user data
     	var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
         // $.each(sessionUserData, function(k,v){
@@ -269,7 +269,7 @@ var accountView = function () {
 	    });
 
 	    $(".closeTip").click(function() {      
-	        $(".tip").slideUp(400);
+	        $(this).parent().slideUp(400);
 	    });        
 	});
 	/**
@@ -279,9 +279,9 @@ var accountView = function () {
     $(document).ready(function(){
         var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
         // console.log('class chargée:' + mapLoaded);
-        if(!mapLoaded) {
-            window.location.reload(true);
-        } 
+        // if(!mapLoaded) {
+        //     window.location.reload(true);
+        // } 
         $('.choix').attr('lang', localStorage.getItem("lang"));
     });
 
@@ -339,7 +339,8 @@ var accountView = function () {
                             });
                         }
                         else {
-                            $("#toggleAccountEmail").prop('checked', true); 
+                            $("#subscribeTip1").show();
+                            $("#toggleAccountModeEmail").prop('checked', true); 
                         }
                         returnValue = true;
                     }
@@ -374,7 +375,7 @@ var accountView = function () {
 
                 $("#tipAccount").show();
             } 
-            else if(hash == "subscribe") { $("#subscribeTip").show(); }
+            else if(hash == "subscribe") { $("#subscribeTip2").show(); }
             $("#radioAccountLangReading" + elementReading).prop('checked', true);
             $("#radioAccountLangText" + elementComment).prop('checked', true); 
         }

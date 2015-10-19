@@ -3,5 +3,8 @@ var menuView = function () {
 	if(connectedUser) {
 		result.connectedUser = connectedUser;
 	}
+	// if(mobileApp) {
+	// 	result.mobileApp = mobileApp;
+	// }
 	return result;
 }
