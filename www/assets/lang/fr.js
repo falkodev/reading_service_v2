@@ -1,5 +1,4 @@
 language ='fr'
-lang_links = ''
 menu_home = "Accueil"
 menu_faq = "FAQ"
 menu_contact = "Contact"
@@ -7,12 +6,6 @@ menu_subscribe = "Inscription"
 menu_login = "Espace personnel"
 menu_dashboard = "Tableau de bord"
 menu_logout = "Déconnexion"
-home_active = ""
-faq_active = ""
-contact_active = ""
-subscribe_active = ""
-login_active = ""
-logout_active = ""
 home_subtitle = "Inscription ou connexion"
 home_faq_label = "En savoir plus"
 home_subscribe_label = "Inscription"
@@ -50,7 +43,6 @@ login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en
 login_forgotten_validate = "Adresse email non valide"
 login_forgotten_success = "Un nouveau mot de passe a été envoyé à votre adresse mail"
 login_forgotten_fail = "Malheureusement, la génération du mot de passe a échoué. Veuillez réessayer ultérieurement"
-account=""
 account_title = 'Mon compte'
 account_text_1 = 'Voici les informations enregistrées dans votre compte'
 account_text_2 = "Adresse email pour l'envoi des portions de lecture la Bible"
@@ -153,7 +145,8 @@ display_previous_verses = 'Afficher les versets précédents'
 display_next_verses = 'Afficher les versets suivants'
 hide_previous_verses = 'Masquer les versets précédents'
 hide_next_verses = 'Masquer les versets suivants'
-
+first_time_welcome = "Bienvenue sur l'application JW Reading"
+first_time_phrase_1 = "Merci de modifier la langue d'affichage si vous le désirez"
 
 
 // 'menu_home = 'Accueil'

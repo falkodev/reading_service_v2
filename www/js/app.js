@@ -52,8 +52,7 @@
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
-  window.displayView = function(element, activeMenu) {
-  // function displayView(element, activeMenu) {   
+  window.displayView = function(element, activeMenu) {  
     var view   = "new " + element + "View()";
     var result = eval(view);
     var displaySubscribe = false;
@@ -121,20 +120,15 @@
     } 
   }, 1000 );
   
-
-  
-
   /**
-   * [loadTemplate : get a template, compile it with handblebars.js and return his html content]
+   * [loadTemplate : get a template, compile it with handblebars.js and add his html content to the DOM]
    * @param  {tmpl_name  : template name [string]}
    * @param  {activeMenu : menu name - optional [string]}
    * @param  {result : additional context from the calling view - optional [object]}
    * @param  {displaySubscribe : if subscribe view is calling, display account template with subscribe labels - optional [boolean]}
-   * @return {htmlContent [handlebars compiled function]}
    */
   function loadTemplate(tmpl_name, activeMenu, result, displaySubscribe) {
     var tmpl_url = 'js/templates/' + tmpl_name + 'Template.html';
-    var htmlContent;
     var context = {};
 
     $.ajax({

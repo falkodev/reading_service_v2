@@ -268,9 +268,12 @@ var accountView = function () {
             $('#accountTimeId').val($(this).val());
 	    });
 
-	    $(".closeTip").click(function() {      
-	        $(this).parent().slideUp(400);
-	    });        
+	    // $(".closeTip").click(function() {      
+	    //     $(this).parent().slideUp(400);
+	    // });   
+        $(".closeTip").on('touchstart click',function (){
+            $(this).parent().slideUp(400);
+        });     
 	});
 	/**
 	 * [end world map mgmt]
@@ -279,9 +282,9 @@ var accountView = function () {
     $(document).ready(function(){
         var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
         // console.log('class chargée:' + mapLoaded);
-        // if(!mapLoaded) {
-        //     window.location.reload(true);
-        // } 
+        if(!mapLoaded) {
+            window.location.reload(true);
+        } 
         $('.choix').attr('lang', localStorage.getItem("lang"));
     });
 

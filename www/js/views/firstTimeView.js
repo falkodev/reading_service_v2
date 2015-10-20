@@ -3,6 +3,7 @@ var firstTimeView = function () {
     var link = '<div style="margin-bottom: 50px">';
 
     $(document).ready(function(){
+        //animation
         var speed = 1500;
         var offsetContent = $("#content1").offset(); //position de la boite "content"
         var offsetWidth = $("#content1").outerWidth();
@@ -26,6 +27,7 @@ var firstTimeView = function () {
             $("#bottombar").fadeOut(speed);
             $("#rightbar").fadeOut(speed);
         });
+        //end animation
     });
 
     
@@ -56,6 +58,9 @@ var firstTimeView = function () {
     link += '</div>';
     result.lang_links = link; // will be added in the context for handlebars compilation
 
+    /**
+     * [click on "Next" button : animate to display next screen]
+     */
     $('body').on('click', '#firstTimeNextBtn', function(e){
         var heightContent1 = $("#content1").height(); 
         var topContent1 = $("#content1").offset().top; 
@@ -72,9 +77,12 @@ var firstTimeView = function () {
                 $("#content1").css('visibility','hidden');
             });
         });
-        localStorage.setItem("firstTimeOver", true);
+        localStorage.setItem("firstTimeOver", true); //if login or subscribe after that step, the first time view will not be displayed anymore thanks to this line
     });
-
+    
+    /**
+     * [click on "Previous" button : animate to display previous screen]
+     */
     $('body').on('click', '#firstTimePreviousBtn', function(e){
         $('#content1').css('visibility','visible');
         $(function () {
@@ -82,7 +90,7 @@ var firstTimeView = function () {
                 $("#content2").css('visibility','hidden');
             });
         });
-        localStorage.removeItem("firstTimeOver");
+        localStorage.removeItem("firstTimeOver"); // if previous screen is displayed, remove this item from storage in order to display it again next time the user launches the app
     });
 
     return result;
