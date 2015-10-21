@@ -1,6 +1,7 @@
 var dashboardView = function () {
     var result = {};
  	var link = '';
+    var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
     
     /**
      * [on click on a language in homeTemplate, remove previous language and add new language in the view]
@@ -27,7 +28,7 @@ var dashboardView = function () {
 
 	//get daily text
 	$.post("http://www.jwreading.com/ajax/getDailyText.php", 
-	   { 'lang': localStorage.getItem("lang") }, function(data) {}).complete(function(data) {
+	   { 'lang': sessionUserData.commentLang }, function(data) {}).complete(function(data) {
 		result = data['responseText'].trim();
 		$('#dailyText').html(result);
 	});

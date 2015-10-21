@@ -48,10 +48,12 @@ var loginView = function () {
 	/**
 	 * [submit "login" form]
 	 */
+	
 	$('body').on('click', '#loginBtn', function(e){
         e.preventDefault();
         $(".validate").hide();
-        
+     //    myFuncCalls++;
+    	// alert( "I have been called " + myFuncCalls + " times" );
         var timer;
         $.ajax({
             type: "POST",
@@ -62,23 +64,40 @@ var loginView = function () {
 		            $('#loginDiv').hide();
             		$('#waitDiv').show(); 
 		        },
-		        200); // if ajax request takes more than 200ms, display loading animation         	
+		        200); // if ajax request takes more than 200ms, display loading animation   
             },
-            timeout: 10000, 
+            timeout: 2000, 
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
             success: function(msg) {
-                if (msg[0] == '1') //correct credentials : login done
+            	alert('yo');               
+                // $.each(msg, function(k,v){
+                // 	console.log('msg k:' + k + ' v:' + v);
+                // });
+                console.log('msg: ' + msg);
+                // if (msg[0] == '1') //correct credentials : login done
+                if (msg['etat'] == 1)
                 {                
-                    var data = JSON.parse(msg.substr(1));
+                	console.log('msg: ' + msg);
+                	var sub = msg.substr(1);
+                	console.log('msg apres substr = ' + sub);
+                    var data = JSON.parse(msg.substr(1));                    
+                    var dataStr = '';
+                    $.each(data, function(k,v){
+                    	dataStr += 'data k:' + k + ' v:' + v + '\n';
+                    });
+                    alert('data: ' + dataStr);
                     localStorage.setItem("sessionUserData", JSON.stringify(data));
+                    // localStorage.setItem("sessionUserData", JSON.stringify(msg.substr(1)));
+                    // alert('localStorage');
                     connectedUser = true;
                     loggedOut = false;
-                    if(referrer != '' && referrer != 'login') {	
-						window.location.reload(); //for a page needing a connected user, the displayed page is the login page, but the real hash (in the browser) is the previously called page. so a refresh is enough to hide the login page and display the previously called page				
-                    }
-                    else { 
-                    	window.location.hash = '#dashboard'; //default page to display after login
-                    }                      
+      //               if(referrer != '' && referrer != 'login') {	
+						// window.location.reload(); //for a page needing a connected user, the displayed page is the login page, but the real hash (in the browser) is the previously called page. so a refresh is enough to hide the login page and display the previously called page				
+      //               }
+      //               else { 
+      //               	window.location.hash = '#dashboard'; //default page to display after login
+      //               }  
+                    alert('connectedUser: ' + connectedUser + ' referrer:' + referrer);                    
                 }
                 else if (msg == '0') //wrong password
                 { $("#pwdValidate").slideDown(400); }
@@ -87,10 +106,13 @@ var loginView = function () {
                 else //every other login problem
                 { $("#loginValidate").slideDown(400); }
             },
-            error: function() {
-            	$("#connectionValidate").slideDown(400); // no internet connection
+            error: function(x, t, m) {
+            	alert('timer error = ' + timer);
+            	if(t==="timeout") { alert("got timeout"); } 
+            	else { $("#connectionValidate").slideDown(400); } // no internet connection 
             },
             complete: function() { 
+            	alert('timer complete = ' + timer);
             	clearTimeout(timer);
             	$('#waitDiv').hide();  
             	$('#loginDiv').show();

@@ -9,6 +9,7 @@
   window.loggedOut = false;
   window.referrer = '';
   window.mobileApp = false;
+  // myFuncCalls = 0;
 
   var slider = new PageSlider($('#tmplContent'));
 
