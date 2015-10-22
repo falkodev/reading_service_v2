@@ -66,11 +66,11 @@ var loginView = function () {
             },
             timeout: 5000, 
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
-            success: function(msg) {
-                var data = JSON.parse(msg);  
-                // if (msg[0] == '1') //correct credentials : login done
-                if(typeof data == 'object')
+            success: function(msg) {                  
+                if (msg[0] == '1') //correct credentials : login done
+                // if(typeof data == 'object')
                 {                
+                	var data = JSON.parse(msg.substr(1));
                     localStorage.setItem("sessionUserData", JSON.stringify(data));
                     connectedUser = true;
                     loggedOut = false;
@@ -89,8 +89,8 @@ var loginView = function () {
                 { $("#loginValidate").slideDown(400); }
             },
             error: function(x, t, m) {
-            	if(t==="timeout") { alert("got timeout"); } 
-            	else { $("#connectionValidate").slideDown(400); } // no internet connection 
+            	if(t==="timeout") { console.log("got timeout"); } 
+            	$("#connectionValidate").slideDown(400);  // no internet connection 
             },
             complete: function() { 
             	clearTimeout(timer);
