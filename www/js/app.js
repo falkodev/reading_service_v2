@@ -1,3 +1,20 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+  // alert("started");
+  var now   = new Date().getTime(),
+  next_time = new Date(now + 2*1000);
+  img = "file://icon.png";
+  cordova.plugins.notification.local.schedule({
+      id: 1,
+      title: "Nouvelle lecture de la Bible",
+      text: "La portion du jour est prête",
+      at: next_time,
+      // smallIcon: img
+      // data: { meetingId:"#123FG8" }, 
+      
+  });
+}
+
 (function () {
   /**
    * global variables
