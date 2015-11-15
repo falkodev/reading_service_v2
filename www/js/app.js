@@ -1,18 +1,43 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
   // alert("started");
-  var now   = new Date().getTime(),
-  next_time = new Date(now + 2*1000);
-  img = "file://icon.png";
-  cordova.plugins.notification.local.schedule({
-      id: 1,
-      title: "Nouvelle lecture de la Bible",
-      text: "La portion du jour est prête",
-      at: next_time,
-      // smallIcon: img
-      // data: { meetingId:"#123FG8" }, 
+  // alert('connectedUser:' + connectedUser);
+  var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
+  // alert('time_displayed:' + sessionUserData.time_displayed + ' \nmodeApp:' + sessionUserData.modeApp);
+  if(connectedUser && sessionUserData.modeApp) { //if user requested to be alerted when it's time to read a new portion
+    // checker ici si jour de lecture et faire 2e alerte pr texte du jour
+    // si oui, on execute le reste
+    var day   = new Date().getDate();
+    var month   = new Date().getMonth();
+    var year   = new Date().getFullYear();
+    next_time = new Date(year, month, day, 07, 30, 00);
+    alert('next_time:' + next_time);
+    img = "file://icon.png";
+    cordova.plugins.notification.local.schedule({
+        id: 1,
+        title: "Nouvelle lecture de la Bible",
+        text: "La portion du jour est prête",
+        at: next_time,
+        data: {reading:true}
+    });
+    cordova.plugins.notification.local.on("click", function (notification) {
+        if(notification.data == '{"reading":true}') { //lecture
+          window.location.hash = '#todayReading';
+        }
+    });
+  }
+  // var now   = new Date().getTime();
+  // next_time = new Date(now + 2*1000);
+  // img = "file://icon.png";
+  // cordova.plugins.notification.local.schedule({
+  //     id: 1,
+  //     title: "Nouvelle lecture de la Bible",
+  //     text: "La portion du jour est prête",
+  //     at: next_time,
+  //     // smallIcon: img
+  //     // data: { meetingId:"#123FG8" }, 
       
-  });
+  // });
 }
 
 (function () {
@@ -41,7 +66,7 @@ function onDeviceReady() {
 
   //detect if previously loaded account
   if(localStorage.getItem("sessionUserData")) { connectedUser = true; }
-
+  
   /**
    * [get languages file and determine what language to display - english by default if language not found]
    */
@@ -69,7 +94,7 @@ function onDeviceReady() {
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
-  window.displayView = function(element, activeMenu) {  
+  window.displayView = function(element, activeMenu) { 
     var view   = "new " + element + "View()";
     var result = eval(view);
     var displaySubscribe = false;
@@ -80,7 +105,7 @@ function onDeviceReady() {
       // attach account behaviour to subscribe view
       var attach = new accountView();
     }
-    loadTemplate(element, activeMenu, result, displaySubscribe);
+    loadTemplate(element, activeMenu, result, displaySubscribe); 
   }
   
   /**

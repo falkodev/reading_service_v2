@@ -66,12 +66,13 @@ var loginView = function () {
             },
             timeout: 5000, 
             data: "loginInput=" + $("#loginInput").val() + "&pwdInput=" + $("#pwdInput").val(),
-            success: function(msg) {                  
+            success: function(msg) {                 
                 if (msg[0] == '1') //correct credentials : login done
                 // if(typeof data == 'object')
                 {                
                 	var data = JSON.parse(msg.substr(1));
                     localStorage.setItem("sessionUserData", JSON.stringify(data));
+                    // alert('sessionUserData.time_displayed:' + data.time_displayed);
                     connectedUser = true;
                     loggedOut = false;
                     if(referrer != '' && referrer != 'login') {	
@@ -88,11 +89,11 @@ var loginView = function () {
                 else //every other login problem
                 { $("#loginValidate").slideDown(400); }
             },
-            error: function(x, t, m) {
-            	if(t==="timeout") { console.log("got timeout"); } 
+            error: function(x, t, m) {   
+            	if(t==="timeout") { console.log("jwreading got timeout"); } 
             	$("#connectionValidate").slideDown(400);  // no internet connection 
             },
-            complete: function() { 
+            complete: function() {   
             	clearTimeout(timer);
             	$('#waitDiv').hide();  
             	$('#loginDiv').show();
