@@ -1,7 +1,7 @@
 var dashboardView = function () {
     var result = {};
  	var link = '';
-    var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
+    sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
     
     /**
      * [on click on a language in homeTemplate, remove previous language and add new language in the view]

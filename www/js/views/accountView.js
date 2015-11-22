@@ -3,7 +3,7 @@ var accountView = function () {
     userData = '';
     if(connectedUser) {        
     	// retrieve user data
-    	var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
+    	// sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
         // $.each(sessionUserData, function(k,v){
     	// 	console.log("sessionUserData." + k + ": " + v)
     	// })
@@ -124,6 +124,8 @@ var accountView = function () {
             {
                 if(hash == "account") { // existing account
                     if(result.substr(0,2) == 'OK') { 
+                        localStorage.removeItem("sessionUserData");
+                        sessionUserData = '';
                         userData = JSON.parse(result.substr(2)); //new parameters received from PHP script become user data
                         localStorage.setItem("sessionUserData", JSON.stringify(userData));
                         sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));

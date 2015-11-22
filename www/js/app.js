@@ -1,16 +1,17 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, true);
+
 function onDeviceReady() {
   // alert("started");
   // alert('connectedUser:' + connectedUser);
-  var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
+  // sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
   // alert('time_displayed:' + sessionUserData.time_displayed + ' \nmodeApp:' + sessionUserData.modeApp);
   if(connectedUser && sessionUserData.modeApp) { //if user requested to be alerted when it's time to read a new portion
     // checker ici si jour de lecture et faire 2e alerte pr texte du jour
     // si oui, on execute le reste
     var day   = new Date().getDate();
-    var month   = new Date().getMonth();
-    var year   = new Date().getFullYear();
-    next_time = new Date(year, month, day, 07, 30, 00);
+    var month = new Date().getMonth();
+    var year  = new Date().getFullYear();
+    next_time = new Date(year, month, day, 20, 40, 00);
     alert('next_time:' + next_time);
     img = "file://icon.png";
     cordova.plugins.notification.local.schedule({
@@ -31,8 +32,8 @@ function onDeviceReady() {
   // img = "file://icon.png";
   // cordova.plugins.notification.local.schedule({
   //     id: 1,
-  //     title: "Nouvelle lecture de la Bible",
-  //     text: "La portion du jour est prête",
+  //     title: "lecture",
+  //     text: "portion",
   //     at: next_time,
   //     // smallIcon: img
   //     // data: { meetingId:"#123FG8" }, 
@@ -48,6 +49,7 @@ function onDeviceReady() {
   window.langList;
   window.hash;
   window.connectedUser = false;
+  window.sessionUserData;
   window.loggedOut = false;
   window.referrer = '';
   window.mobileApp = false;
@@ -65,7 +67,10 @@ function onDeviceReady() {
   
 
   //detect if previously loaded account
-  if(localStorage.getItem("sessionUserData")) { connectedUser = true; }
+  if(localStorage.getItem("sessionUserData")) { 
+    sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
+    connectedUser = true; 
+  }
   
   /**
    * [get languages file and determine what language to display - english by default if language not found]

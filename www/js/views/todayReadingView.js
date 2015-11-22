@@ -1,8 +1,9 @@
 var todayReadingView = function () {
 	$(function($){
 		$('#todayPortionValidate').hide();
-		var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
+		sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
 		var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
+		if(today == 0) { today = 7; }//otherwise Sunday = 0
 		var data = checkIfPortion();
 		/**
 		 * [get weekly reading and display today's portion if applicable]
