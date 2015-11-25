@@ -5,14 +5,16 @@ function onDeviceReady() {
   // alert('connectedUser:' + connectedUser);
   // sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
   // alert('time_displayed:' + sessionUserData.time_displayed + ' \nmodeApp:' + sessionUserData.modeApp);
-  if(connectedUser && sessionUserData.modeApp) { //if user requested to be alerted when it's time to read a new portion
+  if(connectedUser && sessionUserData.modeApp && referrer != 'account') { //if user requested to be alerted when it's time to read a new portion
     // checker ici si jour de lecture et faire 2e alerte pr texte du jour
     // si oui, on execute le reste
     var day   = new Date().getDate();
     var month = new Date().getMonth();
     var year  = new Date().getFullYear();
+    // var seconds = new Date().getSeconds();
     next_time = new Date(year, month, day, 20, 40, 00);
-    alert('next_time:' + next_time);
+    // alert('next_time:' + next_time);
+    // alert('referrer:' + referrer);
     img = "file://icon.png";
     cordova.plugins.notification.local.schedule({
         id: 1,
@@ -26,6 +28,9 @@ function onDeviceReady() {
           window.location.hash = '#todayReading';
         }
     });
+    // cordova.plugins.notification.local.on("schedule", function(notification) {
+    //     alert("scheduled: " + notification.id + " seconds:" + seconds);
+    // });
   }
   // var now   = new Date().getTime();
   // next_time = new Date(now + 2*1000);
