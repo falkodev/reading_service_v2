@@ -1,49 +1,70 @@
-document.addEventListener("deviceready", onDeviceReady, true);
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function getNextWeekDay(now,d){
+    if(d > now.getDay()) var x = d- now.getDay();
+    else var x= ((7+d)-now.getDay())
+    now.setDate( now.getDate() + x );
+    return now;
+}
+
 
 function onDeviceReady() {
-  // alert("started");
-  // alert('connectedUser:' + connectedUser);
-  // sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
-  // alert('time_displayed:' + sessionUserData.time_displayed + ' \nmodeApp:' + sessionUserData.modeApp);
+  // alert('entree onDeviceReady');
   if(connectedUser && sessionUserData.modeApp && referrer != 'account') { //if user requested to be alerted when it's time to read a new portion
     // checker ici si jour de lecture et faire 2e alerte pr texte du jour
     // si oui, on execute le reste
     var day   = new Date().getDate();
     var month = new Date().getMonth();
     var year  = new Date().getFullYear();
-    // var seconds = new Date().getSeconds();
     next_time = new Date(year, month, day, 20, 40, 00);
-    // alert('next_time:' + next_time);
-    // alert('referrer:' + referrer);
-    img = "file://icon.png";
-    cordova.plugins.notification.local.schedule({
-        id: 1,
-        title: "Nouvelle lecture de la Bible",
-        text: "La portion du jour est prête",
-        at: next_time,
-        data: {reading:true}
-    });
+    // alert('next_time: ' + next_time);
+    var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
+    if(today == 0) { today = 7; }//otherwise Sunday = 0
+
+    // var now = new Date();
+
+    // var nextMonday = getNextWeekDay(new Date(year, month, day, 20, 40, 00),1); // 0 = Sunday, 1 = Monday, ...
+    // var nextSaturday = getNextWeekDay(new Date(),6);
+    // var nextSunday = getNextWeekDay(new Date(),0);
+    // // var secondNextMonday = getNextWeekDay(new Date(now.getTime() + ( 7 *24 * 60 * 60 * 1000)),1);
+    // alert(nextMonday+ ' - '+nextSaturday+ ' - '+nextSunday);
+
+    for(var i=1;i<8;i++)
+    {
+      readingDay = 'sessionUserData.day' + i;
+      dayConfig = eval(readingDay); 
+
+      if(dayConfig == 1) { 
+        next_time = getNextWeekDay(new Date(year, month, day, 6, 30, 00),i);
+        cordova.plugins.notification.local.schedule({
+          id: i,
+          title: "Nouvelle lecture de la Bible",
+          text: "La portion du jour est prête",
+          at: next_time,
+          data: {reading:true}
+        }); 
+        alert('next_time: ' + next_time);
+      }
+    }
+
+    // day = 'sessionUserData.day' + today;
+    // dayConfig = eval(day); // today in the user config
+    // if(dayConfig == 1) { 
+    //   cordova.plugins.notification.local.schedule({
+    //     id: 1,
+    //     title: "Nouvelle lecture de la Bible",
+    //     text: "La portion du jour est prête",
+    //     at: next_time,
+    //     data: {reading:true}
+    //   }); 
+    // }
+    
     cordova.plugins.notification.local.on("click", function (notification) {
-        if(notification.data == '{"reading":true}') { //lecture
-          window.location.hash = '#todayReading';
-        }
+      if(notification.data == '{"reading":true}') { //lecture
+        window.location.hash = '#todayReading';
+      }
     });
-    // cordova.plugins.notification.local.on("schedule", function(notification) {
-    //     alert("scheduled: " + notification.id + " seconds:" + seconds);
-    // });
   }
-  // var now   = new Date().getTime();
-  // next_time = new Date(now + 2*1000);
-  // img = "file://icon.png";
-  // cordova.plugins.notification.local.schedule({
-  //     id: 1,
-  //     title: "lecture",
-  //     text: "portion",
-  //     at: next_time,
-  //     // smallIcon: img
-  //     // data: { meetingId:"#123FG8" }, 
-      
-  // });
 }
 
 (function () {
