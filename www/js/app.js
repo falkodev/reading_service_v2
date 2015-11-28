@@ -43,7 +43,7 @@ function onDeviceReady() {
           at: next_time,
           data: {reading:true}
         }); 
-        alert('next_time: ' + next_time);
+        // alert('next_time: ' + next_time);
       }
     }
 

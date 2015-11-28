@@ -124,6 +124,7 @@ var accountView = function () {
             {
                 if(hash == "account") { // existing account
                     if(result.substr(0,2) == 'OK') { 
+                        alert("result: " + result);
                         localStorage.removeItem("sessionUserData");
                         sessionUserData = '';
                         userData = JSON.parse(result.substr(2)); //new parameters received from PHP script become user data
