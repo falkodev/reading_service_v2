@@ -148,3 +148,7 @@ hide_next_verses = 'Hide next verses'
 first_time_welcome = "Welcome to the JW Reading mobile app"
 first_time_phrase_1 = "Please change the language if you wish"
 first_time_phrase_2 = "Subscribe or login"
+notification_bible_reading_title = "New Bible reading"
+notification_bible_reading_text = "Today's portion is ready"
+notification_daily_comment_title = "New daily text"
+notification_daily_comment_text = "Today's daily text is ready"

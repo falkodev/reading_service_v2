@@ -8,6 +8,31 @@ var accountView = function () {
     	// 	console.log("sessionUserData." + k + ": " + v)
     	// })
         
+        /******* sessionUserData structure *******/
+        // id 
+        // password
+        // firstDay
+        // day1
+        // day2
+        // day3
+        // day4
+        // day5
+        // day6
+        // day7
+        // dailyComment
+        // name
+        // readingLang
+        // commentLang
+        // time_displayed
+        // time_cities
+        // time_utc
+        // time_zone
+        // time_id
+        // modeEmail
+        // modeApp
+        // email
+        /******* end sessionUserData structure *******/
+        
         // add it to the template for handlebars compilation
     	result.userData = sessionUserData;
     	result.account="account"; //account not empty to fulfill "if" condition in accountTemplate in order to display labels for an existing account	
@@ -124,7 +149,6 @@ var accountView = function () {
             {
                 if(hash == "account") { // existing account
                     if(result.substr(0,2) == 'OK') { 
-                        alert("result: " + result);
                         localStorage.removeItem("sessionUserData");
                         sessionUserData = '';
                         userData = JSON.parse(result.substr(2)); //new parameters received from PHP script become user data

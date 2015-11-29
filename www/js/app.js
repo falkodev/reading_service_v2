@@ -1,64 +1,50 @@
+/******* Only mobile ********/
+// phonegap/cordova event "deviceready" use for mobile
 document.addEventListener("deviceready", onDeviceReady, false);
 
-function getNextWeekDay(now,d){
-    if(d > now.getDay()) var x = d- now.getDay();
-    else var x= ((7+d)-now.getDay())
-    now.setDate( now.getDate() + x );
-    return now;
-}
-
-
+/**
+ * [onDeviceReady schedule notifications]
+ */
 function onDeviceReady() {
-  // alert('entree onDeviceReady');
-  if(connectedUser && sessionUserData.modeApp && referrer != 'account') { //if user requested to be alerted when it's time to read a new portion
-    // checker ici si jour de lecture et faire 2e alerte pr texte du jour
-    // si oui, on execute le reste
+  if(connectedUser && sessionUserData.modeApp && referrer != 'account') { 
+    //if user requested to be alerted when it's time to read a new portion
+    // check and schedule notifications for week's portions and if necessary for daily texts
+
     var day   = new Date().getDate();
     var month = new Date().getMonth();
     var year  = new Date().getFullYear();
-    next_time = new Date(year, month, day, 20, 40, 00);
-    // alert('next_time: ' + next_time);
     var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
     if(today == 0) { today = 7; }//otherwise Sunday = 0
-
-    // var now = new Date();
-
-    // var nextMonday = getNextWeekDay(new Date(year, month, day, 20, 40, 00),1); // 0 = Sunday, 1 = Monday, ...
-    // var nextSaturday = getNextWeekDay(new Date(),6);
-    // var nextSunday = getNextWeekDay(new Date(),0);
-    // // var secondNextMonday = getNextWeekDay(new Date(now.getTime() + ( 7 *24 * 60 * 60 * 1000)),1);
-    // alert(nextMonday+ ' - '+nextSaturday+ ' - '+nextSunday);
 
     for(var i=1;i<8;i++)
     {
       readingDay = 'sessionUserData.day' + i;
       dayConfig = eval(readingDay); 
-
-      if(dayConfig == 1) { 
-        next_time = getNextWeekDay(new Date(year, month, day, 6, 30, 00),i);
+      if(dayConfig == 1) { // schedule notification for bible reading
+        next_time = getNextWeekDay(new Date(year, month, day, sessionUserData.time_displayed, 00, 00), i);
         cordova.plugins.notification.local.schedule({
           id: i,
-          title: "Nouvelle lecture de la Bible",
-          text: "La portion du jour est prête",
+          title: notification_bible_reading_title,
+          text: notification_bible_reading_text,
           at: next_time,
-          data: {reading:true}
+          data: {reading:true} // used to redirect user on the reading page
         }); 
-        // alert('next_time: ' + next_time);
+        // alert('bible reading: ' + next_time);
+      }
+      if(sessionUserData.dailyComment == 1) { // schedule notification for daily text
+        t = i + 7;
+        next_time = getNextWeekDay(new Date(year, month, day, sessionUserData.time_displayed, 00, 00), i);
+        cordova.plugins.notification.local.schedule({
+          id: t,
+          title: notification_daily_comment_title,
+          text: notification_daily_comment_text,
+          at: next_time
+        });
+        // alert('daily comment: ' + next_time); 
       }
     }
-
-    // day = 'sessionUserData.day' + today;
-    // dayConfig = eval(day); // today in the user config
-    // if(dayConfig == 1) { 
-    //   cordova.plugins.notification.local.schedule({
-    //     id: 1,
-    //     title: "Nouvelle lecture de la Bible",
-    //     text: "La portion du jour est prête",
-    //     at: next_time,
-    //     data: {reading:true}
-    //   }); 
-    // }
     
+    // when clicking on a notification in the notification center
     cordova.plugins.notification.local.on("click", function (notification) {
       if(notification.data == '{"reading":true}') { //lecture
         window.location.hash = '#todayReading';
@@ -66,6 +52,20 @@ function onDeviceReady() {
     });
   }
 }
+
+/**
+ * [getNextWeekDay : calculate when next weekday will occur]
+ * @param  {[date]} now [today's date]
+ * @param  {[int]}  d   [day of the week to calculate]
+ * @return {[type]}     [date of the next week day asked]
+ */
+function getNextWeekDay(now, d){
+    if(d > now.getDay()) var x = d- now.getDay();
+    else var x= ((7+d)-now.getDay())
+    now.setDate( now.getDate() + x );
+    return now;
+}
+/******* End only mobile ********/
 
 (function () {
   /**
@@ -319,69 +319,5 @@ function onDeviceReady() {
     else {
         return false;
     }
-  }
-
-  window.checkIfPortion = function() {
-    var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
-    var sessionUserData = JSON.parse(localStorage.getItem("sessionUserData")); // retrieve user data
-    if(today == 0) { today = 7; }//otherwise Sunday = 0
-    var day;
-    var dayConfig;
-    var totalDays = 0; 
-    var beforeFirstCycleDay = 0;
-    var portionNumber=0;
-    
-    //find what "day" it is compared to the first reading day
-    for(var i=1;i<8;i++)
-    {
-      day = 'sessionUserData.day' + i;
-      dayConfig = eval(day); 
-
-      if(dayConfig == 1) 
-      {
-        totalDays++;
-        if(i < sessionUserData.firstDay) { beforeFirstCycleDay = 1; }
-        
-        //2 possibles cases : 
-        //1st case :  if current day is greater than the "first" day of the cycle, count current day + days greater than the "first" day + days smaller than the current day
-        if(today > sessionUserData.firstDay && i <= today && i >= sessionUserData.firstDay) { portionNumber++; }
-        //2nd case : if current day is smaller than the "first" day of the cycle, count current day + days smaller than the current day + days greater than the "first" day + "first" day
-        else if(today < sessionUserData.firstDay && ( (i <= today) || (i >= sessionUserData.firstDay)) ) { portionNumber++; }
-      }
-    }
-    if(today == sessionUserData.firstDay) { portionNumber = 1; }
-    var nextWeek = 0;
-    if(today >= sessionUserData.firstDay && beforeFirstCycleDay == 1) { nextWeek = 1; } //find what week (current or next one) to look for
-
-    var todayDate = new Date();
-    var currentWeek = getWeekNumber(todayDate); //find current week number
-
-    if(nextWeek == 1) { 
-      if(currentWeek == 53) { currentWeek = "01"; }
-      else { 
-        currentWeek++; 
-        if(currentWeek < 10) { currentWeek = "0" + currentWeek; }
-      }
-    }
-
-    var file =  totalDays + "" + portionNumber;
-    var data = {'lang' : sessionUserData.readingLang, 'week' : currentWeek, 'file' : file };
-    return data;
-  }
-
-  // For a given date, get the ISO week number
-  function getWeekNumber(d) {
-      // Copy date so don't modify original
-      d = new Date(+d);
-      d.setHours(0,0,0);
-      // Set to nearest Thursday: current date + 4 - current day number
-      // Make Sunday's day number 7
-      d.setDate(d.getDate() + 4 - (d.getDay()||7));
-      // Get first day of year
-      var yearStart = new Date(d.getFullYear(),0,1);
-      // Calculate full weeks to nearest Thursday
-      var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
-      // Return week number
-      return weekNo;
   }
 }());

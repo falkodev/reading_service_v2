@@ -147,6 +147,10 @@ hide_previous_verses = 'Masquer les versets précédents'
 hide_next_verses = 'Masquer les versets suivants'
 first_time_welcome = "Bienvenue sur l'application JW Reading"
 first_time_phrase_1 = "Merci de modifier la langue d'affichage si vous le désirez"
+notification_bible_reading_title = "Nouvelle lecture de la Bible"
+notification_bible_reading_text = "La portion du jour est prête"
+notification_daily_comment_title = "Nouveau texte du jour"
+notification_daily_comment_text = "Le texte du jour est prêt"
 
 
 // 'menu_home = 'Accueil'
