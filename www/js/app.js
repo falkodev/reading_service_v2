@@ -29,7 +29,7 @@ function onDeviceReady() {
           at: next_time,
           data: {reading:true} // used to redirect user on the reading page
         }); 
-        // alert('bible reading: ' + next_time);
+        // alert('alert num ' + i + ' bible reading: ' + next_time);
       }
       if(sessionUserData.dailyComment == 1) { // schedule notification for daily text
         t = i + 7;
@@ -40,7 +40,7 @@ function onDeviceReady() {
           text: notification_daily_comment_text,
           at: next_time
         });
-        // alert('daily comment: ' + next_time); 
+        // alert('alert num ' + t + ' daily comment: ' + next_time); 
       }
     }
     
@@ -172,15 +172,11 @@ function getNextWeekDay(now, d){
   // on small screens (made for mobile screens), hide menu when scrolling in order not to display menu above content and trouble reading comfort
  setInterval(function(){
     if($('#resize').length) { //only on todayReading page (zoomIn, zoomOut)
-      if(window.innerWidth < 1036) {
         if(isElementInViewport($('.title'))) {
           $('#resize').fadeIn();
         } else {
           $('#resize').fadeOut();
         }
-      } else {
-        $('#resize').show();
-      }
     }
     if(window.innerWidth < 768) {
       if(isElementInViewport($('.title'))) {

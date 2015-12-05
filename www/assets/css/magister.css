@@ -992,8 +992,9 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 
 #resize {
 	position:fixed; 
-	bottom: 0em; 
-	right: 0em; 
+	right: 2em; 
+	top: 9em;
+	z-index: 1000;
 }
 @media (max-width: 1036px) {
   #resize { top: 1em; right: 1em; height: 5em; }

@@ -57,9 +57,6 @@ var todayReadingView = function () {
 	        			$('#' + afterTo).before($('#btnHideAfter'));
 	        			$('#btnHideAfter').after('<br><br>');
 		        	}
-		        	var topIdFrom = $('#' + idFrom).offset().top; //where is the first verse of the portion in the page
-		        	var margin = 100; // add 100px to show validate messages above this first verse
-		        	if($(window).width() > 767) { margin = 200; }
 		        	$('#notTodayValidate').hide();
 		        	$('#todayPortionValidate').slideDown(400);
 		        	
@@ -71,33 +68,35 @@ var todayReadingView = function () {
 	        			//click on "Display previous verses" button shows previous verses and displays "Hide previous verses" button
 					    $('body').on('click', '#btnDisplayBefore', function(){
 					    	$('#' + beforeFrom).removeClass('blurBefore'); 	
-					    	$('#1').nextUntil('#' + beforeFrom).andSelf().show();      
+					    	$('#1').nextUntil('#' + beforeFrom).andSelf().fadeIn();      
 					    	$('#btnDisplayBefore').fadeOut(function(){
 					    		$('#btnHideBefore').fadeIn();
-					    	});	
-					    	window.location.replace('#' + beforeFrom); 		
+					    	});		
+					    	document.getElementById(beforeFrom).scrollIntoView();
+					    	return false;	
 					    });
 					    //click on "Display next verses" button shows next verses and displays "Hide next verses" button
 					    $('body').on('click', '#btnDisplayAfter', function(){
 					    	$('#' + afterTo).removeClass('blurAfter'); 	
-					    	$('#' + afterTo).nextUntil('#' + len).show();      	
+					    	$('#' + afterTo).nextUntil('#' + len).fadeIn();      	
 					    	$('#btnDisplayAfter').fadeOut(function(){
 					    		$('#btnHideAfter').fadeIn();
 					    	});	
 					    });
 					    //click on "Hide previous verses" button hides previous verses and displays "Display previous verses" button
-					    $('body').on('click', '#btnHideBefore', function(){
+					    $('body').on('click', '#btnHideBefore', function(e){
 					    	$('#' + beforeFrom).addClass('blurBefore'); 	
-					    	$('#1').nextUntil('#' + beforeFrom).andSelf().hide();      
+					    	$('#1').nextUntil('#' + beforeFrom).andSelf().fadeOut();      
 					    	$('#btnHideBefore').fadeOut(function(){
 					    		$('#btnDisplayBefore').fadeIn();
 					    	});	
-					    	window.location.replace('#' + beforeFrom); 	
+					    	document.getElementsByClassName("title")[0].scrollIntoView();
+					    	return false;	
 					    });
 					    //click on "Hide next verses" button hides next verses and displays "Display next verses" button
-					    $('body').on('click', '#btnHideAfter', function(){
+					    $('body').on('click', '#btnHideAfter', function(){;
 					    	$('#' + afterTo).addClass('blurAfter'); 	
-					    	$('#' + afterTo).nextUntil('#' + len).hide();      
+					    	$('#' + afterTo).nextUntil('#' + len).fadeOut();      
 					    	$('#btnHideAfter').fadeOut(function(){
 					    		$('#btnDisplayAfter').fadeIn();
 					    	});	
@@ -106,6 +105,7 @@ var todayReadingView = function () {
 					});
 				}
 				else {
+					$('input').prev('a').css({"color":"#FB7900","font-weight":"500" });
 					$('#todayPortionValidate').hide();
 					$('#notTodayValidate').slideDown(400); //if no portion for today, alert the user
 				}
@@ -119,7 +119,17 @@ var todayReadingView = function () {
             	$('#weekReading').show();
             }
 	    });	
-	});		
+	});	
+
+	/**
+	 * [Replace anchor behavior : keep hash at 'todayReading' and jump to the requested link on the page, typically a research on a verse]
+	 */
+	$('body').on('click', 'a:not(.menu)', function(){
+		href = this.href.split('#'); //get href of the link
+		document.getElementById(href[1]).scrollIntoView(); //find element targeted by href and jump to it
+		return false; //stop propagation (and disable normal anchor behavior, that is to say change the hash)
+	});
+	
 
 	/**
 	 * [Zoom in / zoom out mgmt]
