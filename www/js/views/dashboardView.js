@@ -11,7 +11,7 @@ var dashboardView = function () {
         lang = $(this).text().toLowerCase();
         lang = $.trim(lang);
         localStorage.setItem("lang", lang);       
-        $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
+        displayLang(); //add the translation file corresponding to the language
         analyzeHash(); // refreshes view
     });
 

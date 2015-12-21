@@ -39,7 +39,12 @@ var firstTimeView = function () {
         lang = $(this).children().attr('data-lang');
         lang = $.trim(lang);
         localStorage.setItem("lang", lang);       
-        $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
+        var appendString = '<script src="assets/lang/' + lang + '.js"></script>';
+        if (typeof MSApp !== "undefined" && MSApp) {
+            MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
+        } else {
+            $('body').append(appendString);
+        }
         displayView('firstTime', null); // refreshes view
     }); 
 

@@ -126,8 +126,10 @@ var todayReadingView = function () {
 	 */
 	$('body').on('click', 'a:not(.menu)', function(){
 		href = this.href.split('#'); //get href of the link
-		document.getElementById(href[1]).scrollIntoView(); //find element targeted by href and jump to it
-		return false; //stop propagation (and disable normal anchor behavior, that is to say change the hash)
+		if (document.getElementById(href[1]) != null) {
+			document.getElementById(href[1]).scrollIntoView(); //find element targeted by href and jump to it
+			return false; //stop propagation (and disable normal anchor behavior, that is to say change the hash)
+		}
 	});
 	
 

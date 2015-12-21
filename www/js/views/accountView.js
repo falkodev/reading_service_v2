@@ -128,7 +128,7 @@ var accountView = function () {
      */
     $('body').on('submit', '#accountForm', function(e) {
         e.preventDefault();
-        if(hash == "account") { $('#accountTimeId').val(sessionUserData.time_id); } 
+        if(hash == "account" && $('#accountTimeId').val()=='') { $('#accountTimeId').val(sessionUserData.time_id); } 
         var formData = $("input[name!=passAccount]input[name!=passAccountConfirm]", this).serialize() + "&lang=" + localStorage.getItem("lang"); //every input except password fields
         if(hash == "account") { formData += "&accountId=" + sessionUserData.id; } 
         $.ajax(

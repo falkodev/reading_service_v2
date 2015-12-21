@@ -1,0 +1,24 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "App JW Reading"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "App JW Reading"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "App JW Reading"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "App JW Reading"
+        }
+    },
+    "dependent_plugins": {}
+}

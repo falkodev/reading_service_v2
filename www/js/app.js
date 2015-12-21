@@ -6,7 +6,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
  * [onDeviceReady schedule notifications]
  */
 function onDeviceReady() {
-  if(connectedUser && sessionUserData.modeApp && referrer != 'account') { 
+  // if(connectedUser && sessionUserData.modeApp && referrer != 'account') {
+  if(connectedUser && sessionUserData.modeApp) {  
+    // alert('onDeviceReady');
     //if user requested to be alerted when it's time to read a new portion
     // check and schedule notifications for week's portions and if necessary for daily texts
 
@@ -78,7 +80,6 @@ function getNextWeekDay(now, d){
   window.sessionUserData;
   window.loggedOut = false;
   window.referrer = '';
-  window.mobileApp = false;
 
   var slider = new PageSlider($('#tmplContent'));
 
@@ -120,7 +121,20 @@ function getNextWeekDay(now, d){
     }
   });
 
-  $('body').append('<script src="assets/lang/' + lang + '.js"></script>');
+  /**
+   * [displayLang : add the js file containing the i18n translation matching the language]
+   */
+  window.displayLang = function() {
+    var appendString = '<script src="assets/lang/' + lang + '.js"></script>';
+    if (typeof MSApp !== "undefined" && MSApp) {
+      MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
+    } else {
+      $('body').append(appendString);
+    }
+  }
+
+  //get the default language file
+  displayLang();
 
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
@@ -150,17 +164,11 @@ function getNextWeekDay(now, d){
     displayView('menu', activeMenu); //load menu
     displayView(hash, null); //load view corresponding to the hash
   }
-
-  if (window.location.protocol == 'file:') { 
-    mobileApp = true;    
-    if(!localStorage.firstTimeOver) { // first time
-      displayView('firstTime', null);
-    }
-    else { 
-      analyzeHash();
-    }
-  } else {
-    //app init : first request
+     
+  if(!localStorage.firstTimeOver) { // first time
+    displayView('firstTime', null);
+  }
+  else { 
     analyzeHash();
   }
 
