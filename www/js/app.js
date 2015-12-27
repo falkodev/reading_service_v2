@@ -6,8 +6,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
  * [onDeviceReady schedule notifications]
  */
 function onDeviceReady() {
-  // if(connectedUser && sessionUserData.modeApp && referrer != 'account') {
-  if(connectedUser && sessionUserData.modeApp) {  
+  if(connectedUser && sessionUserData.modeApp) {
     // alert('onDeviceReady');
     //if user requested to be alerted when it's time to read a new portion
     // check and schedule notifications for week's portions and if necessary for daily texts
@@ -21,7 +20,7 @@ function onDeviceReady() {
     for(var i=1;i<8;i++)
     {
       readingDay = 'sessionUserData.day' + i;
-      dayConfig = eval(readingDay); 
+      dayConfig = eval(readingDay);
       if(dayConfig == 1) { // schedule notification for bible reading
         next_time = getNextWeekDay(new Date(year, month, day, sessionUserData.time_displayed, 00, 00), i);
         cordova.plugins.notification.local.schedule({
@@ -30,7 +29,7 @@ function onDeviceReady() {
           text: notification_bible_reading_text,
           at: next_time,
           data: {reading:true} // used to redirect user on the reading page
-        }); 
+        });
         // alert('alert num ' + i + ' bible reading: ' + next_time);
       }
       if(sessionUserData.dailyComment == 1) { // schedule notification for daily text
@@ -42,10 +41,10 @@ function onDeviceReady() {
           text: notification_daily_comment_text,
           at: next_time
         });
-        // alert('alert num ' + t + ' daily comment: ' + next_time); 
+        // alert('alert num ' + t + ' daily comment: ' + next_time);
       }
     }
-    
+
     // when clicking on a notification in the notification center
     cordova.plugins.notification.local.on("click", function (notification) {
       if(notification.data == '{"reading":true}') { //lecture
@@ -83,7 +82,7 @@ function getNextWeekDay(now, d){
 
   var slider = new PageSlider($('#tmplContent'));
 
-  // browser language detection and load corresponding language file 
+  // browser language detection and load corresponding language file
   if(localStorage.getItem("lang")) { lang = localStorage.getItem("lang"); }
   else {
     lang = window.navigator.userLanguage || window.navigator.language;
@@ -91,14 +90,14 @@ function getNextWeekDay(now, d){
     lang = $.trim(lang);
     localStorage.setItem("lang", lang);
   }
-  
+
 
   //detect if previously loaded account
-  if(localStorage.getItem("sessionUserData")) { 
+  if(localStorage.getItem("sessionUserData")) {
     sessionUserData = JSON.parse(localStorage.getItem("sessionUserData"));
-    connectedUser = true; 
+    connectedUser = true;
   }
-  
+
   /**
    * [get languages file and determine what language to display - english by default if language not found]
    */
@@ -110,12 +109,12 @@ function getNextWeekDay(now, d){
       $.each(data, function(k,v){
           if(k == 'responseText') {
             langList = v.split("\n");
-            var found = false;          
+            var found = false;
             $.each(langList, function(key, value){
               value = $.trim(value);
-              if(lang == value) { found = true; }                        
-            }) 
-            if(!found) { lang = 'en'; }             
+              if(lang == value) { found = true; }
+            })
+            if(!found) { lang = 'en'; }
           }
       })
     }
@@ -139,20 +138,20 @@ function getNextWeekDay(now, d){
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
-  window.displayView = function(element, activeMenu) { 
+  window.displayView = function(element, activeMenu) {
     var view   = "new " + element + "View()";
     var result = eval(view);
     var displaySubscribe = false;
-    //determine if subscribe view is calling 
-    if(element == 'subscribe') { 
+    //determine if subscribe view is calling
+    if(element == 'subscribe') {
       displaySubscribe = true;
-      element = 'account'; 
+      element = 'account';
       // attach account behaviour to subscribe view
       var attach = new accountView();
     }
-    loadTemplate(element, activeMenu, result, displaySubscribe); 
+    loadTemplate(element, activeMenu, result, displaySubscribe);
   }
-  
+
   /**
    * [analyzeHash : analyze hash and determine what view or template to request]
    */
@@ -164,11 +163,11 @@ function getNextWeekDay(now, d){
     displayView('menu', activeMenu); //load menu
     displayView(hash, null); //load view corresponding to the hash
   }
-     
+
   if(!localStorage.firstTimeOver) { // first time
     displayView('firstTime', null);
   }
-  else { 
+  else {
     analyzeHash();
   }
 
@@ -192,11 +191,11 @@ function getNextWeekDay(now, d){
       } else {
         $('.navbar-toggle').fadeOut();
       }
-    } else { 
+    } else {
       $('.navbar-toggle').show(); // for large screens, always show the menu
-    } 
+    }
   }, 1000 );
-  
+
   /**
    * [loadTemplate : get a template, compile it with handblebars.js and add his html content to the DOM]
    * @param  {tmpl_name  : template name [string]}
@@ -213,19 +212,19 @@ function getNextWeekDay(now, d){
         method: 'GET',
         dataType: 'html',
         async: false,
-        success: function(data) {          
-          var i=0  ;    
+        success: function(data) {
+          var i=0  ;
 
           //if subscribe view is calling, all "account_" occurrences will be replaced by "subscribe_" occurrences in order to use the account template for the subscribing process
           if(displaySubscribe) { data = data.replace(new RegExp('{{account_', 'g'), '{{subscribe_'); }
 
-          // find Handlebars expressions in nude template (before compilation)  
+          // find Handlebars expressions in nude template (before compilation)
           var tab = data.split("{{");
           $.each(tab, function(key, value){
             if(i > 0) {
               var cond = value.substr(0,4);
               //avoid built-in helpers (if, else, each, ...), partials ({{> xxx}}) and raw blocks ({{{xxx}}})
-              if(value[0] != "#" && value[0] != "/" && value[0] != ">" && value[0] != "{" && cond != "else") { 
+              if(value[0] != "#" && value[0] != "/" && value[0] != ">" && value[0] != "{" && cond != "else") {
                 var tab2 = value.split("}}");
                 var expr = tab2[0];
                 // build context for future Handlebars compilation
@@ -235,12 +234,12 @@ function getNextWeekDay(now, d){
             i++;
           });
 
-          if(activeMenu) { context[activeMenu] = 'active'; } // case of menu loading 
-          if(result) { 
+          if(activeMenu) { context[activeMenu] = 'active'; } // case of menu loading
+          if(result) {
             $.each(result, function(key, value){
                 context[key] = value; // add additional parameters to context
             });
-          }          
+          }
           // $.each(context, function(key, value){
           //     console.log("context[" + key + "]: " + value)
           // })
@@ -250,15 +249,15 @@ function getNextWeekDay(now, d){
           var html     = template(context);
           html         = escapeLink(html);
           if(activeMenu) { $('#menuContent').html(html); } // case of menu loading
-          else {  
-            if(tmpl_name == 'firstTime') { $('#tmplContent').html(html); }         
+          else {
+            if(tmpl_name == 'firstTime') { $('#tmplContent').html(html); }
             else { slider.slidePage($('<div>').html(html)); }
-            if(loggedOut) { 
+            if(loggedOut) {
               $("#logoutValidate").show();
               loggedOut = false;
             }
           }
-        } 
+        }
     });
   }
 
@@ -295,7 +294,7 @@ function getNextWeekDay(now, d){
   /**
    * [isElementInViewport : check if element is visible in view port]
    * @param  {[DOM element]}  el ['title' element]
-   * @return {Boolean}    
+   * @return {Boolean}
    */
   function isElementInViewport(el)
   {

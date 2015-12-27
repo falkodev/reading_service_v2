@@ -78,7 +78,7 @@ var dashboardView = function () {
 					y = 2;
 					rotateNews(x, y); //feeding right feed rotator
 				}					
-			}, 5000); // display every news during 5 seconds		
+			}, 10000); // display every news during 5 seconds		
         }
     });
 
