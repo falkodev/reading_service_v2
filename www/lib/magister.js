@@ -21,7 +21,9 @@ jQuery(document).ready(function($) {
     /***** menu *****/
     $(document).on("click", ".navbar-toggle", function(){
     	var w = $(window).width();
+      var h = $(window).height() - 2;
     	if(w < 1025) {
+        $('#menu-width').css('height', h);
     		if(!$('#tmplContent').hasClass("menu-open")) {
           $('#tmplContent').addClass("menu-open");
           if(w > 768) { //animation sliding menu

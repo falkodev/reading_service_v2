@@ -121,10 +121,11 @@ ul {
 /*                    Navigation bar                    */
 /********************************************************/
 .mainmenu {
-  z-index: 997;
+  /*z-index: 997;*/
   width: 100%;
+  height: 100%;
   /*width: 231px;*/
-  position:relative;
+  /*position:relative;*/
   top: -4px;
 }
 
@@ -185,8 +186,9 @@ ul {
 .dropdown-menu {
 	z-index: 998;
 	/*border-right: 1px solid white; */
-	height: 100vh;
+	/*height: 100%;*/
 	padding-top: 100px;
+  padding-left: 5px;
 }
 
 .mainmenu .dropdown-menu {
