@@ -1,0 +1,1 @@
+C:\phonegap\jwreading\platforms\windows\AppPackages\CordovaApp.Windows81_1.1.0.10_AnyCPU_Test\CordovaApp.Windows81_1.1.0.10_AnyCPU.appx

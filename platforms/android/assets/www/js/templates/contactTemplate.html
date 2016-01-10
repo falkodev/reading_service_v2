@@ -1,0 +1,21 @@
+<section class="section" id="contact">
+    <div class="container">
+        <div class="row col-sm-12 contentView">
+            <h2 class="text-center title">{{contact_title}}</h2>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <form action="http://www.jwreading.com/ajax/sendContactMsg.php" method="post" id="contactForm" name="contactForm">           
+                        <p>{{contact_name}}</p>
+                        <div class='input-group'><span class='input-group-addon'><i class='fa fa-user'></i></span><input type='text' id="nameContact" name="nameContact" class='form-control' placeholder='{{contact_name}}'/></div></br></br>                
+                        <p>{{contact_email}}</p>
+                        <div class='input-group'><span class='input-group-addon'><i class='fa fa-envelope'></i></span><input id="emailContact" name="emailContact" type='text' class='form-control' placeholder='{{contact_email}}'/></div><div id="emailContactValidate" class="validate">{{contact_email_validate}}</div></br></br>
+                        <p>{{contact_msg}}</p>
+                        <div class='input-group'><span class='input-group-addon'><i class='fa fa-pencil'></i></span><textarea id="msgContact" name="msgContact" rows='5' class='form-control' placeholder='{{contact_msg}}'></textarea></div><div id="msgContactValidate" class="validate">{{contact_msg_validate}}</div></br>
+                        </br><div id="msgContactSent" class="validate">{{contact_thanks_msg}}</div></br>
+                        <input type="submit" id="sendContactForm" class="btn btn-lg btn-default" value="{{contact_btn_send}}" />
+                    </form>
+                </div>   
+            </div>
+        </div>
+    </div>
+</section>

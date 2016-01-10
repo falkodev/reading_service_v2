@@ -1,0 +1,1 @@
+var faqView = function () {}

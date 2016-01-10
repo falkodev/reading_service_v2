@@ -1,0 +1,248 @@
+﻿<section class="section" id="account">
+    <div class="container">
+        <div class="row col-sm-12 contentView">
+            <h2 class="text-center title">{{account_title}}</h2>
+            <div class="loader displayNone" id="loaderAccount">
+                <p>{{loading}}</p>
+            </div>
+            <div class="row">
+                <form action="" method="post" id="accountForm">
+                <!-- 1er ecran du formulaire -->
+                <div class="col-sm-8 col-sm-offset-2 text-center" id="accountFirst">    
+                    <p>{{account_text_1}}</p>
+                    <br>
+                    <p>{{account_text_2}}</p>
+                    <div class='input-group'><span class='input-group-addon'><i class='fa fa-envelope'></i></span><input id="emailAccount" name="emailAccount" type='text' class='form-control accountInput' placeholder='{{placeholder_email}}' value="{{userData.email}}"/></div>
+                    <div id="emailExistingValidate" class="validate">{{email_existing_validate}}</div>
+                    <div id="emailEmptyValidate" class="validate">{{email_empty_validate}}</div>
+                    <div id="emailIncorrectValidate" class="validate">{{email_incorrect_validate}}</div>
+                    <br><br>
+                    <p>{{account_text_3}}</p>
+                    <div class='input-group'><span class='input-group-addon'><i class='fa fa-user'></i></span><input type='text' id="nameAccount" name="nameAccount" class='form-control accountInput' placeholder='{{placeholder_name}}' value='{{userData.name}}'/></div><br><br>
+                    
+                    {{#if account}}
+                    <p>{{pwd_text}}</p>
+                    <div class='input-group' id='divPassAccount'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccount" name="passAccount" class='form-control accountInput' readonly placeholder='{{placeholder_new_pwd}}' value='{{userData.password}}'/><span class="input-group-addon chgPassword" id="changePassword">{{pwd_chg}}</span></div>
+                    <div class="passConfirm displayNone">
+                        <p class="passConfirm" id="passConfirmTitle"><br><br>{{pwd_confirm}}
+                        <button id="cancelChangePassword" class="btn btn-sm pull-right chgPassword">{{pwd_cancel}}</button></p>
+                        <br>
+                        <div class='input-group passConfirm' id='divPassAccountConfirm'><span class='input-group-addon'><i class='fa fa-unlock-alt'></i></span><input type='password' id="passAccountConfirm" name="passAccountConfirm" class='form-control accountInput' readonly placeholder='{{pwd_confirm}}' value='{{userData.password}}'><span class="input-group-addon btn-orange chgPassword" id="recordChangePassword">{{pwd_save}}</span></div>                
+                        <div id="changePasswordEmptyValidate" class="validate displayNone">{{change_password_empty_validate}}</div>  
+                        <div id="changePasswordLengthValidate" class="validate displayNone">{{change_password_length_validate}}</div>
+                        <div id="changePasswordMatchValidate" class="validate displayNone">{{change_password_match_validate}}</div>
+                        <div id="changePasswordFailValidate" class="validate displayNone">{{change_password_fail_validate}}</div>                   
+                    </div> 
+                        <div id="changePasswordSuccessValidate" class="validate displayNone">{{change_password_success_validate}}</div>
+                    {{/if}}             
+                    <br> 
+                    <button id="accountFirstBtn" class="btn btn-lg btn-default account-next" data-next="accountSecond">{{btn_next}}</button>
+                </div>
+                
+                <!-- 2e ecran du formulaire -->
+                <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountSecond">
+                    <table class="table">
+                        <tbody>
+                          <tr><th class="table-custom"><div>{{days}}</div></th>
+                              <th class="table-custom"><div>{{account_text_4}}</div></th>
+                              <th class="table-custom"><div>{{account_text_5}}&nbsp;&nbsp;<i class="fa fa-question-circle" id="helpAccount" data-toggle="popover" data-title='{{popover_title}}' data-placement="right auto" data-content='{{popover_content}}' data-html="true"></i></div></th>
+                          </tr>
+                          <tr><th style="border:0;" colspan="3"><div id="subscribeTip1" class="validate"><span class="closeTip"><i class="fa fa-times"></i></span>{{subscribe_tip_1}}</div></th></tr>
+                     <tr><td class="tdDays">{{monday}}</td>
+                         <td>         
+                    <!-- lundi -->   
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="toggleAccountDay1" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay1" value="1">
+                        <label class="onoffswitch-label" for="toggleAccountDay1">
+                            <span class="onoffswitch-inner choix" id="day1"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div></td><td><input type="radio" id="radioAccount1" name="firstDayRadio" value="1" class="accountSwitch displayNone"></td></tr>
+                    <tr><td class="tdDays">{{tuesday}}</td>
+                         <td>     
+                    <!-- mardi --> 
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="toggleAccountDay2" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay2" value="1">
+                        <label class="onoffswitch-label" for="toggleAccountDay2">
+                            <span class="onoffswitch-inner choix" id="day2"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div></td><td><input type="radio" id="radioAccount2" name="firstDayRadio" value="2" class="accountSwitch displayNone"></td></tr>
+                     <tr><td class="tdDays">{{wednesday}}</td>
+                         <td>
+                    <!-- mercredi -->           
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="toggleAccountDay3" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay3" value="1">
+                        <label class="onoffswitch-label" for="toggleAccountDay3">
+                            <span class="onoffswitch-inner choix" id="day3"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div></td><td><input type="radio" id="radioAccount3" name="firstDayRadio" value="3" class="accountSwitch displayNone"></td></tr>
+                    <tr><td class="tdDays">{{thursday}}</td>
+                         <td>
+                    <!-- jeudi -->           
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="toggleAccountDay4" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay4" value="1">
+                        <label class="onoffswitch-label" for="toggleAccountDay4">
+                            <span class="onoffswitch-inner choix" id="day4"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div></td><td><input type="radio" id="radioAccount4" name="firstDayRadio" value="4" class="accountSwitch displayNone"></td></tr>
+                    <tr><td class="tdDays">{{friday}}</td>
+                         <td>
+                    <!-- vendredi --> 
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="toggleAccountDay5" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay5" value="1">
+                        <label class="onoffswitch-label" for="toggleAccountDay5">
+                            <span class="onoffswitch-inner choix" id="day5"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div></td><td><input type="radio" id="radioAccount5" name="firstDayRadio" value="5" class="accountSwitch displayNone"></td></tr>
+                    <tr><td class="tdDays">{{saturday}}</td>
+                         <td>
+                    <!-- samedi -->           
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="toggleAccountDay6" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay6" value="1">
+                        <label class="onoffswitch-label" for="toggleAccountDay6">
+                            <span class="onoffswitch-inner choix" id="day6"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div></td><td><input type="radio" id="radioAccount6" name="firstDayRadio" value="6" class="accountSwitch displayNone"></td></tr>
+                    <tr><td class="tdDays">{{sunday}}</td>
+                         <td>
+                    <!-- dimanche --> 
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="toggleAccountDay7" class="onoffswitch-checkbox accountSwitch" id="toggleAccountDay7" value="1">
+                        <label class="onoffswitch-label" for="toggleAccountDay7">
+                            <span class="onoffswitch-inner choix" id="day7"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div></td><td><input type="radio" id="radioAccount7" name="firstDayRadio" value="7" class="accountSwitch displayNone"></td></tr>
+                    </tbody>
+                   </table>
+                    <br><br> 
+                    <div class="row">  
+                        <div class="col-sm-6"> 
+                            <p align="left">{{daily_comment}}</p>
+                            <div class="onoffswitch">
+                                <input type="checkbox" id="toggleAccountDailyComment" name="toggleAccountDailyComment" class="onoffswitch-checkbox accountSwitch">
+                                <label class="onoffswitch-label" for="toggleAccountDailyComment">
+                                    <span class="onoffswitch-inner choix" id="dailyText"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                            <br/>
+                        </div>
+                        <div class="col-sm-6"> 
+                            <p align="left">{{reception_mode}}</p>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="table-custom">{{reception_email}}</td>
+                                        <td class="table-custom">
+                                            <div class="onoffswitch receptionMode">
+                                                <input type="checkbox" id="toggleAccountModeEmail" name="toggleAccountModeEmail" class="onoffswitch-checkbox accountSwitch accountMode">
+                                                <label class="onoffswitch-label" for="toggleAccountModeEmail">
+                                                    <span class="onoffswitch-inner choix" id="modeEmail"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-custom">{{reception_app}}</td>
+                                        <td class="table-custom"><div class="onoffswitch receptionMode">
+                                            <input type="checkbox" id="toggleAccountModeApp" name="toggleAccountModeApp" class="onoffswitch-checkbox accountSwitch accountMode">
+                                            <label class="onoffswitch-label" for="toggleAccountModeApp">
+                                                <span class="onoffswitch-inner choix" id="modeApp"></span>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div id="dayValidate" class="validate">{{day_validate}}</div>
+                    <div id="modeValidate" class="validate">{{reception_validate}}</div>
+                    <br>
+                    
+                    <button id="backToAccountFirstBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountFirst">{{btn_previous}}</button>
+                    <button id="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default account-next" data-next="accountThird">{{btn_last}}</button>
+                    <!-- <input type="submit" id="accountSecondBtn" name="accountSecondBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}" disabled/> -->
+                </div>
+
+                <!-- 3e ecran du formulaire -->
+                <div class="col-sm-8 col-sm-offset-2 text-center displayNone" id="accountThird">                
+                    <div class="row" style="padding-bottom: 5px;">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="left">{{reading_lang}}</div>
+                        <div class="col-xs-offset-4 col-xs-4 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4" align="right" style="padding-right: 18px;">{{text_lang}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="subscribeBack">
+                                <div class="list"><input type="radio" class="checkList radioLangReading" name="radiosAccountLangReading" id="radioAccountLangReadingFr" value="fr"><label class="labelList" data-value="fr" for="radioAccountLangReadingFr" data-element="radiosAccountLangReading" title="{{lang_fr}}">{{lang_fr}}<span class="led"></span></label></div><br>
+                                <div class="list"><input type="radio" class="checkList radioLangReading" name="radiosAccountLangReading" id="radioAccountLangReadingEn" value="en"><label class="labelList" data-value="en" for="radioAccountLangReadingEn" data-element="radiosAccountLangReading" title="{{lang_en}}">{{lang_en}}<span class="led"></span></label></div><br>
+                                <div class="list"><input type="radio" class="checkList radioLangReading" name="radiosAccountLangReading" id="radioAccountLangReadingRo" value="ro"><label class="labelList" data-value="ro" for="radioAccountLangReadingRo" data-element="radiosAccountLangReading" title="{{lang_ro}}">{{lang_ro}}<span class="led"></span></label></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-4 col-sm-4">
+                            <div class="subscribeSubmit">
+                                <div class="list"><input type="radio" class="checkList radioLangText" name="radiosAccountLangText" id="radioAccountLangTextFr" value="fr"><label class="labelList" data-value="fr" for="radioAccountLangTextFr" data-element="radiosAccountLangText" title="{{lang_fr}}">{{lang_fr}}<span class="led"></span></label></div><br>
+                                <div class="list"><input type="radio" class="checkList radioLangText" name="radiosAccountLangText" id="radioAccountLangTextEn" value="en"><label class="labelList" data-value="en" for="radioAccountLangTextEn" data-element="radiosAccountLangText" title="{{lang_en}}">{{lang_en}}<span class="led"></span></label></div><br>
+                                <div class="list"><input type="radio" class="checkList radioLangText" name="radiosAccountLangText" id="radioAccountLangTextRo" value="ro"><label class="labelList" data-value="ro" for="radioAccountLangTextRo" data-element="radiosAccountLangText" title="{{lang_ro}}">{{lang_ro}}<span class="led"></span></label></div>
+                            </div>
+                        </div>
+                    </div>   
+                    <div class="col-sm-12 text-center">
+                        <br><div>{{time_choice}}</div>
+                        <br><div class="validate" id="subscribeTip2">{{subscribe_tip_2}}</div>
+                        <div id="tipAccount" class="validate tip" style="margin: 5px -12px;"><span class="closeTip"><i class="fa fa-times"></i></span>{{tip_1}}{{userData.time_displayed}}{{tip_2}}UTC {{userData.time_utc}}{{tip_3}} ({{userData.time_cities}})<br><br>{{tip_4}}</div>
+                        <br><input type="button" id="displayAccountMap" class="btn btn-lg btn-orange displayNone" value="Afficher la carte"/><br>
+                        <div class="worldmap" id="account-map-continents">
+                         <ul class="continents">
+                          <li class="c1"><a id="africa-li" href="#africa">{{world_map_africa}}</a></li>
+                          <li class="c2"><a id="asia-li" href="#asia">{{world_map_asia}}</a></li>
+                          <li class="c3"><a id="australia-and-southern-pacific-li" href="#australia-and-southern-pacific">{{world_map_australia}}</a></li>
+                          <li class="c4"><a id="europe-li" href="#europe">{{world_map_europe}}</a></li>
+                          <li class="c5"><a id="north-america-li" href="#north-america">{{world_map_north_america}}</a></li>
+                          <li class="c6"><a id="south-america-li" href="#south-america">{{world_map_south_america}}</a></li>
+                         </ul>
+                        </div>
+                        <div id="account-addresses"></div>
+                        <div id="account-select-phrase" class="displayNone">{{selected_utc_phrase_1}}<span id="account-selected-time"></span>{{selected_utc_phrase_2}}<span id="account-selected-utc"></span></div>
+                        <br>
+                        <div id="timezoneAccountValidate" class="validate"></div>
+                        <div id="successAccountValidate" class="validate">{{success_account_validate}}</div>
+                        <div id="successCreateValidate" class="validate">
+                            {{subscribe_create_1}} <span id="subscribeName"></span> {{subscribe_create_2}} <span id="subscribeMail"></span>{{subscribe_create_3}} <span id="subscribeDays"></span>{{subscribe_create_4}} <span id="subscribePass"></span> {{subscribe_create_5}}
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2 text-center">    
+                                    <a href="#login"><button id="goToLogin" class="btn btn-lg btn-default btn-width text-center">{{menu_login}}</button></a>   
+                                </div>                         
+                            </div>
+                        </div>
+                        <div id="errorAccountValidate" class="validate">{{error_account_validate}}</div>
+                        <br>
+                        <div id="waitDiv" class="displayNone text-center">
+                            <img src="assets/img/ring-white.svg"/><br>
+                            <h2 class="title">{{loading}}</h2>
+                        </div>
+                    </div>
+                    <button id="backToAccountSecondBtn" class="btn btn-lg subscribeBack btn-inverse account-previous" data-previous="accountSecond">{{btn_previous}}</button>
+                    <input type="submit" id="accountThirdBtn" name="accountThirdBtn" class="btn btn-lg subscribeSubmit btn-default" value="{{btn_save}}"/>
+                </div>
+                <input type="hidden" value="" id="accountTimeId" name="accountTimeId">
+                </form>
+                
+                <div class="col-sm-8 col-sm-offset-2 text-center" id="accountChangeConfirm">  
+                    <div id="messageAccountConfirm" style="text-align:center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

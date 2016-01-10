@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl' href='C:\ProgramData\Windows App Certification Kit\results.xsl'?>
+<REPORT xml:lang="fr-FR" OVERALL_RESULT="PASS" VERSION="10.0" LATEST_VERSION="TRUE" UPDATE_DOWNLOAD_URL="" TOOLSET_ARCHITECTURE="x64" SecureBoot="FALSE" APP_TYPE="WindowsStore" PUBLISHER_DISPLAY_NAME="CN=737382DB-9ED8-4643-82D6-1B2B34B6076E" OSVERSION="10.0.10586.0" OS="Microsoft Windows 10 Professionnel" PER_USER_APPLICATION="" PARTIAL_RUN="FALSE" LCID="1036" VALIDATION_TYPE="UI" ReportGenerationTime="04/01/2016 18:26:46" ID="e35d519e8c2b8ae2938364206e1f4cf7">
+  <REQUIREMENTS>
+    <REQUIREMENT NUMBER="1" TITLE="Test de nouvelle installation réversible" RATIONALE="Une nouvelle installation réversible permet aux utilisateurs de gérer (déployer et supprimer) les applications installées dans leur système." />
+    <REQUIREMENT NUMBER="2" TITLE="Installer dans les dossiers de test appropriés" RATIONALE="Windows fournit des emplacements spécifiques dans le système de fichiers pour le stockage des programmes et des composants logiciels, des données des applications partagées et des données des applications propres à l’utilisateur." />
+    <REQUIREMENT NUMBER="3" TITLE="Test de signature numérique de fichiers" RATIONALE="Une signature numérique Authenticode garantit l’authenticité du logiciel aux utilisateurs. Cette signature permet également de détecter l’éventuelle falsification d’un fichier, par exemple s’il est infecté par un virus." />
+    <REQUIREMENT NUMBER="4" TITLE="Test de prise en charge de Windows x64" RATIONALE="Pour assurer la compatibilité avec les versions 64 bits de Windows, les applications doivent nécessairement prendre en charge les applications de type Windows 64 ou 32 bits au moins pour pouvoir s’exécuter en toute transparence dans un système 64 bits." />
+    <REQUIREMENT NUMBER="5" TITLE="Test de vérification de la version du système d'exploitation" RATIONALE="Les applications ne doivent pas vérifier la correspondance exacte de la version (== 5.1). Si vous avez besoin d’une fonctionnalité spécifique, vérifiez sa disponibilité. Si vous avez besoin de Windows XP, vérifiez la présence de Windows XP ou d’une version ultérieure (&gt;= 5.1). Votre code de détection continuera ainsi à fonctionner avec les futures versions de Windows. Il est préférable que les programmes d’installation des pilotes et les modules de désinstallation ne vérifient pas la version du système d’exploitation." />
+    <REQUIREMENT NUMBER="6" TITLE="Test de contrôle de compte utilisateur (UAC)" RATIONALE="La plupart des applications ne nécessitent pas de privilèges d’administrateur lors de l’exécution et s’exécutent généralement très bien avec un compte d’utilisateur standard. Les applications Windows ont besoin d’un fichier manifeste (intégré ou externe) qui définit leur niveau d’exécution et indique au système d’exploitation les privilèges nécessaires à leur exécution." />
+    <REQUIREMENT NUMBER="7" TITLE="Se conformer aux messages du gestionnaire de démarrage du système" RATIONALE="Lors d’une interruption critique, les applications qui renvoient FALSE à WM_QUERYENDSESSION recevront WM_ENDSESSION et seront fermées, tandis que celles qui ne répondent pas dans les temps à WM_QUERYENDSESSION seront interrompues." />
+    <REQUIREMENT NUMBER="8" TITLE="Test du mode sans échec" RATIONALE="Par défaut, la plupart des pilotes et des services qui n’ont pas été préinstallés avec Windows ne sont pas démarrés en Mode sans échec. Ils doivent dans ce cas rester désactivés, sauf lorsque le système en a besoin pour des opérations de base, pour effectuer un diagnostic et dans l’objectif d’une récupération." />
+    <REQUIREMENT NUMBER="9" TITLE="Test de session multi-utilisateurs" RATIONALE="Les utilisateurs de Windows doivent pouvoir exécuter des sessions simultanées sans conflits ni interruptions.  Les applications doivent donc s’assurer que leurs fonctionnalités standard ne sont pas affectées lorsqu’elles s’exécutent dans plusieurs sessions, localement ou à distance. Les paramètres des applications et les fichiers de données ne doivent pas persister entre les différents utilisateurs. Les préférences et les données confidentielles de la session de tout utilisateur doivent être isolées." />
+    <REQUIREMENT NUMBER="10" TITLE="Tests de déploiement et de lancement" RATIONALE="Les défaillances des applications, telles que les pannes et les blocages, sont pour les utilisateurs des interruptions majeures et entraînent une certaine frustration. L’élimination de ces défaillances améliore la stabilité et la fiabilité des applications et, de façon générale, renforce la satisfaction des utilisateurs.">
+      <TEST INDEX="50" NAME="Génération du code d'octet" DESCRIPTION="La génération du code d'octet doit être complétée pour les packages contenant une application Windows Store HTML5." EXECUTIONTIME="00h:00m:01s.03ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="47" NAME="Lancement de l'application" DESCRIPTION="Tests de lancement de l’application." EXECUTIONTIME="00h:00m:18s.07ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="60" NAME="Références de liaisons optimisées" DESCRIPTION="Lors de l'utilisation de liaisons, WinJS.Binding.optimizeBindingReferences devrait être défini sur true pour optimiser l'utilisation de la mémoire." EXECUTIONTIME="00h:00m:00s.92ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="21" NAME="Blocages et pannes" DESCRIPTION="N’installez pas les exécutables qui s’arrêtent ou se bloquent pendant le processus de test." EXECUTIONTIME="00h:00m:01s.77ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="11" TITLE="Test de compatibilité et de résilience" RATIONALE="Lorsqu’il détecte le fonctionnement non compatible d’une application, Windows applique un correctif de compatibilité pour que cette application fonctionne correctement, ce qui garantit la satisfaction de l’utilisateur. Les applications ne doivent pas compter sur ce comportement car son seul objectif est de permettre aux applications héritées de fonctionner correctement sous Windows." />
+    <REQUIREMENT NUMBER="12" TITLE="Test de conformité du package" RATIONALE="Un ou plusieurs attributs requis n’étaient pas présents dans le manifeste du package.">
+      <TEST INDEX="77" NAME="Nombre d'applications" DESCRIPTION="Un package ne doit pas définir plus d'une application dans le manifeste." EXECUTIONTIME="00h:00m:00s.81ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="31" NAME="Manifeste de l'application" DESCRIPTION="Le manifeste de l’application doit inclure des entrées valides pour tous les champs requis." EXECUTIONTIME="00h:00m:00s.93ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="75" NAME="Taille du package" DESCRIPTION="La taille de fichier du package ne doit pas dépasser 4 gigaoctets." EXECUTIONTIME="00h:00m:00s.88ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="13" TITLE="Test des meilleures pratiques de sécurité Windows" RATIONALE="Les applications ne doivent pas modifier les paramètres de sécurité par défaut de Windows." />
+    <REQUIREMENT NUMBER="14" TITLE="Test des fonctionnalités de sécurité Windows" RATIONALE="Les applications doivent respecter les fonctionnalités de sécurité de Windows.">
+      <TEST INDEX="33" NAME="Analyseur binaire" DESCRIPTION="Analyse des fonctionnalités de sécurité activées dans les binaires" EXECUTIONTIME="00h:00m:01s.26ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="70" NAME="Analyseur de fichiers non autorisés" DESCRIPTION="Analyse de l’application pour détecter des fichiers non sécurisés connus" EXECUTIONTIME="00h:00m:00s.77ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="62" NAME="Signature de code privé" DESCRIPTION="L'application ne doit pas créer un package contenant des fichiers de clés de signature de code." EXECUTIONTIME="00h:00m:00s.90ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="15" TITLE="Test des API prises en charge" RATIONALE="L’application ne doit se référer qu’aux API autorisées par le Kit de développement logiciel (SDK) de Windows pour les applications Windows Store.">
+      <TEST INDEX="38" NAME="API prises en charge" DESCRIPTION="Toute application Windows Store ne doit utiliser que les API prises en charge par la plateforme." EXECUTIONTIME="00h:00m:00s.93ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="17" TITLE="Test de performance" RATIONALE="L'application doit démarrer et s'interrompre rapidement et être réactive tout en ne consommant qu'une quantité raisonnable de ressources système (CPU, E/S de fichiers, mémoire, etc.) pour que les opérations de commutation et multitâche effectuées entre les applications non ouvertes précédemment soient rapides." />
+    <REQUIREMENT NUMBER="19" TITLE="Tests des ressources du manifeste de l'application" RATIONALE="Les ressources valides doivent être définies dans le fichier resources.pri du manifeste du package AppX, selon les Spécifications de la création du package AppX et du Schéma du manifeste AppX.">
+      <TEST INDEX="45" NAME="Ressources de l'application" DESCRIPTION="Les ressources valides doivent être définies dans le fichier resources.pri du package." EXECUTIONTIME="00h:00m:00s.62ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="61" NAME="Personnalisation" DESCRIPTION="L'application ne doit pas utiliser les images par défaut fournies par les échantillons Windows SDK ou Visual Studio." EXECUTIONTIME="00h:00m:01s.17ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="20" TITLE="Test de configuration de débogage" RATIONALE="L’application ne doit pas installer de binaires de débogage.">
+      <TEST INDEX="46" NAME="Configuration de débogage" DESCRIPTION="L’application ne doit pas installer de binaires de débogage." EXECUTIONTIME="00h:00m:00s.86ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="21" TITLE="Test de codage de fichier" RATIONALE="Les packages contenant une application Windows Store HTML5 doivent avoir un codage de fichier correct.">
+      <TEST INDEX="49" NAME="Codage de fichier UTF-8" DESCRIPTION="Les packages contenant une application Windows Store HTML5 doivent avoir un codage de fichier correct." EXECUTIONTIME="00h:00m:00s.87ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="22" TITLE="Test de fonctionnalité Direct3D" RATIONALE="L’application doit utiliser la fonctionnalité Direct3D correctement.">
+      <TEST INDEX="51" NAME="Prise en charge du niveau de fonctionnalité Direct3D" DESCRIPTION="Les applications doivent afficher le contenu sur un matériel 9.1 avec niveau de fonctionnalité Direct3D." EXECUTIONTIME="00h:00m:05s.58ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="71" NAME="Découpage Direct3D après une interruption" DESCRIPTION="Les applications doivent appeler IDXGIDevice3::Trim() sur les appareils Direct3D qu’elles créent lors du traitement d’une notification Suspend." EXECUTIONTIME="00h:00m:01s.21ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="23" TITLE="Test des capacités des applications" RATIONALE="Les packages déclarant des capacités d'utilisation spéciales devront fournir des justifications au cours du processus d'intégration.">
+      <TEST INDEX="52" NAME="Capacités d'utilisation spéciales" DESCRIPTION="Les packages déclarant des capacités d'utilisation spéciales devront fournir des justifications au cours du processus d'intégration." EXECUTIONTIME="00h:00m:00s.86ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="24" TITLE="Validation des métadonnées Windows Runtime" RATIONALE="Les métadonnées doivent être conformes et cohérentes dans toutes les sources de génération.">
+      <TEST INDEX="56" NAME="Attribut ExclusiveTo" DESCRIPTION="Une classe ne doit pas implémenter une interface marquée comme ExclusiveTo d'une autre classe." EXECUTIONTIME="00h:00m:01s.49ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="57" NAME="Emplacement du type" DESCRIPTION="Les types doivent être définis dans le fichier de métadonnées ayant l'espace de noms le plus long correspondant." EXECUTIONTIME="00h:00m:00s.60ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="55" NAME="Respect de la casse du nom du type" DESCRIPTION="Les noms du type et de l'espace de noms ne doivent pas varier uniquement au niveau de la casse." EXECUTIONTIME="00h:00m:00s.62ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="54" NAME="Exactitude du nom du type" DESCRIPTION="Seuls des types système peuvent être dans l'espace de noms Windows et aucun titre ne peut être dans l'espace de noms global." EXECUTIONTIME="00h:00m:00s.62ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="58" NAME="Exactitude des métadonnées générales" DESCRIPTION="Les fichiers de métadonnées doivent répondre à diverses exigences afin d'être valides et exacts." EXECUTIONTIME="00h:00m:01s.50ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="53" NAME="Propriétés" DESCRIPTION="Impossible d'utiliser des propriétés d'écriture seule et d'indexeur." EXECUTIONTIME="00h:00m:00s.60ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="25" TITLE="Test d’intégrité du package" RATIONALE="Validation du contenu du package d’application visant à garantir son exactitude.">
+      <TEST INDEX="63" NAME="Fichiers appropriés pour la plateforme" DESCRIPTION="L’application ne doit pas installer de fichiers ne correspondant pas à l’architecture du processeur cible." EXECUTIONTIME="00h:00m:00s.83ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+      <TEST INDEX="66" NAME="Vérification de la structure de répertoire prise en charge" DESCRIPTION="Validez chaque fichier dans le package et assurez-vous que la longueur du nom de fichier est inférieure à MAX_PATH." EXECUTIONTIME="00h:00m:00s.87ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="26" TITLE="Prise en charge de la haute résolution" RATIONALE="L’application doit définir la prise en charge DPI pour que l’apparence de l’interface utilisateur soit cohérente entre de nombreux paramètres d’affichage en haute résolution." />
+    <REQUIREMENT NUMBER="27" TITLE="Test d’utilisation de ressource" RATIONALE="Les tâches en arrière-plan WinJS doivent appeler close() pour libérer la ressource.">
+      <TEST INDEX="68" NAME="Tâche en arrière-plan WinJS" DESCRIPTION="Les tâches en arrière-plan WinJS doivent appeler close() pour libérer la ressource." EXECUTIONTIME="00h:00m:00s.88ms">
+        <RESULT><![CDATA[PASS]]></RESULT>
+        <MESSAGES />
+      </TEST>
+    </REQUIREMENT>
+  </REQUIREMENTS>
+  <APPLICATIONS>
+    <Installed_Programs>
+      <Program Name="59057JWReading.JWReading" Type="Application" Source="AppxPackage" Publisher="CN=737382DB-9ED8-4643-82D6-1B2B34B6076E" Version="1.1.0.2" Language="1033" InstallDate="01/04/2016 17:26:03" RootDirPath="C:\Program Files\WindowsApps\59057JWReading.JWReading_1.1.0.2_neutral__yszh6370mzf1r" Id="0000dc19066e60e93b20fb0dfb0a064ec06800000904">
+        <Indicators>
+          <WindowsStoreAppManifestIndicators>
+            <PackageManifest PackageFullName="59057JWReading.JWReading_1.1.0.2_neutral__yszh6370mzf1r">
+              <Package>
+                <Identity Name="59057JWReading.JWReading" Publisher="CN=737382DB-9ED8-4643-82D6-1B2B34B6076E" Version="1.1.0.2" ProcessorArchitecture="neutral" />
+                <Properties>
+                  <DisplayName>JW Reading</DisplayName>
+                  <PublisherDisplayName>JW Reading</PublisherDisplayName>
+                  <Logo>images\icon50x50.png</Logo>
+                </Properties>
+                <Prerequisites>
+                  <OSMinVersion>6.3.0</OSMinVersion>
+                  <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+                </Prerequisites>
+                <Resources>
+                  <Resource Language="FR-FR" />
+                </Resources>
+                <Applications>
+                  <Application Id="JWReading.JWReading" StartPage="www\index.html">
+                    <VisualElements BackgroundColor="#505D6E" Description="Designed to help Jehovah's witnesses to do their weekly Bible reading." DisplayName="JW Reading" ForegroundText="light" Square150x150Logo="images\icon150x150.png" Square30x30Logo="images\icon30x30.png">
+                      <DefaultTile Square310x310Logo="images\icon310x310.png" Square70x70Logo="images\icon70x70.png" Wide310x150Logo="images\wide310x150.png">
+                        <ShowNameOnTiles>
+                          <ShowOn Tile="square150x150Logo" />
+                          <ShowOn Tile="wide310x150Logo" />
+                          <ShowOn Tile="square310x310Logo" />
+                        </ShowNameOnTiles>
+                      </DefaultTile>
+                      <SplashScreen BackgroundColor="#505D6E" Image="images\wide620x300.png" />
+                    </VisualElements>
+                  </Application>
+                </Applications>
+                <Capabilities>
+                  <Capability Name="internetClient" />
+                </Capabilities>
+                <Dependencies>
+                  <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9600.17018" />
+                </Dependencies>
+              </Package>
+            </PackageManifest>
+          </WindowsStoreAppManifestIndicators>
+        </Indicators>
+        <StaticProperties>
+          <Files Id="0000b57ab3b144644a27db7a0b2f451f78228a152978">
+            <File Name="cordova_plugins.js" Id="0000bf6f5ffea37f27369aec0dbececf16a722b6e02e" Size="0xb73" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\cordova_plugins.js" LongPathHash="0000fafef30f99ded58dcb64a4ef79c4a50bce521524" />
+            <File Name="index.html" Id="0000459695fa9a2a3047de05a5bbff53092ebc005e8b" Size="0x698" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\index.html" LongPathHash="0000c72c3699b3d880b308f8ceaf297fac3745d6432d" />
+            <File Name="app.js" Id="000086b07c565312bdd3a4a54e787a127f929bd2d5a7" Size="0x2db9" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\app.js" LongPathHash="00003f6fe887179ccd99def9a08bb8f82afa53b8078b" />
+            <File Name="accountTemplate.html" Id="00000454e3362fc2baf9e40c0e7a0ffa595f8be26cfd" Size="0x52a3" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\accounttemplate.html" LongPathHash="00009be1d94c923f30104e0e46db900a74cbf6239859" />
+            <File Name="contactTemplate.html" Id="0000bb15b01110c89f1f6e7b418e26c62dd46c6ac836" Size="0x729" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\contacttemplate.html" LongPathHash="0000b14fc3e0ea9457ba2f7d51d64d5c9fbd7e39f769" />
+            <File Name="dashboardTemplate.html" Id="0000e6fa3dc6d984342320bd87ae49abb57d6168f683" Size="0x572" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\dashboardtemplate.html" LongPathHash="0000b77f0f2a948b9bd3722ecc89a05280e279273c44" />
+            <File Name="faqTemplate.html" Id="000093e735fef24adb4346a96d02cead6653cc39f26f" Size="0x9be" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\faqtemplate.html" LongPathHash="00007a0fc2b8d1b9c9966cff4b8a89b91ddc559bad51" />
+            <File Name="firstTimeTemplate.html" Id="0000740fe46eeb15572f45d19de85a7f61853ecccb98" Size="0x789" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\firsttimetemplate.html" LongPathHash="0000268ac617f98af216ef3f4a24480cbabda0c3a5f9" />
+            <File Name="loginTemplate.html" Id="0000a7933a604de900ac65eefd5dd9db04175f0bc35e" Size="0x1053" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\logintemplate.html" LongPathHash="00005cfdfd93cef01b6d2bafca029a1090bb0da7dbc6" />
+            <File Name="logoutTemplate.html" Id="00002ea83ee0a6b281c775016523ecc470b48c68b3e1" Size="0x45" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\logouttemplate.html" LongPathHash="000065033da80b9ebf1151eb44bca6a23bb36027e70c" />
+            <File Name="en.js" Id="000019387ee9710e1307773638f694c8e620d2d150f8" Size="0x2fd1" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\assets\lang\en.js" LongPathHash="00008497b8e80e22ae3da714c6c87c106c7dbc91b2bc" />
+            <File Name="fr.js" Id="00006d8a367bde2626f5d3029b2f09c3f56216f06620" Size="0x45b6" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\assets\lang\fr.js" LongPathHash="0000838ced5f8236bbd607e1c05e8028c09526dcab50" />
+            <File Name="exec.js" Id="00002732b9e87a709528f2ddbd257de3ad71b28726a4" Size="0x1379" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\cordova-js-src\exec.js" LongPathHash="0000179364bcfb1e149d36560f94a0cbb4f62e91c6a5" />
+            <File Name="common.js" Id="0000240f0ca0f64a415cd6f0cf1e6d1b37adaf9426af" Size="0xec" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\assets\lang\common.js" LongPathHash="00000cfc374bd39a7ba93c9ea8b132e2b46647214855" />
+            <File Name="platform.js" Id="0000198fe15e1c8ac777a35c9bb4faf9ac2b240b98be" Size="0xbdf" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\cordova-js-src\platform.js" LongPathHash="000085cc6be52b53d75ec9579f6417423aba951ecb75" />
+            <File Name="accountView.js" Id="0000cc8c8d7afa26fa4672d3f73bbeac1757d55f9138" Size="0x41e5" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\accountview.js" LongPathHash="0000c94f25fcbe210283973cde2751a793b336024ead" />
+            <File Name="contactView.js" Id="0000559ea82e921615ce560637cb893d5e26b4277e46" Size="0x39a" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\contactview.js" LongPathHash="00005cd339341978b30591bde341fc9eb4ffc3db44da" />
+            <File Name="newsTemplate.html" Id="000068b90330b481f4278d9bb6c8f9e2c60f6ee22abc" Size="0x16f" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\newstemplate.html" LongPathHash="000069eb421fe7523f26727edc088612ce41eb5b3995" />
+            <File Name="menuTemplate.html" Id="000006ebb6bdf4ae2622f0424d1998b00084fe299122" Size="0x714" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\menutemplate.html" LongPathHash="0000951c854fdfde94bcd07cf8f72d2a51ffca58f4ff" />
+            <File Name="todayReadingTemplate.html" Id="000076dec88e95953b783d4e3d646a9d984c76bad14d" Size="0x817" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\templates\todayreadingtemplate.html" LongPathHash="00004d2115188b702f0b7a8a2a3b5086876baf3178cd" />
+            <File Name="cordova.js" Id="0000f23dc954f77dd943117eafe12db8d57e05ffaab5" Size="0xd628" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\cordova.js" LongPathHash="000028be5f44dba82641b4481620de4461574f3b71cd" />
+            <File Name="local-notification.js" Id="000063113f63b21ecfaa7e9ecfba76c751b6b567373d" Size="0x2816" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification.js" LongPathHash="0000dfd72feb64368ac0165aff0f062b942b1120cb5d" />
+            <File Name="local-notification-core.js" Id="000055446492a41d909584cbe8995be15fca6c8d0d04" Size="0x3194" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification-core.js" LongPathHash="000016a663f119fc53ea57cfb1cf6f8e6ed56506c33c" />
+            <File Name="local-notification-util.js" Id="0000710c574bf7d67a6bb1052de8c394f0d53d38badb" Size="0x1e0f" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification-util.js" LongPathHash="00001c227c8d9c93bd9cce5b6fb2e6dfad53f77d9026" />
+            <File Name="LocalNotificationUtil.js" Id="0000f8040dcfa2b9d3662310d6a3e312ee88f3e66d26" Size="0x2a25" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\localnotificationutil.js" LongPathHash="0000c20cabb8d37b331f05de17809f2f94b4cab9eff1" />
+            <File Name="LocalNotificationProxy.js" Id="00003a33ff73807627e28b2918d008d1619a4fc41e7c" Size="0x1dab" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\localnotificationproxy.js" LongPathHash="000047060e407cc2c2c2de5216945d939d9ac44411c9" />
+            <File Name="LocalNotificationCore.js" Id="000091c3695a1e69593191c9cfc6a0583c5cd8466cf6" Size="0x3139" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\localnotificationcore.js" LongPathHash="00004a7fdc2e7de67ecc30a5d2a8ab4429486d469db3" />
+            <File Name="resources.pri" Id="00001b5e3db1b4cc256421d03d2a40ca6be08d02321c" Size="0x6370" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\resources.pri" LongPathHash="0000c139e09ad4eee2cf53f00abff6f454cf70c42bbd" />
+            <File Name="menuView.js" Id="0000b50626d81570ea15ce08b69de840539acea774e3" Size="0x89" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\menuview.js" LongPathHash="000079b1468456598a420f54c7837be70d975858d997" />
+            <File Name="InAppBrowserProxy.js" Id="0000443b8c8391c6a3fe690ecab9401919580c199c0e" Size="0x31c7" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\cordova-plugin-inappbrowser\src\windows\inappbrowserproxy.js" LongPathHash="00009dc0c2536bef9382eced890f4a7b00a5627a06e6" />
+            <File Name="inappbrowser.js" Id="000022985766ae1c9b10a86ff077d0d2c93824b1a8bc" Size="0xef4" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\cordova-plugin-inappbrowser\www\inappbrowser.js" LongPathHash="000050274bc2fe1ea933e64cb3179d11513775fb6549" />
+            <File Name="jquery.js" Id="0000c6243860ad75337fb8ae6933ee5c8ab4ee59f02c" Size="0x14972" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\jquery.js" LongPathHash="00002c99a769697413b448c37796eb0d999dd2e35666" />
+            <File Name="fastclick.js" Id="00005406a4d11f9b281c687fa4bec7b5a2403679b6ae" Size="0x5c9a" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\fastclick.js" LongPathHash="000078e4c8f6dda62580b494ed4ddb3181d94857618b" />
+            <File Name="newsView.js" Id="0000671d4d23c4c04ed52fe17ec3405588534e65e467" Size="0x17e" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\newsview.js" LongPathHash="000037a69ebdb83c1d15f62b329845b673afd8f9f2b1" />
+            <File Name="jquery.cssmap.js" Id="0000fbfaada3ca7e5bfb6c94096c2ace95de21d635e4" Size="0x5378" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\jquery.cssmap.js" LongPathHash="000082b3e87ada86665e2d5d04f1e93051810eb45c2b" />
+            <File Name="router.js" Id="00007e847ce24963924b77cf204a55e7c4506c0c2555" Size="0x4da" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\router.js" LongPathHash="0000215b3dc5d351182545fd611a73f5c29faf64beb4" />
+            <File Name="bootstrap.min.js" Id="0000390264ebd06c90591a1745287b098523cae86de9" Size="0x8fd9" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\bootstrap.min.js" LongPathHash="0000d07da03f8ac642f54a8cabb64a481a82634e2ffb" />
+            <File Name="loginView.js" Id="000086f0e3c7876e27fe89d8500dc6d41d14e5b31fcf" Size="0x1047" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\loginview.js" LongPathHash="00009a98a0eab25066de3f37310dcdadb156000e9800" />
+            <File Name="dashboardView.js" Id="000064a64f916011f195b22e960fed05f59b4e9e0b13" Size="0xd63" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\dashboardview.js" LongPathHash="0000ec45295ed414beb0393159c0fee56def4ef62328" />
+            <File Name="firstTimeView.js" Id="00008f014ce0579e162172dde9e7cba9e45088037bc3" Size="0x1358" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\firsttimeview.js" LongPathHash="0000c3cb064334577a73e8d9cc08e393ea4bdf2c1279" />
+            <File Name="logoutView.js" Id="0000cdcca27d69283c547a81fb5d41da94e973b4d975" Size="0x14f" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\logoutview.js" LongPathHash="000061c200fda42beb9cb3f2dc870e40348e82cc7471" />
+            <File Name="bootstrap.js" Id="0000390264ebd06c90591a1745287b098523cae86de9" Size="0x8fd9" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\bootstrap.js" LongPathHash="0000a312837d8ecad7e5b9d54bd7d3b3b81243a1c19b" />
+            <File Name="faqView.js" Id="0000d3f28aa5c9af04e85f759e72ce6ef23f7e7e67d0" Size="0x1f" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\faqview.js" LongPathHash="00001ec1d7b12e9c346fc770c4319c441b0ff037c9bb" />
+            <File Name="handlebars.js" Id="000028634df7a3f4ff3c516c21480ac37b0045ef9dbd" Size="0x1cdaf" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\handlebars.js" LongPathHash="00007af9a4ff1e7e615c5d7c9b705a7d9ca2bbaf3b61" />
+            <File Name="todayReadingView.js" Id="000036198c4ab287d629b64de20b38fc3c4f4e12e9cf" Size="0x26a1" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\todayreadingview.js" LongPathHash="000073c505249ccb648502dfec3a6d6631f104eab9ff" />
+            <File Name="loader.js" Id="000091a53972bacad4b12dd538487bc4c0b2d83d96fc" Size="0x217" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\loader.js" LongPathHash="00004719202c6b3275656eea1fd6555a072aff79a802" />
+            <File Name="magister.js" Id="00000c4e97e8a9c28fc14d9b1b29ae04d431ee085bae" Size="0x765" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\magister.js" LongPathHash="00006e53bc6d873ad4486a1bb61d66e25d4f8d91eca9" />
+            <File Name="jwreading.js" Id="00000d8bcb3177796679fab9a5e08c38ab38e1ee9eee" Size="0xf3" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\jwreading.js" LongPathHash="0000b8985c2858c4e9cbf876382c81b9758fbd5133e6" />
+            <File Name="pageslider.js" Id="00008f6cef33c732e7bf6f812e58fff046b74c1f074a" Size="0x7ff" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\lib\pageslider.js" LongPathHash="0000d35a2ec7df3a536bb00dc8eab19f17f0920223be" />
+            <File Name="DeviceProxy.js" Id="0000531f9e699d59c6f2a07260f218758c6e2d781a25" Size="0x1286" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\cordova-plugin-device\src\windows\deviceproxy.js" LongPathHash="0000e9dce09b739258487f8c36e22cf2de1012d4cdbe" />
+            <File Name="subscribeView.js" Id="000038bc901258f1996237c037b047069de0675687b4" Size="0x109" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\js\views\subscribeview.js" LongPathHash="00001df3845f1627084843ce1b919313189d86ff511f" />
+            <File Name="device.js" Id="000099bd4d2993f7cbaec0f55779a5dc9c4a3aac4efb" Size="0xb69" BinaryType="DATA_ONLY" LowerCaseLongPath="c:\program files\windowsapps\59057jwreading.jwreading_1.1.0.2_neutral__yszh6370mzf1r\www\plugins\cordova-plugin-device\www\device.js" LongPathHash="0000e7d996e152bba60b840aa8d888c2a051ad723e7f" />
+          </Files>
+        </StaticProperties>
+      </Program>
+    </Installed_Programs>
+  </APPLICATIONS>
+  <DEPENDENCY_INFORMATION>
+    <AitStaticAnalysis ProgramId="0000dc19066e60e93b20fb0dfb0a064ec06800000904" AnalysisVersion="1.60" DictionaryVersion="3.0" Type="Package" Id="59057JWReading.JWReading_1.1.0.2_neutral__yszh6370mzf1r">
+      <AitFile ErrorCode="0" Name="accountTemplate.html" Id="00000454e3362fc2baf9e40c0e7a0ffa595f8be26cfd" />
+      <AitFile ErrorCode="0" Name="menuTemplate.html" Id="000006ebb6bdf4ae2622f0424d1998b00084fe299122" />
+      <AitFile ErrorCode="0" Name="magister.js" Id="00000c4e97e8a9c28fc14d9b1b29ae04d431ee085bae" />
+      <AitFile ErrorCode="0" Name="jwreading.js" Id="00000d8bcb3177796679fab9a5e08c38ab38e1ee9eee" />
+      <AitFile ErrorCode="0" Name="en.js" Id="000019387ee9710e1307773638f694c8e620d2d150f8" />
+      <AitFile ErrorCode="0" Name="platform.js" Id="0000198fe15e1c8ac777a35c9bb4faf9ac2b240b98be">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="WinJS.Application" />
+          <AitFeature Name="Windows.UI.WebUI.WebUIApplication.addEventListener" />
+          <AitFeature Name="document.createElement" />
+          <AitFeature Name="document.head.appendChild" />
+          <AitFeature Name="navigator.appVersion.indexOf" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="inappbrowser.js" Id="000022985766ae1c9b10a86ff077d0d2c93824b1a8bc" />
+      <AitFile ErrorCode="0" Name="common.js" Id="0000240f0ca0f64a415cd6f0cf1e6d1b37adaf9426af" />
+      <AitFile ErrorCode="0" Name="exec.js" Id="00002732b9e87a709528f2ddbd257de3ad71b28726a4" />
+      <AitFile ErrorCode="0" Name="handlebars.js" Id="000028634df7a3f4ff3c516c21480ac37b0045ef9dbd" />
+      <AitFile ErrorCode="0" Name="logoutTemplate.html" Id="00002ea83ee0a6b281c775016523ecc470b48c68b3e1" />
+      <AitFile ErrorCode="0" Name="todayReadingView.js" Id="000036198c4ab287d629b64de20b38fc3c4f4e12e9cf">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="document.getElementById" />
+          <AitFeature Name="document.getElementsByClassName" />
+          <AitFeature Name="window.location.reload" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="subscribeView.js" Id="000038bc901258f1996237c037b047069de0675687b4" />
+      <AitFile ErrorCode="0" Name="bootstrap.js" Id="0000390264ebd06c90591a1745287b098523cae86de9">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="document.body.clientWidth" />
+          <AitFeature Name="document.body.scrollTop" />
+          <AitFeature Name="document.body.style.paddingRight" />
+          <AitFeature Name="document.constructor" />
+          <AitFeature Name="document.createElement" />
+          <AitFeature Name="document.documentElement" />
+          <AitFeature Name="document.documentElement.clientHeight" />
+          <AitFeature Name="document.documentElement.getBoundingClientRect" />
+          <AitFeature Name="document.documentElement.scrollHeight" />
+          <AitFeature Name="document.documentElement.scrollTop" />
+          <AitFeature Name="document.getElementById" />
+          <AitFeature Name="window.innerWidth" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="bootstrap.min.js" Id="0000390264ebd06c90591a1745287b098523cae86de9">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="document.body.clientWidth" />
+          <AitFeature Name="document.body.scrollTop" />
+          <AitFeature Name="document.body.style.paddingRight" />
+          <AitFeature Name="document.constructor" />
+          <AitFeature Name="document.createElement" />
+          <AitFeature Name="document.documentElement" />
+          <AitFeature Name="document.documentElement.clientHeight" />
+          <AitFeature Name="document.documentElement.getBoundingClientRect" />
+          <AitFeature Name="document.documentElement.scrollHeight" />
+          <AitFeature Name="document.documentElement.scrollTop" />
+          <AitFeature Name="document.getElementById" />
+          <AitFeature Name="window.innerWidth" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="LocalNotificationProxy.js" Id="00003a33ff73807627e28b2918d008d1619a4fc41e7c" />
+      <AitFile ErrorCode="0" Name="InAppBrowserProxy.js" Id="0000443b8c8391c6a3fe690ecab9401919580c199c0e">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="Windows.Foundation.Uri" />
+          <AitFeature Name="Windows.Storage.FileIO.readTextAsync" />
+          <AitFeature Name="Windows.Storage.StorageFile.getFileFromApplicationUriAsync" />
+          <AitFeature Name="Windows.System.Launcher.launchUriAsync" />
+          <AitFeature Name="document.body.appendChild" />
+          <AitFeature Name="document.body.style.msOverflowStyle" />
+          <AitFeature Name="document.createElement" />
+          <AitFeature Name="document.head.appendChild" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="index.html" Id="0000459695fa9a2a3047de05a5bbff53092ebc005e8b" />
+      <AitFile ErrorCode="0" Name="DeviceProxy.js" Id="0000531f9e699d59c6f2a07260f218758c6e2d781a25">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="Windows.Devices.Enumeration.Pnp" />
+          <AitFeature Name="Windows.Storage.ApplicationData.current.localSettings" />
+          <AitFeature Name="Windows.Storage.ApplicationData.current.localSettings.values.deviceId" />
+          <AitFeature Name="Windows.Storage.Streams.DataReader.fromBuffer" />
+          <AitFeature Name="Windows.System.Profile.HardwareIdentification.getPackageSpecificToken" />
+          <AitFeature Name="window.clientInformation.platform" />
+          <AitFeature Name="window.clientInformation.userAgent" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="fastclick.js" Id="00005406a4d11f9b281c687fa4bec7b5a2403679b6ae">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="document.activeElement" />
+          <AitFeature Name="document.activeElement.blur" />
+          <AitFeature Name="document.createEvent" />
+          <AitFeature Name="document.documentElement.scrollWidth" />
+          <AitFeature Name="document.elementFromPoint" />
+          <AitFeature Name="document.getElementById" />
+          <AitFeature Name="document.querySelector" />
+          <AitFeature Name="navigator.userAgent" />
+          <AitFeature Name="navigator.userAgent.indexOf" />
+          <AitFeature Name="window.FastClick" />
+          <AitFeature Name="window.getSelection" />
+          <AitFeature Name="window.ontouchstart" />
+          <AitFeature Name="window.outerWidth" />
+          <AitFeature Name="window.pageXOffset" />
+          <AitFeature Name="window.pageYOffset" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="local-notification-core.js" Id="000055446492a41d909584cbe8995be15fca6c8d0d04" />
+      <AitFile ErrorCode="0" Name="contactView.js" Id="0000559ea82e921615ce560637cb893d5e26b4277e46" />
+      <AitFile ErrorCode="0" Name="local-notification.js" Id="000063113f63b21ecfaa7e9ecfba76c751b6b567373d" />
+      <AitFile ErrorCode="0" Name="dashboardView.js" Id="000064a64f916011f195b22e960fed05f59b4e9e0b13">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="window.setInterval" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="newsView.js" Id="0000671d4d23c4c04ed52fe17ec3405588534e65e467" />
+      <AitFile ErrorCode="0" Name="newsTemplate.html" Id="000068b90330b481f4278d9bb6c8f9e2c60f6ee22abc" />
+      <AitFile ErrorCode="0" Name="fr.js" Id="00006d8a367bde2626f5d3029b2f09c3f56216f06620" />
+      <AitFile ErrorCode="0" Name="local-notification-util.js" Id="0000710c574bf7d67a6bb1052de8c394f0d53d38badb" />
+      <AitFile ErrorCode="0" Name="firstTimeTemplate.html" Id="0000740fe46eeb15572f45d19de85a7f61853ecccb98" />
+      <AitFile ErrorCode="0" Name="todayReadingTemplate.html" Id="000076dec88e95953b783d4e3d646a9d984c76bad14d" />
+      <AitFile ErrorCode="0" Name="router.js" Id="00007e847ce24963924b77cf204a55e7c4506c0c2555">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="window.location.hash" />
+          <AitFeature Name="window.location.hash.substr" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="app.js" Id="000086b07c565312bdd3a4a54e787a127f929bd2d5a7">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="MSApp.execUnsafeLocalFunction" />
+          <AitFeature Name="document.addEventListener" />
+          <AitFeature Name="document.documentElement.clientHeight" />
+          <AitFeature Name="document.documentElement.clientWidth" />
+          <AitFeature Name="window.analyzeHash" />
+          <AitFeature Name="window.connectedUser" />
+          <AitFeature Name="window.displayLang" />
+          <AitFeature Name="window.displayView" />
+          <AitFeature Name="window.innerHeight" />
+          <AitFeature Name="window.innerWidth" />
+          <AitFeature Name="window.location.hash" />
+          <AitFeature Name="window.location.hash.substr" />
+          <AitFeature Name="window.loggedOut" />
+          <AitFeature Name="window.navigator.language" />
+          <AitFeature Name="window.navigator.userLanguage" />
+          <AitFeature Name="window.sessionUserData" />
+          <AitFeature Name="window.validateEmail" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="loginView.js" Id="000086f0e3c7876e27fe89d8500dc6d41d14e5b31fcf">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="window.location.hash" />
+          <AitFeature Name="window.location.reload" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="firstTimeView.js" Id="00008f014ce0579e162172dde9e7cba9e45088037bc3">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="MSApp.execUnsafeLocalFunction" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="pageslider.js" Id="00008f6cef33c732e7bf6f812e58fff046b74c1f074a">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="window.location.hash" />
+          <AitFeature Name="window.location.hash." />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="loader.js" Id="000091a53972bacad4b12dd538487bc4c0b2d83d96fc" />
+      <AitFile ErrorCode="0" Name="LocalNotificationCore.js" Id="000091c3695a1e69593191c9cfc6a0583c5cd8466cf6">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="Windows.Data.Xml.Dom.XmlDocument" />
+          <AitFeature Name="Windows.UI.Notifications" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="faqTemplate.html" Id="000093e735fef24adb4346a96d02cead6653cc39f26f" />
+      <AitFile ErrorCode="0" Name="device.js" Id="000099bd4d2993f7cbaec0f55779a5dc9c4a3aac4efb" />
+      <AitFile ErrorCode="0" Name="loginTemplate.html" Id="0000a7933a604de900ac65eefd5dd9db04175f0bc35e" />
+      <AitFile ErrorCode="0" Name="menuView.js" Id="0000b50626d81570ea15ce08b69de840539acea774e3" />
+      <AitFile ErrorCode="0" Name="contactTemplate.html" Id="0000bb15b01110c89f1f6e7b418e26c62dd46c6ac836" />
+      <AitFile ErrorCode="0" Name="cordova_plugins.js" Id="0000bf6f5ffea37f27369aec0dbececf16a722b6e02e" />
+      <AitFile ErrorCode="0" Name="jquery.js" Id="0000c6243860ad75337fb8ae6933ee5c8ab4ee59f02c">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="MSApp.execUnsafeLocalFunction" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="accountView.js" Id="0000cc8c8d7afa26fa4672d3f73bbeac1757d55f9138">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="window.location.hash" />
+          <AitFeature Name="window.location.reload" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="logoutView.js" Id="0000cdcca27d69283c547a81fb5d41da94e973b4d975">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="window.location.hash" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="faqView.js" Id="0000d3f28aa5c9af04e85f759e72ce6ef23f7e7e67d0" />
+      <AitFile ErrorCode="0" Name="dashboardTemplate.html" Id="0000e6fa3dc6d984342320bd87ae49abb57d6168f683" />
+      <AitFile ErrorCode="0" Name="cordova.js" Id="0000f23dc954f77dd943117eafe12db8d57e05ffaab5">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="WinJS.Application" />
+          <AitFeature Name="Windows.UI.WebUI.WebUIApplication.addEventListener" />
+          <AitFeature Name="document.addEventListener" />
+          <AitFeature Name="document.createElement" />
+          <AitFeature Name="document.createEvent" />
+          <AitFeature Name="document.dispatchEvent" />
+          <AitFeature Name="document.getElementsByTagName" />
+          <AitFeature Name="document.head.appendChild" />
+          <AitFeature Name="document.readyState" />
+          <AitFeature Name="document.removeEventListener" />
+          <AitFeature Name="navigator.appVersion.indexOf" />
+          <AitFeature Name="window._nativeReady" />
+          <AitFeature Name="window.addEventListener" />
+          <AitFeature Name="window.console.warn" />
+          <AitFeature Name="window.dispatchEvent" />
+          <AitFeature Name="window.navigator" />
+          <AitFeature Name="window.removeEventListener" />
+          <AitFeature Name="window.setTimeout" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="LocalNotificationUtil.js" Id="0000f8040dcfa2b9d3662310d6a3e312ee88f3e66d26">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="WinJS.Application.addEventListener" />
+          <AitFeature Name="WinJS.Promise.timeout" />
+          <AitFeature Name="Windows.ApplicationModel.Package.current" />
+          <AitFeature Name="Windows.Data.Xml.Dom.XmlDocument" />
+          <AitFeature Name="Windows.UI.Notifications.ToastNotificationManager" />
+          <AitFeature Name="Windows.UI.Notifications.ToastNotificationManager.history" />
+          <AitFeature Name="document.addEventListener" />
+        </AitCategory>
+      </AitFile>
+      <AitFile ErrorCode="0" Name="jquery.cssmap.js" Id="0000fbfaada3ca7e5bfb6c94096c2ace95de21d635e4">
+        <AitCategory Id="WRTJavaScript">
+          <AitFeature Name="document.getElementById" />
+          <AitFeature Name="navigator.appVersion.indexOf" />
+          <AitFeature Name="window.location.hash" />
+          <AitFeature Name="window.location.href" />
+        </AitCategory>
+      </AitFile>
+    </AitStaticAnalysis>
+  </DEPENDENCY_INFORMATION>
+</REPORT>

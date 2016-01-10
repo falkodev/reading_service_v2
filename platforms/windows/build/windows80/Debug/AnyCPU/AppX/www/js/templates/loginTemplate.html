@@ -1,0 +1,51 @@
+<section class="section background" id="login">
+    <div class="container">
+        <div class="row">       
+            <div class="col-sm-8 col-sm-offset-2 text-center contentBox contentView" id="contentLogin">
+                <form action="" method="post" id="loginForm">
+                    <div id="loginDiv">
+                        <h2 class="text-center title">{{login_title}}</h2> 
+                        <div class='input-group loginForm col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2'>
+                            <span class='input-group-addon loginAddon'><i class='fa fa-user fa-2' style="width:12px;"></i></span>
+                            <input id="loginInput" name="loginInput" class="loginForm form-control" type='text' placeholder='{{login_placeholder_email}}' required="required" />
+                        </div>
+
+                        <div class='input-group loginForm col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2'>
+                            <span class='input-group-addon loginAddon'><i class='fa fa-lock fa-2' style="width:12px;"></i></span>
+                            <input id="pwdInput" name="pwdInput" class="loginForm form-control" type='password' placeholder='{{login_placeholder_pwd}}' required="required" />
+                            <span class='input-group-addon loginAddon connexionBtn' id="loginBtn"><i class='fa fa-sign-in' style="width:12px;"></i></span>
+                        </div>
+                        <div id="loginValidate" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{login_validate}}</div>
+                        <div id="pwdValidate" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{pwd_validate}}</div>
+                        <div id="emailValidate" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{email_validate}}</div>
+                        <div id="logoutValidate" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                        {{logout_validate}}</div>
+                        <div id="connectionValidate" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                        {{connection_validate}}</div>                        
+                        <br/><br/><br/>
+                        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2"><a id="forgottenPass">{{login_forgotten_pwd}}?</a></div>
+                    </div>
+                    <input type="hidden" id="msg" name="msg"/>
+                </form>
+                <div id="forgottenDiv" class="displayNone">
+                    <h2 class="text-center title">{{login_forgotten_pwd}}</h2> 
+                    {{login_forgotten_pwd_text}}<br><br>
+                    <div class='input-group loginForm col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2'>
+                        <span class='input-group-addon loginAddon'><i class='fa fa-user fa-2' style="width:12px;"></i></span>
+                        <input id="forgottenInput" name="forgottenInput" class="loginForm form-control" type='text' placeholder='{{login_placeholder_email}}' required="required" />
+                        <span class='input-group-addon loginAddon connexionBtn' id="forgottenBtn"><i class='fa fa-sign-in' style="width:12px;"></i></span>
+                    </div> 
+                    <div id="forgottenValidate" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{login_forgotten_validate}}</div>
+                    <div id="forgottenSuccess" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{login_forgotten_success}}</div>
+                    <div id="forgottenFail" class="validate col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">{{login_forgotten_fail}}</div>
+                    <br/><br/><br/>
+                    <a id="backToLogin">{{btn_back}}</a>
+                </div>
+                <div id="waitDiv" class="displayNone">
+                    <img src="assets/img/ring-white.svg"/><br/>
+                    <h2 class="title">{{loading}}</h2>
+                </div>
+            </div>  
+        </div>  
+    </div>
+</section>
