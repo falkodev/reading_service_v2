@@ -322,8 +322,8 @@
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_variables.scss">
       <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_variables.scss</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\bible_reading.jpg">
-      <PackagePath>www\assets\img\bible_reading.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\background.jpg">
+      <PackagePath>www\assets\img\background.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\lang\common.js">
       <PackagePath>www\assets\lang\common.js</PackagePath>
@@ -354,6 +354,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\dashboardView.js">
       <PackagePath>www\js\views\dashboardView.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\donateView.js">
+      <PackagePath>www\js\views\donateView.js</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\faqView.js">
       <PackagePath>www\js\views\faqView.js</PackagePath>
@@ -457,6 +460,9 @@
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\dashboardTemplate.html">
       <PackagePath>www\js\templates\dashboardTemplate.html</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\donateTemplate.html">
+      <PackagePath>www\js\templates\donateTemplate.html</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\faqTemplate.html">
       <PackagePath>www\js\templates\faqTemplate.html</PackagePath>
     </AppxPackagedFile>
@@ -484,7 +490,7 @@
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\config.xml">
       <PackagePath>config.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\build\windows\Release\AnyCPU\resources.pri">
+    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\build\windows\Release\AnyCPU\ReverseMap\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

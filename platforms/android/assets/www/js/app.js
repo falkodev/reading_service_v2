@@ -134,7 +134,12 @@ function getNextWeekDay(now, d){
 
   //get the default language file
   displayLang();
-
+  window.languages = [{lang:'fr', name:lang_fr}, 
+                        {lang:'en', name:lang_en}, 
+                        {lang:'it', name:lang_it}, 
+                        {lang:'es', name:lang_es}, 
+                        {lang:'de', name:lang_de},
+                        {lang:'ro', name:lang_ro}];
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
@@ -224,16 +229,16 @@ function getNextWeekDay(now, d){
             if(i > 0) {
               var cond = value.substr(0,4);
               //avoid built-in helpers (if, else, each, ...), partials ({{> xxx}}) and raw blocks ({{{xxx}}})
-              if(value[0] != "#" && value[0] != "/" && value[0] != ">" && value[0] != "{" && cond != "else") {
+              if(value[0] != "#" && value[0] != "/" && value[0] != ">" && value[0] != "{" && value[0] != "!" && cond != "else") {
                 var tab2 = value.split("}}");
                 var expr = tab2[0];
                 // build context for future Handlebars compilation
                 context[expr] = eval(expr);
-              }
+              } 
             }
             i++;
           });
-
+          
           if(activeMenu) { context[activeMenu] = 'active'; } // case of menu loading
           if(result) {
             $.each(result, function(key, value){

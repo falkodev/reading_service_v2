@@ -668,9 +668,9 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 #day7:before{content: "Dimanche";}
 #dailyText:before{content: "Oui";}
 #dailyText:after{content: "Non";}
-#readingLang:before{content: "Français";}
+#readingLang:before{content: "FranÃ§ais";}
 #readingLang:after{content: "Anglais";}
-#readingText:before{content: "Français";}
+#readingText:before{content: "FranÃ§ais";}
 #readingText:after{content: "Anglais";}
 
 #day1:lang(en):before{content: "Monday";}

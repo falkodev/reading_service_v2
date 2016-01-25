@@ -91,7 +91,7 @@
  * map version: 4.4.26
  * web: http://cssmapsplugin.com/world-continents.html
  * email: support@cssmapsplugin.com
- * author: Łukasz Popardowski { Winston_Wolf }
+ * author: Åukasz Popardowski { Winston_Wolf }
  * license: http://cssmapsplugin.com/license
 */
 .css-map-container{margin:0 auto !important;overflow:hidden;padding:0 !important;position:relative} .css-map-container *{-moz-box-sizing: content-box;-webkit-box-sizing: content-box;box-sizing: content-box} .css-map{display:block;left:0;margin:0 !important;list-style:none;padding:0 !important;position:relative} .css-map > li{height:0;width:0} .css-map > li a{height:auto;margin:-9999px 0 0 0;position:absolute;text-decoration:none;width:auto;z-index:89} .css-map > li a:focus{outline:0 none} .css-map-container span{display:block;height:0;left:0;position:absolute;top:-9999px;width:0} .css-map > li a.tooltip-right{left:auto;right:0;width:auto} .css-map > li a .tooltip-arrow{left:50%;top:auto} .css-map > li a.tooltip-middle .tooltip-arrow{display:none} .css-map > li a.tooltip-top .tooltip-arrow{bottom:auto} .css-map > li a.tooltip-right .tooltip-arrow{left:auto} #map-tooltip{position:absolute;z-index:999} .css-map-container .cities{top:0;z-index:88} .css-map .bg{padding:10px} .css-map .active-region .bg{z-index:87} .css-map .m{cursor:pointer;z-index:99} .css-map .m span{z-index:89} .map-visible-list{clear:both;overflow:hidden} span.map-loader{height:auto;position:absolute;text-align:center;width:auto;z-index:90}

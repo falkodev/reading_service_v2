@@ -84,7 +84,7 @@ www\assets\css\pageslider.css
 www\assets\css\styles.css
 www\assets\font\wire-one.woff
 www\assets\font\wire-one.woff2
-www\assets\img\bible_reading.jpg
+www\assets\img\background.jpg
 www\assets\img\book.png
 www\assets\img\feature-graphic.png
 www\assets\img\icon.png
@@ -111,6 +111,7 @@ www\js\app.js
 www\js\templates\accountTemplate.html
 www\js\templates\contactTemplate.html
 www\js\templates\dashboardTemplate.html
+www\js\templates\donateTemplate.html
 www\js\templates\faqTemplate.html
 www\js\templates\firstTimeTemplate.html
 www\js\templates\loginTemplate.html
@@ -121,6 +122,7 @@ www\js\templates\todayReadingTemplate.html
 www\js\views\accountView.js
 www\js\views\contactView.js
 www\js\views\dashboardView.js
+www\js\views\donateView.js
 www\js\views\faqView.js
 www\js\views\firstTimeView.js
 www\js\views\loginView.js

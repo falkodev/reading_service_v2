@@ -2,6 +2,8 @@
 @import "cssmap-continents/cssmap-continents.css";
 @import "pageslider.css";
 @import "font-awesome-4.3.0/css/font-awesome.css";
+@import "selectize.css";
+@import "selectize.bootstrap3.css";
 
 *,
 *:before,
@@ -317,7 +319,7 @@ ul {
 }
 
 .background{
-    background-image: url(../img/bible_reading.jpg);
+    background-image: url(../img/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -375,6 +377,18 @@ ul {
 
 .subscribeBack{float:left;}
 .subscribeSubmit{float:right;}
+
+.alignLang {
+	text-align:right;
+	float:right;
+}
+@media (max-width: 767px) {
+	.alignLang{ 
+		text-align:left; 
+		float:left;
+	}
+}
+
 #help{cursor:pointer;}
 
 .popover-title {
@@ -501,22 +515,28 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 	color:#fff
 }
 .btn-default {
-	background: rgba(255,255,255,.5);
+	background: rgba(255,255,255,.4);
+	color: rgba(255, 255, 255, .8);
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
-	background: rgba(255,255,255,.8);
+	background: rgba(255,255,255,.1);
+	color: rgba(255, 255, 255, .8);
 }
 .btn-primary {
 	background: rgba(255,255,255,.2);
+	color: rgba(255, 255, 255, .8);
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:active {
-	background: rgba(255,255,255,.5);
+	background: rgba(255,255,255,.1);
+	color: rgba(255, 255, 255, .8);
 }
 .btn-inverse {
-	background: #808080;
+	background: rgb(128,128,128);
+	color: rgba(255, 255, 255, .8);
 }
 .btn-inverse:hover, .btn-inverse:focus, .btn-inverse:active, .btn-inverse:active {
-	background: rgba(255,255,255,.5);
+	background: rgba(128,128,128, .5)  ;
+	color: rgba(255, 255, 255, .8);
 }
 
 .btn-orange {
@@ -530,7 +550,18 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 }
 
 .btn-width {
-	width: 200px;
+	width: 250px;
+}
+
+.btn-lang {
+	width: 135px;
+    margin-right: 2px;
+}
+
+@media (max-width: 767px) {
+	.btn-lang { 
+		margin-left: -3px;
+	}
 }
 
 #cancelChangePassword{
@@ -989,6 +1020,17 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 .table-custom {
 	border: 0 !important;
 	text-align: left;
+}
+
+.table-sm-col {
+	max-width: none;
+}
+
+@media (max-width: 767px) {
+  	.table-sm-col { max-width: 130px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+	.table-sm-col { max-width: 85px }
 }
 
 #resize {

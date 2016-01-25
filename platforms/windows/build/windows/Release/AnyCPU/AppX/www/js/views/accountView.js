@@ -1,5 +1,6 @@
 ﻿var accountView = function () {
 	var result = {};
+    result.languages = languages;
     userData = '';
     if(connectedUser) {        
     	// retrieve user data
@@ -126,10 +127,13 @@
     /**
      * [submit form : save data]
      */
-    $('body').on('submit', '#accountForm', function(e) {
+    $('body').on('submit', 'form', function(e) {
+        e.preventDefault();
+    });
+    $('body').on('click', '#accountFourthBtn', function(e) {
         e.preventDefault();
         if(hash == "account" && $('#accountTimeId').val()=='') { $('#accountTimeId').val(sessionUserData.time_id); } 
-        var formData = $("input[name!=passAccount]input[name!=passAccountConfirm]", this).serialize() + "&lang=" + localStorage.getItem("lang"); //every input except password fields
+        var formData = $("input[name!=passAccount]input[name!=passAccountConfirm]", 'form').serialize() + "&lang=" + localStorage.getItem("lang"); //every input except password fields
         if(hash == "account") { formData += "&accountId=" + sessionUserData.id; } 
         $.ajax(
         {
@@ -209,6 +213,35 @@
 	$('body').on('click', '.onoffswitch-checkbox', function(e){	
 		toggleRadioButton(this.id);
 	});
+
+    /**
+     * [click on button for languages : toggle hide/show other languages]
+     */
+    $('body').on('click', '.btn-lang', function(e){ 
+        var id = this.id;
+        var btn = id.substr(4); //button concerning reading or text
+        var type = id.substr(0, 4); //button show or hide
+        var toggle;
+        if(type === 'show') { 
+            toggle = 'hide'; 
+            $(this).parent().parent().parent().find('tr').fadeIn('slow','swing'); //display every language
+        } else { 
+            toggle = 'show'; 
+            $.each($(this).parent().parent().parent().find('tr > td > div > input'), function(){ //loop for every language
+                if($(this).prop('checked') == false) { $(this).parent().parent().parent().fadeOut('slow','swing'); } //hide those that are not selected
+            });
+        }
+        $(this).addClass('displayNone'); //hide clicked button
+        $('#' + toggle + btn).removeClass('displayNone'); //show the hidden one
+    });
+
+    /**
+     * [when "receive daily text" changes, toggle text language]
+     */
+    $('body').on('change', '#toggleAccountDailyComment', function(e){
+        if($(this).prop('checked')) { $('#divTextLang').fadeIn('slow','swing'); }
+        else { $('#divTextLang').fadeOut('slow','swing'); }
+    });
 
     /**
      * [popover mgmt]
@@ -308,7 +341,7 @@
     
     $(document).ready(function(){
         var mapLoaded = $('#account-map-continents').hasClass('css-map-container');
-        // console.log('class chargée:' + mapLoaded);
+        // console.log('class chargÃ©e:' + mapLoaded);
         if(!mapLoaded) {
             window.location.reload(true);
         } 
@@ -352,25 +385,22 @@
                     result = result.trim();
                     if (result == '1') {
                         $("#emailExistingValidate").slideDown(400);
-                    }
-                    else {  
+                    } else {  
                         if(hash == "account") {  	                        	        
                             $("input[type=checkbox].accountSwitch").each(function() {
                                 var id = this.id;
                                 var element = id.substr(13); //withdraw 13 first letters equivalent to "toggleAccount" in the id of checkbox element
                                 element = element.charAt(0).toLowerCase() + element.slice(1); //lowercase only the first letter to match variable from sessionUserData
                                 var toggleAccount = 'sessionUserData.' + element;
-                                if(eval(toggleAccount) == 1) {
+                                if(eval(toggleAccount) == 1 && $(this).prop('checked') == false) { //if checkbox not already displayed to "Yes" but should be (case of back and forth between screens)
                                     $(this).prop('checked', true); //checkbox displayed to "Yes"
                                     toggleRadioButton(id);
                                     var day = element.substr(element.length - 1);
                                     if(sessionUserData.firstDay == day) { $('#radioAccount' + day).prop('checked', true); }
                                 }
                             });
-                        }
-                        else {
-                            $("#subscribeTip1").show();
-                            $("#toggleAccountModeEmail").prop('checked', true); 
+                        } else {
+                            $("#subscribeTip1").show(); 
                         }
                         returnValue = true;
                     }
@@ -381,33 +411,48 @@
     }
 
     /**
-     * [accountThirdDisplay : display second account screen and fill recorded days according to the user's parameters]
+     * [accountThirdDisplay : display third account screen and fill recorded languages according to the user's parameters]
      */
     function accountThirdDisplay() {
         var returnValue = false;
         var count = $("input[type=radio].accountSwitch:checked").length;
-        var countMode = $("input[type=checkbox].accountMode:checked").length;
-        // console.log('count : ' + count);        
         if (count != 1) {
             $("#dayValidate").slideDown(400);
-        } else if (countMode < 1){
+        } else {
+            var elementReading = lang;
+            var elementComment = lang;
+            if(hash == "account") {
+                elementReading = sessionUserData.readingLang;                                
+                elementComment = sessionUserData.commentLang;
+                if($('#toggleAccountDailyComment').prop('checked', true)) { $('#divTextLang').fadeIn('slow','swing'); }
+            } else {
+                $("#toggleAccountModeEmail").prop('checked', true);
+                $("#radioAccountLangReading_fr").parent().parent().parent().removeClass("displayNone");
+                $("#radioAccountLangReading_en").parent().parent().parent().removeClass("displayNone");
+                $("#radioAccountLangText_fr").parent().parent().parent().removeClass("displayNone");
+                $("#radioAccountLangText_en").parent().parent().parent().removeClass("displayNone");
+            }
+            $("#radioAccountLangReading_" + elementReading).prop('checked', true);
+            $("#radioAccountLangReading_" + elementReading).parent().parent().parent().removeClass("displayNone");
+            $("#radioAccountLangText_" + elementComment).prop('checked', true);
+            $("#radioAccountLangText_" + elementComment).parent().parent().parent().removeClass("displayNone");
+            returnValue = true;
+        }
+        return returnValue;
+    }
+
+    /**
+     * [accountFourthDisplay : display fourth account screen and fill recorded timezone according to the user's parameters]
+     */
+    function accountFourthDisplay() {
+        var returnValue = false;
+        var countMode = $("input[type=checkbox].accountMode:checked").length;       
+        if (countMode < 1){
             $("#modeValidate").slideDown(400);
         } else {
             returnValue = true;
-            var elementReading = 'Fr';
-            var elementComment = 'Fr';
-        	if(hash == "account") {
-            	elementReading = sessionUserData.readingLang;
-            	elementReading = elementReading.charAt(0).toUpperCase() + elementReading.slice(1); //uppercase the first letter to match the element name on the next line
-            	
-            	elementComment = sessionUserData.commentLang;
-            	elementComment = elementComment.charAt(0).toUpperCase() + elementComment.slice(1);
-
-                $("#tipAccount").show();
-            } 
-            else if(hash == "subscribe") { $("#subscribeTip2").show(); }
-            $("#radioAccountLangReading" + elementReading).prop('checked', true);
-            $("#radioAccountLangText" + elementComment).prop('checked', true); 
+            if(hash == "account") { $("#tipAccount").show(); } 
+            else if(hash == "subscribe") { $("#subscribeTip2").show(); } 
         }
         return returnValue;
     }

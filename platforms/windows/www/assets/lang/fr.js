@@ -5,6 +5,7 @@ menu_contact = "Contact"
 menu_subscribe = "Inscription"
 menu_login = "Espace personnel"
 menu_dashboard = "Tableau de bord"
+menu_donate = "Soutenir"
 menu_logout = "Déconnexion"
 home_subtitle = "Inscription ou connexion"
 home_faq_label = "En savoir plus"
@@ -22,7 +23,7 @@ faq_question_4_content = "{{{<a href='index.html#login'>}}}Dans le menu de conne
 faq_question_5_title = 'Comment me désinscrire ?'
 faq_question_5_content = "Si vous désirez supprimer votre compte JW Reading, vous pouvez cliquer dans le lien de désinscription présent en bas de chaque email que vous recevez de jwreading.com. {{{<br>}}}{{{<br>}}}Si vous voulez simplement désactiver votre compte sans le supprimer, veuillez envoyer un message à l'administrateur JW Reading {{{<a href='index.html#contact'>}}}avec le formulaire de contact présent sur le site.{{{</a>}}}"
 faq_question_6_title = 'Comment montrer que j\'apprécie le site ?'
-faq_question_6_content = "Si vous pensez que ce site est une bonne idée, vous pouvez toujours en remercier l'auteur {{{<a href='index.html#contact'>}}}avec un petit message d'encouragement ;){{{</a>}}}{{{<br>}}}{{{<br>}}} Vous pouvez aussi parler de ce site autour de vous. Ce sera le moyen de le faire connaître et de me pousser à l'améliorer."
+faq_question_6_content = "Si vous pensez que ce site est une bonne idée, vous pouvez toujours en remercier l'auteur {{{<a href='index.html#contact'>}}}avec un petit message d'encouragement.{{{</a>}}}{{{<br>}}}{{{<br>}}}Vous pouvez aussi parler de ce site autour de vous. Ce sera le moyen de le faire connaître et de me pousser à l'améliorer.{{{<br>}}}{{{<br>}}}Enfin pour ceux qui veulent me payer un café pour me remercier, {{{<a href='index.html#donate'>}}}c'est par là ;){{{</a>}}}"
 faq_question_7_title = 'Je vois la portion du jour dans mon email quotidien. Pourquoi un lien vers la version online cette portion est-il inclus ?'
 faq_question_7_content = "Déjà, en cas de problème d'affichage, vous pouvez voir directement la portion sur le site.{{{<br>}}}{{{<br>}}}Mais surtout, les versets qui sont surlignés mènent à des recherches de publications situées en bas de la portion. Ce sont des liens spéciaux appelés \"ancres\". Or, les clients emails actuels bloquent les liens de type ancre pour des raisons de sécurité. Les ancres permettent d'aller à la recherche et de remonter au verset par de simples clics sans avoir à descendre et remonter manuellement. Pour profiter de cette fonctionnalité, il faut passer par la version online."
 faq_legal_title = 'Mentions légales'
@@ -69,13 +70,13 @@ tip_4 = "Cliquez sur la carte pour changer ces paramètres si vous le désirez."
 selected_utc_phrase_1 = 'Vous avez choisi de recevoir votre email à '
 selected_utc_phrase_2 = 'h chaque jour pour le fuseau horaire UTC '
 btn_save = 'Enregistrer'
-btn_next = 'Ok, étape suivante'
+btn_next = "Etape suivante"
 btn_last = 'Dernière étape'
 btn_previous = 'Précédent'
 btn_validation = 'Validation'
 btn_back = 'Retour'
 subscribe_title = 'Inscription'
-subscribe_text_1 = "L'inscription nécessite 3 étapes."
+subscribe_text_1 = "L'inscription nécessite 4 étapes."
 subscribe_text_2 = "Tout d'abord, nous avons besoin de connaître votre adresse email, pour l'envoi des portions de lecture de la Bible."
 subscribe_text_3 = "Et, si vous voulez, votre prénom, pour personnaliser l'email."
 placeholder_email = "Votre adresse email"
@@ -87,6 +88,8 @@ subscribe_tip_1 = 'Info : pour recevoir la lecture de la semaine suivante, il fa
 subscribe_tip_2 = "Par défaut, l'heure d'envoi sélectionnée est 6h sur le fuseau horaire UTC+1 (Amsterdam, Berlin, Bern, Bratislava, Brussells, Budapest, Madrid, Malta, Prague, Paris, Rome, Sarajevo, Valletta, Vienna, Warsaw, Zagreb).{{{<br>}}}{{{<br>}}}Cliquez sur la carte pour changer ces paramètres si vous le désirez."
 reading_lang = 'Langue lecture Bible'
 text_lang = 'Langue texte du jour'
+show_other_lang = 'Autres langues'
+hide_other_lang = 'Masquer'
 time_choice = "Heure d'envoi de l'email"
 world_map_africa = 'Afrique (UTC -1 à +3)'
 world_map_asia = 'Asie (UTC +2 à +12)'
@@ -105,6 +108,9 @@ daily_comment = 'Voulez-vous aussi recevoir aussi le texte du jour quotidienneme
 loading = 'Chargement'
 lang_fr = 'Français'
 lang_en = 'Anglais'
+lang_it = 'Italien'
+lang_es = 'Espagnol'
+lang_de = 'Allemand'
 lang_ro = 'Roumain'
 yes = 'Oui'
 no = 'Non'
@@ -151,121 +157,8 @@ notification_bible_reading_title = "Nouvelle lecture de la Bible"
 notification_bible_reading_text = "La portion du jour est prête"
 notification_daily_comment_title = "Nouveau texte du jour"
 notification_daily_comment_text = "Le texte du jour est prêt"
-
-
-// 'menu_home = 'Accueil'
-
-// menu_info = 'Fonctionnement'
-
-// menu_subscribe = 'Inscription'
-
-// menu_faq = faq'
-
-// menu_contact = 'Contact'
-
-// menu_login = 'Espace personnel'
-
-// menu_logout = 'Déconnexion'
-
-// home_text_1 = 'Inscrivez-vous pour recevoir chaque jour'
-
-// home_text_2 = ' une portion de la lecture hebdomadaire de la Bible'
-
-// home_btn_info = 'Comment ça marche ?'
-
-// home_btn_subscribe = "&nbsp;&nbsp;Ok, je m'inscris&nbsp;&nbsp;"
-
-// home_btn_login = "&nbsp;&nbsp;Connexion à mon compte&nbsp;&nbsp;"
-
-// info_title = 'Comment ça fonctionne ?'
-
-// info_content = 'Explications sur le site, son fonctionnement...'
-
-
-
-
-// login_title = 'Connexion'
-
-// login_placeholder_email" =>}}} 'Adresse email'
-
-// login_placeholder_pwd" =>}}} 'Mot de passe'
-
-// login_forgotten_pwd = 'Mot de passe oublié '
-
-// login_forgotten_pwd_text = "Veuillez entrer l'adresse email que vous utilisez en tant que login. {{{<br>}}}Un email vous sera expédié avec le nouveau mot de passe."
-
-
-
-// subscribe_mail_thks = 'Merci'
-
-// subscribe_mail_content_1 = "pour votre inscription.{{{<br>}}}Vous avez choisi de recevoir la lecture de la Bible chaque"
-
-// subscribe_mail_content_2 = "ainsi que le texte du jour quotidiennement."
-
-// subscribe_mail_content_3 = "{{{<br>}}}Vous commencerez à recevoir des mails de JW Reading à partir de demain. Si ce n'est pas le cas, veuillez vérifier le dossier \"Indésirables\" (aussi appelé \"Spams\") de votre boite mail.{{{<br>}}}{{{<br>}}}Votre mot de passe sur le site est" 
-
-// subscribe_mail_content_4 = "{{{<br>}}}{{{<br>}}}Vous pourrez changer tous les paramètres (adresse mail, mot de passe, jours de réception, premier jour de votre semaine de lecture) dans votre espace personnel.{{{<br>}}}Bonne lecture et à bientôt sur le site.{{{<br>}}}{{{<br>}}}L'administrateur JW Reading"
-
-// subscribe_mail_title = "Confirmation d'inscription au service JW Reading"
-
-// subscribe_mail_monday'=>}}} 'lundi'
-
-// subscribe_mail_tuesday = 'mardi'
-
-// subscribe_mail_wednesday = 'mercredi'
-
-// subscribe_mail_thursday = 'jeudi'
-
-// subscribe_mail_friday = 'vendredi'
-
-// subscribe_mail_saturday = 'samedi'
-
-// subscribe_mail_sunday = 'dimanche'
-
-// error_page_title = 'JW Reading - Erreur'
-
-// error_title = 'Oups'
-
-// error_text_1 = 'La page'
-
-// error_text_2 = "n'existe pas ou n'est pas accessible.{{{<br>}}}Le problème a été signalé à l'administrateur du site.{{{<br>}}}{{{<br>}}}Vous pouvez réessayer dans quelques instants ou revenir {{{<a href='/fr'>}}}à la page d'accueil.{{{</a>}}}"
-
-// unsubscribe_page_title = 'JW Reading - D&eacute;sinscription'
-
-// unsubscribe_title = 'D&eacute;sinscription'
-
-// unsubscribe_text = "Je veux supprimer mon compte et donc ne plus recevoir de mail de la part de JW Reading sur l'adresse"
-
-// unsubscribe_btn = 'Valider'
-
-// unsubscribe_mail_title = 'JW Reading - Au revoir'
-
-// unsubscribe_mail_content = 'Bonjour,{{{<br>}}}{{{<br>}}}Votre compte JW Reading a été supprimé suite à votre demande.{{{<br>}}}Nous espérons vous revoir bientôt tout de même.{{{<br>}}}{{{<br>}}}L\'administrateur JW Reading{{{</p>}}}'
-
-// send_new_pwd_content_1 = "Bonjour,{{{<br>}}}{{{<br>}}}Un changement de mot de passe a été demandé pour votre compte JW Reading. Votre mot de passe est désormais le suivant : "
-
-// send_new_pwd_content_2 = "{{{<br>}}}Si cette demande n'est pas de vous, veuillez nous en informer avec le {{{<a href='index.html#contact'>}}}formulaire de contact sur jwreading.com.{{{</a>}}}{{{<br>}}}{{{<br>}}}Cordialement,{{{<br>}}}L'administrateur JW Reading"
-
-// send_new_pwd_title = "Nouveau mot de passe"
-
-// send_new_pwd_subject = "JW Reading - Nouveau mot de passe"
-
-// mail_footer_1 = 'Vous recevez cet email car vous êtes abonné au site JW Reading.{{{<br>}}}Lien direct à votre espace personnel : '
-
-// mail_footer_2 = 'Lien de désinscription : '
-
-// daily_run_subject_reading = 'JW Reading - Portion du jour'
-
-// daily_run_title_reading = 'Portion du jour'
-
-// daily_run_subject_comment = 'JW Reading - Texte du jour'
-
-// daily_run_title_comment = 'Texte du jour'
-
-// daily_run_msg_text_1 = 'Bonjour'
-
-// daily_run_msg_text_2 = 'et bonne lecture.'
-
-// daily_run_msg_text_3 = "La portion pour aujourd'hui est visible ci-dessous mais aussi en ligne : "
-
-
+donate_dashboard = "Soutenir le projet JW Reading"
+donate_title = "Soutien au projet JW Reading"
+donate_button_paypal = "Effectuer un don avec Paypal"
+donate_button_tib = "Effectuer un don avec Tib"
+donate_text = "Vous pouvez soutenir ce projet en y participant. Par exemple, en proposant votre aide pour de la traduction de l'interface dans une langue que vous maitrisez ou en enrichissant la FAQ.{{{<br>}}}{{{<br>}}}Si vous appréciez le travail réalisé par l'auteur du site, vous pouvez faire une contribution de votre choix, même de quelques centimes. Il vous faudra un compte Paypal ou Tib et l'argent sera utilisé pour payer l'hébergement du site, la soumission des applications mobiles, la maintenance du code et l'évolution des fonctionnalités du projet.{{{<br>}}}{{{<br>}}}Merci pour votre soutien. Il est grandement apprécié et m'encourage à continuer."

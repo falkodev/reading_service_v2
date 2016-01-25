@@ -176,7 +176,7 @@
 	        if(i < sessionUserData.firstDay) { beforeFirstCycleDay = 1; }
 
 	        //2 possibles cases :
-	        //1st case :  if current day is greater than the "first" day of the cycle, count current day + days greater than the "first" day + days smaller than the current day
+	        //1st case :Â  if current day is greater than the "first" day of the cycle, count current day + days greater than the "first" day + days smaller than the current day
 	        if(today > sessionUserData.firstDay && i <= today && i >= sessionUserData.firstDay) { portionNumber++; }
 	        //2nd case : if current day is smaller than the "first" day of the cycle, count current day + days smaller than the current day + days greater than the "first" day + "first" day
 	        else if(today < sessionUserData.firstDay && ( (i <= today) || (i >= sessionUserData.firstDay)) ) { portionNumber++; }
@@ -206,18 +206,18 @@
 	 * @return {[int]}   [week number]
 	 */
 	function getWeekNumber(d) {
-	    var target = new Date(d.valueOf()),
+     	var target = new Date(d.valueOf()),
           dayNumber = (d.getUTCDay() + 6) % 7,
           firstThursday;
 
-	    target.setUTCDate(target.getUTCDate() - dayNumber + 3);
-	    firstThursday = target.valueOf();
-	    target.setUTCMonth(0, 1);
+        target.setUTCDate(target.getUTCDate() - dayNumber + 3);
+        firstThursday = target.valueOf();
+        target.setUTCMonth(0, 1);
 
-	    if (target.getUTCDay() !== 4) {
-	        target.setUTCMonth(0, 1 + ((4 - target.getUTCDay()) + 7) % 7);
-	    }
+        if (target.getUTCDay() !== 4) {
+            target.setUTCMonth(0, 1 + ((4 - target.getUTCDay()) + 7) % 7);
+        }
 
-	    return Math.ceil((firstThursday - target) / (7 * 24 * 3600 * 1000)) + 1;
+        return Math.ceil((firstThursday - target) /  (7 * 24 * 3600 * 1000)) + 1;
   	}
 }

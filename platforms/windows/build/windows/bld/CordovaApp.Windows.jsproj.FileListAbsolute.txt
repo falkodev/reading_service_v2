@@ -15,4 +15,4 @@ c:\phonegap\jwreading\platforms\windows\build\windows\bld\ProjectArchitectures.t
 C:\phonegap\jwreading\platforms\windows\build\windows\Debug\AnyCPU\ReverseMap\resources.pri
 C:\phonegap\jwreading\platforms\windows\build\windows\Release\AnyCPU\AppxManifest.xml
 C:\phonegap\jwreading\platforms\windows\build\windows\Release\AnyCPU\CordovaApp.Windows.build.appxrecipe
-C:\phonegap\jwreading\platforms\windows\build\windows\Release\AnyCPU\resources.pri
+C:\phonegap\jwreading\platforms\windows\build\windows\Release\AnyCPU\ReverseMap\resources.pri
