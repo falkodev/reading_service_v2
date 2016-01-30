@@ -113,10 +113,10 @@ function getNextWeekDay(now, d){
             $.each(langList, function(key, value){
               value = $.trim(value);
               if(lang == value) { found = true; }
-            })
+            });
             if(!found) { lang = 'en'; }
           }
-      })
+      });
     }
   });
 
@@ -144,6 +144,14 @@ function getNextWeekDay(now, d){
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
   window.displayView = function(element, activeMenu) {
+    $('.view').remove(); // remove previous view
+    var appendString = '<script class="view" src="js/views/' + element + 'View.js"></script>';// add new view in body
+    if (typeof MSApp !== "undefined" && MSApp) {
+      MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
+    } else {
+      $('body').append(appendString);
+    }
+
     var view   = "new " + element + "View()";
     var result = eval(view);
     var displaySubscribe = false;
@@ -154,7 +162,7 @@ function getNextWeekDay(now, d){
       // attach account behaviour to subscribe view
       var attach = new accountView();
     }
-    loadTemplate(element, activeMenu, result, displaySubscribe);
+    loadTemplate(element, activeMenu, result, displaySubscribe); // call template according to view
   }
 
   /**

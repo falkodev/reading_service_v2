@@ -1,0 +1,1 @@
+var donateView = function () {}

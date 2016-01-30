@@ -128,7 +128,7 @@ ul {
   height: 100%;
   /*width: 231px;*/
   /*position:relative;*/
-  top: -4px;
+  top: -3px;
 }
 
 .navbar-toggle {
@@ -190,7 +190,8 @@ ul {
 	/*border-right: 1px solid white; */
 	/*height: 100%;*/
 	padding-top: 100px;
-  padding-left: 5px;
+  	padding-left: 5px;
+  	top:-3px;
 }
 
 .mainmenu .dropdown-menu {
@@ -227,7 +228,7 @@ ul {
 	padding:10px 8px 10px 12px;
 }
 .mainmenu .open .dropdown-menu {
-	/*top:2px;*/
+	top:-3px;
 	left:-1.2em;
   /*left: -21px;*/
 	opacity:1;
@@ -259,7 +260,7 @@ ul {
 
 @media (min-width: 1024px) {
 	.mainmenu {
-		position: fixed;
+		/*position: fixed;*/
 		padding: 30px 0 0 0;
 	}
 

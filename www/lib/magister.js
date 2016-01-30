@@ -1,11 +1,11 @@
 jQuery(document).ready(function($) {
   /***** menu *****/
   $(document).on("click", ".navbar-toggle", function(){
-  	var w = $(window).width();
-    var h = $(window).height() - 2;
-  	if(w < 1025) {
+    var w = $(window).width();
+    var h = $(window).height() + 2;
+    if(w < 992) {
       $('#menu-width').css('height', h);
-  		if(!$('#tmplContent').hasClass("menu-open")) {
+      if(!$('#tmplContent').hasClass("menu-open")) {
         $('#tmplContent').addClass("menu-open");
         if(w > 768) { //animation sliding menu
           if(w==769) { $('#menu-width').css('left', '-1.7em'); }
@@ -19,21 +19,28 @@ jQuery(document).ready(function($) {
         } else { //under 768px
           $('#menu-width').css('left', '-1.2em');
         }
-    	}
-    	else {
-    		$('#tmplContent').removeClass("menu-open");
+      } else {
+        $('#tmplContent').removeClass("menu-open");
         $('#menu-width').css('left', '-23em');
-    	}
-  	}
-    else { $('#menu-width').css('left', ''); }
+      }
+    } else if (w < 1025) { //screen width between 992 and 1024px
+      $('#menu-width').css('height', h);
+      $('#menu-width').css('left', '-2.5em');
+      if(!$('#tmplContent').hasClass("menu-open")) {
+        $('#tmplContent').addClass("menu-open");
+      } else {
+        $('#tmplContent').removeClass("menu-open");
+        $('#menu-width').css('left', '-23em');
+      }
+    } else { $('#menu-width').css('left', ''); }
   });
 
   $(document).on("click", function(){
-  	var w = $(window).width();
-  	if(w < 1025) {
-  		$('#tmplContent').removeClass("menu-open");
+    var w = $(window).width();
+    if(w < 1025) {
+      $('#tmplContent').removeClass("menu-open");
       $('#menu-width').css('left', '-23em');
-	  }
+    }
     else { $('#menu-width').css('left', ''); }
   });
   /***** end menu *****/
