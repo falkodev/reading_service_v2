@@ -1,3 +1,9 @@
+// @koala-prepend "jquery.js"
+// @koala-prepend "jquery.cssmap.js"
+// @koala-prepend "handlebars.js"
+// @koala-prepend "fastclick.js"
+// @koala-prepend "bootstrap.min.js"
+
 /* Notes:
  * - History management is currently done using window.location.hash.  This could easily be changed to use Push State instead.
  * - jQuery dependency for now. This could also be easily removed.

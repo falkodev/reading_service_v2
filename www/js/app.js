@@ -69,6 +69,7 @@ function getNextWeekDay(now, d){
 /******* End only mobile ********/
 
 (function () {
+
   /**
    * global variables
    */
@@ -80,7 +81,7 @@ function getNextWeekDay(now, d){
   window.loggedOut = false;
   window.referrer = '';
 
-  var slider = new PageSlider($('#tmplContent'));
+  slider = new PageSlider($('#tmplContent'));
 
   // browser language detection and load corresponding language file
   if(localStorage.getItem("lang")) { lang = localStorage.getItem("lang"); }
@@ -90,7 +91,6 @@ function getNextWeekDay(now, d){
     lang = $.trim(lang);
     localStorage.setItem("lang", lang);
   }
-
 
   //detect if previously loaded account
   if(localStorage.getItem("sessionUserData")) {
@@ -102,7 +102,8 @@ function getNextWeekDay(now, d){
    * [get languages file and determine what language to display - english by default if language not found]
    */
   $.ajax({
-    url: 'assets/lang/langs.txt',
+    url: 'http://jwreading.com/ajax/getMinifiedContent.php',
+    data: {file: 'assets/lang/langs.txt'},
     async: false,
     complete: function(data)
     {
@@ -120,49 +121,63 @@ function getNextWeekDay(now, d){
     }
   });
 
-  /**
-   * [displayLang : add the js file containing the i18n translation matching the language]
+   /**
+   * [displayLang : remove current language file and load new one]
    */
   window.displayLang = function() {
-    var appendString = '<script src="assets/lang/' + lang + '.js"></script>';
-    if (typeof MSApp !== "undefined" && MSApp) {
-      MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
-    } else {
-      $('body').append(appendString);
-    }
+    $('.lang').remove(); // remove previous lang
+    loadLang();
   }
 
   //get the default language file
   displayLang();
   window.languages = [{lang:'fr', name:lang_fr}, 
-                        {lang:'en', name:lang_en}, 
-                        {lang:'it', name:lang_it}, 
-                        {lang:'es', name:lang_es}, 
-                        {lang:'de', name:lang_de},
-                        {lang:'ro', name:lang_ro}];
+                      {lang:'en', name:lang_en}, 
+                      {lang:'it', name:lang_it}, 
+                      {lang:'es', name:lang_es}, 
+                      {lang:'de', name:lang_de},
+                      {lang:'ro', name:lang_ro}];
+  
+  init();                 
+  
+  function init() {
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
-  window.displayView = function(element, activeMenu) {
-    $('.view').remove(); // remove previous view
-    var appendString = '<script class="view" src="js/views/' + element + 'View.js"></script>';// add new view in body
-    if (typeof MSApp !== "undefined" && MSApp) {
-      MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
-    } else {
-      $('body').append(appendString);
-    }
+  window.displayView = function(element, activeMenu) {    
+    $.ajax({
+      url: 'http://jwreading.com/ajax/getMinifiedContent.php',
+      method: 'get',
+      data: {view: element, menu: activeMenu},
+      dataType: 'json',
+      async: false,
+      success: function(data) {
+        var js = data['minifiedJs'];
+        var tmpl = data['minifiedTmpl'];
+        var menuJs = data['minifiedMenuJs'];
+        var tmplMenu = data['minifiedMenuTmpl'];
 
-    var view   = "new " + element + "View()";
-    var result = eval(view);
-    var displaySubscribe = false;
-    //determine if subscribe view is calling
-    if(element == 'subscribe') {
-      displaySubscribe = true;
-      element = 'account';
-      // attach account behaviour to subscribe view
-      var attach = new accountView();
-    }
-    loadTemplate(element, activeMenu, result, displaySubscribe); // call template according to view
+        $('.view').remove(); // remove previous view
+        var appendString = '<script class="view">' + js + '</script>';// add new view in body
+        if (typeof MSApp !== "undefined" && MSApp) {
+          MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
+        } else {
+          $('body').append(appendString);
+        }
+
+        var appendString = '<script class="view">' + menuJs + '</script>';// add new view in body
+        if (typeof MSApp !== "undefined" && MSApp) {
+          MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
+        } else {
+          $('body').append(appendString);
+        }
+
+        loadTemplate(element, tmpl, tmplMenu, activeMenu);
+      },
+      error: function () {
+        $('#tmplContent').html('Internet connection problem');
+      }
+    });
   }
 
   /**
@@ -173,8 +188,7 @@ function getNextWeekDay(now, d){
     if(!hash) { hash = 'dashboard'; }
     hash = checkNeedLogin(hash);
     var activeMenu = hash + '_active';
-    displayView('menu', activeMenu); //load menu
-    displayView(hash, null); //load view corresponding to the hash
+    displayView(hash, activeMenu); //load view corresponding to the hash and menu
   }
 
   if(!localStorage.firstTimeOver) { // first time
@@ -209,69 +223,93 @@ function getNextWeekDay(now, d){
     }
   }, 1000 );
 
+
   /**
-   * [loadTemplate : get a template, compile it with handblebars.js and add his html content to the DOM]
-   * @param  {tmpl_name  : template name [string]}
-   * @param  {activeMenu : menu name - optional [string]}
-   * @param  {result : additional context from the calling view - optional [object]}
-   * @param  {displaySubscribe : if subscribe view is calling, display account template with subscribe labels - optional [boolean]}
+   * [loadTemplate       : get a template, compile it with handblebars.js and add his html content to the DOM]
+   * @param  {element    : hash}
+   * @param  {tmpl       : minified template to compile to display view}
+   * @param  {tmplMenu   : minified template to compile to display menu - optional}
+   * @param  {activeMenu : menu name - optional}
    */
-  function loadTemplate(tmpl_name, activeMenu, result, displaySubscribe) {
-    var tmpl_url = 'js/templates/' + tmpl_name + 'Template.html';
+  function loadTemplate(element, tmpl, tmplMenu, activeMenu) {
+    var displaySubscribe = false;
+    //determine if subscribe view is calling
+    if(element == 'subscribe') {
+      displaySubscribe = true;
+      element = 'account';
+      // attach account behaviour to subscribe view
+      var attach = new accountView();
+    }
+
+    if (typeof sessionUserData !== "undefined" && sessionUserData) { var userData = sessionUserData; } //for accountView
+    //if subscribe view is calling, all "account_" occurrences will be replaced by "subscribe_" occurrences in order to use the account template for the subscribing process
+    if(displaySubscribe) { tmpl = tmpl.replace(new RegExp('{{account_', 'g'), '{{subscribe_'); }
+
+    var context = buildContext(tmpl);
+    var contextMenu = buildContext(tmplMenu);
+
+    var view   = "new " + element + "View()";
+    var result = eval(view); 
+    var resultMenu = new menuView(); 
+
+    if(activeMenu) { contextMenu[activeMenu] = 'active'; } // case of menu loading
+
+    var html = compileTemplate(tmpl, context, result);
+    var menuHtml = compileTemplate(tmplMenu, contextMenu, resultMenu);
+    
+    if(activeMenu) { $('#menuContent').html(menuHtml); } // case of menu loading
+    if(element == 'firstTime') { $('#tmplContent').html(html); }
+    else { slider.slidePage($('<div>').html(html)); }
+    if(loggedOut) {
+      $("#logoutValidate").show();
+      loggedOut = false;
+    }
+  }
+
+  /**
+   * [buildContext    : create context that will be used for Handlebars compilation]
+   * @param  {tmpl    : minified template to compile}
+   * @return {context : object containing handlebars expression to transform during compilation}
+   */
+  function buildContext(tmpl) {
     var context = {};
-
-    $.ajax({
-        url: tmpl_url,
-        method: 'GET',
-        dataType: 'html',
-        async: false,
-        success: function(data) {
-          var i=0  ;
-
-          //if subscribe view is calling, all "account_" occurrences will be replaced by "subscribe_" occurrences in order to use the account template for the subscribing process
-          if(displaySubscribe) { data = data.replace(new RegExp('{{account_', 'g'), '{{subscribe_'); }
-
-          // find Handlebars expressions in nude template (before compilation)
-          var tab = data.split("{{");
-          $.each(tab, function(key, value){
-            if(i > 0) {
-              var cond = value.substr(0,4);
-              //avoid built-in helpers (if, else, each, ...), partials ({{> xxx}}) and raw blocks ({{{xxx}}})
-              if(value[0] != "#" && value[0] != "/" && value[0] != ">" && value[0] != "{" && value[0] != "!" && cond != "else") {
-                var tab2 = value.split("}}");
-                var expr = tab2[0];
-                // build context for future Handlebars compilation
-                context[expr] = eval(expr);
-              } 
-            }
-            i++;
-          });
-          
-          if(activeMenu) { context[activeMenu] = 'active'; } // case of menu loading
-          if(result) {
-            $.each(result, function(key, value){
-                context[key] = value; // add additional parameters to context
-            });
-          }
-          // $.each(context, function(key, value){
-          //     console.log("context[" + key + "]: " + value)
-          // })
-          // console.log("-------------fin context------------")
-          // compile template
-          var template = Handlebars.compile(data);
-          var html     = template(context);
-          html         = escapeLink(html);
-          if(activeMenu) { $('#menuContent').html(html); } // case of menu loading
-          else {
-            if(tmpl_name == 'firstTime') { $('#tmplContent').html(html); }
-            else { slider.slidePage($('<div>').html(html)); }
-            if(loggedOut) {
-              $("#logoutValidate").show();
-              loggedOut = false;
-            }
-          }
-        }
+    var i = 0;
+    // find Handlebars expressions in nude template (before compilation)
+    var tab = tmpl.split("{{");
+    $.each(tab, function(key, value){
+      if(i > 0) {
+        var cond = value.substr(0,4);
+        //avoid built-in helpers (if, else, each, ...), partials ({{> xxx}}) and raw blocks ({{{xxx}}})
+        if(value[0] != "#" && value[0] != "/" && value[0] != ">" && value[0] != "{" && value[0] != "!" && cond != "else") {
+          var tab2 = value.split("}}");
+          var expr = tab2[0];
+          // build context for future Handlebars compilation
+          context[expr] = eval(expr);
+        } 
+      }
+      i++;
     });
+    return context;
+  }
+
+  /**
+   * [compileTemplate : compile template with context through Handlebars.js]
+   * @param  {tmpl    : minified template to compile}
+   * @param  {context : object containing handlebars expression to transform during compilation}
+   * @param  {result  : behavior attached to view}
+   * @return {html    : compiled html to load into DOM}
+   */
+  function compileTemplate(tmpl, context, result) {
+    if(result) {
+      $.each(result, function(key, value){
+        context[key] = value; // add additional parameters to context
+      });
+    }
+    var template = Handlebars.compile(tmpl);
+    var html     = template(context);
+    html         = escapeLink(html);
+
+    return html;
   }
 
   /**
@@ -336,4 +374,37 @@ function getNextWeekDay(now, d){
         return false;
     }
   }
+
+  }
 }());
+
+/**
+* [loadLang : add the js file containing the i18n translation matching the language]
+*/
+function loadLang() {
+    $.ajax({
+      url: 'http://jwreading.com/ajax/getMinifiedContent.php',
+      data: {lang: lang},
+      async: false,
+      complete: function(data)
+      {
+        var lang_elements = '';
+        $.each(data, function(k,v){
+          if(k == 'responseText') {
+            el = v.split("\\r\\n");
+            $.each(el, function(key, value){
+              lang_elements += value + ';';
+            });
+          }
+        });
+        var js_lang = eval(lang_elements);
+        var appendString = '<script class="lang">' + js_lang + '</script>';
+
+        if (typeof MSApp !== "undefined" && MSApp) {
+          MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
+        } else {
+          $('body').append(appendString);
+        }
+      }
+    });
+  }
