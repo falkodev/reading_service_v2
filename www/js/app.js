@@ -109,6 +109,7 @@ function getNextWeekDay(now, d){
     {
       $.each(data, function(k,v){
           if(k == 'responseText') {
+            v = JSON.parse(v);
             langList = v.split("\n");
             var found = false;
             $.each(langList, function(key, value){
@@ -126,7 +127,7 @@ function getNextWeekDay(now, d){
    */
   window.displayLang = function() {
     $('.lang').remove(); // remove previous lang
-    loadLang();
+    loadFile('assets/lang/' + lang + '.js', 'lang');
   }
 
   //get the default language file
@@ -141,6 +142,14 @@ function getNextWeekDay(now, d){
   init();                 
   
   function init() {
+  /**
+   * [get common language file - used to initialize some empty values in templates]
+   */
+  loadFile('assets/lang/common.js', 'lang');
+  loadFile('lib/jwreading.js', 'js');
+  loadFile('assets/css/jwreading.css', 'css');
+
+
   /**
    * [displayView : get the view corresponding to the asked element, in order to load the associated template with context added by the view ]
    */
@@ -241,7 +250,6 @@ function getNextWeekDay(now, d){
       var attach = new accountView();
     }
 
-    if (typeof sessionUserData !== "undefined" && sessionUserData) { var userData = sessionUserData; } //for accountView
     //if subscribe view is calling, all "account_" occurrences will be replaced by "subscribe_" occurrences in order to use the account template for the subscribing process
     if(displaySubscribe) { tmpl = tmpl.replace(new RegExp('{{account_', 'g'), '{{subscribe_'); }
 
@@ -274,6 +282,7 @@ function getNextWeekDay(now, d){
   function buildContext(tmpl) {
     var context = {};
     var i = 0;
+    if (typeof sessionUserData !== "undefined" && sessionUserData) { var userData = sessionUserData; } //for accountView
     // find Handlebars expressions in nude template (before compilation)
     var tab = tmpl.split("{{");
     $.each(tab, function(key, value){
@@ -379,32 +388,37 @@ function getNextWeekDay(now, d){
 }());
 
 /**
-* [loadLang : add the js file containing the i18n translation matching the language]
+* [loadFile : add the js file containing the i18n translation matching the language]
 */
-function loadLang() {
-    $.ajax({
-      url: 'http://jwreading.com/ajax/getMinifiedContent.php',
-      data: {lang: lang},
-      async: false,
-      complete: function(data)
-      {
-        var lang_elements = '';
-        $.each(data, function(k,v){
-          if(k == 'responseText') {
-            el = v.split("\\r\\n");
-            $.each(el, function(key, value){
-              lang_elements += value + ';';
-            });
-          }
-        });
-        var js_lang = eval(lang_elements);
-        var appendString = '<script class="lang">' + js_lang + '</script>';
-
-        if (typeof MSApp !== "undefined" && MSApp) {
-          MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
-        } else {
-          $('body').append(appendString);
+function loadFile(file, type) {
+  $.ajax({
+    url: 'http://jwreading.com/ajax/getMinifiedContent.php',
+    data: {file: file, type:type},
+    async: false,
+    complete: function(data)
+    {
+      var elements = '';
+      $.each(data, function(k,v){
+        if(k == 'responseText') {
+          el = v.split("\\r\\n");
+          $.each(el, function(key, value){
+            if(type === 'css') { elements += value; }
+            else { elements += value + ';'; }
+          });
         }
+      });
+      var eval_file = eval(elements);
+      var appendString;
+      var page_location = 'body';
+      if(type === 'lang') { appendString = '<script class="lang">' + eval_file + '</script>'; }
+      else if(type === 'js') { appendString = '<script>' + eval_file + '</script>'; }
+      else if(type === 'css') { appendString = '<style>' + eval_file + '</style>'; page_location = 'head'; }
+
+      if (typeof MSApp !== "undefined" && MSApp) {
+        MSApp.execUnsafeLocalFunction(function() { $(page_location).append(appendString); });
+      } else {
+        $(page_location).append(appendString);
       }
-    });
-  }
+    }
+  });
+}
