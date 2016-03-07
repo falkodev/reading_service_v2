@@ -35,6 +35,15 @@ import de.appplant.cordova.plugin.notification.TriggerReceiver;
 public class ClickActivity extends de.appplant.cordova.plugin.notification.ClickActivity {
 
     /**
+     * Anthony - ajout 05/03/2016 pour corriger bug Android 6.0
+     */
+    @Override
+    protected void onStart() {
+      super.onStart();
+      setVisible(true);
+    }
+
+    /**
      * Called when local notification was clicked by the user.
      *
      * @param notification

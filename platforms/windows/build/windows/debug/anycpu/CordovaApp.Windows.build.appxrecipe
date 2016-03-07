@@ -8,7 +8,7 @@
     <TargetOsDescription>Windows 8.1</TargetOsDescription>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <PackageIdentityName>59057JWReading.JWReading</PackageIdentityName>
+    <PackageIdentityName>JWReading.JWReading</PackageIdentityName>
     <IntermediateOutputPath>C:\phonegap\jwreading\platforms\windows\build\windows\bld\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -94,119 +94,8 @@
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\cssmap-continents\continents-960.png">
       <PackagePath>www\assets\css\cssmap-continents\continents-960.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_add.png">
-      <PackagePath>www\assets\css\images\ic_action_add.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_arrow_left.png">
-      <PackagePath>www\assets\css\images\ic_action_arrow_left.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_book.png">
-      <PackagePath>www\assets\css\images\ic_action_book.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_bookmark.png">
-      <PackagePath>www\assets\css\images\ic_action_bookmark.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_dialog.png">
-      <PackagePath>www\assets\css\images\ic_action_dialog.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_download.png">
-      <PackagePath>www\assets\css\images\ic_action_download.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_goleft.png">
-      <PackagePath>www\assets\css\images\ic_action_goleft.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_location.png">
-      <PackagePath>www\assets\css\images\ic_action_location.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_mail.png">
-      <PackagePath>www\assets\css\images\ic_action_mail.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_monolog.png">
-      <PackagePath>www\assets\css\images\ic_action_monolog.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_phone_outgoing.png">
-      <PackagePath>www\assets\css\images\ic_action_phone_outgoing.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_search.png">
-      <PackagePath>www\assets\css\images\ic_action_search.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_user.png">
-      <PackagePath>www\assets\css\images\ic_action_user.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\images\ic_action_users.png">
-      <PackagePath>www\assets\css\images\ic_action_users.png</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\book.png">
       <PackagePath>www\assets\img\book.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\feature-graphic.png">
-      <PackagePath>www\assets\img\feature-graphic.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\icon-hi-res.png">
-      <PackagePath>www\assets\img\icon-hi-res.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\icon.png">
-      <PackagePath>www\assets\img\icon.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\icon150x150.png">
-      <PackagePath>www\assets\img\icon150x150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\icon30x30.png">
-      <PackagePath>www\assets\img\icon30x30.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\icon310x310.png">
-      <PackagePath>www\assets\img\icon310x310.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\icon50x50.png">
-      <PackagePath>www\assets\img\icon50x50.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\icon70x70.png">
-      <PackagePath>www\assets\img\icon70x70.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\wide310x150.png">
-      <PackagePath>www\assets\img\wide310x150.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\wide620x300.png">
-      <PackagePath>www\assets\img\wide620x300.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\bootstrap.css">
-      <PackagePath>www\assets\css\bootstrap.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\bootstrap.min.css">
-      <PackagePath>www\assets\css\bootstrap.min.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\cssmap-continents\cssmap-continents.css">
-      <PackagePath>www\assets\css\cssmap-continents\cssmap-continents.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\css\font-awesome.css">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\css\font-awesome.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\css\font-awesome.min.css">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\css\font-awesome.min.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\css\mixins.css">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\css\mixins.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\css\variables.css">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\css\variables.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\font-awesome.css">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\font-awesome.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\magister-old.css">
-      <PackagePath>www\assets\css\magister-old.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\magister.css">
-      <PackagePath>www\assets\css\magister.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\pageslider.css">
-      <PackagePath>www\assets\css\pageslider.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\styles.css">
-      <PackagePath>www\assets\css\styles.css</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\css\inappbrowser.css">
-      <PackagePath>www\css\inappbrowser.css</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.eot">
       <PackagePath>www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.eot</PackagePath>
@@ -229,107 +118,14 @@
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.woff2">
       <PackagePath>www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.woff2</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\font\wire-one.woff2">
-      <PackagePath>www\assets\font\wire-one.woff2</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\fonts\FontAwesome.otf">
       <PackagePath>www\assets\css\font-awesome-4.3.0\fonts\FontAwesome.otf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\HELP-US-OUT.txt">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\HELP-US-OUT.txt</PackagePath>
+    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\style.css">
+      <PackagePath>www\assets\css\style.css</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\lang\langs.txt">
-      <PackagePath>www\assets\lang\langs.txt</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\animated.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\animated.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\bordered-pulled.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\bordered-pulled.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\core.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\core.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\fixed-width.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\fixed-width.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\font-awesome.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\font-awesome.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\icons.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\icons.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\larger.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\larger.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\list.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\list.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\mixins.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\mixins.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\path.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\path.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\rotated-flipped.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\rotated-flipped.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\stacked.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\stacked.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\less\variables.less">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\less\variables.less</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\font-awesome.css.map">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\font-awesome.css.map</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\font-awesome.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\font-awesome.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_animated.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_animated.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_bordered-pulled.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_bordered-pulled.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_core.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_core.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_fixed-width.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_fixed-width.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_icons.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_icons.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_larger.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_larger.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_list.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_list.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_mixins.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_mixins.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_path.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_path.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_rotated-flipped.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_rotated-flipped.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_stacked.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_stacked.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\css\font-awesome-4.3.0\scss\_variables.scss">
-      <PackagePath>www\assets\css\font-awesome-4.3.0\scss\_variables.scss</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\img\bible_reading.jpg">
-      <PackagePath>www\assets\img\bible_reading.jpg</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\lang\common.js">
-      <PackagePath>www\assets\lang\common.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\lang\en.js">
-      <PackagePath>www\assets\lang\en.js</PackagePath>
+    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\css\inappbrowser.css">
+      <PackagePath>www\css\inappbrowser.css</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\cordova-js-src\exec.js">
       <PackagePath>www\cordova-js-src\exec.js</PackagePath>
@@ -346,71 +142,8 @@
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\app.js">
       <PackagePath>www\js\app.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\accountView.js">
-      <PackagePath>www\js\views\accountView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\contactView.js">
-      <PackagePath>www\js\views\contactView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\dashboardView.js">
-      <PackagePath>www\js\views\dashboardView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\faqView.js">
-      <PackagePath>www\js\views\faqView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\firstTimeView.js">
-      <PackagePath>www\js\views\firstTimeView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\loginView.js">
-      <PackagePath>www\js\views\loginView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\logoutView.js">
-      <PackagePath>www\js\views\logoutView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\menuView.js">
-      <PackagePath>www\js\views\menuView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\newsView.js">
-      <PackagePath>www\js\views\newsView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\subscribeView.js">
-      <PackagePath>www\js\views\subscribeView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\views\todayReadingView.js">
-      <PackagePath>www\js\views\todayReadingView.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\bootstrap.js">
-      <PackagePath>www\lib\bootstrap.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\bootstrap.min.js">
-      <PackagePath>www\lib\bootstrap.min.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\fastclick.js">
-      <PackagePath>www\lib\fastclick.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\handlebars.js">
-      <PackagePath>www\lib\handlebars.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\jquery.cssmap.js">
-      <PackagePath>www\lib\jquery.cssmap.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\jquery.js">
-      <PackagePath>www\lib\jquery.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\jwreading.js">
-      <PackagePath>www\lib\jwreading.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\loader.js">
-      <PackagePath>www\lib\loader.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\magister.js">
-      <PackagePath>www\lib\magister.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\pageslider.js">
-      <PackagePath>www\lib\pageslider.js</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\router.js">
-      <PackagePath>www\lib\router.js</PackagePath>
+    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\script.js">
+      <PackagePath>www\lib\script.js</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js">
       <PackagePath>www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js</PackagePath>
@@ -442,44 +175,8 @@
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification.js">
       <PackagePath>www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\assets\lang\fr.js">
-      <PackagePath>www\assets\lang\fr.js</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\index.html">
       <PackagePath>www\index.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\accountTemplate.html">
-      <PackagePath>www\js\templates\accountTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\contactTemplate.html">
-      <PackagePath>www\js\templates\contactTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\dashboardTemplate.html">
-      <PackagePath>www\js\templates\dashboardTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\faqTemplate.html">
-      <PackagePath>www\js\templates\faqTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\firstTimeTemplate.html">
-      <PackagePath>www\js\templates\firstTimeTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\loginTemplate.html">
-      <PackagePath>www\js\templates\loginTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\logoutTemplate.html">
-      <PackagePath>www\js\templates\logoutTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\menuTemplate.html">
-      <PackagePath>www\js\templates\menuTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\newsTemplate.html">
-      <PackagePath>www\js\templates\newsTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\js\templates\todayReadingTemplate.html">
-      <PackagePath>www\js\templates\todayReadingTemplate.html</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\www\lib\jquery.js.old">
-      <PackagePath>www\lib\jquery.js.old</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\phonegap\jwreading\platforms\windows\config.xml">
       <PackagePath>config.xml</PackagePath>

@@ -7,14 +7,12 @@ document.addEventListener("deviceready", onDeviceReady, false);
  */
 function onDeviceReady() {
   if(connectedUser && sessionUserData.modeApp) {
-    // alert('onDeviceReady');
     //if user requested to be alerted when it's time to read a new portion
     // check and schedule notifications for week's portions and if necessary for daily texts
-
-    var day   = new Date().getDate();
-    var month = new Date().getMonth();
-    var year  = new Date().getFullYear();
-    var today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
+    day   = new Date().getDate();
+    month = new Date().getMonth();
+    year  = new Date().getFullYear();
+    today = new Date().getDay(); // day of the week for today (Monday = 1, Tuesday = 2, ...)
     if(today == 0) { today = 7; }//otherwise Sunday = 0
 
     for(var i=1;i<8;i++)
@@ -30,7 +28,6 @@ function onDeviceReady() {
           at: next_time,
           data: {reading:true} // used to redirect user on the reading page
         });
-        // alert('alert num ' + i + ' bible reading: ' + next_time);
       }
       if(sessionUserData.dailyComment == 1) { // schedule notification for daily text
         t = i + 7;
@@ -41,16 +38,27 @@ function onDeviceReady() {
           text: notification_daily_comment_text,
           at: next_time
         });
-        // alert('alert num ' + t + ' daily comment: ' + next_time);
       }
     }
 
     // when clicking on a notification in the notification center
     cordova.plugins.notification.local.on("click", function (notification) {
-      if(notification.data == '{"reading":true}') { //lecture
+      if(notification.data == '{"reading":true}') { // lecture
         window.location.hash = '#todayReading';
       }
     });
+
+    // check if need to ask to rate the app
+    var displayRateApp = false;
+    if(sessionUserData.rateAppAcceptance === "undefined") { displayRateApp = true; } 
+    else if(sessionUserData.rateAppAcceptance === '0') { // never answered the rate app screen
+      displayRateApp = calculateDiffDays(sessionUserData.registrationDay);
+    } else if(sessionUserData.rateAppAcceptance === '2') { // previously answered to be reminded later
+      displayRateApp = calculateDiffDays(sessionUserData.rateAppProposalDay);
+    }
+    if(displayRateApp) {
+      displayView('rateApp', null);
+    } 
   }
 }
 
@@ -61,10 +69,26 @@ function onDeviceReady() {
  * @return {[type]}     [date of the next week day asked]
  */
 function getNextWeekDay(now, d){
-    if(d > now.getDay()) var x = d- now.getDay();
-    else var x= ((7+d)-now.getDay())
-    now.setDate( now.getDate() + x );
-    return now;
+  if(d > now.getDay()) var x = d- now.getDay();
+  else var x= ((7+d)-now.getDay())
+  now.setDate( now.getDate() + x );
+  return now;
+}
+
+/**
+ * [calculateDiffDays : calculate difference in days between a date and today]
+ * @param  {[string]} dateToCalculate [date to calculate]
+ * @return {[boolean]}                [if difference over the limit, return true]
+ */
+function calculateDiffDays(dateToCalculate){
+  var limit                   = 9;
+  var currentDate             = new Date(year, month, day);
+  var dateToCalculateSplitted = dateToCalculate.split("-");
+  var dateToCalculateFormated = new Date(dateToCalculateSplitted[0], dateToCalculateSplitted[1], dateToCalculateSplitted[2]);
+  var diffDays                =  Math.round((currentDate - dateToCalculateFormated) / (1000*60*60*24));
+  // alert("currentDate:" + currentDate + "\ndateToCalculate:" + dateToCalculate + "\ndiffDays:" + diffDays + "\nsessionUserData.rateAppAcceptance:" + sessionUserData.rateAppAcceptance);
+  if(diffDays > limit) { return true; }
+  return false;
 }
 /******* End only mobile ********/
 
@@ -132,6 +156,7 @@ function getNextWeekDay(now, d){
 
   //get the default language file
   displayLang();
+  //list of languages available for reading, daily text and news (not for the interface)
   window.languages = [{lang:'fr', name:lang_fr}, 
                       {lang:'en', name:lang_en}, 
                       {lang:'it', name:lang_it}, 
@@ -161,9 +186,9 @@ function getNextWeekDay(now, d){
       dataType: 'json',
       async: false,
       success: function(data) {
-        var js = data['minifiedJs'];
-        var tmpl = data['minifiedTmpl'];
-        var menuJs = data['minifiedMenuJs'];
+        var js       = data['minifiedJs'];
+        var tmpl     = data['minifiedTmpl'];
+        var menuJs   = data['minifiedMenuJs'];
         var tmplMenu = data['minifiedMenuTmpl'];
 
         $('.view').remove(); // remove previous view
@@ -174,7 +199,7 @@ function getNextWeekDay(now, d){
           $('body').append(appendString);
         }
 
-        var appendString = '<script class="view">' + menuJs + '</script>';// add new view in body
+        var appendString = '<script class="view">' + menuJs + '</script>';// add new menu in body
         if (typeof MSApp !== "undefined" && MSApp) {
           MSApp.execUnsafeLocalFunction(function() { $('body').append(appendString); });
         } else {
@@ -194,19 +219,19 @@ function getNextWeekDay(now, d){
    */
   window.analyzeHash = function() {
     hash = window.location.hash.substr(1);
-    if(!hash) { hash = 'dashboard'; }
+    if(!hash) { 
+      if(!localStorage.firstTimeOver) { // first time
+        displayView('firstTime', null);
+        return false;
+      }
+      hash = 'dashboard'; 
+    }
     hash = checkNeedLogin(hash);
     var activeMenu = hash + '_active';
     displayView(hash, activeMenu); //load view corresponding to the hash and menu
   }
 
-  if(!localStorage.firstTimeOver) { // first time
-    displayView('firstTime', null);
-  }
-  else {
-    analyzeHash();
-  }
-
+  analyzeHash();
   //every new request changes the hash
   $(window).on('hashchange', function(){
     analyzeHash();
@@ -254,19 +279,21 @@ function getNextWeekDay(now, d){
     if(displaySubscribe) { tmpl = tmpl.replace(new RegExp('{{account_', 'g'), '{{subscribe_'); }
 
     var context = buildContext(tmpl);
-    var contextMenu = buildContext(tmplMenu);
-
     var view   = "new " + element + "View()";
     var result = eval(view); 
-    var resultMenu = new menuView(); 
-
-    if(activeMenu) { contextMenu[activeMenu] = 'active'; } // case of menu loading
-
     var html = compileTemplate(tmpl, context, result);
-    var menuHtml = compileTemplate(tmplMenu, contextMenu, resultMenu);
-    
-    if(activeMenu) { $('#menuContent').html(menuHtml); } // case of menu loading
-    if(element == 'firstTime') { $('#tmplContent').html(html); }
+
+    if(activeMenu) { // case of menu loading
+      var contextMenu = buildContext(tmplMenu);
+      contextMenu[activeMenu] = 'active'; 
+      var resultMenu = new menuView(); 
+      var menuHtml = compileTemplate(tmplMenu, contextMenu, resultMenu);
+      $('#menuContent').html(menuHtml);
+    } else {
+      $('#menuContent').html('');
+    }
+
+    if(element === 'firstTime' || element === 'rateApp') { $('#tmplContent').html(html); }
     else { slider.slidePage($('<div>').html(html)); }
     if(loggedOut) {
       $("#logoutValidate").show();

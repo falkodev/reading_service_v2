@@ -51,7 +51,7 @@ module.exports.metadata =
     "cordova-plugin-inappbrowser": "1.0.1",
     "cordova-plugin-whitelist": "1.0.0",
     "de.appplant.cordova.plugin.local-notification": "0.8.2",
-    "cordova-plugin-device": "1.0.1"
+    "cordova-plugin-device": "1.1.1"
 }
 // BOTTOM OF METADATA
 });

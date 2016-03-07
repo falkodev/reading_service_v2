@@ -1,6 +1,8 @@
 C:\phonegap\jwreading\platforms\windows\build\windows80\Debug\AnyCPU\ReverseMap\resources.pri
 C:\phonegap\jwreading\platforms\windows\build\windows80\Debug\AnyCPU\AppxManifest.xml
 C:\phonegap\jwreading\platforms\windows\build\windows80\Debug\AnyCPU\CordovaApp.Windows80.build.appxrecipe
+C:\phonegap\jwreading\platforms\windows\build\windows80\Release\AnyCPU\ReverseMap\resources.pri
+C:\phonegap\jwreading\platforms\windows\build\windows80\Release\AnyCPU\AppxManifest.xml
 C:\phonegap\jwreading\platforms\windows\build\windows80\bld\priconfig.xml
 C:\phonegap\jwreading\platforms\windows\build\windows80\bld\priconfig.xml.intermediate
 C:\phonegap\jwreading\platforms\windows\build\windows80\bld\layout.resfiles
@@ -13,6 +15,4 @@ C:\phonegap\jwreading\platforms\windows\build\windows80\bld\qualifiers.txt
 C:\phonegap\jwreading\platforms\windows\build\windows80\bld\qualifiers.txt.intermediate
 C:\phonegap\jwreading\platforms\windows\build\windows80\bld\MultipleQualifiersPerDimensionFound.txt
 C:\phonegap\jwreading\platforms\windows\build\windows80\bld\ProjectArchitectures.txt
-C:\phonegap\jwreading\platforms\windows\build\windows80\Release\AnyCPU\ReverseMap\resources.pri
-C:\phonegap\jwreading\platforms\windows\build\windows80\Release\AnyCPU\AppxManifest.xml
 C:\phonegap\jwreading\platforms\windows\build\windows80\Release\AnyCPU\CordovaApp.Windows80.build.appxrecipe

@@ -1,152 +1,49 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <PropertyGroup>
-        <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-        <HasSharedItems>true</HasSharedItems>
-        <SharedGUID>9ebdb27f-d75b-4d8c-b53f-7be4a1fe89f9</SharedGUID>
-    </PropertyGroup>
-    <ItemGroup>
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\bootstrap.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\bootstrap.min.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\cssmap-continents\continents-540.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\cssmap-continents\continents-960.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\cssmap-continents\cssmap-continents.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\css\font-awesome.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\css\font-awesome.min.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\css\mixins.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\css\variables.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.eot" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.svg" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.ttf" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.woff" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.woff2" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\FontAwesome.otf" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\HELP-US-OUT.txt" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\animated.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\bordered-pulled.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\core.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\fixed-width.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\font-awesome.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\icons.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\larger.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\list.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\mixins.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\path.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\rotated-flipped.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\stacked.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\less\variables.less" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\font-awesome.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\font-awesome.css.map" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\font-awesome.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_animated.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_bordered-pulled.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_core.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_fixed-width.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_icons.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_larger.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_list.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_mixins.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_path.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_rotated-flipped.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_stacked.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\scss\_variables.scss" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_add.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_arrow_left.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_book.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_bookmark.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_dialog.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_download.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_goleft.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_location.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_mail.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_monolog.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_phone_outgoing.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_search.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_user.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\images\ic_action_users.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\magister-old.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\magister.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\pageslider.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\css\styles.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\font\wire-one.woff" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\font\wire-one.woff2" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\background.jpg" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\book.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\feature-graphic.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\icon-hi-res.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\icon.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\icon150x150.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\icon30x30.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\icon310x310.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\icon50x50.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\icon70x70.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\ring-white.svg" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\wide310x150.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\img\wide620x300.png" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\lang\common.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\lang\en.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\lang\langs.txt" />
-        <Content Include="$(MSBuildThisFileDirectory)www\cordova-js-src\exec.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\cordova-js-src\platform.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\cordova.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\cordova_plugins.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\css\inappbrowser.css" />
-        <Content Include="$(MSBuildThisFileDirectory)www\index.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\app.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\accountTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\contactTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\dashboardTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\donateTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\faqTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\firstTimeTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\loginTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\logoutTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\menuTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\newsTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\templates\todayReadingTemplate.html" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\accountView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\contactView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\dashboardView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\donateView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\faqView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\firstTimeView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\loginView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\logoutView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\menuView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\newsView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\subscribeView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\js\views\todayReadingView.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\bootstrap.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\bootstrap.min.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\fastclick.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\handlebars.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\jquery.cssmap.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\jquery.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\jquery.js.old" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\jwreading.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\loader.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\magister.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\pageslider.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\lib\router.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-device\www\device.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-inappbrowser\src\windows\InAppBrowserProxy.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-inappbrowser\www\inappbrowser.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\LocalNotificationCore.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\LocalNotificationProxy.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\LocalNotificationUtil.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification-core.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification-util.js" />
-        <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification.js" />
-        <None Include="$(MSBuildThisFileDirectory)CordovaApp.Windows81_StoreKey.pfx" />
-        <None Include="$(MSBuildThisFileDirectory)CordovaApp.Windows_StoreKey.pfx" />
-        <None Include="$(MSBuildThisFileDirectory)Package.StoreAssociation.xml" />
-        <None Include="$(MSBuildThisFileDirectory)CordovaApp.Windows_TemporaryKey.pfx" />
-        <Content Include="$(MSBuildThisFileDirectory)www\assets\lang\fr.js" />
-    </ItemGroup>
-    <ItemGroup>
-        <Content Include="$(MSBuildThisFileDirectory)config.xml" />
-    </ItemGroup>
-    <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppDebug.projitems') And '$(Configuration)'=='Debug'" Project="CordovaAppDebug.projitems" />
-    <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppRelease.projitems') And '$(Configuration)'!='Debug'" Project="CordovaAppRelease.projitems" />
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>9ebdb27f-d75b-4d8c-b53f-7be4a1fe89f9</SharedGUID>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\cssmap-continents\continents-540.png" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\cssmap-continents\continents-960.png" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\font-awesome-4.3.0\fonts\FontAwesome.otf" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\css\style.css" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\font\wire-one.woff" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\img\book.png" />
+    <Content Include="$(MSBuildThisFileDirectory)www\assets\img\ring-white.svg" />
+    <Content Include="$(MSBuildThisFileDirectory)www\cordova-js-src\exec.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\cordova-js-src\platform.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\cordova.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\cordova_plugins.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\css\inappbrowser.css" />
+    <Content Include="$(MSBuildThisFileDirectory)www\index.html" />
+    <Content Include="$(MSBuildThisFileDirectory)www\js\app.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\lib\script.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-device\www\device.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-inappbrowser\src\windows\InAppBrowserProxy.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\cordova-plugin-inappbrowser\www\inappbrowser.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\LocalNotificationCore.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\LocalNotificationProxy.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\src\windows\LocalNotificationUtil.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification-core.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification-util.js" />
+    <Content Include="$(MSBuildThisFileDirectory)www\plugins\de.appplant.cordova.plugin.local-notification\www\local-notification.js" />
+    <None Include="$(MSBuildThisFileDirectory)CordovaApp.Windows81_StoreKey.pfx" />
+    <None Include="$(MSBuildThisFileDirectory)CordovaApp.Windows_StoreKey.pfx" />
+    <None Include="$(MSBuildThisFileDirectory)Package.StoreAssociation.xml" />
+    <None Include="$(MSBuildThisFileDirectory)CordovaApp.Windows_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)config.xml" />
+  </ItemGroup>
+  <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppDebug.projitems') And '$(Configuration)'=='Debug'" Project="CordovaAppDebug.projitems" />
+  <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppRelease.projitems') And '$(Configuration)'!='Debug'" Project="CordovaAppRelease.projitems" />
 </Project>

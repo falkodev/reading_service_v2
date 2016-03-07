@@ -1,4 +1,4 @@
-﻿cordova.define('cordova/plugin_list', function(require, exports, module) {
+cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
         "file": "plugins/cordova-plugin-device/www/device.js",
@@ -78,7 +78,7 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-device": "1.0.1",
+    "cordova-plugin-device": "1.1.1",
     "cordova-plugin-inappbrowser": "1.0.1",
     "cordova-plugin-whitelist": "1.0.0",
     "de.appplant.cordova.plugin.local-notification": "0.8.2"
